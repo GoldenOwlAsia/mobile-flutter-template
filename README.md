@@ -10,12 +10,12 @@
   <p align="center">
     Fork this project then start you project with a lot of stuck prepare
     <br>
-    Base project made with much  :heart: . Contains CRUD, patterns, and much more!
+    Base project made with much  :heart: . Contains Bloc, Route, and much more!
     <br>
     <br>
-    <a href="https://github.com/j1mmyto9/flutter-boilerplate/issues/new">Report bug</a>
+    <a href="https://github.com/GoldenOwlAsia/mobile-flutter-template/issues/new">Report bug</a>
     ·
-    <a href="https://github.com/j1mmyto9/flutter-boilerplate/issues/new">Request feature</a>
+    <a href="https://github.com/GoldenOwlAsia/mobile-flutter-template/issues/new">Request feature</a>
   </p>
 </p>
 
@@ -33,7 +33,7 @@
 
 1. Download or clone this repo by using the link below:
   ```
-  https://github.com/j1mmyto9/flutter-boilerplate.git
+  https://github.com/GoldenOwlAsia/mobile-flutter-template.git
   ```
 2. Go to project root and execute the following command in console to get the required dependencies: 
 
@@ -87,27 +87,14 @@
 ## State Management
   > State Management is still the hottest topic in Flutter Community. There are tons of choices available and it’s super intimidating for a beginner to choose one. Also, all of them have their pros and cons. So, what’s the best approach
 
-![](resources/images/state.png) 
-
 **A recommended approach**
 - [flutter_bloc](https://pub.dev/packages/flutter_bloc): Widgets that make it easy to integrate blocs and cubits into Flutter. [Learn more](https://bloclibrary.dev/#/) 
 
-
-**Other favorite package**
-- [provider](https://pub.dev/packages/provider): A wrapper around InheritedWidget to make them easier to use and more reusable.
-
-- [rxdart](https://pub.dev/packages/rxdart): RxDart adds additional capabilities to Dart Streams and StreamControllers. Using as bloc pattens
-
-- [RiverPod](https://pub.dev/packages/riverpod): This project can be considered as a rewrite of provider to make improvements that would be otherwise impossible.
-
-- [stacked](https://pub.dev/packages/stacked): This architecture was initially a version of MVVM.
-
-- [get](https://pub.dev/packages/get): GetX Ecosystem (State, Router, Dependency management, Theme, Utils)
-
-- [More about state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)
-
 ## Flutter Gen
 - [flutter_gen](https://pub.dev/packages/flutter_gen): The Flutter code generator for your assets, fonts, colors, … — Get rid of all String-based APIs.
+
+## Localization 
+- [localization](https://pub.dev/packages/localization): Package to simplify in-app translation.
 
 ## Widget
 - [shimmer](https://pub.dev/packages/shimmer): Shimmer loading animation
@@ -118,16 +105,13 @@
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
 - [flutter_cache_manager](https://pub.dev/packages/flutter_cache_manager)
 
-## Other favorite package
-- [DIO](https://pub.dev/packages/dio): A powerful Http client for Dart
-- [hive](https://pub.dev/packages/hive), [sqflite](https://pub.dev/packages/sqflite): Flutter plugin for reading and locale data
-
 # Code structure
 Here is the core folder structure which flutter provides.
 ```
 flutter-app/
 |- android
 |- ios
+|- web
 |- lib
 |- modules
 |- test
@@ -136,11 +120,6 @@ Here is the folder structure we have been using in this project
 
 ```
 lib/
-|- _dev/
-  |- mock/
-  |- view/
-  |- widget/
-
 |- packages/
 |- src/
   |- data/
@@ -166,5 +145,11 @@ lib/
 ![](resources/images/screens.png) 
 
 ## Wiki
-Checkout [wiki](https://github.com/j1mmyto9/flutter-boilerplate/wiki) for more info
+Checkout [wiki](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki) for more info
+
+## Screenshot
+
+| Account | Profile | Login |
+|------------|-------------|-------------|
+|  <img src="./resources/images/account.png" width=300> |  <img src="./resources/images/profile.png" width=300> | <img src="./resources/images/login.png" width=300> |
 
