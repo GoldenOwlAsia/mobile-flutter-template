@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:myapp/src/router/coordinator.dart';
+import 'package:myapp/src/theme/colors.dart';
+import 'package:myapp/widgets/button/text_button.dart';
+import 'package:myapp/widgets/card/card.dart';
+
+class AccountNoUserCard extends StatelessWidget {
+  const AccountNoUserCard({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return XCard(
+      padding: EdgeInsets.fromLTRB(16, 16, 16, 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            'Hello',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 17,
+              letterSpacing: 0.44,
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Sign in to shop more easily and enjoy many promotions',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              color: XColors.textSecondary,
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: XTextButton(
+              title: 'Sign in / Sign up',
+              padding: EdgeInsets.symmetric(vertical: 8),
+              onPressed: () {
+                XCoordinator.showAuthentication();
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
