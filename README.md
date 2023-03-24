@@ -1,24 +1,9 @@
+![screenshot](resources/images/github-banner.png)
+
 # Flutter Boilerplate
+Fork this project then start you project with a lot of stuck prepare 
 
-<p align="center">
-  <a href="https://flutter.io/">
-    <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Logo" width=320 height=72>
-  </a>
-
-  <!-- <h3 align="center">Flutter Boilerplate Project</h3> -->
-
-  <p align="center">
-    Fork this project then start you project with a lot of stuck prepare
-    <br>
-    Base project made with much  :heart: . Contains Bloc, Route, and much more!
-    <br>
-    <br>
-    <a href="https://github.com/GoldenOwlAsia/mobile-flutter-template/issues/new">Report bug</a>
-    ·
-    <a href="https://github.com/GoldenOwlAsia/mobile-flutter-template/issues/new">Request feature</a>
-  </p>
-</p>
-
+Base project made with much: . Contains Bloc, Route, and much more!
 ## Table of contents
 
 - [How to Use](#how-to-use)
