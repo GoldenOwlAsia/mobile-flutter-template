@@ -44,7 +44,7 @@ abstract class $XRouter extends _i15.RootStackRouter {
         child: const _i1.SettingsView(),
       );
     },
-    HomeRouter.name: (routeData) {
+    HomeRoute.name: (routeData) {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.HomeView(),
@@ -148,14 +148,14 @@ class SettingsRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.HomeView]
-class HomeRouter extends _i15.PageRouteInfo<void> {
-  const HomeRouter({List<_i15.PageRouteInfo>? children})
+class HomeRoute extends _i15.PageRouteInfo<void> {
+  const HomeRoute({List<_i15.PageRouteInfo>? children})
       : super(
-          HomeRouter.name,
+          HomeRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeRouter';
+  static const String name = 'HomeRoute';
 
   static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }
