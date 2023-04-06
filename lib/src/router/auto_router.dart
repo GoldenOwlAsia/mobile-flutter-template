@@ -16,7 +16,7 @@ class XRouter extends $XRouter {
       page: DashBoardRoute.page,
       path: '/',
       children: [
-        AutoRoute(path: XRouteTaps.home, page: HomeRouter.page),
+        AutoRoute(path: XRouteTaps.home, page: HomeRoute.page),
         AccountCoordinator.autoRouter,
       ],
     ),

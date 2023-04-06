@@ -35,7 +35,7 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
             },
             child: AutoTabsScaffold(
               routes: [
-                HomeRouter(),
+                HomeRoute(),
                 AccountRoute(),
               ],
               bottomNavigationBuilder: (_, TabsRouter tabsRouter) {

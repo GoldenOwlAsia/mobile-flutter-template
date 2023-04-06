@@ -4,7 +4,7 @@ import 'package:myapp/src/dialogs/toast_wrapper.dart';
 import 'package:myapp/src/router/router_name.dart';
 import 'package:myapp/widgets/button/text_button.dart';
 
-@RoutePage(name: 'HomeRouter')
+@RoutePage(name: 'HomeRoute')
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 

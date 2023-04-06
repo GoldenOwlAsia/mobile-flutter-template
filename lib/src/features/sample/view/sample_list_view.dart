@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/src/config/constants/images.dart';
+import 'package:myapp/src/theme/images.dart';
 
 @RoutePage()
 class SampleItemListView extends StatelessWidget {

@@ -10,7 +10,6 @@ class XTheme {
         fontFamily: fontFamily,
 
         /// Colors
-        primarySwatch: XColors.primaryColors,
         primaryColor: XColors.primary,
         brightness: Brightness.light,
         textTheme: XStyles.textTheme,
