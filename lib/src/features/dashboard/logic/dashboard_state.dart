@@ -7,7 +7,7 @@ enum TapIndex {
 
 extension ETapIndex on TapIndex {
   String nameOf() {
-    return nameAt(this.index);
+    return nameAt(index);
   }
 
   IconData iconOf() {
@@ -29,7 +29,7 @@ extension ETapIndex on TapIndex {
 }
 
 class DashBoardState extends Equatable {
-  DashBoardState();
+  const DashBoardState();
 
   @override
   List<Object?> get props => [];

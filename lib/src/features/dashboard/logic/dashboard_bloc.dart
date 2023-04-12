@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'dashboard_state.dart';
 
 class DashBoardBloc extends Cubit<DashBoardState> {
-  DashBoardBloc() : super(DashBoardState());
+  DashBoardBloc() : super(const DashBoardState());
   final StreamController<TapIndex> reTap =
       StreamController<TapIndex>.broadcast();
   TabsRouter? tabsRouter;

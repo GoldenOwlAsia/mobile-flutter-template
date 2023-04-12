@@ -16,11 +16,6 @@ class DashBoardView extends StatefulWidget {
 
 class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
@@ -34,7 +29,7 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
               return false;
             },
             child: AutoTabsScaffold(
-              routes: [
+              routes: const [
                 HomeRoute(),
                 AccountRoute(),
               ],

@@ -3,7 +3,7 @@ import 'package:myapp/src/theme/colors.dart';
 
 class LargeTitleAppBar extends StatelessWidget {
   const LargeTitleAppBar(this.title,
-      {this.hasDivider = false, this.paddingTop = 0});
+      {super.key, this.hasDivider = false, this.paddingTop = 0});
 
   final double paddingTop;
   final String title;
@@ -28,7 +28,7 @@ class LargeTitleAppBar extends StatelessWidget {
               ),
             ),
           ),
-          if (hasDivider) Divider()
+          if (hasDivider) const Divider()
         ],
       ),
     );

@@ -3,7 +3,7 @@ import 'package:logger/logger.dart';
 Logger xLog = Logger();
 
 class Utils {
-  List<T> listOf<T>(dynamic map, T toElement(dynamic e)) {
+  List<T> listOf<T>(dynamic map, T Function(dynamic e) toElement) {
     if (map != null && map is List) {
       return map.map(toElement).toList();
     }
@@ -15,9 +15,9 @@ class Utils {
   }
 
   static bool isMatchSearch(String name, String query) {
-    final _name = name.toLowerCase();
-    final _query = query.toLowerCase();
-    return _name.contains(_query) || _name.contains(_query);
+    final name0 = name.toLowerCase();
+    final query0 = query.toLowerCase();
+    return name0.contains(query0) || name0.contains(query0);
   }
 
   static bool isMatchAllSearch(List<String> names, String query) {

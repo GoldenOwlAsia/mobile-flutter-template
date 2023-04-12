@@ -16,7 +16,7 @@ class SampleItemListView extends StatelessWidget {
         restorationId: 'sampleItemListView',
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-            title: Text('SampleItem ${index}'),
+            title: Text('SampleItem $index'),
             leading: const CircleAvatar(
               foregroundImage: AssetImage(XImagePath.logo),
             ),

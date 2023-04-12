@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +19,7 @@ import 'package:myapp/src/router/auto_router.dart';
 part 'signin_state.dart';
 
 class SigninBloc extends Cubit<SigninState> {
-  SigninBloc() : super(SigninState());
+  SigninBloc() : super(const SigninState());
 
   DomainManager get domain => DomainManager.I;
 
@@ -99,7 +101,7 @@ class SigninBloc extends Cubit<SigninState> {
   }
 
   Future loginDecision(BuildContext context, MResult<MUser> result,
-      {MSocialType? socialType = null}) async {
+      {MSocialType? socialType}) async {
     final user = result.data;
     if (result.isSuccess && user != null) {
       emit(state.copyWith(status: FormzSubmissionStatus.success));

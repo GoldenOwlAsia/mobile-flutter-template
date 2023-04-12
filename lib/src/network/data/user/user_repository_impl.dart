@@ -7,7 +7,7 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<MResult<MUser>> getUser(String id) async {
     try {
-      final result = await FirebaseAuth.instance.currentUser;
+      final result = FirebaseAuth.instance.currentUser;
       if (result == null) {
         return MResult.error('Not user login');
       }

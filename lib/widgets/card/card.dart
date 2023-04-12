@@ -14,14 +14,14 @@ class XCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: padding,
-      child: child,
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-            color: borderColor ?? Color(0xFFD9D9D9),
+            color: borderColor ?? const Color(0xFFD9D9D9),
             width: 0.5,
           ),
           borderRadius: BorderRadius.circular(10)),
+      child: child,
     );
   }
 }

@@ -9,7 +9,7 @@ import 'package:myapp/src/router/router_name.dart';
 @AutoRouterConfig(replaceInRouteName: 'View,Route')
 class XRouter extends $XRouter {
   @override
-  RouteType get defaultRouteType => RouteType.material();
+  RouteType get defaultRouteType => const RouteType.material();
   @override
   final List<AutoRoute> routes = [
     AutoRoute(

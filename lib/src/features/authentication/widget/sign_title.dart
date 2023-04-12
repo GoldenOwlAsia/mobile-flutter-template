@@ -6,7 +6,7 @@ class SignTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 100, 32, 0),
+      margin: const EdgeInsets.fromLTRB(0, 100, 32, 0),
       alignment: Alignment.topCenter,
       child: Text(
         text,

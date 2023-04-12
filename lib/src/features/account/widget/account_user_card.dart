@@ -15,25 +15,25 @@ class AccountUserCard extends StatelessWidget {
         AccountCoordinator.showProfile(context);
       },
       child: XCard(
-        padding: EdgeInsets.fromLTRB(16, 16, 16, 12),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
         child: Row(
           children: [
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    'Hello' + ',',
+                  const Text(
+                    'Hello' ',',
                     style: TextStyle(color: XColors.textSecondary),
                   ),
                   Text(
                     user.name ?? '',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
-            XNavIcon(),
+            const XNavIcon(),
           ],
         ),
       ),

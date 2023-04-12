@@ -11,7 +11,7 @@ import 'package:myapp/src/network/model/common/result.dart';
 part 'forgot_state.dart';
 
 class ForgotBloc extends Cubit<ForgotState> {
-  ForgotBloc() : super(ForgotState());
+  ForgotBloc() : super(const ForgotState());
   DomainManager get domain => DomainManager.I;
 
   /// Step 3 (Register)
@@ -27,6 +27,7 @@ class ForgotBloc extends Cubit<ForgotState> {
       await XAlert.show(
           body:
               'Your request success! Please check your email to reset your password');
+      // ignore: use_build_context_synchronously
       context.router.pop(true);
     } else {
       emit(state.copyWith(

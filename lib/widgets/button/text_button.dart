@@ -15,10 +15,10 @@ class XTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        padding: this.padding,
+        padding: padding,
       ),
-      child: Text(title),
       onPressed: onPressed,
+      child: Text(title),
     );
   }
 }

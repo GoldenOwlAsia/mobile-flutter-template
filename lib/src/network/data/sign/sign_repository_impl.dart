@@ -78,13 +78,13 @@ class SignRepositoryImpl extends SignRepository {
   @override
   Future<MResult<MSocialUser>> loginWithGoogle() async {
     try {
-      final GoogleSignIn _googleSignIn = GoogleSignIn();
+      final GoogleSignIn googleSignIn = GoogleSignIn();
 
-      final bool isSignedIn = await _googleSignIn.isSignedIn();
+      final bool isSignedIn = await googleSignIn.isSignedIn();
       if (isSignedIn) {
-        await _googleSignIn.signOut();
+        await googleSignIn.signOut();
       }
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       final googleAuth = await googleUser?.authentication;
       if (googleUser != null && googleAuth != null) {
         return MResult.success(
@@ -100,7 +100,7 @@ class SignRepositoryImpl extends SignRepository {
   @override
   Future<MResult> removeAccount(MUser user) async {
     try {
-      final user = await FirebaseAuth.instance.currentUser;
+      final user = FirebaseAuth.instance.currentUser;
       user?.delete();
       return MResult.success(user);
     } catch (e) {

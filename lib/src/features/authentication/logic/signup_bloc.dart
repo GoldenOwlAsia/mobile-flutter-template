@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +18,7 @@ import 'package:myapp/src/router/coordinator.dart';
 part 'signup_state.dart';
 
 class SignupBloc extends Cubit<SignupState> {
-  SignupBloc() : super(SignupState());
+  SignupBloc() : super(const SignupState());
 
   DomainManager get domain => DomainManager.I;
 

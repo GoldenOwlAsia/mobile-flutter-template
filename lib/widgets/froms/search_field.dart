@@ -3,7 +3,7 @@ import 'package:myapp/src/utils/utils.dart';
 
 class XSearchField<T> extends StatelessWidget {
   const XSearchField(
-      {this.onShowSearch, this.value, this.child, this.validator});
+      {super.key, this.onShowSearch, this.value, this.child, this.validator});
 
   final T? value;
   final VoidCallback? onShowSearch;

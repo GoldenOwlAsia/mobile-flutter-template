@@ -18,7 +18,7 @@ class ProfileView extends StatelessWidget {
         foregroundColor: Colors.black87,
       ),
       body: Container(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -38,32 +38,34 @@ class ProfileView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 46),
+            const SizedBox(height: 46),
             InkWell(
               onTap: () async {
                 final result =
                     await context.read<AccountBloc>().onLogOut(context);
                 if (result == true) {
+                  // ignore: use_build_context_synchronously
                   context.router.pop();
                 }
               },
-              child: XCard(
+              child: const XCard(
                 child: Text(
                   'Logout',
                   style: TextStyle(color: Color(0xFFC94A28)),
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             InkWell(
               onTap: () async {
                 final result =
                     await context.read<AccountBloc>().onRemoveAccount(context);
                 if (result == true) {
+                  // ignore: use_build_context_synchronously
                   context.router.pop();
                 }
               },
-              child: XCard(
+              child: const XCard(
                 child: Text(
                   'Remove Account',
                   style: TextStyle(color: Color(0xFFC94A28)),

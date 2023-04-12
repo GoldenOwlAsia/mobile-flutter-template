@@ -3,7 +3,7 @@ import 'package:myapp/src/utils/utils.dart';
 import 'package:myapp/src/dialogs/toast_wrapper.dart';
 
 class XSmallNumberField extends StatelessWidget {
-  XSmallNumberField({this.value, this.onChanged, this.hintText});
+  XSmallNumberField({super.key, this.value, this.onChanged, this.hintText});
 
   final ValueChanged? onChanged;
   final int? value;
@@ -36,9 +36,9 @@ class XSmallNumberField extends StatelessWidget {
 
   void _addItem(String val) {
     try {
-      final int _num = int.parse(val);
-      if (_num >= 0 && _num <= 10) {
-        onChanged?.call(_num);
+      final int num = int.parse(val);
+      if (num >= 0 && num <= 10) {
+        onChanged?.call(num);
       } else {
         XToast.show("Value from 0 to 10");
       }
@@ -58,7 +58,7 @@ class XSmallNumberField extends StatelessWidget {
 
   Future<String> _showAddItemModal(BuildContext context) async {
     _textController.text = (value ?? "").toString();
-    String _valueInput = '';
+    String valueInput = '';
     await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -105,12 +105,12 @@ class XSmallNumberField extends StatelessWidget {
                                     Theme.of(context).colorScheme.onBackground,
                               ),
                               onPressed: () {
-                                _valueInput = _textController.text;
+                                valueInput = _textController.text;
                                 Navigator.pop(context);
                               },
                             )),
                         onFieldSubmitted: (value) {
-                          _valueInput = _textController.text;
+                          valueInput = _textController.text;
                           Navigator.pop(context);
                         },
                       ),
@@ -123,6 +123,6 @@ class XSmallNumberField extends StatelessWidget {
         );
       },
     );
-    return _valueInput;
+    return valueInput;
   }
 }

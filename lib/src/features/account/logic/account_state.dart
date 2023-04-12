@@ -1,7 +1,7 @@
 part of 'account_bloc.dart';
 
 class AccountState extends Equatable {
-  AccountState({
+  const AccountState({
     required this.user,
     this.locale = 'vi',
   });

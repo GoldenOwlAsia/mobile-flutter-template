@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class XTextFieldTitle extends StatelessWidget {
-  const XTextFieldTitle(this.title, {this.child});
+  const XTextFieldTitle(this.title, {super.key, this.child});
 
   final String title;
   final Widget? child;
@@ -26,7 +26,7 @@ class XTextFieldTitle extends StatelessWidget {
 }
 
 class XFieldTitle extends StatelessWidget {
-  const XFieldTitle(this.title);
+  const XFieldTitle(this.title, {super.key});
 
   final String title;
 

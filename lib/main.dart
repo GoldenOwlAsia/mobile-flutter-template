@@ -10,10 +10,10 @@ import 'src/app.dart';
 Future main() async {
   await initializeApp();
   if (kIsWeb) {
-    runApp(MyApp());
+    runApp(const MyApp());
   } else {
     runZonedGuarded<Future<void>>(() async {
-      runApp(MyApp());
+      runApp(const MyApp());
     }, FirebaseCrashlytics.instance.recordError);
   }
 }

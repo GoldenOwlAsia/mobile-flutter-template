@@ -30,7 +30,7 @@ class SigninView extends StatelessWidget {
           backgroundColor: Colors.transparent,
         ),
         body: Container(
-          padding: EdgeInsets.fromLTRB(24, 0, 24, 20),
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
           child: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             child: BlocBuilder<SigninBloc, SigninState>(builder: _builder),
@@ -45,7 +45,7 @@ class SigninView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SignTitle('Login'),
+        const SignTitle('Login'),
         const SizedBox(height: 24.0),
         XInput(
           key: const Key('loginForm_emailAndPhoneInput_textField'),
@@ -79,7 +79,7 @@ class SigninView extends StatelessWidget {
           },
         ),
         const SizedBox(height: 32.0),
-        SocialListButton(),
+        const SocialListButton(),
         const SizedBox(height: 32.0),
         _buildNoAccount(context),
       ],
@@ -91,8 +91,8 @@ class SigninView extends StatelessWidget {
       textAlign: TextAlign.center,
       text: TextSpan(
         children: [
-          TextSpan(
-            text: "Not have account?" + '  ',
+          const TextSpan(
+            text: "Not have account?" '  ',
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
@@ -102,7 +102,7 @@ class SigninView extends StatelessWidget {
           ),
           TextSpan(
             text: "Signup now",
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
               color: XColors.link,

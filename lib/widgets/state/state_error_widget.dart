@@ -16,7 +16,7 @@ class XStateErrorWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.error_outline),
+            const Icon(Icons.error_outline),
             Text(S.of(context).error_somethingWrongTryAgain)
           ],
         ),
