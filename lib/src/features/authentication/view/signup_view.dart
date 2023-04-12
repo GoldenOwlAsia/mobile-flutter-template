@@ -20,7 +20,7 @@ class SignupView extends StatelessWidget {
         builder: (context, SignupState state) {
           return Scaffold(
             body: Container(
-              padding: EdgeInsets.fromLTRB(24, 0, 24, 20),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
               child: SingleChildScrollView(
                 keyboardDismissBehavior:
                     ScrollViewKeyboardDismissBehavior.onDrag,
@@ -38,7 +38,7 @@ class SignupView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SignTitle('Sigup'),
+        const SignTitle('Sigup'),
         const SizedBox(height: 24.0),
         XInput(
           key: const Key('loginForm_NameInput_textField'),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/utils/utils.dart';
 
 class XMultiTextField extends StatelessWidget {
-  XMultiTextField({this.value, this.hintText, this.onChanged, this.validator});
+  XMultiTextField(
+      {super.key, this.value, this.hintText, this.onChanged, this.validator});
 
   final ValueChanged? onChanged;
   final String? hintText;
@@ -121,7 +122,7 @@ class XMultiTextField extends StatelessWidget {
 
   Future<String> _showAddItemModal(BuildContext context) async {
     _textController.text = "";
-    String _valueInput = '';
+    String valueInput = '';
     await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -165,12 +166,12 @@ class XMultiTextField extends StatelessWidget {
                                     Theme.of(context).colorScheme.onBackground,
                               ),
                               onPressed: () {
-                                _valueInput = _textController.text;
+                                valueInput = _textController.text;
                                 Navigator.pop(context);
                               },
                             )),
                         onFieldSubmitted: (value) {
-                          _valueInput = _textController.text;
+                          valueInput = _textController.text;
                           Navigator.pop(context);
                         },
                       ),
@@ -183,6 +184,6 @@ class XMultiTextField extends StatelessWidget {
         );
       },
     );
-    return _valueInput;
+    return valueInput;
   }
 }

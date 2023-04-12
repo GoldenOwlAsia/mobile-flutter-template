@@ -6,6 +6,7 @@ abstract class StreamCubit<T> extends Cubit<T> {
   StreamCubit(T initialState) : super(initialState) {
     initialise();
   }
+  @override
   Stream<T> get stream;
 
   StreamSubscription? get streamSubscription => _streamSubscription;

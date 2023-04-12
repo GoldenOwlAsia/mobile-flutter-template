@@ -6,6 +6,7 @@ String _domainApi = '';
 class XImageNetwork extends StatelessWidget {
   const XImageNetwork(
     this.url, {
+    super.key,
     this.fit,
   });
 
@@ -41,7 +42,7 @@ class XImageNetwork extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.grey[200],
       ),
-      child: Icon(Icons.error),
+      child: const Icon(Icons.error),
     );
   }
 }

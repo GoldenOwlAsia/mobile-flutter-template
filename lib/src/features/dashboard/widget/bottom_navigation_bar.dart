@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/src/features/dashboard/logic/dashboard_bloc.dart';
 
 class XBottomNavigationBar extends StatelessWidget {
-  XBottomNavigationBar(this.tabsRouter, {Key? key}) : super(key: key);
+  const XBottomNavigationBar(this.tabsRouter, {Key? key}) : super(key: key);
   final TabsRouter tabsRouter;
 
   @override

@@ -14,23 +14,23 @@ class AccountHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final space = SizedBox(height: 15);
+    const space = SizedBox(height: 15);
     return BlocBuilder<AccountBloc, AccountState>(
         builder: (context, AccountState state) {
       return Scaffold(
         body: SafeArea(
           child: CustomScrollView(
             slivers: [
-              LargeTitleAppBar('Account', paddingTop: 0),
+              const LargeTitleAppBar('Account', paddingTop: 0),
               SliverPadding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate(
                     [
                       if (state.isLogin) ...[
                         AccountUserCard(user: state.user),
                       ] else ...[
-                        AccountNoUserCard(),
+                        const AccountNoUserCard(),
                       ],
                       space,
                       XCard(

@@ -6,6 +6,6 @@ class XStateLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return XIndicator();
+    return const XIndicator();
   }
 }

@@ -15,7 +15,7 @@ class XToast {
   static showLoading() {
     if (isShowLoading == false) {
       loadingCancel = BotToast.showCustomLoading(
-        toastBuilder: (_) => XLoadingAlert(),
+        toastBuilder: (_) => const XLoadingAlert(),
         crossPage: true,
         ignoreContentClick: true,
       );
@@ -31,14 +31,14 @@ class XToast {
 
   static void success(String? message) {
     _showMessage(
-      Icon(Icons.check_circle, color: Color(0xFF00BC68), size: 20),
+      const Icon(Icons.check_circle, color: Color(0xFF00BC68), size: 20),
       message,
     );
   }
 
   static void error(String? message) {
     _showMessage(
-      Icon(Icons.error, color: Colors.red, size: 20),
+      const Icon(Icons.error, color: Colors.red, size: 20),
       message,
     );
   }

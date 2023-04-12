@@ -18,7 +18,7 @@ class XCardSection extends StatelessWidget {
           for (int i = 0; i < children.length; i++) ...[
             children[i],
             if (i < (children.length - 1))
-              Divider(
+              const Divider(
                 height: 0.5,
                 endIndent: 16,
                 indent: 16,
@@ -47,12 +47,12 @@ class XCardSectionButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             Expanded(child: Text(title)),
             if (trailing != null) trailing!,
-            XNavIcon(),
+            const XNavIcon(),
           ],
         ),
       ),

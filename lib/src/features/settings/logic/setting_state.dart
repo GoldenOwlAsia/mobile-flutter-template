@@ -3,7 +3,7 @@ part of 'setting_bloc.dart';
 class SettingState extends Equatable {
   final ThemeMode themeMode;
 
-  SettingState({
+  const SettingState({
     this.themeMode = ThemeMode.system,
   });
 

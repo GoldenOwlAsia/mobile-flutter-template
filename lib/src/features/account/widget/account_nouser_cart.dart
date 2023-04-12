@@ -9,11 +9,11 @@ class AccountNoUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XCard(
-      padding: EdgeInsets.fromLTRB(16, 16, 16, 12),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
+          const Text(
             'Hello',
             textAlign: TextAlign.left,
             style: TextStyle(
@@ -22,8 +22,8 @@ class AccountNoUserCard extends StatelessWidget {
               letterSpacing: 0.44,
             ),
           ),
-          SizedBox(height: 10),
-          Text(
+          const SizedBox(height: 10),
+          const Text(
             'Sign in to shop more easily and enjoy many promotions',
             textAlign: TextAlign.left,
             style: TextStyle(
@@ -34,7 +34,7 @@ class AccountNoUserCard extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: XTextButton(
               title: 'Sign in / Sign up',
-              padding: EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               onPressed: () {
                 XCoordinator.showAuthentication();
               },

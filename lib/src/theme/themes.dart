@@ -15,36 +15,36 @@ class XTheme {
         textTheme: XStyles.textTheme,
 
         /// ColorScheme
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: XColors.primary,
         ),
 
         // Appbar
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           // default system appbar icon is white
           backgroundColor: XColors.primary,
         ),
 
         /// input
-        inputDecorationTheme: InputDecorationTheme(),
+        inputDecorationTheme: const InputDecorationTheme(),
 
         /// Button
-        buttonTheme: ButtonThemeData(),
+        buttonTheme: const ButtonThemeData(),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            fixedSize: Size.fromHeight(50),
+            fixedSize: const Size.fromHeight(50),
           ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
-            fixedSize: Size.fromHeight(50),
+            fixedSize: const Size.fromHeight(50),
           ),
         ),
 
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(),
         ),
-        iconTheme: IconThemeData(),
+        iconTheme: const IconThemeData(),
       );
 
   static ThemeData dark() => ThemeData.dark();

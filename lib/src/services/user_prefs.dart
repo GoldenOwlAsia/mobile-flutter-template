@@ -5,6 +5,7 @@ import 'package:myapp/src/network/model/user.dart';
 import 'package:myapp/src/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: camel_case_types
 class _keys {
   static const String theme = 'app-theme';
   static const String user = 'user';

@@ -16,8 +16,8 @@ class XStateEmptyWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Icon(Icons.inventory_2_outlined),
-          SizedBox(height: 20),
+          const Icon(Icons.inventory_2_outlined),
+          const SizedBox(height: 20),
           if (title != null)
             Padding(
               padding: const EdgeInsets.only(bottom: 10),

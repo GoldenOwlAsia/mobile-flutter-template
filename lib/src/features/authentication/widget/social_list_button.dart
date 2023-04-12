@@ -15,45 +15,43 @@ class SocialListButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final space = SizedBox(height: 20);
+    const space = SizedBox(height: 20);
     return BlocBuilder<SigninBloc, SigninState>(
       builder: (context, SigninState state) {
-        return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildLineDivider(context),
-              if (kIsWeb == false && Platform.isIOS) ...[
-                space,
-                _buildButton(
-                  icon: Svgs.iconSocialApple,
-                  title: S.of(context).sign_signin_signinWithApple,
-                  busy: state.status.isInProgress &&
-                      state.loginType == MSocialType.apple,
-                  onPressed: () =>
-                      context.read<SigninBloc>().loginWithApple(context),
-                ),
-              ],
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _buildLineDivider(context),
+            if (kIsWeb == false && Platform.isIOS) ...[
               space,
               _buildButton(
-                icon: Svgs.iconSocialFacebool,
-                title: S.of(context).sign_signin_signinWithFacebook,
+                icon: Svgs.iconSocialApple,
+                title: S.of(context).sign_signin_signinWithApple,
                 busy: state.status.isInProgress &&
-                    state.loginType == MSocialType.facebook,
+                    state.loginType == MSocialType.apple,
                 onPressed: () =>
-                    context.read<SigninBloc>().loginWithFacebook(context),
-              ),
-              space,
-              _buildButton(
-                icon: Svgs.iconSocialGoogle,
-                title: S.of(context).sign_signin_signinWithGoogle,
-                busy: state.status.isInProgress &&
-                    state.loginType == MSocialType.google,
-                onPressed: () =>
-                    context.read<SigninBloc>().loginWithGoogle(context),
+                    context.read<SigninBloc>().loginWithApple(context),
               ),
             ],
-          ),
+            space,
+            _buildButton(
+              icon: Svgs.iconSocialFacebool,
+              title: S.of(context).sign_signin_signinWithFacebook,
+              busy: state.status.isInProgress &&
+                  state.loginType == MSocialType.facebook,
+              onPressed: () =>
+                  context.read<SigninBloc>().loginWithFacebook(context),
+            ),
+            space,
+            _buildButton(
+              icon: Svgs.iconSocialGoogle,
+              title: S.of(context).sign_signin_signinWithGoogle,
+              busy: state.status.isInProgress &&
+                  state.loginType == MSocialType.google,
+              onPressed: () =>
+                  context.read<SigninBloc>().loginWithGoogle(context),
+            ),
+          ],
         );
       },
     );
@@ -63,10 +61,10 @@ class SocialListButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
-        children: [
+        children: const [
           Expanded(child: Divider()),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               'Or',
               style: TextStyle(
@@ -96,19 +94,19 @@ class SocialListButton extends StatelessWidget {
         child: AnimatedCrossFade(
           crossFadeState:
               busy ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-          duration: Duration(milliseconds: 300),
-          firstChild: XIndicator(radius: 11),
+          duration: const Duration(milliseconds: 300),
+          firstChild: const XIndicator(radius: 11),
           secondChild: SvgPicture.string(icon),
         ),
       ),
       label: Text(' $title'),
       style: OutlinedButton.styleFrom(
-        foregroundColor: Color(0xFF313131),
+        foregroundColor: const Color(0xFF313131),
         fixedSize: const Size.fromHeight(45),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(45),
         ),
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,
           color: Color(0xFF313131),

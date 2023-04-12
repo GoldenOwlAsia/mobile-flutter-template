@@ -12,9 +12,9 @@ class XStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (handle.isLoading) {
-      return XStateLoadingWidget();
+      return const XStateLoadingWidget();
     } else if (handle.isCompleted) {
-      return child ?? Text('Success');
+      return child ?? const Text('Success');
     }
     return XStateErrorWidget(onReload: onReload);
   }

@@ -38,14 +38,14 @@ class XAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _actions = actions.isEmpty ? [XAlertButton.close()] : actions;
+    final actionButtons = actions.isEmpty ? [XAlertButton.close()] : actions;
     if (kIsWeb || Platform.isAndroid) {
       return AlertDialog(
         title: titleWidget ?? (title == null ? null : Text(title!)),
         content: contentWidget ?? (content == null ? null : Text(content!)),
         actions: <Widget>[
-          for (int i = 0; i < _actions.length; i++)
-            _buildButton(context, _actions[i], i)
+          for (int i = 0; i < actionButtons.length; i++)
+            _buildButton(context, actionButtons[i], i)
         ],
       );
     }
@@ -53,8 +53,8 @@ class XAlertDialog extends StatelessWidget {
       title: titleWidget ?? (title == null ? null : Text(title!)),
       content: contentWidget ?? (content == null ? null : Text(content!)),
       actions: <Widget>[
-        for (int i = 0; i < _actions.length; i++)
-          _buildButton(context, _actions[i], i)
+        for (int i = 0; i < actionButtons.length; i++)
+          _buildButton(context, actionButtons[i], i)
       ],
     );
   }

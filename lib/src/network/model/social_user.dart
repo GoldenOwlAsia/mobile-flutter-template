@@ -49,12 +49,12 @@ class MSocialUser {
       Map<String, dynamic> map, MSocialType socialType) {
     return MSocialUser(
       type: socialType,
-      fullName: map['FullName'] != null ? map['FullName'] : null,
-      email: map['Email'] != null ? map['Email'] : null,
-      avatar: map['Avatar'] != null ? map['Avatar'] : null,
-      birthDate: map['BirthDate'] != null ? map['BirthDate'] : null,
-      gender: map['Gender'] != null ? map['Gender'] : null,
-      phone: map['Phone'] != null ? map['Phone'] : null,
+      fullName: map['FullName'],
+      email: map['Email'],
+      avatar: map['Avatar'],
+      birthDate: map['BirthDate'],
+      gender: map['Gender'],
+      phone: map['Phone'],
     );
   }
 

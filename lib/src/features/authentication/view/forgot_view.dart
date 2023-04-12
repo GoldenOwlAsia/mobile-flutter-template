@@ -20,13 +20,13 @@ class ForgotPasswordView extends StatelessWidget {
         builder: (context, ForgotState state) {
           return Scaffold(
             body: Container(
-              padding: EdgeInsets.fromLTRB(24, 0, 24, 20),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SignTitle('Reset password'),
+                    const SignTitle('Reset password'),
                     const SizedBox(height: 8.0),
                     XInput(
                       value: state.email.value,

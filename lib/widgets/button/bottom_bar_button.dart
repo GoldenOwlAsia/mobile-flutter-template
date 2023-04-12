@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class XBottomBarButton extends StatelessWidget {
-  const XBottomBarButton({this.child, this.onPressed});
+  const XBottomBarButton({super.key, this.child, this.onPressed});
 
   final Widget? child;
   final VoidCallback? onPressed;
@@ -10,14 +10,14 @@ class XBottomBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return XBottomAppBar(
         child: ElevatedButton(
-      child: child,
       onPressed: onPressed,
+      child: child,
     ));
   }
 }
 
 class XBottomAppBar extends StatelessWidget {
-  const XBottomAppBar({this.child});
+  const XBottomAppBar({super.key, this.child});
 
   final Widget? child;
 

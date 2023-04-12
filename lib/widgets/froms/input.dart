@@ -60,7 +60,7 @@ class _XInputState extends State<XInput> {
 
   @override
   Widget build(BuildContext context) {
-    Widget? _buildActions() {
+    Widget? buildActions() {
       final List<Widget> actions = [];
       if (value.isNotEmpty) {
         actions.add(
@@ -68,7 +68,7 @@ class _XInputState extends State<XInput> {
             onTap: () {
               widget.onChanged?.call('');
             },
-            child: Icon(Icons.cancel),
+            child: const Icon(Icons.cancel),
           ),
         );
       }
@@ -110,16 +110,17 @@ class _XInputState extends State<XInput> {
       obscureText: obscureText,
       maxLength: widget.maxLength,
       autofocus: widget.autofocus,
-      scrollPhysics: NeverScrollableScrollPhysics(),
+      scrollPhysics: const NeverScrollableScrollPhysics(),
       inputFormatters: widget.inputFormatters,
-      decoration: (widget.decoration ?? InputDecoration()).copyWith(
-        prefixIcon:
-            widget.textAlign == TextAlign.center ? SizedBox(width: 24) : null,
-        labelStyle: TextStyle(color: Color(0xCC50555C)),
+      decoration: (widget.decoration ?? const InputDecoration()).copyWith(
+        prefixIcon: widget.textAlign == TextAlign.center
+            ? const SizedBox(width: 24)
+            : null,
+        labelStyle: const TextStyle(color: Color(0xCC50555C)),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         filled: false,
-        errorStyle: TextStyle(fontSize: 14, letterSpacing: 0.25),
-        suffixIcon: _buildActions(),
+        errorStyle: const TextStyle(fontSize: 14, letterSpacing: 0.25),
+        suffixIcon: buildActions(),
       ),
     );
   }

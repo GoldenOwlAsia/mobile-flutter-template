@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'package:myapp/src/localization/localization_utils.dart';
 
 class XHttp {
   static String? tokenType;
@@ -19,7 +18,7 @@ class XHttp {
   }
 
   static const domain = '';
-  static Logger _log = Logger();
+  static final Logger _log = Logger();
 
   static Future<String> get(String url) async {
     String bodyResponse = '';

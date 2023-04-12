@@ -14,6 +14,6 @@ class XCoordinator {
   }
 
   static Future showAuthentication() async {
-    return rootRouter.push(SignRoute());
+    return rootRouter.push(const SignRoute());
   }
 }
