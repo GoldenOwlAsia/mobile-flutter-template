@@ -1,12 +1,10 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-import '../../model/common/error_code.dart';
-
-enum XMethod { get, post, put, patch, delete, head }
-
-typedef XNetErrorCallback = Function(int code, String msg);
+import '../../../localization/localization_utils.dart';
+import '../../model/common/method.dart';
 
 class XHttp {
   factory XHttp() => instance;
@@ -38,15 +36,6 @@ class XHttp {
   static Duration _connectTimeout = const Duration(seconds: 10);
   static Duration _receiveTimeout = const Duration(seconds: 10);
   static Duration _sendTimeout = const Duration(seconds: 5);
-
-  static const _methodValues = {
-    XMethod.get: 'get',
-    XMethod.post: 'post',
-    XMethod.delete: 'delete',
-    XMethod.put: 'put',
-    XMethod.patch: 'patch',
-    XMethod.head: 'head',
-  };
 
   static Map<String, String> get _headers => {
         'Content-type': 'application/json',
@@ -80,7 +69,6 @@ class XHttp {
     Map<String, dynamic>? queryParameters,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
-    XNetErrorCallback? onError,
     CancelToken? cancelToken,
     Options? options,
   }) async {
@@ -89,25 +77,36 @@ class XHttp {
       // Check internet
       var connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.none) {
-        _log.e('> NO INTERNET <');
-        _onError(MErrorCode.net, onError);
+        throw FlutterError(S.text.error_noInternet);
       }
+
       final Response response = await _dio.request(
         url,
         data: data,
         queryParameters: queryParameters,
-        options: _checkOptions(_methodValues[method], options),
+        options: _checkOptions(method.name, options),
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
         cancelToken: cancelToken,
       );
       bodyResponse = response.data;
       _log.i('> RESPONSE [${response.statusCode}]<  $url');
-      return bodyResponse;
+
+      if (response.statusCode == null) {
+        throw FlutterError(S.text.error_unknown);
+      }
+      if (response.statusCode! <= 299) {
+        return bodyResponse;
+      } else {
+        if (response.statusCode! >= 400) {
+          throw FlutterError(S.text.error_noInternet);
+        } else {
+          throw FlutterError(S.text.error_unknown);
+        }
+      }
     } on DioError catch (e) {
-      _log.e('> API CATCH Error< $e');
-      final MErrorCode error = MErrorCode.handleException(e);
-      _onError(error, onError);
+      _log.w('> API CATCH Error< $e');
+      _log.w('> API CATCH Body< $bodyResponse');
       rethrow;
     }
   }
@@ -116,11 +115,6 @@ class XHttp {
     options ??= Options();
     options.method = method;
     return options;
-  }
-
-  static void _onError(MErrorCode error, XNetErrorCallback? onError) {
-    _log.e('API CATCH status：code: ${error.code}, mag: ${error.message}');
-    onError?.call(error.code, error.message);
   }
 
   static Future<String> get(String url) {

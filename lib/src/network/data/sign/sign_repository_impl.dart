@@ -92,7 +92,7 @@ class SignRepositoryImpl extends SignRepository {
         return MResult.success(
             MSocialUser.fromGoogleAccount(googleUser, googleAuth));
       } else {
-        return MResult.error(MErrorCode.unknown.message);
+        return MResult.error(MErrorCode.unknown);
       }
     } catch (e) {
       return MResult.exception(e);
