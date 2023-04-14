@@ -6,6 +6,8 @@ import 'package:myapp/src/network/model/user.dart';
 import 'package:myapp/src/network/model/social_user.dart';
 import 'package:myapp/src/network/model/common/result.dart';
 
+import '../../../localization/localization_utils.dart';
+
 class SignRepositoryImpl extends SignRepository {
   @override
   Future<MResult<MUser>> connectBEWithApple(MSocialUser user) {
@@ -90,7 +92,7 @@ class SignRepositoryImpl extends SignRepository {
         return MResult.success(
             MSocialUser.fromGoogleAccount(googleUser, googleAuth));
       } else {
-        return MResult.error(MErrorCode.unknown);
+        return MResult.error(MErrorCode.unknown.message);
       }
     } catch (e) {
       return MResult.exception(e);

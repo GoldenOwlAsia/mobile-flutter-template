@@ -1,9 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
-import 'package:myapp/src/localization/localization_utils.dart';
 
-import 'exception_handle.dart';
+import '../../model/common/error_code.dart';
 
 enum XMethod { get, post, put, patch, delete, head }
 
@@ -91,7 +90,7 @@ class XHttp {
       var connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.none) {
         _log.e('> NO INTERNET <');
-        _onError(XExceptionHandle.net_error, S.text.error_noInternet, onError);
+        _onError(MErrorCode.net, onError);
       }
       final Response response = await _dio.request(
         url,
@@ -107,8 +106,8 @@ class XHttp {
       return bodyResponse;
     } on DioError catch (e) {
       _log.e('> API CATCH Error< $e');
-      final XNetError error = XExceptionHandle.handleException(e);
-      _onError(error.code, error.msg, onError);
+      final MErrorCode error = MErrorCode.handleException(e);
+      _onError(error, onError);
       rethrow;
     }
   }
@@ -119,13 +118,9 @@ class XHttp {
     return options;
   }
 
-  static void _onError(int? code, String msg, XNetErrorCallback? onError) {
-    if (code == null) {
-      code = XExceptionHandle.unknown_error;
-      msg = S.text.error_unknown;
-    }
-    _log.e('API CATCH status：code: $code, mag: $msg');
-    onError?.call(code, msg);
+  static void _onError(MErrorCode error, XNetErrorCallback? onError) {
+    _log.e('API CATCH status：code: ${error.code}, mag: ${error.message}');
+    onError?.call(error.code, error.message);
   }
 
   static Future<String> get(String url) {
