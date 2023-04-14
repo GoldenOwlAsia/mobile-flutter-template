@@ -20,11 +20,14 @@ enum MErrorCode {
   final int code;
 
   static String toMessage(int code) {
-    return MErrorCode.values.firstWhere((e) => e.code == code).message;
+    return MErrorCode.values
+        .firstWhere((e) => e.code == code, orElse: () => MErrorCode.unknown)
+        .message;
   }
 
   static MErrorCode getWithCode(int code) {
-    return MErrorCode.values.firstWhere((e) => e.code == code);
+    return MErrorCode.values
+        .firstWhere((e) => e.code == code, orElse: () => MErrorCode.unknown);
   }
 
   static MErrorCode handleException(dynamic error) {
