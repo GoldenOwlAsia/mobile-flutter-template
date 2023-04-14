@@ -63,6 +63,6 @@ extension DioErrorTypeExtension on DioErrorType {
         0, // Bad Response
         MErrorCode.cancel.code,
         0, // Connection Error
-        MErrorCode.cancel.code,
+        MErrorCode.unknown.code,
       ][index];
 }
