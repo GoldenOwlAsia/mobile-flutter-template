@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +6,7 @@ import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/authentication/model/email_fromz.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/common/result/result.dart';
+import 'package:myapp/src/router/coordinator.dart';
 
 part 'forgot_state.dart';
 
@@ -29,7 +29,7 @@ class ForgotBloc extends Cubit<ForgotState> {
             body:
                 'Your request success! Please check your email to reset your password');
         // ignore: use_build_context_synchronously
-        context.router.pop(true);
+        XCoordinator.pop(true);
       },
       error: (_) {
         emit(

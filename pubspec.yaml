@@ -41,7 +41,7 @@ dependencies:
 
   # STATE MANAGEMENT
   flutter_bloc: ^8.1.2
-  auto_route: ^6.0.0+1
+  go_router: ^6.5.7
   get_it: ^7.2.0
 
   # FIREBASE

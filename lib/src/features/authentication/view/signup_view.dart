@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -8,7 +7,6 @@ import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/widgets/button/button.dart';
 import 'package:myapp/widgets/froms/input.dart';
 
-@RoutePage()
 class SignupView extends StatelessWidget {
   const SignupView({Key? key}) : super(key: key);
 

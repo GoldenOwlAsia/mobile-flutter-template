@@ -50,7 +50,7 @@ class SignupBloc extends Cubit<SignupState> {
 
   Future signupDecision(BuildContext context, MUser incomingUser) async {
     GetIt.I<AccountBloc>().onLoginSuccess(incomingUser);
-    XCoordinator.rootRouter.pop();
+    XCoordinator.pop();
     XToast.success('Signup success');
   }
 
