@@ -8,7 +8,7 @@ import 'package:myapp/src/dialogs/toast_wrapper.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/src/network/domain_manager.dart';
-import 'package:myapp/src/network/model/user.dart';
+import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/services/user_prefs.dart';
 
 part 'account_state.dart';
@@ -25,11 +25,10 @@ class AccountBloc extends Cubit<AccountState> {
     final String id = state.user.id;
     if (id.isNotEmpty == true) {
       final result = await domain.user.getUser(id);
-      if (result.isSuccess) {
-        onUserChange(state.copyWith(user: result.data!));
-      } else {
-        onUserChange(state.logOut());
-      }
+      result.when(
+        data: (data) => onUserChange(state.copyWith(user: data)),
+        error: (_) => onUserChange(state.logOut()),
+      );
     }
   }
 
@@ -58,10 +57,10 @@ class AccountBloc extends Cubit<AccountState> {
     );
     if (key == 'yes') {
       domain.sign.logOut(state.user).then((result) {
-        if (result.isError) {
+        result.whenOrNull(
           // logout any way,
-          XToast.error(result.error);
-        }
+          error: (e) => XToast.error(result.errorMessage),
+        );
       });
       onUserChange(state.logOut());
       return true;
@@ -85,13 +84,12 @@ class AccountBloc extends Cubit<AccountState> {
     );
     if (key == 'yes') {
       domain.sign.removeAccount(state.user).then((result) {
-        if (result.isError) {
+        result.whenOrNull(
           // logout any way,
-          XToast.error(result.error);
-        } else {
-          onUserChange(state.logOut());
-        }
+          error: (e) => XToast.error(result.errorMessage),
+        );
       });
+      onUserChange(state.logOut());
       return true;
     }
     return false;

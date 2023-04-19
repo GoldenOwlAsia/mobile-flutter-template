@@ -6,7 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/authentication/model/email_fromz.dart';
 import 'package:myapp/src/network/domain_manager.dart';
-import 'package:myapp/src/network/model/common/result.dart';
+import 'package:myapp/src/network/model/common/result/result.dart';
 
 part 'forgot_state.dart';
 
@@ -23,16 +23,23 @@ class ForgotBloc extends Cubit<ForgotState> {
 
     final MResult<String> result =
         await domain.sign.forgotPassword(state.email.value);
-    if (result.isSuccess) {
-      await XAlert.show(
-          body:
-              'Your request success! Please check your email to reset your password');
-      // ignore: use_build_context_synchronously
-      context.router.pop(true);
-    } else {
-      emit(state.copyWith(
-          status: FormzSubmissionStatus.failure, error: result.error));
-    }
+    result.when(
+      data: (data) async {
+        await XAlert.show(
+            body:
+                'Your request success! Please check your email to reset your password');
+        // ignore: use_build_context_synchronously
+        context.router.pop(true);
+      },
+      error: (_) {
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            error: result.errorMessage,
+          ),
+        );
+      },
+    );
   }
 
   void onEmailChanged(String value) {

@@ -1,6 +1,6 @@
-import 'package:myapp/src/network/model/common/result.dart';
-import 'package:myapp/src/network/model/social_user.dart';
-import 'package:myapp/src/network/model/user.dart';
+import 'package:myapp/src/network/model/common/result/result.dart';
+import 'package:myapp/src/network/model/social_user/social_user.dart';
+import 'package:myapp/src/network/model/user/user.dart';
 
 abstract class SignRepository {
   // Login with Email

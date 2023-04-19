@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:myapp/src/network/model/user.dart';
+import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,7 +40,7 @@ class UserPrefs {
     if (value == null) {
       _prefs.remove(_keys.user);
     } else {
-      _prefs.setString(_keys.user, jsonEncode(value.toMap()));
+      _prefs.setString(_keys.user, jsonEncode(value.toJson()));
     }
   }
 
@@ -54,7 +54,7 @@ class UserPrefs {
         if (map['id'] == null) {
           return null;
         } else {
-          return MUser.fromMap(map);
+          return MUser.fromJson(map);
         }
       }
     } catch (e) {

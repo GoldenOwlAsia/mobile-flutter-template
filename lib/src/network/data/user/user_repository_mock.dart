@@ -1,6 +1,6 @@
 import 'package:myapp/src/network/data/user/user_repository.dart';
-import 'package:myapp/src/network/model/user.dart';
-import 'package:myapp/src/network/model/common/result.dart';
+import 'package:myapp/src/network/model/user/user.dart';
+import 'package:myapp/src/network/model/common/result/result.dart';
 
 class UserRepositoryMock extends UserRepository {
   @override
