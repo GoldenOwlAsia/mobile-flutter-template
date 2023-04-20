@@ -6,8 +6,6 @@ import 'package:myapp/src/network/model/user.dart';
 import 'package:myapp/src/network/model/social_user.dart';
 import 'package:myapp/src/network/model/common/result.dart';
 
-import '../../../localization/localization_utils.dart';
-
 class SignRepositoryImpl extends SignRepository {
   @override
   Future<MResult<MUser>> connectBEWithApple(MSocialUser user) {
