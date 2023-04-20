@@ -4,7 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 import '../../../localization/localization_utils.dart';
-import '../../model/common/method.dart';
+
+enum XMethod {
+  get,
+  post,
+  put,
+  patch,
+  delete,
+  head;
+}
 
 class XHttp {
   factory XHttp() => instance;
@@ -26,25 +34,25 @@ class XHttp {
 
   static final XHttp instance = XHttp._internal();
   static XHttp get I => instance;
-  static late Dio _dio;
+  late Dio _dio;
 
-  static String? tokenType;
-  static String? tokenApi;
-  static final Logger _log = Logger();
+  String? tokenType;
+  String? tokenApi;
+  final Logger _log = Logger();
 
-  static String _baseUrl = '';
-  static Duration _connectTimeout = const Duration(seconds: 10);
-  static Duration _receiveTimeout = const Duration(seconds: 10);
-  static Duration _sendTimeout = const Duration(seconds: 5);
+  String _baseUrl = '';
+  Duration _connectTimeout = const Duration(seconds: 10);
+  Duration _receiveTimeout = const Duration(seconds: 10);
+  Duration _sendTimeout = const Duration(seconds: 5);
 
-  static Map<String, String> get _headers => {
+  Map<String, String> get _headers => {
         'Content-type': 'application/json',
         'Accept': 'application/json',
         "Authorization": "$tokenType $tokenApi"
       };
 
   /// Configure Dio
-  static void configDio({
+  void configDio({
     Duration? connectTimeout,
     Duration? receiveTimeout,
     Duration? sendTimeout,
@@ -57,12 +65,12 @@ class XHttp {
     _baseUrl = baseUrl ?? _baseUrl;
   }
 
-  static void setTokenApi(String tokenApi, {String tokenType = "Bearer"}) {
-    XHttp.tokenType = tokenType;
-    XHttp.tokenApi = tokenApi;
+  void setTokenApi(String tokenApi, {String tokenType = "Bearer"}) {
+    this.tokenType = tokenType;
+    this.tokenApi = tokenApi;
   }
 
-  static Future<String> request(
+  Future<String> request(
     XMethod method,
     String url, {
     Object? data,
@@ -111,17 +119,18 @@ class XHttp {
     }
   }
 
-  static Options _checkOptions(String? method, Options? options) {
+  Options _checkOptions(String? method, Options? options) {
     options ??= Options();
     options.method = method;
     return options;
   }
 
-  static Future<String> get(String url) {
+  // NOTE: Example simple GET/POST, You can customize it according to your project's.
+  Future<String> get(String url) {
     return request(XMethod.get, url);
   }
 
-  static Future<String> post(String url,
+  Future<String> post(String url,
       {Object? data, Map<String, dynamic>? queryParameters}) {
     return request(XMethod.post, url,
         data: data, queryParameters: queryParameters);
