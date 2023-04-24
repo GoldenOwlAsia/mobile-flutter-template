@@ -2,7 +2,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:myapp/src/localization/localization_utils.dart';
 
 import '../../../localization/localization_utils.dart';
 
@@ -64,11 +63,20 @@ class XHttp {
     _receiveTimeout = receiveTimeout ?? _receiveTimeout;
     _sendTimeout = sendTimeout ?? _sendTimeout;
     _baseUrl = baseUrl ?? _baseUrl;
+
+    _dio = Dio(_dio.options.copyWith(
+      baseUrl: _baseUrl,
+      headers: _headers,
+      connectTimeout: _connectTimeout,
+      receiveTimeout: _receiveTimeout,
+      sendTimeout: _sendTimeout,
+    ));
   }
 
   void setTokenApi(String tokenApi, {String tokenType = "Bearer"}) {
     this.tokenType = tokenType;
     this.tokenApi = tokenApi;
+    configDio();
   }
 
   Future<String> request(
