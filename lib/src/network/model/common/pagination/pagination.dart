@@ -14,9 +14,7 @@ abstract class MPagination<T> with _$MPagination<T> {
     @Default([]) List<T> items,
   }) = _MPagination<T>;
 
-  bool get canNext => status.maybeWhen(
-        orElse: () => false,
-      );
+  bool get canNext => hasMore && (status.isInitial || status.isComplete);
   T? get last => items.isNotEmpty ? items.last : null;
   bool get isLoading => status.isLoading;
 
