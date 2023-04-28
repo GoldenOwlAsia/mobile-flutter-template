@@ -78,18 +78,21 @@ class _$MUserCopyWithImpl<$Res, $Val extends MUser>
 }
 
 /// @nodoc
-abstract class _$$_MUserCopyWith<$Res> implements $MUserCopyWith<$Res> {
-  factory _$$_MUserCopyWith(_$_MUser value, $Res Function(_$_MUser) then) =
-      __$$_MUserCopyWithImpl<$Res>;
+abstract class _$$MUserImplCopyWith<$Res> implements $MUserCopyWith<$Res> {
+  factory _$$MUserImplCopyWith(
+          _$MUserImpl value, $Res Function(_$MUserImpl) then) =
+      __$$MUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String? name, String? avatar, String? email});
 }
 
 /// @nodoc
-class __$$_MUserCopyWithImpl<$Res> extends _$MUserCopyWithImpl<$Res, _$_MUser>
-    implements _$$_MUserCopyWith<$Res> {
-  __$$_MUserCopyWithImpl(_$_MUser _value, $Res Function(_$_MUser) _then)
+class __$$MUserImplCopyWithImpl<$Res>
+    extends _$MUserCopyWithImpl<$Res, _$MUserImpl>
+    implements _$$MUserImplCopyWith<$Res> {
+  __$$MUserImplCopyWithImpl(
+      _$MUserImpl _value, $Res Function(_$MUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +103,7 @@ class __$$_MUserCopyWithImpl<$Res> extends _$MUserCopyWithImpl<$Res, _$_MUser>
     Object? avatar = freezed,
     Object? email = freezed,
   }) {
-    return _then(_$_MUser(
+    return _then(_$MUserImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -123,12 +126,12 @@ class __$$_MUserCopyWithImpl<$Res> extends _$MUserCopyWithImpl<$Res, _$_MUser>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MUser extends _MUser {
-  const _$_MUser({required this.id, this.name, this.avatar, this.email})
+class _$MUserImpl extends _MUser {
+  const _$MUserImpl({required this.id, this.name, this.avatar, this.email})
       : super._();
 
-  factory _$_MUser.fromJson(Map<String, dynamic> json) =>
-      _$$_MUserFromJson(json);
+  factory _$MUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MUserImplFromJson(json);
 
   @override
   final String id;
@@ -148,7 +151,7 @@ class _$_MUser extends _MUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MUser &&
+            other is _$MUserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
@@ -162,12 +165,12 @@ class _$_MUser extends _MUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MUserCopyWith<_$_MUser> get copyWith =>
-      __$$_MUserCopyWithImpl<_$_MUser>(this, _$identity);
+  _$$MUserImplCopyWith<_$MUserImpl> get copyWith =>
+      __$$MUserImplCopyWithImpl<_$MUserImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MUserToJson(
+    return _$$MUserImplToJson(
       this,
     );
   }
@@ -178,10 +181,10 @@ abstract class _MUser extends MUser {
       {required final String id,
       final String? name,
       final String? avatar,
-      final String? email}) = _$_MUser;
+      final String? email}) = _$MUserImpl;
   const _MUser._() : super._();
 
-  factory _MUser.fromJson(Map<String, dynamic> json) = _$_MUser.fromJson;
+  factory _MUser.fromJson(Map<String, dynamic> json) = _$MUserImpl.fromJson;
 
   @override
   String get id;
@@ -193,6 +196,6 @@ abstract class _MUser extends MUser {
   String? get email;
   @override
   @JsonKey(ignore: true)
-  _$$_MUserCopyWith<_$_MUser> get copyWith =>
+  _$$MUserImplCopyWith<_$MUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,14 +6,15 @@ part of 'user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MUser _$$_MUserFromJson(Map<String, dynamic> json) => _$_MUser(
+_$MUserImpl _$$MUserImplFromJson(Map<String, dynamic> json) => _$MUserImpl(
       id: json['id'] as String,
       name: json['name'] as String?,
       avatar: json['avatar'] as String?,
       email: json['email'] as String?,
     );
 
-Map<String, dynamic> _$$_MUserToJson(_$_MUser instance) => <String, dynamic>{
+Map<String, dynamic> _$$MUserImplToJson(_$MUserImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'avatar': instance.avatar,

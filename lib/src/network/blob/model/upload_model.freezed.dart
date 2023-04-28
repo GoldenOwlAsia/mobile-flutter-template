@@ -60,20 +60,21 @@ class _$MUploadCopyWithImpl<$Res, $Val extends MUpload>
 }
 
 /// @nodoc
-abstract class _$$_MUploadCopyWith<$Res> implements $MUploadCopyWith<$Res> {
-  factory _$$_MUploadCopyWith(
-          _$_MUpload value, $Res Function(_$_MUpload) then) =
-      __$$_MUploadCopyWithImpl<$Res>;
+abstract class _$$MUploadImplCopyWith<$Res> implements $MUploadCopyWith<$Res> {
+  factory _$$MUploadImplCopyWith(
+          _$MUploadImpl value, $Res Function(_$MUploadImpl) then) =
+      __$$MUploadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class __$$_MUploadCopyWithImpl<$Res>
-    extends _$MUploadCopyWithImpl<$Res, _$_MUpload>
-    implements _$$_MUploadCopyWith<$Res> {
-  __$$_MUploadCopyWithImpl(_$_MUpload _value, $Res Function(_$_MUpload) _then)
+class __$$MUploadImplCopyWithImpl<$Res>
+    extends _$MUploadCopyWithImpl<$Res, _$MUploadImpl>
+    implements _$$MUploadImplCopyWith<$Res> {
+  __$$MUploadImplCopyWithImpl(
+      _$MUploadImpl _value, $Res Function(_$MUploadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -81,7 +82,7 @@ class __$$_MUploadCopyWithImpl<$Res>
   $Res call({
     Object? url = null,
   }) {
-    return _then(_$_MUpload(
+    return _then(_$MUploadImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -92,11 +93,11 @@ class __$$_MUploadCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MUpload with DiagnosticableTreeMixin implements _MUpload {
-  const _$_MUpload({required this.url});
+class _$MUploadImpl with DiagnosticableTreeMixin implements _MUpload {
+  const _$MUploadImpl({required this.url});
 
-  factory _$_MUpload.fromJson(Map<String, dynamic> json) =>
-      _$$_MUploadFromJson(json);
+  factory _$MUploadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MUploadImplFromJson(json);
 
   @override
   final String url;
@@ -118,7 +119,7 @@ class _$_MUpload with DiagnosticableTreeMixin implements _MUpload {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MUpload &&
+            other is _$MUploadImpl &&
             (identical(other.url, url) || other.url == url));
   }
 
@@ -129,26 +130,26 @@ class _$_MUpload with DiagnosticableTreeMixin implements _MUpload {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MUploadCopyWith<_$_MUpload> get copyWith =>
-      __$$_MUploadCopyWithImpl<_$_MUpload>(this, _$identity);
+  _$$MUploadImplCopyWith<_$MUploadImpl> get copyWith =>
+      __$$MUploadImplCopyWithImpl<_$MUploadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MUploadToJson(
+    return _$$MUploadImplToJson(
       this,
     );
   }
 }
 
 abstract class _MUpload implements MUpload {
-  const factory _MUpload({required final String url}) = _$_MUpload;
+  const factory _MUpload({required final String url}) = _$MUploadImpl;
 
-  factory _MUpload.fromJson(Map<String, dynamic> json) = _$_MUpload.fromJson;
+  factory _MUpload.fromJson(Map<String, dynamic> json) = _$MUploadImpl.fromJson;
 
   @override
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_MUploadCopyWith<_$_MUpload> get copyWith =>
+  _$$MUploadImplCopyWith<_$MUploadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

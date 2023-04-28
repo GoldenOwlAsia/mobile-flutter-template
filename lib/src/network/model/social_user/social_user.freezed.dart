@@ -134,11 +134,11 @@ class _$MSocialUserCopyWithImpl<$Res, $Val extends MSocialUser>
 }
 
 /// @nodoc
-abstract class _$$_MSocialUserCopyWith<$Res>
+abstract class _$$MSocialUserImplCopyWith<$Res>
     implements $MSocialUserCopyWith<$Res> {
-  factory _$$_MSocialUserCopyWith(
-          _$_MSocialUser value, $Res Function(_$_MSocialUser) then) =
-      __$$_MSocialUserCopyWithImpl<$Res>;
+  factory _$$MSocialUserImplCopyWith(
+          _$MSocialUserImpl value, $Res Function(_$MSocialUserImpl) then) =
+      __$$MSocialUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -155,11 +155,11 @@ abstract class _$$_MSocialUserCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MSocialUserCopyWithImpl<$Res>
-    extends _$MSocialUserCopyWithImpl<$Res, _$_MSocialUser>
-    implements _$$_MSocialUserCopyWith<$Res> {
-  __$$_MSocialUserCopyWithImpl(
-      _$_MSocialUser _value, $Res Function(_$_MSocialUser) _then)
+class __$$MSocialUserImplCopyWithImpl<$Res>
+    extends _$MSocialUserCopyWithImpl<$Res, _$MSocialUserImpl>
+    implements _$$MSocialUserImplCopyWith<$Res> {
+  __$$MSocialUserImplCopyWithImpl(
+      _$MSocialUserImpl _value, $Res Function(_$MSocialUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -176,7 +176,7 @@ class __$$_MSocialUserCopyWithImpl<$Res>
     Object? gender = freezed,
     Object? phone = freezed,
   }) {
-    return _then(_$_MSocialUser(
+    return _then(_$MSocialUserImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -223,8 +223,8 @@ class __$$_MSocialUserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MSocialUser implements _MSocialUser {
-  const _$_MSocialUser(
+class _$MSocialUserImpl implements _MSocialUser {
+  const _$MSocialUserImpl(
       {required this.type,
       this.userID,
       this.accessToken,
@@ -236,8 +236,8 @@ class _$_MSocialUser implements _MSocialUser {
       this.gender,
       this.phone});
 
-  factory _$_MSocialUser.fromJson(Map<String, dynamic> json) =>
-      _$$_MSocialUserFromJson(json);
+  factory _$MSocialUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MSocialUserImplFromJson(json);
 
   @override
   final MSocialType type;
@@ -277,7 +277,7 @@ class _$_MSocialUser implements _MSocialUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MSocialUser &&
+            other is _$MSocialUserImpl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.accessToken, accessToken) ||
@@ -301,12 +301,12 @@ class _$_MSocialUser implements _MSocialUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MSocialUserCopyWith<_$_MSocialUser> get copyWith =>
-      __$$_MSocialUserCopyWithImpl<_$_MSocialUser>(this, _$identity);
+  _$$MSocialUserImplCopyWith<_$MSocialUserImpl> get copyWith =>
+      __$$MSocialUserImplCopyWithImpl<_$MSocialUserImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MSocialUserToJson(
+    return _$$MSocialUserImplToJson(
       this,
     );
   }
@@ -323,10 +323,10 @@ abstract class _MSocialUser implements MSocialUser {
       final String? avatar,
       final String? birthDate,
       final int? gender,
-      final String? phone}) = _$_MSocialUser;
+      final String? phone}) = _$MSocialUserImpl;
 
   factory _MSocialUser.fromJson(Map<String, dynamic> json) =
-      _$_MSocialUser.fromJson;
+      _$MSocialUserImpl.fromJson;
 
   @override
   MSocialType get type;
@@ -358,6 +358,6 @@ abstract class _MSocialUser implements MSocialUser {
   String? get phone;
   @override
   @JsonKey(ignore: true)
-  _$$_MSocialUserCopyWith<_$_MSocialUser> get copyWith =>
+  _$$MSocialUserImplCopyWith<_$MSocialUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

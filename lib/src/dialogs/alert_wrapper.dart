@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
+import 'package:myapp/src/features/force_update/popup_force_update.dart';
 import 'package:myapp/src/router/coordinator.dart';
 
 import '../localization/localization_utils.dart';
@@ -63,6 +64,18 @@ class XAlert {
               title: textYes ?? S.text.common_yes,
             )
           ],
+        );
+      },
+    );
+  }
+
+  static Future showForceUpdate() {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Dialog(
+          child: PopupForceUpdateApp(),
         );
       },
     );
