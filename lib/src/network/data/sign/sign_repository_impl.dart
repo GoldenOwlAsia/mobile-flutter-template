@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/model/common/error_code.dart';
-import 'package:myapp/src/network/model/user.dart';
-import 'package:myapp/src/network/model/social_user.dart';
-import 'package:myapp/src/network/model/common/result.dart';
+import 'package:myapp/src/network/model/user/user.dart';
+import 'package:myapp/src/network/model/social_user/social_user.dart';
+import 'package:myapp/src/network/model/common/result/result.dart';
 
 class SignRepositoryImpl extends SignRepository {
   @override
@@ -34,9 +34,9 @@ class SignRepositoryImpl extends SignRepository {
         email: user.email,
         name: user.fullName,
       );
-      return MResult.success(newUser);
+      return MResult.data(newUser);
     } catch (e) {
-      return MResult.exception(e);
+      return MResult.error(e);
     }
   }
 
@@ -50,9 +50,9 @@ class SignRepositoryImpl extends SignRepository {
   Future<MResult> logOut(MUser user) async {
     try {
       await FirebaseAuth.instance.signOut();
-      return MResult.success(user);
+      return MResult.data(user);
     } catch (e) {
-      return MResult.exception(e);
+      return MResult.error(e);
     }
   }
 
@@ -87,13 +87,13 @@ class SignRepositoryImpl extends SignRepository {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       final googleAuth = await googleUser?.authentication;
       if (googleUser != null && googleAuth != null) {
-        return MResult.success(
+        return MResult.data(
             MSocialUser.fromGoogleAccount(googleUser, googleAuth));
       } else {
-        return MResult.error(MErrorCode.unknown);
+        return const MResult.error(MErrorCode.unknown);
       }
     } catch (e) {
-      return MResult.exception(e);
+      return MResult.error(e);
     }
   }
 
@@ -102,9 +102,9 @@ class SignRepositoryImpl extends SignRepository {
     try {
       final user = FirebaseAuth.instance.currentUser;
       user?.delete();
-      return MResult.success(user);
+      return MResult.data(user);
     } catch (e) {
-      return MResult.exception(e);
+      return MResult.error(e);
     }
   }
 

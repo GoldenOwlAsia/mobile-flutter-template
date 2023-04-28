@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/network/model/common/handle.dart';
+import 'package:myapp/src/network/model/common/handle/handle.dart';
 import 'package:myapp/widgets/state/state_error_widget.dart';
 import 'package:myapp/widgets/state/state_loading_widget.dart';
 
@@ -11,11 +11,13 @@ class XStateWidget extends StatelessWidget {
   final VoidCallback? onReload;
   @override
   Widget build(BuildContext context) {
-    if (handle.isLoading) {
-      return const XStateLoadingWidget();
-    } else if (handle.isCompleted) {
-      return child ?? const Text('Success');
-    }
-    return XStateErrorWidget(onReload: onReload);
+    return handle.when(
+      initial: XStateLoadingWidget.new,
+      loading: XStateLoadingWidget.new,
+      complete: (result) => result.when(
+        data: (data) => child ?? const Text('Success'),
+        error: (e) => XStateErrorWidget(onReload: onReload),
+      ),
+    );
   }
 }

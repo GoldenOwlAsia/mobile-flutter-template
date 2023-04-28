@@ -12,7 +12,7 @@ import 'package:myapp/src/features/authentication/model/model_input.dart';
 import 'package:myapp/src/features/authentication/model/name_formz.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:formz/formz.dart';
-import 'package:myapp/src/network/model/user.dart';
+import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/router/coordinator.dart';
 
 part 'signup_state.dart';
@@ -33,14 +33,19 @@ class SignupBloc extends Cubit<SignupState> {
     final name = state.name.value;
     final result = await domain.sign
         .signUpWithEmail(email: email, password: password, name: name);
-    if (result.isSuccess && result.data != null) {
-      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-      signupDecision(context, result.data!);
-    } else {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
-
-      XAlert.show(title: 'Signup fail', body: result.error);
-    }
+    result.when(
+      data: (data) {
+        emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+        signupDecision(context, data);
+      },
+      error: (e) {
+        emit(state.copyWith(status: FormzSubmissionStatus.failure));
+        XAlert.show(
+          title: 'Signup fail',
+          body: result.errorMessage,
+        );
+      },
+    );
   }
 
   Future signupDecision(BuildContext context, MUser incomingUser) async {

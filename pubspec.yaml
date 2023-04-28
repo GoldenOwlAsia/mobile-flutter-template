@@ -2,7 +2,7 @@ name: myapp
 description: A new Flutter project.
 
 # Prevent accidental publishing to pub.dev.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -26,6 +26,8 @@ dependencies:
   environment_config: ^3.1.0
   url_launcher: ^6.1.10
   formz: ^0.5.0+1
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.0
   dio: ^5.1.1
   connectivity_plus: ^3.0.4
 
@@ -37,7 +39,7 @@ dependencies:
   auto_size_text: ^3.0.0
   flutter_slidable: ^2.0.0
   cached_network_image: ^3.2.3
-  
+
   # STATE MANAGEMENT
   flutter_bloc: ^8.1.2
   auto_route: ^6.0.0+1
@@ -67,7 +69,8 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   auto_route_generator: ^6.0.0
   build_runner: ^2.3.0
-
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
 
 flutter:
   uses-material-design: true
