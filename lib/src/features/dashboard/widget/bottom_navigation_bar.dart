@@ -15,8 +15,11 @@ class XBottomNavigationBar extends StatelessWidget {
           onDestinationSelected:
               context.read<DashboardBloc>().onDestinationSelected,
           destinations: XNavigationBarItems.values
-              .map((e) =>
-                  NavigationDestination(icon: Icon(e.icon), label: e.label))
+              .map((e) => NavigationDestination(
+                    label: e.label,
+                    icon: Icon(e.icon),
+                    selectedIcon: Icon(e.selectedIcon),
+                  ))
               .toList(),
         );
       },

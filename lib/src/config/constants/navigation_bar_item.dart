@@ -5,23 +5,27 @@ enum XNavigationBarItems {
   home(
     label: 'Home',
     route: XRouteNames.home,
-    icon: Icons.home,
+    icon: Icons.home_outlined,
+    selectedIcon: Icons.home,
   ),
   account(
     label: 'Account',
     route: XRouteNames.account,
-    icon: Icons.people,
+    icon: Icons.people_outline,
+    selectedIcon: Icons.people,
   );
 
   const XNavigationBarItems({
     required this.label,
     required this.route,
     required this.icon,
+    this.selectedIcon,
   });
 
   final String label;
   final XRouteNames route;
   final IconData icon;
+  final IconData? selectedIcon;
 
   static XNavigationBarItems fromLocation(String location) {
     if (location == XNavigationBarItems.home.route.name) {
