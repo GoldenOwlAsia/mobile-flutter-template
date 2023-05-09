@@ -36,8 +36,14 @@ class XFirebaseMessage {
   }
 
   // NOTE: This function you must initialize Plugin Notification. For example:
-  // - Awesome Notification: https://pub.dev/packages/awesome_notifications#-how-to-show-local-notifications
-  // - Flutter Local Notification: https://firebase.flutter.dev/docs/messaging/notifications#foreground-notifications
+  // - Awesome Notification:
+  //  https://pub.dev/packages/awesome_notifications#-how-to-show-local-notifications
+  // - Flutter Local Notification:
+  //  https://firebase.flutter.dev/docs/messaging/notifications#foreground-notifications
+  //
+  //
+  // NOTE: To set up for IOS, you can find the documentation
+  // at https://firebase.flutter.dev/docs/messaging/apple-integration
   Future<void> setupNotification() async {
     if (isNotificationsInitialized) {
       return;
