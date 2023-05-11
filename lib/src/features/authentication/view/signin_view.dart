@@ -1,20 +1,18 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:myapp/src/features/authentication/logic/signin_bloc.dart';
-import 'package:myapp/src/features/authentication/router/sign_router.dart';
 import 'package:myapp/src/features/authentication/widget/sign_title.dart';
 import 'package:myapp/src/features/authentication/widget/social_list_button.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/src/network/model/social_type.dart';
+import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/src/theme/colors.dart';
 import 'package:myapp/widgets/button/button.dart';
 import 'package:myapp/widgets/button/text_button.dart';
 import 'package:myapp/widgets/froms/input.dart';
 
-@RoutePage()
 class SigninView extends StatelessWidget {
   const SigninView({Key? key}) : super(key: key);
 
@@ -109,7 +107,7 @@ class SigninView extends StatelessWidget {
               letterSpacing: 0.24,
             ),
             recognizer: TapGestureRecognizer()
-              ..onTap = () => SignCoordinator.showSignup(context),
+              ..onTap = XCoordinator.showSignUpScreen,
           ),
         ],
       ),
@@ -117,12 +115,12 @@ class SigninView extends StatelessWidget {
   }
 
   Widget _buildForgotPassword(BuildContext context) {
-    return Align(
+    return const Align(
       alignment: Alignment.centerLeft,
       child: XTextButton(
         title: 'Forgot password?',
         padding: EdgeInsets.zero,
-        onPressed: () => SignCoordinator.showForgotPassword(context),
+        onPressed: XCoordinator.showForgotPasswordScreen,
       ),
     );
   }

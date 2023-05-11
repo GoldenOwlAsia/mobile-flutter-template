@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/features/account/router/account_router.dart';
 import 'package:myapp/src/network/model/user/user.dart';
+import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/src/theme/colors.dart';
 import 'package:myapp/widgets/card/card.dart';
 import 'package:myapp/widgets/common/nav_icon.dart';
@@ -11,9 +11,7 @@ class AccountUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        AccountCoordinator.showProfile(context);
-      },
+      onTap: XCoordinator.showProfile,
       child: XCard(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
         child: Row(

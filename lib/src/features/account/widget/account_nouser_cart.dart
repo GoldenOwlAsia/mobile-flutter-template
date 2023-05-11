@@ -36,7 +36,7 @@ class AccountNoUserCard extends StatelessWidget {
               title: 'Sign in / Sign up',
               padding: const EdgeInsets.symmetric(vertical: 8),
               onPressed: () {
-                XCoordinator.showAuthentication();
+                XCoordinator.showSignInScreen();
               },
             ),
           )

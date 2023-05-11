@@ -14,7 +14,7 @@ import 'package:myapp/src/network/domain_manager.dart';
 import 'package:formz/formz.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
 import 'package:myapp/src/network/model/user/user.dart';
-import 'package:myapp/src/router/auto_router.dart';
+import 'package:myapp/src/router/coordinator.dart';
 
 part 'signin_state.dart';
 
@@ -112,7 +112,7 @@ class SigninBloc extends Cubit<SigninState> {
       data: (data) {
         emit(state.copyWith(status: FormzSubmissionStatus.success));
         GetIt.I<AccountBloc>().onLoginSuccess(data);
-        GetIt.I<XRouter>().pop(true);
+        XCoordinator.pop(true);
       },
       error: (_) {
         emit(state.copyWith(status: FormzSubmissionStatus.failure));
