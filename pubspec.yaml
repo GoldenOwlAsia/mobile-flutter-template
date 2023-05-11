@@ -30,6 +30,7 @@ dependencies:
   json_annotation: ^4.8.0
   dio: ^5.1.1
   connectivity_plus: ^3.0.4
+  version: ^3.0.2
 
   # WIDGET
   modal_bottom_sheet: ^3.0.0-pre
@@ -39,6 +40,7 @@ dependencies:
   auto_size_text: ^3.0.0
   flutter_slidable: ^2.0.0
   cached_network_image: ^3.2.3
+  lottie: ^2.3.0
 
   # STATE MANAGEMENT
   flutter_bloc: ^8.1.2
@@ -52,6 +54,7 @@ dependencies:
   firebase_crashlytics: ^3.0.17
   firebase_auth: ^4.3.0
   google_sign_in: ^6.0.2
+  firebase_remote_config: ^4.0.2
   # firebase_messaging: ^14.1.4
   # flutter_local_notifications: ^12.0.4
   # flutter_app_badger: ^1.5.0
@@ -59,7 +62,6 @@ dependencies:
   # flutter_facebook_auth: ^5.0.6
   # sign_in_with_apple: ^4.2.0
   # uni_links: ^0.5.1
-  # firebase_remote_config: ^3.0.9
 
   # GITHUB
 
@@ -83,3 +85,4 @@ flutter:
     - assets/images/
     - assets/images/images/
     - assets/images/locale/
+    - assets/lottie/

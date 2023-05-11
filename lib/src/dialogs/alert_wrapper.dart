@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
+import 'package:myapp/src/features/force_update/popup_force_update.dart';
 import 'package:myapp/src/router/coordinator.dart';
 
 class XAlert {
@@ -36,6 +37,18 @@ class XAlert {
           titleWidget: title,
           contentWidget: body,
           actions: actions,
+        );
+      },
+    );
+  }
+
+  static Future showForceUpdate() {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Dialog(
+          child: PopupForceUpdateApp(),
         );
       },
     );
