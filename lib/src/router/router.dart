@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:myapp/src/_dev/dev_screen.dart';
 import 'package:myapp/src/features/dashboard/logic/navigation_bar_item.dart';
 import 'package:myapp/src/features/account/profile/view/profile_view.dart';
 import 'package:myapp/src/features/account/view/account_view.dart';
@@ -16,60 +17,60 @@ import '../features/common/view/not_found_view.dart';
 import 'coordinator.dart';
 import 'route_name.dart';
 
-class XRouter {
+class AppRouter {
   late final router = GoRouter(
-    navigatorKey: XCoordinator.navigatorKey,
-    initialLocation: XRouteNames.home.path,
+    navigatorKey: AppCoordinator.navigatorKey,
+    initialLocation: AppRouteNames.home.path,
     debugLogDiagnostics: kDebugMode,
     observers: [BotToastNavigatorObserver()],
     routes: <RouteBase>[
       GoRoute(
-        parentNavigatorKey: XCoordinator.navigatorKey,
-        path: XRouteNames.signIn.path,
-        name: XRouteNames.signIn.name,
+        parentNavigatorKey: AppCoordinator.navigatorKey,
+        path: AppRouteNames.signIn.path,
+        name: AppRouteNames.signIn.name,
         builder: (_, __) => const SigninView(),
         routes: <RouteBase>[
           GoRoute(
-            parentNavigatorKey: XCoordinator.navigatorKey,
-            path: XRouteNames.signUp.subPath,
-            name: XRouteNames.signUp.name,
+            parentNavigatorKey: AppCoordinator.navigatorKey,
+            path: AppRouteNames.signUp.subPath,
+            name: AppRouteNames.signUp.name,
             builder: (_, __) => const SignupView(),
           ),
           GoRoute(
-            parentNavigatorKey: XCoordinator.navigatorKey,
-            path: XRouteNames.forgotPassword.subPath,
-            name: XRouteNames.forgotPassword.name,
+            parentNavigatorKey: AppCoordinator.navigatorKey,
+            path: AppRouteNames.forgotPassword.subPath,
+            name: AppRouteNames.forgotPassword.name,
             builder: (_, __) => const ForgotPasswordView(),
           ),
         ],
       ),
       ShellRoute(
-        navigatorKey: XCoordinator.shellKey,
+        navigatorKey: AppCoordinator.shellKey,
         builder: (context, state, child) => DashBoardScreen(
           currentItem: XNavigationBarItems.fromLocation(state.location),
           body: child,
         ),
         routes: <RouteBase>[
           GoRoute(
-            path: XRouteNames.home.path,
-            name: XRouteNames.home.name,
+            path: AppRouteNames.home.path,
+            name: AppRouteNames.home.name,
             pageBuilder: (context, state) => const NoTransitionPage(
               child: HomeView(),
             ),
             routes: <RouteBase>[
               GoRoute(
-                parentNavigatorKey: XCoordinator.navigatorKey,
-                path: XRouteNames.sample.subPath,
-                name: XRouteNames.sample.name,
+                parentNavigatorKey: AppCoordinator.navigatorKey,
+                path: AppRouteNames.sample.subPath,
+                name: AppRouteNames.sample.name,
                 builder: (_, __) => const SampleItemListView(),
                 routes: <RouteBase>[
                   GoRoute(
-                    parentNavigatorKey: XCoordinator.navigatorKey,
-                    path: XRouteNames.sampleDetails.buildSubPathParam,
-                    name: XRouteNames.sampleDetails.name,
+                    parentNavigatorKey: AppCoordinator.navigatorKey,
+                    path: AppRouteNames.sampleDetails.buildSubPathParam,
+                    name: AppRouteNames.sampleDetails.name,
                     builder: (_, state) {
                       final id =
-                          state.params[XRouteNames.sampleDetails.paramName]!;
+                          state.params[AppRouteNames.sampleDetails.paramName]!;
                       return SampleItemDetailsView(id: id);
                     },
                   )
@@ -78,18 +79,23 @@ class XRouter {
             ],
           ),
           GoRoute(
-            path: XRouteNames.account.path,
-            name: XRouteNames.account.name,
+            path: AppRouteNames.account.path,
+            name: AppRouteNames.account.name,
             pageBuilder: (context, state) => const NoTransitionPage(
               child: AccountHomeView(),
             ),
             routes: <RouteBase>[
               GoRoute(
-                path: XRouteNames.profile.subPath,
-                name: XRouteNames.profile.name,
+                path: AppRouteNames.profile.subPath,
+                name: AppRouteNames.profile.name,
                 builder: (_, __) => const ProfileView(),
               )
             ],
+          ),
+          GoRoute(
+            path: AppRouteNames.dev.path,
+            name: AppRouteNames.dev.name,
+            builder: (_, __) => const DevScreen(),
           ),
         ],
       ),

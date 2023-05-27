@@ -19,7 +19,7 @@ class SampleItemListView extends StatelessWidget {
             leading: CircleAvatar(
               foregroundImage: AssetImage(Assets.images.images.logo.path),
             ),
-            onTap: () => XCoordinator.showSampleDetails(id: '$index'),
+            onTap: () => AppCoordinator.showSampleDetails(id: '$index'),
           );
         },
       ),

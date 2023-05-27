@@ -16,9 +16,9 @@ class XStateErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Expanded(flex: 4, child: SizedBox()),
         SvgPicture.asset(Assets.svgs.stateError),
         const SizedBox(height: 15),
         Container(
@@ -29,13 +29,11 @@ class XStateErrorWidget extends StatelessWidget {
             style: AppStyles.title,
           ),
         ),
-        Expanded(
-          flex: 5,
-          child: Center(
-            child: XOutlinedButton(
-              title: S.of(context).common_tap_to_refresh,
-              onPressed: onTap,
-            ),
+        const SizedBox(height: 16),
+        Center(
+          child: XOutlinedButton(
+            title: S.of(context).common_tap_to_refresh,
+            onPressed: onTap,
           ),
         ),
       ],

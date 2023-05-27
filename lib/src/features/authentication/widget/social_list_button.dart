@@ -96,7 +96,7 @@ class SocialListButton extends StatelessWidget {
               busy ? CrossFadeState.showFirst : CrossFadeState.showSecond,
           duration: const Duration(milliseconds: 300),
           firstChild: const XIndicator(radius: 11),
-          secondChild: SvgPicture.string(icon),
+          secondChild: SvgPicture.asset(icon),
         ),
       ),
       label: Text(' $title'),

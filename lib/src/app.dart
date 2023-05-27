@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _appRouter = GetIt.I<XRouter>();
+  final _appRouter = GetIt.I<AppRouter>();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

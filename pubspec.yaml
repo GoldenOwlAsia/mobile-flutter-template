@@ -47,13 +47,13 @@ dependencies:
   get_it: ^7.2.0
 
   # FIREBASE
-  firebase_core: ^2.8.0
-  firebase_analytics: ^10.1.6
-  firebase_app_check: ^0.1.1+14
-  firebase_crashlytics: ^3.0.17
-  firebase_auth: ^4.3.0
-  google_sign_in: ^6.0.2
-  firebase_messaging: ^14.5.0
+  firebase_core: ^2.10.0
+  firebase_analytics: ^10.4.1
+  # firebase_app_check: ^0.1.4+1
+  firebase_crashlytics: ^3.3.1
+  firebase_auth: ^4.6.1
+  google_sign_in: ^6.1.2
+  firebase_messaging: ^14.6.1
   # flutter_local_notifications: ^12.0.4
   # flutter_app_badger: ^1.5.0
   # firebase_dynamic_links: ^5.0.8

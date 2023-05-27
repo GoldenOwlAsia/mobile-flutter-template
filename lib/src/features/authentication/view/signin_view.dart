@@ -107,7 +107,7 @@ class SigninView extends StatelessWidget {
               letterSpacing: 0.24,
             ),
             recognizer: TapGestureRecognizer()
-              ..onTap = XCoordinator.showSignUpScreen,
+              ..onTap = AppCoordinator.showSignUpScreen,
           ),
         ],
       ),
@@ -120,7 +120,7 @@ class SigninView extends StatelessWidget {
       child: XTextButton(
         title: 'Forgot password?',
         padding: EdgeInsets.zero,
-        onPressed: XCoordinator.showForgotPasswordScreen,
+        onPressed: AppCoordinator.showForgotPasswordScreen,
       ),
     );
   }

@@ -7,11 +7,11 @@ class DashboardBloc extends Cubit<XNavigationBarItems> {
 
   void onDestinationSelected(int index) {
     emit(XNavigationBarItems.values[index]);
-    XCoordinator.goNamed(state.route.name);
+    AppCoordinator.goNamed(state.route.name);
   }
 
   void goHome() {
     emit(XNavigationBarItems.home);
-    XCoordinator.goNamed(state.route.name);
+    AppCoordinator.goNamed(state.route.name);
   }
 }

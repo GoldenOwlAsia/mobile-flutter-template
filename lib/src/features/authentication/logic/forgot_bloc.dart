@@ -29,7 +29,7 @@ class ForgotBloc extends Cubit<ForgotState> {
         body:
             'Your request success! Please check your email to reset your password',
       );
-      XCoordinator.pop(true);
+      AppCoordinator.pop(true);
     } else {
       emit(
         state.copyWith(

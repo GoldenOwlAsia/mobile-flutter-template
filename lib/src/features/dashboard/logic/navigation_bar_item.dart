@@ -4,13 +4,13 @@ import 'package:myapp/src/router/route_name.dart';
 enum XNavigationBarItems {
   home(
     label: 'Home',
-    route: XRouteNames.home,
+    route: AppRouteNames.home,
     icon: Icons.home_outlined,
     selectedIcon: Icons.home,
   ),
   account(
     label: 'Account',
-    route: XRouteNames.account,
+    route: AppRouteNames.account,
     icon: Icons.people_outline,
     selectedIcon: Icons.people,
   );
@@ -23,7 +23,7 @@ enum XNavigationBarItems {
   });
 
   final String label;
-  final XRouteNames route;
+  final AppRouteNames route;
   final IconData icon;
   final IconData? selectedIcon;
 

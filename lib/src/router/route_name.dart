@@ -1,4 +1,4 @@
-enum XRouteNames {
+enum AppRouteNames {
   home(path: '/'),
   dev(path: '/dev'),
   account(path: '/account'),
@@ -14,7 +14,7 @@ enum XRouteNames {
   settings(path: '/settings'),
   ;
 
-  const XRouteNames({
+  const AppRouteNames({
     required this.path,
     this.paramName,
   });

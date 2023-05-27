@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/widgets/button/button.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../../widgets/state/state_empty_widget.dart';
@@ -50,6 +51,12 @@ class DevCommonScreen extends StatelessWidget {
                   title: 'No notifications yet',
                   body:
                       "You're all caught up!\n Check back later for new notifications",
+                  bottom: Center(
+                    child: XButton(
+                      title: 'Back to home',
+                      onPressed: () {},
+                    ),
+                  ),
                 ))),
       ],
     );

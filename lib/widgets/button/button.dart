@@ -51,25 +51,22 @@ class XBusyTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const double padding = 12;
-    return SizedBox(
-      height: Theme.of(context).buttonTheme.height,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SizedBox(width: padding * 2),
+        child ??
+            Text(
+              title ?? '',
+              maxLines: 1,
+              textAlign: TextAlign.center,
+            ),
+        if (busy)
+          const XIndicator(radius: padding)
+        else
           const SizedBox(width: padding * 2),
-          child ??
-              Text(
-                title ?? '',
-                maxLines: 1,
-                textAlign: TextAlign.center,
-              ),
-          if (busy)
-            const XIndicator(radius: padding)
-          else
-            const SizedBox(width: padding * 2),
-        ],
-      ),
+      ],
     );
   }
 }

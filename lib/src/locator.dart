@@ -34,6 +34,6 @@ Future initializeApp() async {
 
 void _locator() {
   GetIt.I.registerLazySingleton(() => DomainManager());
-  GetIt.I.registerLazySingleton(() => XRouter());
+  GetIt.I.registerLazySingleton(() => AppRouter());
   GetIt.I.registerLazySingleton(() => AccountBloc());
 }

@@ -17,7 +17,7 @@ class DevWrapButton extends StatelessWidget {
               _tapCount++;
               if (_tapCount > 5) {
                 _tapCount = 0;
-                context.pushNamed(XRouteNames.dev.name);
+                context.pushNamed(AppRouteNames.dev.name);
               }
             }
           : null,
