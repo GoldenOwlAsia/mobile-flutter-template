@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// Screens utils with multiple properties access.
-class XScreens {
-  const XScreens._();
+class AppScreens {
+  const AppScreens._();
 
   /// Get [MediaQueryData] from [ui.window]
   static MediaQueryData get mediaQuery => MediaQueryData.fromWindow(ui.window);

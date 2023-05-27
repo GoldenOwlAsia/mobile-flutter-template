@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:myapp/src/config/devices/app_Info.dart';
+import 'package:myapp/src/config/devices/app_info.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/router/router.dart';

@@ -94,7 +94,7 @@ class SigninView extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
-              color: XColors.textSecondary,
+              color: AppColors.textSecondary,
               letterSpacing: 0.24,
             ),
           ),
@@ -103,7 +103,7 @@ class SigninView extends StatelessWidget {
             style: const TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
-              color: XColors.link,
+              color: AppColors.link,
               letterSpacing: 0.24,
             ),
             recognizer: TapGestureRecognizer()

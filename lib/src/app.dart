@@ -39,8 +39,8 @@ class _MyAppState extends State<MyApp> {
           onGenerateTitle: (BuildContext context) =>
               S.of(context).common_appTitle,
           builder: BotToastInit(),
-          theme: XTheme.light(),
-          darkTheme: XTheme.dark(),
+          theme: AppTheme.light(),
+          darkTheme: AppTheme.dark(),
           themeMode: state.themeMode,
           routerConfig: _appRouter.router,
         );

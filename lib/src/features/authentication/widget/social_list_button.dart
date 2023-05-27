@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
-import 'package:myapp/src/theme/svgs.dart';
+import 'package:myapp/gen/assets.gen.dart';
 import 'package:myapp/src/features/authentication/logic/signin_bloc.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/src/network/model/social_type.dart';
@@ -25,7 +25,7 @@ class SocialListButton extends StatelessWidget {
             if (kIsWeb == false && Platform.isIOS) ...[
               space,
               _buildButton(
-                icon: Svgs.iconSocialApple,
+                icon: Assets.svgs.icApple,
                 title: S.of(context).sign_signin_signinWithApple,
                 busy: state.status.isInProgress &&
                     state.loginType == MSocialType.apple,
@@ -35,7 +35,7 @@ class SocialListButton extends StatelessWidget {
             ],
             space,
             _buildButton(
-              icon: Svgs.iconSocialFacebool,
+              icon: Assets.svgs.icFacebook,
               title: S.of(context).sign_signin_signinWithFacebook,
               busy: state.status.isInProgress &&
                   state.loginType == MSocialType.facebook,
@@ -44,7 +44,7 @@ class SocialListButton extends StatelessWidget {
             ),
             space,
             _buildButton(
-              icon: Svgs.iconSocialGoogle,
+              icon: Assets.svgs.icGoogle,
               title: S.of(context).sign_signin_signinWithGoogle,
               busy: state.status.isInProgress &&
                   state.loginType == MSocialType.google,

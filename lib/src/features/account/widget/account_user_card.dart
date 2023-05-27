@@ -22,7 +22,7 @@ class AccountUserCard extends StatelessWidget {
                 children: [
                   const Text(
                     'Hello' ',',
-                    style: TextStyle(color: XColors.textSecondary),
+                    style: TextStyle(color: AppColors.textSecondary),
                   ),
                   Text(
                     user.name ?? '',

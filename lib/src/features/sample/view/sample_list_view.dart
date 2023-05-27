@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/router/coordinator.dart';
-import 'package:myapp/src/theme/images.dart';
+import '../../../../gen/assets.gen.dart';
 
 class SampleItemListView extends StatelessWidget {
   const SampleItemListView({Key? key}) : super(key: key);
@@ -16,8 +16,8 @@ class SampleItemListView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text('SampleItem $index'),
-            leading: const CircleAvatar(
-              foregroundImage: AssetImage(XImagePath.logo),
+            leading: CircleAvatar(
+              foregroundImage: AssetImage(Assets.images.images.logo.path),
             ),
             onTap: () => XCoordinator.showSampleDetails(id: '$index'),
           );

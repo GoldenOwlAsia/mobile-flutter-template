@@ -71,7 +71,7 @@ class XAlertDialog extends StatelessWidget {
             : Text(
                 item.title ?? '',
                 style: TextStyle(
-                  color: item.isDestructiveAction ? Colors.red : XColors.text,
+                  color: item.isDestructiveAction ? Colors.red : AppColors.text,
                 ),
               ),
       );

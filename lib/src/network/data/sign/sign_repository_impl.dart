@@ -4,7 +4,8 @@ import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/model/common/error_code.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
-import 'package:myapp/src/network/model/common/result/result.dart';
+
+import '../../model/common/result.dart';
 
 class SignRepositoryImpl extends SignRepository {
   @override
@@ -34,9 +35,9 @@ class SignRepositoryImpl extends SignRepository {
         email: user.email,
         name: user.fullName,
       );
-      return MResult.data(newUser);
+      return MResult.success(newUser);
     } catch (e) {
-      return MResult.error(e);
+      return MResult.exception(e);
     }
   }
 
@@ -50,9 +51,9 @@ class SignRepositoryImpl extends SignRepository {
   Future<MResult> logOut(MUser user) async {
     try {
       await FirebaseAuth.instance.signOut();
-      return MResult.data(user);
+      return MResult.success(user);
     } catch (e) {
-      return MResult.error(e);
+      return MResult.exception(e);
     }
   }
 
@@ -87,13 +88,13 @@ class SignRepositoryImpl extends SignRepository {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       final googleAuth = await googleUser?.authentication;
       if (googleUser != null && googleAuth != null) {
-        return MResult.data(
+        return MResult.success(
             MSocialUser.fromGoogleAccount(googleUser, googleAuth));
       } else {
-        return const MResult.error(MErrorCode.unknown);
+        return MResult.error(MErrorCode.unknown);
       }
     } catch (e) {
-      return MResult.error(e);
+      return MResult.exception(e);
     }
   }
 
@@ -102,9 +103,9 @@ class SignRepositoryImpl extends SignRepository {
     try {
       final user = FirebaseAuth.instance.currentUser;
       user?.delete();
-      return MResult.data(user);
+      return MResult.success(user);
     } catch (e) {
-      return MResult.error(e);
+      return MResult.exception(e);
     }
   }
 

@@ -3,26 +3,37 @@ import 'package:myapp/src/theme/styles.dart';
 
 import 'colors.dart';
 
-class XTheme {
+class AppTheme {
   static const String? fontFamily = null;
 
   static ThemeData light() => ThemeData(
         fontFamily: fontFamily,
+        scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+
+        /// dialog
+        dialogTheme: DialogTheme(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
 
         /// Colors
-        primaryColor: XColors.primary,
+        primaryColor: AppColors.primary,
         brightness: Brightness.light,
-        textTheme: XStyles.textTheme,
+
+        /// Text
+        textTheme: AppStyles.textTheme,
 
         /// ColorScheme
         colorScheme: const ColorScheme.light(
-          primary: XColors.primary,
+          primary: AppColors.primary,
         ),
 
         // Appbar
         appBarTheme: const AppBarTheme(
           // default system appbar icon is white
-          backgroundColor: XColors.primary,
+          backgroundColor: AppColors.primary,
         ),
 
         /// input
@@ -47,5 +58,6 @@ class XTheme {
         iconTheme: const IconThemeData(),
       );
 
-  static ThemeData dark() => ThemeData.dark();
+  // do not support dark theme yet
+  static ThemeData dark() => light();
 }

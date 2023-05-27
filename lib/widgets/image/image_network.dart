@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-String _domainApi = '';
-
 class XImageNetwork extends StatelessWidget {
   const XImageNetwork(
     this.url, {
@@ -19,10 +17,8 @@ class XImageNetwork extends StatelessWidget {
       return _buildPlaceHolder();
     }
 
-    final String fullUrl =
-        ((url != null && url!.contains('http')) ? url : ('$_domainApi$url'))!;
     return CachedNetworkImage(
-      imageUrl: fullUrl,
+      imageUrl: url ?? '',
       fit: fit,
       placeholder: (context, url) => _buildPlaceHolder(),
       errorWidget: (context, url, error) => _buildError(),

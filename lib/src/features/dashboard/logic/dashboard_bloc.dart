@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/src/config/constants/navigation_bar_item.dart';
 import 'package:myapp/src/router/coordinator.dart';
+import 'navigation_bar_item.dart';
 
 class DashboardBloc extends Cubit<XNavigationBarItems> {
   DashboardBloc(XNavigationBarItems current) : super(current);

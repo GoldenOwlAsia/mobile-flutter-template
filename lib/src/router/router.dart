@@ -1,7 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:myapp/src/config/constants/navigation_bar_item.dart';
+import 'package:myapp/src/features/dashboard/logic/navigation_bar_item.dart';
 import 'package:myapp/src/features/account/profile/view/profile_view.dart';
 import 'package:myapp/src/features/account/view/account_view.dart';
 import 'package:myapp/src/features/authentication/view/forgot_view.dart';
