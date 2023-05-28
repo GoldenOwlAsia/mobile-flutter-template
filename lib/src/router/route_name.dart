@@ -1,35 +1,20 @@
-enum XRouteNames {
-  home(
-    path: '/',
-  ),
-  account(
-    path: '/account',
-  ),
-  signIn(
-    path: '/sign-in',
-  ),
-  signUp(
-    path: '/sign-up',
-  ),
-  forgotPassword(
-    path: '/forgot',
-  ),
-  sample(
-    path: '/sample',
-  ),
+enum AppRouteNames {
+  home(path: '/'),
+  dev(path: '/dev'),
+  account(path: '/account'),
+  signIn(path: '/sign-in'),
+  signUp(path: '/sign-up'),
+  forgotPassword(path: '/forgot'),
+  sample(path: '/sample'),
   sampleDetails(
     path: 'sample-details',
     paramName: 'id',
   ),
-  profile(
-    path: '/profile',
-  ),
-  settings(
-    path: '/settings',
-  ),
+  profile(path: '/profile'),
+  settings(path: '/settings'),
   ;
 
-  const XRouteNames({
+  const AppRouteNames({
     required this.path,
     this.paramName,
   });

@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,24 +31,19 @@ class SignupBloc extends Cubit<SignupState> {
     final name = state.name.value;
     final result = await domain.sign
         .signUpWithEmail(email: email, password: password, name: name);
-    result.when(
-      data: (data) {
-        emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-        signupDecision(context, data);
-      },
-      error: (e) {
-        emit(state.copyWith(status: FormzSubmissionStatus.failure));
-        XAlert.show(
-          title: 'Signup fail',
-          body: result.errorMessage,
-        );
-      },
-    );
+    if (result.isSuccess) {
+      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      // ignore: use_build_context_synchronously
+      signupDecision(context, result.data!);
+    } else {
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      XAlert.show(title: 'Signup fail', body: result.error);
+    }
   }
 
   Future signupDecision(BuildContext context, MUser incomingUser) async {
     GetIt.I<AccountBloc>().onLoginSuccess(incomingUser);
-    XCoordinator.pop();
+    AppCoordinator.pop();
     XToast.success('Signup success');
   }
 

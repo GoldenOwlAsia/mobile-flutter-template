@@ -44,7 +44,7 @@ class ProfileView extends StatelessWidget {
                     await context.read<AccountBloc>().onLogOut(context);
                 if (result == true) {
                   // ignore: use_build_context_synchronously
-                  XCoordinator.pop();
+                  AppCoordinator.pop();
                 }
               },
               child: const XCard(
@@ -61,7 +61,7 @@ class ProfileView extends StatelessWidget {
                     await context.read<AccountBloc>().onRemoveAccount(context);
                 if (result == true) {
                   // ignore: use_build_context_synchronously
-                  XCoordinator.pop();
+                  AppCoordinator.pop();
                 }
               },
               child: const XCard(

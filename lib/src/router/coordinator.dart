@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:myapp/src/router/route_name.dart';
 import 'package:myapp/src/router/router.dart';
 
-class XCoordinator {
-  static XRouter get rootRouter => GetIt.I<XRouter>();
+class AppCoordinator {
+  static AppRouter get rootRouter => GetIt.I<AppRouter>();
   static final navigatorKey = GlobalKey<NavigatorState>();
   static final shellKey = GlobalKey<NavigatorState>();
   static BuildContext get context => navigatorKey.currentState!.context;
@@ -25,28 +25,29 @@ class XCoordinator {
         extra: extra,
       );
 
-  static void showHomeScreen() => context.goNamed(XRouteNames.home.name);
-  static void showAccountScreen() => context.goNamed(XRouteNames.account.name);
+  static void showHomeScreen() => context.goNamed(AppRouteNames.home.name);
+  static void showAccountScreen() =>
+      context.goNamed(AppRouteNames.account.name);
 
   static Future<T?> showSignInScreen<T extends Object?>() =>
-      context.pushNamed<T>(XRouteNames.signIn.name);
+      context.pushNamed<T>(AppRouteNames.signIn.name);
 
   static Future<T?> showSignUpScreen<T extends Object?>() =>
-      context.pushNamed<T>(XRouteNames.signUp.name);
+      context.pushNamed<T>(AppRouteNames.signUp.name);
 
   static Future<T?> showForgotPasswordScreen<T extends Object?>() =>
-      context.pushNamed<T>(XRouteNames.forgotPassword.name);
+      context.pushNamed<T>(AppRouteNames.forgotPassword.name);
 
   static Future<T?> showSampleScreen<T extends Object?>() =>
-      context.pushNamed<T>(XRouteNames.sample.name);
+      context.pushNamed<T>(AppRouteNames.sample.name);
 
   static Future<T?> showSampleDetails<T extends Object?>(
           {required String id}) =>
       context.pushNamed<T>(
-        XRouteNames.sampleDetails.name,
-        params: {XRouteNames.sampleDetails.paramName!: id},
+        AppRouteNames.sampleDetails.name,
+        params: {AppRouteNames.sampleDetails.paramName!: id},
       );
 
   static Future<T?> showProfile<T extends Object?>() =>
-      context.pushNamed<T>(XRouteNames.profile.name);
+      context.pushNamed<T>(AppRouteNames.profile.name);
 }

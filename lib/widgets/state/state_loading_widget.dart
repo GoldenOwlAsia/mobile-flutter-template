@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/common/indicator.dart';
+import '../common/indicator.dart';
 
 class XStateLoadingWidget extends StatelessWidget {
-  const XStateLoadingWidget({Key? key}) : super(key: key);
+  const XStateLoadingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

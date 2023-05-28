@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
-import 'package:myapp/src/dialogs/toast_wrapper.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/src/network/domain_manager.dart';
@@ -25,10 +24,11 @@ class AccountBloc extends Cubit<AccountState> {
     final String id = state.user.id;
     if (id.isNotEmpty == true) {
       final result = await domain.user.getUser(id);
-      result.when(
-        data: (data) => onUserChange(state.copyWith(user: data)),
-        error: (_) => onUserChange(state.logOut()),
-      );
+      if (result.isSuccess) {
+        onUserChange(state.copyWith(user: result.data));
+      } else {
+        onUserChange(state.logOut());
+      }
     }
   }
 
@@ -56,12 +56,7 @@ class AccountBloc extends Cubit<AccountState> {
       ],
     );
     if (key == 'yes') {
-      domain.sign.logOut(state.user).then((result) {
-        result.whenOrNull(
-          // logout any way,
-          error: (e) => XToast.error(result.errorMessage),
-        );
-      });
+      domain.sign.logOut(state.user);
       onUserChange(state.logOut());
       return true;
     }
@@ -83,12 +78,7 @@ class AccountBloc extends Cubit<AccountState> {
       ],
     );
     if (key == 'yes') {
-      domain.sign.removeAccount(state.user).then((result) {
-        result.whenOrNull(
-          // logout any way,
-          error: (e) => XToast.error(result.errorMessage),
-        );
-      });
+      domain.sign.removeAccount(state.user);
       onUserChange(state.logOut());
       return true;
     }

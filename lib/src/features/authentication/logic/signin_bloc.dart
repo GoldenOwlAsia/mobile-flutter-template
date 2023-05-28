@@ -8,13 +8,14 @@ import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/features/authentication/model/email_fromz.dart';
 import 'package:myapp/src/features/authentication/model/model_input.dart';
-import 'package:myapp/src/network/model/common/result/result.dart';
 import 'package:myapp/src/network/model/social_type.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:formz/formz.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/router/coordinator.dart';
+
+import '../../../network/model/common/result.dart';
 
 part 'signin_state.dart';
 
@@ -71,24 +72,19 @@ class SigninBloc extends Cubit<SigninState> {
 
   Future loginSocialDecision(BuildContext context, MResult<MSocialUser> result,
       MSocialType socialType) async {
-    result.when(
-      data: (data) {
-        if (socialType == MSocialType.google) {
-          connectBEWithGoogle(context, data);
-        } else if (socialType == MSocialType.facebook) {
-          connectBEWithFacebook(context, data);
-        } else if (socialType == MSocialType.apple) {
-          connectBEWithApple(context, data);
-        }
-      },
-      error: (_) {
-        emit(state.copyWith(status: FormzSubmissionStatus.failure));
-        XAlert.show(
-          title: "Error",
-          body: result.errorMessage,
-        );
-      },
-    );
+    if (result.isSuccess) {
+      final data = result.data!;
+      if (socialType == MSocialType.google) {
+        connectBEWithGoogle(context, data);
+      } else if (socialType == MSocialType.facebook) {
+        connectBEWithFacebook(context, data);
+      } else if (socialType == MSocialType.apple) {
+        connectBEWithApple(context, data);
+      }
+    } else {
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      XAlert.show(title: "Error", body: result.error);
+    }
   }
 
   Future connectBEWithGoogle(BuildContext context, MSocialUser user) async {
@@ -108,20 +104,14 @@ class SigninBloc extends Cubit<SigninState> {
 
   Future loginDecision(BuildContext context, MResult<MUser> result,
       {MSocialType? socialType}) async {
-    result.when(
-      data: (data) {
-        emit(state.copyWith(status: FormzSubmissionStatus.success));
-        GetIt.I<AccountBloc>().onLoginSuccess(data);
-        XCoordinator.pop(true);
-      },
-      error: (_) {
-        emit(state.copyWith(status: FormzSubmissionStatus.failure));
-        XAlert.show(
-          title: 'Login Error',
-          body: result.errorMessage,
-        );
-      },
-    );
+    if (result.isSuccess) {
+      emit(state.copyWith(status: FormzSubmissionStatus.success));
+      GetIt.I<AccountBloc>().onLoginSuccess(result.data!);
+      AppCoordinator.pop(true);
+    } else {
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      XAlert.show(title: 'Login Error', body: result.error);
+    }
   }
 
   void onEmailChanged(String value) {

@@ -3,7 +3,7 @@ import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/src/router/coordinator.dart';
 
 class XAlert {
-  static get context => XCoordinator.context;
+  static get context => AppCoordinator.context;
 
   /// show the dialog
   static Future<String?> show({

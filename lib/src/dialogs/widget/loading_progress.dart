@@ -16,7 +16,7 @@ Future<void> showLoading({String message = ''}) async {
   if (_progressDialog == null) {
     _progressDialog = _XLoadingProgress();
     _dialogMessage = message;
-    return _progressDialog?.show(XCoordinator.context);
+    return _progressDialog?.show(AppCoordinator.context);
   }
 }
 

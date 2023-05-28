@@ -10,6 +10,6 @@ class S {
   }
 
   static al.AppLocalizations get text {
-    return al.AppLocalizations.of(XCoordinator.context)!;
+    return al.AppLocalizations.of(AppCoordinator.context)!;
   }
 }

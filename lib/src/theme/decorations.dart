@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class XDecorations {
+class AppDecorations {
   static const InputDecoration inputNoneBorder = InputDecoration(
     border: InputBorder.none,
     enabledBorder: InputBorder.none,
