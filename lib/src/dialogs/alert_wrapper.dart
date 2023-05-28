@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/src/router/coordinator.dart';
 
+import '../localization/localization_utils.dart';
+
 class XAlert {
   static get context => AppCoordinator.context;
 
@@ -36,6 +38,31 @@ class XAlert {
           titleWidget: title,
           contentWidget: body,
           actions: actions,
+        );
+      },
+    );
+  }
+
+  //
+  static Future<bool?> showConfirmDialog(String? title, String? content,
+      {String? textNo, String? textYes}) {
+    return showDialog<bool?>(
+      context: context,
+      builder: (context) {
+        return XAlertDialog(
+          title: title,
+          content: content,
+          actions: [
+            XAlertButton<bool>(
+              isDestructiveAction: true,
+              key: false,
+              title: textNo ?? S.text.common_no,
+            ),
+            XAlertButton<bool>(
+              key: true,
+              title: textYes ?? S.text.common_yes,
+            )
+          ],
         );
       },
     );

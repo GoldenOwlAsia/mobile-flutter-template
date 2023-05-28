@@ -1,18 +1,23 @@
-import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/data/sign/sign_repository_impl.dart';
 
-import 'data/user/user_repository.dart';
+import 'blob/data/blob_repository_impl.dart';
+import 'chat/data/chat_message_repository_impl.dart';
+import 'chat/data/chat_online_repository_impl.dart';
+import 'chat/data/chat_room_repository_impl.dart';
 import 'data/user/user_repository_impl.dart';
 
 class DomainManager {
-  factory DomainManager() => I;
-  DomainManager._internal() {
-    user = UserRepositoryImpl();
-    sign = SignRepositoryImpl();
+  factory DomainManager() {
+    _internal ??= DomainManager._();
+    return _internal!;
   }
+  DomainManager._();
+  static DomainManager? _internal;
 
-  static final DomainManager I = DomainManager._internal();
-
-  late UserRepository user;
-  late SignRepository sign;
+  final user = UserRepositoryImpl();
+  final sign = SignRepositoryImpl();
+  final chatRoom = ChatRoomRepositoryImpl();
+  final chatMessage = ChatMessageRepositoryImpl();
+  final chatOnline = ChatOnlineRepositoryImpl();
+  final blob = BlobRepositoryImpl();
 }
