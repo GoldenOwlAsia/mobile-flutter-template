@@ -9,7 +9,6 @@ import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/router/router.dart';
 import 'package:myapp/src/services/user_prefs.dart';
 
-import '../firebase_options.dart';
 import 'features/common/app_bloc/bloc_observer.dart';
 import 'services/firebase_message.dart';
 
