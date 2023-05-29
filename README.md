@@ -32,6 +32,7 @@ Base project made with much: . Contains Bloc, Route, and much more!
 4. To run staging project
   ```
   flutter run --flavor staging --target lib/main_staging.dart
+  ```
 5. To run production project
   ```
   flutter run --flavor production --target lib/main_production.dart
