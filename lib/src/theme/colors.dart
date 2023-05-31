@@ -8,6 +8,7 @@ class AppColors {
   static const link = Color(0xFF0064FF);
   static const divider = Color(0xFFEFEFEF);
   static const scaffoldBackgroundColor = Color(0xFFF8F6EE);
+  static const background = Color.fromARGB(255, 249, 247, 242);
   // black
   static const black = Colors.black;
   static const black2 = Color(0xFF1E1E1E);

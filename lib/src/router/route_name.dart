@@ -12,7 +12,9 @@ enum AppRouteNames {
   ),
   profile(path: '/profile'),
   settings(path: '/settings'),
-  ;
+  photoView(path: '/photoView'),
+  chatRooms(path: '/chatRooms'),
+  chatRoomDetail(path: '/chatRoomDetail');
 
   const AppRouteNames({
     required this.path,

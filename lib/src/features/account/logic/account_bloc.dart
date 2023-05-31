@@ -18,7 +18,7 @@ class AccountBloc extends Cubit<AccountState> {
   }
 
   StreamController<MUser> statusStream = StreamController.broadcast();
-  DomainManager get domain => DomainManager.I;
+  DomainManager get domain => DomainManager();
 
   Future syncUserData() async {
     final String id = state.user.id;

@@ -28,6 +28,10 @@ class HomeView extends StatelessWidget {
               title: 'Show sample view',
               onPressed: AppCoordinator.showSampleScreen,
             ),
+            const XTextButton(
+              title: 'Show chat view',
+              onPressed: AppCoordinator.showChatRoom,
+            ),
           ],
         ),
       ),

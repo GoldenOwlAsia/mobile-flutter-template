@@ -8,6 +8,16 @@ class AppStyles {
     color: AppColors.text,
     fontWeight: FontWeight.w700,
   );
+  static const titleLarge = TextStyle(
+    fontSize: 18,
+    color: AppColors.text,
+    fontWeight: FontWeight.w700,
+  );
+  static const titleSmall = TextStyle(
+    fontSize: 14,
+    color: AppColors.text,
+    fontWeight: FontWeight.w700,
+  );
 
   static const body = TextStyle(
     fontSize: 14,

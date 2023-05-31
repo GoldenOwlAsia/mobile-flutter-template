@@ -13,7 +13,7 @@ part 'forgot_state.dart';
 
 class ForgotBloc extends Cubit<ForgotState> {
   ForgotBloc() : super(const ForgotState());
-  DomainManager get domain => DomainManager.I;
+  DomainManager get domain => DomainManager();
 
   /// Step 3 (Register)
   Future onEnteredConfirmPassword(BuildContext context) async {

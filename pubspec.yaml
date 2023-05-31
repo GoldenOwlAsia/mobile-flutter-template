@@ -31,6 +31,7 @@ dependencies:
   dio: ^5.1.1
   connectivity_plus: ^3.0.4
   intl: ^0.17.0
+  permission_handler: ^10.2.0
 
   # WIDGET
   modal_bottom_sheet: ^3.0.0-pre
@@ -40,6 +41,8 @@ dependencies:
   auto_size_text: ^3.0.0
   flutter_slidable: ^2.0.0
   cached_network_image: ^3.2.3
+  lottie: ^2.3.2
+  scrollable_positioned_list: ^0.3.8
 
   # STATE MANAGEMENT
   flutter_bloc: ^8.1.2
@@ -54,6 +57,7 @@ dependencies:
   firebase_auth: ^4.6.1
   google_sign_in: ^6.1.2
   firebase_messaging: ^14.6.1
+  cloud_firestore: ^4.6.0
   # flutter_local_notifications: ^12.0.4
   # flutter_app_badger: ^1.5.0
   # firebase_dynamic_links: ^5.0.8
@@ -62,7 +66,19 @@ dependencies:
   # uni_links: ^0.5.1
   # firebase_remote_config: ^3.0.9
 
-  # GITHUB
+  ## CAMERA & MEDIA
+  wechat_camera_picker: ^3.8.0
+  wechat_assets_picker: ^8.4.2
+  photo_manager: ^2.6.0
+  flutter_sound: ^9.2.13
+  video_player: ^2.6.1
+  emoji_picker_flutter: ^1.5.4
+  linkify: ^5.0.0
+  link_preview_generator: ^1.2.0
+  audio_wave: ^0.1.5
+  photo_view: ^0.14.0
+  audioplayers: ^4.0.1
+
 
 dev_dependencies:
   flutter_test:

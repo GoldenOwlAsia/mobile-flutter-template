@@ -22,6 +22,7 @@ MUser _$MUserFromJson(Map<String, dynamic> json) {
 mixin _$MUser {
   String get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ abstract class $MUserCopyWith<$Res> {
   factory $MUserCopyWith(MUser value, $Res Function(MUser) then) =
       _$MUserCopyWithImpl<$Res, MUser>;
   @useResult
-  $Res call({String id, String? name, String? email});
+  $Res call({String id, String? name, String? avatar, String? email});
 }
 
 /// @nodoc
@@ -52,6 +53,7 @@ class _$MUserCopyWithImpl<$Res, $Val extends MUser>
   $Res call({
     Object? id = null,
     Object? name = freezed,
+    Object? avatar = freezed,
     Object? email = freezed,
   }) {
     return _then(_value.copyWith(
@@ -62,6 +64,10 @@ class _$MUserCopyWithImpl<$Res, $Val extends MUser>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -77,7 +83,7 @@ abstract class _$$_MUserCopyWith<$Res> implements $MUserCopyWith<$Res> {
       __$$_MUserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String? name, String? email});
+  $Res call({String id, String? name, String? avatar, String? email});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$_MUserCopyWithImpl<$Res> extends _$MUserCopyWithImpl<$Res, _$_MUser>
   $Res call({
     Object? id = null,
     Object? name = freezed,
+    Object? avatar = freezed,
     Object? email = freezed,
   }) {
     return _then(_$_MUser(
@@ -101,6 +108,10 @@ class __$$_MUserCopyWithImpl<$Res> extends _$MUserCopyWithImpl<$Res, _$_MUser>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -113,7 +124,8 @@ class __$$_MUserCopyWithImpl<$Res> extends _$MUserCopyWithImpl<$Res, _$_MUser>
 /// @nodoc
 @JsonSerializable()
 class _$_MUser extends _MUser {
-  const _$_MUser({required this.id, this.name, this.email}) : super._();
+  const _$_MUser({required this.id, this.name, this.avatar, this.email})
+      : super._();
 
   factory _$_MUser.fromJson(Map<String, dynamic> json) =>
       _$$_MUserFromJson(json);
@@ -123,11 +135,13 @@ class _$_MUser extends _MUser {
   @override
   final String? name;
   @override
+  final String? avatar;
+  @override
   final String? email;
 
   @override
   String toString() {
-    return 'MUser(id: $id, name: $name, email: $email)';
+    return 'MUser(id: $id, name: $name, avatar: $avatar, email: $email)';
   }
 
   @override
@@ -137,12 +151,13 @@ class _$_MUser extends _MUser {
             other is _$_MUser &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
             (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, email);
+  int get hashCode => Object.hash(runtimeType, id, name, avatar, email);
 
   @JsonKey(ignore: true)
   @override
@@ -162,6 +177,7 @@ abstract class _MUser extends MUser {
   const factory _MUser(
       {required final String id,
       final String? name,
+      final String? avatar,
       final String? email}) = _$_MUser;
   const _MUser._() : super._();
 
@@ -171,6 +187,8 @@ abstract class _MUser extends MUser {
   String get id;
   @override
   String? get name;
+  @override
+  String? get avatar;
   @override
   String? get email;
   @override
