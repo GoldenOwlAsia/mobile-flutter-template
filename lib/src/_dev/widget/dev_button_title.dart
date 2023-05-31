@@ -10,7 +10,7 @@ class DevButtonTitle extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
       onTap: onTap,
     );

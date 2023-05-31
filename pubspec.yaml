@@ -32,6 +32,8 @@ dependencies:
   connectivity_plus: ^3.0.4
   intl: ^0.17.0
   permission_handler: ^10.2.0
+  share_plus: ^7.0.2
+  validators: ^3.0.0
 
   # WIDGET
   modal_bottom_sheet: ^3.0.0-pre
@@ -43,6 +45,7 @@ dependencies:
   cached_network_image: ^3.2.3
   lottie: ^2.3.2
   scrollable_positioned_list: ^0.3.8
+  webview_flutter: ^4.2.1
 
   # STATE MANAGEMENT
   flutter_bloc: ^8.1.2
