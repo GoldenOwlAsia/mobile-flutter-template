@@ -52,16 +52,18 @@ class XBusyTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     const double padding = 12;
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(width: padding * 2),
-        child ??
-            Text(
-              title ?? '',
-              maxLines: 1,
-              textAlign: TextAlign.center,
-            ),
+        Expanded(
+          child: child ??
+              Text(
+                title ?? '',
+                maxLines: 1,
+                textAlign: TextAlign.center,
+              ),
+        ),
         if (busy)
           const XIndicator(radius: padding)
         else

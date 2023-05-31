@@ -12,7 +12,9 @@ Base project made with much: . Contains Bloc, Route, and much more!
 - [Code structure](#code-structure)
 
 ## Prerequisites
-- Flutter: >=3.7.0 <7.0.0
+- Flutter: >=3.7.0 <4.0.0
+- [Firebase staging](https://console.firebase.google.com/u/0/project/flutter-app-ec8dd/settings/iam)
+- [Firebase prod](https://console.firebase.google.com/u/0/project/template-app-prod-3a034/settings/iam)
 
 ## How to Use 
 

@@ -74,7 +74,7 @@ dependencies:
   video_player: ^2.6.1
   emoji_picker_flutter: ^1.5.4
   linkify: ^5.0.0
-  link_preview_generator: ^1.2.0
+  # link_preview_generator: ^1.2.0
   audio_wave: ^0.1.5
   photo_view: ^0.14.0
   audioplayers: ^4.0.1
