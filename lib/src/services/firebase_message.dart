@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import '../../firebase_options.dart';
 import '../utils/utils.dart';
 
 class XFirebaseMessage {
@@ -100,8 +99,7 @@ class XFirebaseMessage {
       RemoteMessage message) async {
     // If you're going to use other Firebase services in the background, such as Firestore,
     // make sure you call `initializeApp` before using other Firebase services.
-    await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
+    await Firebase.initializeApp();
     await XFirebaseMessage().setupNotification();
 
     XFirebaseMessage().showLocalNotification(message);

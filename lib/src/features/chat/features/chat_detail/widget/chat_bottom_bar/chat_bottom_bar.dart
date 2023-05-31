@@ -7,7 +7,6 @@ import '../../../../../../theme/colors.dart';
 import '../../logic/chat_detail/chat_detail_cubit.dart';
 import '../../logic/send_message/send_message_cubit.dart';
 import 'audio_bar.dart';
-import 'input_text_field_controller.dart';
 import 'reply_message_bar.dart';
 
 class ChatBottomBar extends StatefulWidget {
@@ -45,7 +44,7 @@ class _ChatBottomBarState extends State<ChatBottomBar> {
   void initState() {
     super.initState();
 
-    _textController = InputTextFieldController();
+    _textController = TextEditingController();
     _handleSendButtonVisibilityModeChange();
     _inputFocusNode.addListener(() {
       setState(() {

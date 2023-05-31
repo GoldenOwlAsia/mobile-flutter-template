@@ -9,19 +9,16 @@ import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/router/router.dart';
 import 'package:myapp/src/services/user_prefs.dart';
 
-import '../firebase_options.dart';
 import 'features/common/app_bloc/bloc_observer.dart';
 import 'services/firebase_message.dart';
 
-Future initializeApp() async {
+Future initializeApp({String? name, FirebaseOptions? firebaseOptions}) async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
   _locator();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(name: name, options: firebaseOptions);
   await Future.wait([
     AppInfo.initialize(),
     UserPrefs.instance.initialize(),

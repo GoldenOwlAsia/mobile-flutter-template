@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:link_preview_generator/link_preview_generator.dart';
+// import 'package:link_preview_generator/link_preview_generator.dart';
 import 'preview_link.dart';
 
 part 'preview_link_state.dart';
@@ -18,29 +18,29 @@ class PreviewLinkBloc extends Cubit<PreviewLinkState> {
 
   Future<void> getMetadata() async {
     try {
-      String? title;
-      String? image;
-      String? description;
-      bool isSmallImage = false;
+      // String? title;
+      // String? image;
+      // String? description;
+      // bool isSmallImage = false;
 
-      emit(state.copyWith(loading: true));
+      // emit(state.copyWith(loading: true));
 
-      final data = await LinkPreview.scrapeFromURL(url);
-      if (!isClosed) {
-        isSmallImage = await _loadImageAndCheckSize(data.image);
-        title = data.title;
-        image = data.image;
-        description = data.description;
-      }
+      // final data = await LinkPreview.scrapeFromURL(url);
+      // if (!isClosed) {
+      //   isSmallImage = await _loadImageAndCheckSize(data.image);
+      //   title = data.title;
+      //   image = data.image;
+      //   description = data.description;
+      // }
 
-      PreviewLinkState.metaDataLink[url] = PreviewLinkData(
-          isSmallImage: isSmallImage,
-          image: image ?? '',
-          title: title ?? '',
-          description: description ?? '');
-      if (!isClosed) {
-        emit(state.copyWith(loading: false));
-      }
+      // PreviewLinkState.metaDataLink[url] = PreviewLinkData(
+      //     isSmallImage: isSmallImage,
+      //     image: image ?? '',
+      //     title: title ?? '',
+      //     description: description ?? '');
+      // if (!isClosed) {
+      //   emit(state.copyWith(loading: false));
+      // }
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -65,6 +65,7 @@ class PreviewLinkBloc extends Cubit<PreviewLinkState> {
         (image.width <= 512 && image.height <= 512);
   }
 
+  // ignore: unused_element
   Future<bool> _loadImageAndCheckSize(String? imageUrl) async {
     if (!isClosed) {
       final image = await _getImage(imageUrl!);
