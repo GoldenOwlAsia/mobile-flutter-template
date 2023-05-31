@@ -31,7 +31,15 @@ Base project made with much: . Contains Bloc, Route, and much more!
   ```
   flutter packages pub run build_runner build
   ```
-
+4. To run staging project
+  ```
+  flutter run --flavor staging --target lib/main_staging.dart
+  ```
+5. To run production project
+  ```
+  flutter run --flavor production --target lib/main_production.dart
+  ```
+  
 # Code Conventions
 - [analysis_options.yaml](analysis_options.yaml)
 - [About code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)

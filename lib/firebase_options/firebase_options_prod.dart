@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_options_prod.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -47,34 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDIjEsAEffOHi17GOcvEnh26gTAEwgQszQ',
-    appId: '1:526180610767:web:0fcbf9fd3efd3810bffdba',
-    messagingSenderId: '526180610767',
-    projectId: 'flutter-app-ec8dd',
-    authDomain: 'flutter-app-ec8dd.firebaseapp.com',
-    databaseURL: 'https://flutter-app-ec8dd.firebaseio.com',
-    storageBucket: 'flutter-app-ec8dd.appspot.com',
-    measurementId: 'G-1G9Y1N3MSV',
+    apiKey: 'AIzaSyBu2BCio3JP3CIRXfmfs0kuW7wUSboEKVI',
+    appId: '1:535789737885:web:08771737097b8c6480c174',
+    messagingSenderId: '535789737885',
+    projectId: 'template-app-prod-3a034',
+    authDomain: 'template-app-prod-3a034.firebaseapp.com',
+    storageBucket: 'template-app-prod-3a034.appspot.com',
+    measurementId: 'G-XV064MGKGP',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBYoQY15UhzToO0uYGKmppdEcp1o0FGEGA',
-    appId: '1:526180610767:android:ae2be982eaabbf74bffdba',
-    messagingSenderId: '526180610767',
-    projectId: 'flutter-app-ec8dd',
-    databaseURL: 'https://flutter-app-ec8dd.firebaseio.com',
-    storageBucket: 'flutter-app-ec8dd.appspot.com',
+    apiKey: 'AIzaSyD9JLZxQb6qh6Lzs9OJ6GhQxN4FDirna2s',
+    appId: '1:535789737885:android:62e3b967ff87599480c174',
+    messagingSenderId: '535789737885',
+    projectId: 'template-app-prod-3a034',
+    storageBucket: 'template-app-prod-3a034.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDIGT4PW5cPpk3mQJkepavD41b8ArSz9CU',
-    appId: '1:526180610767:ios:8dec4d82831b8df1bffdba',
-    messagingSenderId: '526180610767',
-    projectId: 'flutter-app-ec8dd',
-    databaseURL: 'https://flutter-app-ec8dd.firebaseio.com',
-    storageBucket: 'flutter-app-ec8dd.appspot.com',
-    androidClientId: '526180610767-c20bio3mvfva7nb9k994qno8erif1r4v.apps.googleusercontent.com',
-    iosClientId: '526180610767-lpjjbr21fsedq3u7oi41d0o8h6g6e5h9.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBJcmNBow0YS4BVADc-K3aDLjvZW9DUMR8',
+    appId: '1:535789737885:ios:58d9a69f9dfa23bf80c174',
+    messagingSenderId: '535789737885',
+    projectId: 'template-app-prod-3a034',
+    storageBucket: 'template-app-prod-3a034.appspot.com',
+    iosClientId: '535789737885-n14bfdlqb726ht8lte1he0b9ilpj3c0i.apps.googleusercontent.com',
     iosBundleId: 'com.pingak9.template',
   );
 }
