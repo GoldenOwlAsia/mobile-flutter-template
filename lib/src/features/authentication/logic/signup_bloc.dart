@@ -18,7 +18,7 @@ part 'signup_state.dart';
 class SignupBloc extends Cubit<SignupState> {
   SignupBloc() : super(const SignupState());
 
-  DomainManager get domain => DomainManager.I;
+  DomainManager get domain => DomainManager();
 
   Future signupWithEmail(BuildContext context) async {
     if (state.status.isInProgress) return;

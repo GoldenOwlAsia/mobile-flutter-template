@@ -22,7 +22,7 @@ part 'signin_state.dart';
 class SigninBloc extends Cubit<SigninState> {
   SigninBloc() : super(const SigninState());
 
-  DomainManager get domain => DomainManager.I;
+  DomainManager get domain => DomainManager();
 
   Future loginWithEmail(BuildContext context) async {
     if (state.status.isInProgress) return;

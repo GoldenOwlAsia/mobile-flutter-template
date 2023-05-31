@@ -9,6 +9,7 @@ class MUser with _$MUser {
   const factory MUser({
     required String id,
     String? name,
+    String? avatar,
     String? email,
   }) = _MUser;
 

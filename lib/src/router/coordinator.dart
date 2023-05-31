@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/router/route_name.dart';
 import 'package:myapp/src/router/router.dart';
+
+import '../dialogs/toast_wrapper.dart';
+import '../network/chat/model/room/chat_room.dart';
+import '../network/domain_manager.dart';
+import 'extra/photo_view_extra.dart';
 
 class AppCoordinator {
   static AppRouter get rootRouter => GetIt.I<AppRouter>();
@@ -50,4 +56,37 @@ class AppCoordinator {
 
   static Future<T?> showProfile<T extends Object?>() =>
       context.pushNamed<T>(AppRouteNames.profile.name);
+
+  static Future<T?> showChatRoom<T extends Object?>() {
+    return context.pushNamed<T>(AppRouteNames.chatRooms.name);
+  }
+
+  static Future<T?> showChatWithUser<T extends Object?>(MUser item) async {
+    XToast.showLoading();
+    final result = await DomainManager().chatRoom.chatWithUser(item);
+    XToast.hideLoading();
+    if (result.isSuccess) {
+      final room = result.data;
+      return showChatRoomDetail(room!);
+    } else {
+      XToast.error(result.error);
+    }
+    return null;
+  }
+
+  static Future<T?> showChatRoomDetail<T extends Object?>(MChatRoom room) {
+    if (room.messageNew == null) {
+      // sync data
+      DomainManager().chatRoom.updateChatRoom(room);
+    }
+    return context.pushNamed<T>(AppRouteNames.chatRoomDetail.name, extra: room);
+  }
+
+  static Future<T?> showPhotoView<T extends Object?>(List<String> items,
+      {int initialIndex = 0}) {
+    return context.pushNamed<T>(
+      AppRouteNames.photoView.name,
+      extra: PhotoViewExtra(items, initialIndex: initialIndex),
+    );
+  }
 }
