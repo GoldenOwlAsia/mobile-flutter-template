@@ -12,7 +12,9 @@ Base project made with much: . Contains Bloc, Route, and much more!
 - [Code structure](#code-structure)
 
 ## Prerequisites
-- Flutter: >=3.7.0 <7.0.0
+- Flutter: >=3.7.0 <4.0.0
+- [Firebase staging](https://console.firebase.google.com/u/0/project/flutter-app-ec8dd/settings/iam)
+- [Firebase prod](https://console.firebase.google.com/u/0/project/template-app-prod-3a034/settings/iam)
 
 ## How to Use 
 
@@ -29,7 +31,15 @@ Base project made with much: . Contains Bloc, Route, and much more!
   ```
   flutter packages pub run build_runner build
   ```
-
+4. To run staging project
+  ```
+  flutter run --flavor staging --target lib/main_staging.dart
+  ```
+5. To run production project
+  ```
+  flutter run --flavor production --target lib/main_production.dart
+  ```
+  
 # Code Conventions
 - [analysis_options.yaml](analysis_options.yaml)
 - [About code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)

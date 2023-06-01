@@ -27,7 +27,7 @@ class AccountNoUserCard extends StatelessWidget {
             'Sign in to shop more easily and enjoy many promotions',
             textAlign: TextAlign.left,
             style: TextStyle(
-              color: XColors.textSecondary,
+              color: AppColors.textSecondary,
             ),
           ),
           Container(
@@ -36,7 +36,7 @@ class AccountNoUserCard extends StatelessWidget {
               title: 'Sign in / Sign up',
               padding: const EdgeInsets.symmetric(vertical: 8),
               onPressed: () {
-                XCoordinator.showAuthentication();
+                AppCoordinator.showSignInScreen();
               },
             ),
           )

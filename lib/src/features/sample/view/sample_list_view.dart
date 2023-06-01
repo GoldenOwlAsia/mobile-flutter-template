@@ -1,8 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/src/theme/images.dart';
+import 'package:myapp/src/router/coordinator.dart';
+import '../../../../gen/assets.gen.dart';
 
-@RoutePage()
 class SampleItemListView extends StatelessWidget {
   const SampleItemListView({Key? key}) : super(key: key);
 
@@ -17,12 +16,10 @@ class SampleItemListView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text('SampleItem $index'),
-            leading: const CircleAvatar(
-              foregroundImage: AssetImage(XImagePath.logo),
+            leading: CircleAvatar(
+              foregroundImage: AssetImage(Assets.images.images.logo.path),
             ),
-            onTap: () {
-              context.router.pushNamed('$index');
-            },
+            onTap: () => AppCoordinator.showSampleDetails(id: '$index'),
           );
         },
       ),

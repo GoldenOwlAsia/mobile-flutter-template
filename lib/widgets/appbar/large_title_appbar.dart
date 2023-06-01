@@ -23,7 +23,7 @@ class LargeTitleAppBar extends StatelessWidget {
               textAlign: TextAlign.left,
               style: const TextStyle(
                 fontWeight: FontWeight.w700,
-                color: XColors.text,
+                color: AppColors.text,
                 fontSize: 30,
               ),
             ),

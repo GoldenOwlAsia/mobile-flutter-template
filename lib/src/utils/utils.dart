@@ -39,6 +39,16 @@ class Utils {
     }
     return '$first$separated$last';
   }
+
+  static List<T> toggleList<T>(List<T> list, T value) {
+    final List<T> newList = List.from(list);
+    if (newList.contains(value)) {
+      newList.remove(value);
+    } else {
+      newList.add(value);
+    }
+    return newList;
+  }
 }
 
 bool isNullOrEmpty(Object? object) {

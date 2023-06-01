@@ -1,11 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
+import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/widgets/card/card.dart';
 import 'package:myapp/widgets/card/card_section.dart';
 
-@RoutePage()
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
 
@@ -45,7 +44,7 @@ class ProfileView extends StatelessWidget {
                     await context.read<AccountBloc>().onLogOut(context);
                 if (result == true) {
                   // ignore: use_build_context_synchronously
-                  context.router.pop();
+                  AppCoordinator.pop();
                 }
               },
               child: const XCard(
@@ -62,7 +61,7 @@ class ProfileView extends StatelessWidget {
                     await context.read<AccountBloc>().onRemoveAccount(context);
                 if (result == true) {
                   // ignore: use_build_context_synchronously
-                  context.router.pop();
+                  AppCoordinator.pop();
                 }
               },
               child: const XCard(

@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/src/theme/colors.dart';
 
-class XAlertButton {
+class XAlertButton<T> {
   final String? title;
   final Widget? child;
-  final String? key;
+  final T? key;
   final bool isDestructiveAction;
 
   XAlertButton(
@@ -71,7 +71,7 @@ class XAlertDialog extends StatelessWidget {
             : Text(
                 item.title ?? '',
                 style: TextStyle(
-                  color: item.isDestructiveAction ? Colors.red : XColors.text,
+                  color: item.isDestructiveAction ? Colors.red : AppColors.text,
                 ),
               ),
       );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class XIcons {
+class AppIcons {
   static const IconData search = Icons.search;
 }

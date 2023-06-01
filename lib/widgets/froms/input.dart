@@ -14,6 +14,7 @@ class XInput extends StatefulWidget {
     this.maxLength,
     this.autofocus = false,
     this.inputFormatters,
+    this.onFieldSubmitted,
   }) : super(key: key);
   final String value;
   final TextInputType? keyboardType;
@@ -27,6 +28,7 @@ class XInput extends StatefulWidget {
   final TextAlign textAlign;
   final TextStyle? style;
   final List<TextInputFormatter>? inputFormatters;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   State<XInput> createState() => _XInputState();
@@ -101,7 +103,7 @@ class _XInputState extends State<XInput> {
       );
     }
 
-    return TextField(
+    return TextFormField(
       controller: _controller,
       onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
@@ -112,6 +114,7 @@ class _XInputState extends State<XInput> {
       autofocus: widget.autofocus,
       scrollPhysics: const NeverScrollableScrollPhysics(),
       inputFormatters: widget.inputFormatters,
+      onFieldSubmitted: widget.onFieldSubmitted,
       decoration: (widget.decoration ?? const InputDecoration()).copyWith(
         prefixIcon: widget.textAlign == TextAlign.center
             ? const SizedBox(width: 24)
