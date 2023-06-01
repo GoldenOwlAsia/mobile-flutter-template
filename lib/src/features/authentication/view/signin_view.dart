@@ -94,7 +94,7 @@ class SigninView extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
-              color: XColors.textSecondary,
+              color: AppColors.textSecondary,
               letterSpacing: 0.24,
             ),
           ),
@@ -103,11 +103,11 @@ class SigninView extends StatelessWidget {
             style: const TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
-              color: XColors.link,
+              color: AppColors.link,
               letterSpacing: 0.24,
             ),
             recognizer: TapGestureRecognizer()
-              ..onTap = XCoordinator.showSignUpScreen,
+              ..onTap = AppCoordinator.showSignUpScreen,
           ),
         ],
       ),
@@ -120,7 +120,7 @@ class SigninView extends StatelessWidget {
       child: XTextButton(
         title: 'Forgot password?',
         padding: EdgeInsets.zero,
-        onPressed: XCoordinator.showForgotPasswordScreen,
+        onPressed: AppCoordinator.showForgotPasswordScreen,
       ),
     );
   }

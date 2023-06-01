@@ -11,7 +11,7 @@ class AccountUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: XCoordinator.showProfile,
+      onTap: AppCoordinator.showProfile,
       child: XCard(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
         child: Row(
@@ -22,7 +22,7 @@ class AccountUserCard extends StatelessWidget {
                 children: [
                   const Text(
                     'Hello' ',',
-                    style: TextStyle(color: XColors.textSecondary),
+                    style: TextStyle(color: AppColors.textSecondary),
                   ),
                   Text(
                     user.name ?? '',

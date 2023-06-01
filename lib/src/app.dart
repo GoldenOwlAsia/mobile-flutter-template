@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _appRouter = GetIt.I<XRouter>();
+  final _appRouter = GetIt.I<AppRouter>();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -39,8 +39,8 @@ class _MyAppState extends State<MyApp> {
           onGenerateTitle: (BuildContext context) =>
               S.of(context).common_appTitle,
           builder: BotToastInit(),
-          theme: XTheme.light(),
-          darkTheme: XTheme.dark(),
+          theme: AppTheme.light(),
+          darkTheme: AppTheme.dark(),
           themeMode: state.themeMode,
           routerConfig: _appRouter.router,
         );
