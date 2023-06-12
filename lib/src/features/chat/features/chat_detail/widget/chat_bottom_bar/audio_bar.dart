@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:audio_wave/audio_wave.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/date/date_helper.dart';
+import '../../../../theme/chat_colors.dart';
+import '../../../../theme/chat_theme.dart';
 import '../../logic/send_message/record_audio_state.dart';
 import '../../logic/send_message/send_message_cubit.dart';
 
@@ -19,10 +20,10 @@ class AudioBar extends StatelessWidget {
             BlocSelector<SendMessageCubit, SendMessageState, RecordAudioState>(
           selector: (state) => state.recordAudio,
           builder: (context, state) {
-            final textColor =
-                state.isRecording ? AppColors.white : AppColors.black;
-            final color =
-                state.isRecording ? AppColors.primary : AppColors.lightGrey;
+            final textColor = state.isRecording ? Colors.white : Colors.black;
+            final color = state.isRecording
+                ? ChatTheme.of(context).primaryColor
+                : ChatColors.grey4;
             const radius = Radius.circular(8);
             const size = 56.0;
             return Container(
@@ -110,9 +111,9 @@ class AudioBar extends StatelessWidget {
                         },
                       ),
                       IconButton(
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.restart_alt_outlined,
-                          color: AppColors.primary,
+                          color: ChatTheme.of(context).primaryColor,
                           size: 28,
                         ),
                         onPressed: () {

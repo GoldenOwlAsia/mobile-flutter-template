@@ -5,7 +5,6 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 import '../../../../../widgets/common/indicator.dart';
-import '../../../../theme/colors.dart';
 
 class PhotoViewPage extends StatefulWidget {
   const PhotoViewPage(
@@ -68,11 +67,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
             ),
           ),
           const Positioned(
-              top: 64,
-              left: 16,
-              child: BackButton(
-                color: AppColors.white,
-              )),
+              top: 64, left: 16, child: BackButton(color: Colors.white)),
         ],
       ),
     );

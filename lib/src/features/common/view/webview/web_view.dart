@@ -143,7 +143,7 @@ class _WebviewPageState extends State<WebviewPage> {
     return Container(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
       decoration: BoxDecoration(
-        color: AppColors.lightGrey,
+        color: AppColors.grey4,
         border: Border.all(width: 1.0, color: Colors.white),
         boxShadow: const [
           BoxShadow(

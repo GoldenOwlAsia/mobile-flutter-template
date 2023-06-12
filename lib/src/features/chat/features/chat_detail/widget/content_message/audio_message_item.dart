@@ -1,12 +1,11 @@
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../../../widgets/common/indicator.dart';
-import '../../../../../../network/chat/model/media/chat_media.dart';
-import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/date/date_helper.dart';
-import '../../../../theme/chat_constants.dart';
+import '../../../../network/model/media/chat_media.dart';
+import '../../../../theme/chat_colors.dart';
+import '../../../../theme/chat_theme.dart';
 
 class AudioMessageItem extends StatefulWidget {
   const AudioMessageItem(this.media, {Key? key, required this.isYour})
@@ -77,8 +76,9 @@ class _AudioMessageItemState extends State<AudioMessageItem> {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = ChatConstants.messageBackgroundColor(widget.isYour);
-    final textColor = ChatConstants.messageTextColor(widget.isYour);
+    final backgroundColor =
+        ChatTheme.of(context).messageBackgroundColor(widget.isYour);
+    final textColor = ChatTheme.of(context).messageTextColor(widget.isYour);
     final sliderMax = duration.inSeconds.toDouble();
     final sliderValue = min(sliderMax, position.inSeconds.toDouble());
     return Container(
@@ -96,10 +96,10 @@ class _AudioMessageItemState extends State<AudioMessageItem> {
               min: 0,
               max: sliderMax,
               value: sliderValue,
-              activeColor: widget.isYour ? AppColors.white : AppColors.black,
+              activeColor: widget.isYour ? Colors.white : Colors.black,
               inactiveColor:
-                  widget.isYour ? AppColors.lightGrey : AppColors.grey4,
-              thumbColor: widget.isYour ? AppColors.lightGrey : AppColors.grey4,
+                  widget.isYour ? ChatColors.grey4 : ChatColors.grey4,
+              thumbColor: widget.isYour ? ChatColors.grey4 : ChatColors.grey4,
               onChanged: (value) async {
                 final position = Duration(seconds: value.toInt());
                 await audioPlayer?.seek(position);

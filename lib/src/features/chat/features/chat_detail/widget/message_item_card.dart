@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myapp/src/features/chat/theme/chat_theme.dart';
 import 'package:myapp/widgets/image/image_network.dart';
-import '../../../../../../widgets/image/image_avatar.dart';
+import '../../../theme/chat_colors.dart';
+import '../../../widget/image_avatar.dart';
 import '../../../../../localization/localization_utils.dart';
-import '../../../../../network/chat/model/media/chat_media.dart';
-import '../../../../../network/chat/model/member/chat_member.dart';
-import '../../../../../network/chat/model/message/chat_message.dart';
-import '../../../../../theme/colors.dart';
+import '../../../network/model/media/chat_media.dart';
+import '../../../network/model/member/chat_member.dart';
+import '../../../network/model/message/chat_message.dart';
 import '../../../theme/chat_constants.dart';
 import '../logic/chat_detail/chat_detail_cubit.dart';
 import '../logic/send_message/send_message_cubit.dart';
@@ -80,7 +81,7 @@ class MessageItemCard extends StatelessWidget {
   }
 
   Widget _replyMessage(BuildContext context, MChatMessage message) {
-    const primaryColor = AppColors.primary;
+    final primaryColor = ChatTheme.of(context).primaryColor;
     final messageOwner = context
         .read<SendMessageCubit>()
         .state
@@ -98,7 +99,7 @@ class MessageItemCard extends StatelessWidget {
               bottomLeft: radius,
               bottomRight: Radius.zero,
             ),
-            color: AppColors.lightGrey),
+            color: ChatColors.grey4),
         child: Column(
           crossAxisAlignment:
               isYour ? CrossAxisAlignment.end : CrossAxisAlignment.start,
@@ -106,11 +107,11 @@ class MessageItemCard extends StatelessWidget {
             RichText(
               text: TextSpan(
                 children: [
-                  const WidgetSpan(
+                  WidgetSpan(
                       child: Icon(Icons.reply, color: primaryColor, size: 16)),
                   TextSpan(
                     text: S.of(context).chat_replied_to(messageOwner),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: primaryColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -138,7 +139,7 @@ class MessageItemCard extends StatelessWidget {
             constraints: const BoxConstraints(maxHeight: 100),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: AppColors.grey,
+              color: ChatColors.grey,
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
@@ -155,7 +156,7 @@ class MessageItemCard extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       maxLines: 3,
       style: const TextStyle(
-        color: AppColors.black,
+        color: Colors.black,
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),

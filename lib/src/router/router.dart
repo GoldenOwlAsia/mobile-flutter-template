@@ -17,10 +17,11 @@ import '../features/chat/features/chat_detail/view/chat_detail_notfound.dart';
 import '../features/chat/features/chat_detail/view/chat_detail_view.dart';
 import '../features/chat/features/chat_room/chat_room_view.dart';
 import '../features/chat/features/photoview/photo_view.dart';
+import '../features/chat/network/model/room/chat_room.dart';
 import '../features/common/view/not_found_view.dart';
-import '../network/chat/model/room/chat_room.dart';
+import '../features/friends/view/friends_view.dart';
 import 'coordinator.dart';
-import 'extra/photo_view_extra.dart';
+import '../features/chat/router/extra/photo_view_extra.dart';
 import 'route_name.dart';
 
 class AppRouter {
@@ -106,6 +107,11 @@ class AppRouter {
         ],
       ),
       GoRoute(
+        path: AppRouteNames.friends.path,
+        name: AppRouteNames.friends.name,
+        builder: (_, __) => const FriendsView(),
+      ),
+      GoRoute(
         path: AppRouteNames.chatRooms.path,
         name: AppRouteNames.chatRooms.name,
         builder: (_, __) => const ChatRoomView(),
@@ -127,7 +133,7 @@ class AppRouter {
           }
         },
       ),
-       GoRoute(
+      GoRoute(
         parentNavigatorKey: AppCoordinator.navigatorKey,
         path: AppRouteNames.photoView.path,
         name: AppRouteNames.photoView.name,

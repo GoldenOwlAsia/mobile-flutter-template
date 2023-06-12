@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
 import '../../../../../../../../widgets/common/indicator.dart';
-import '../../../../../../../network/chat/model/media/chat_media.dart';
-import '../../../../../../../network/chat/model/message/chat_message.dart';
+import '../../../../../network/model/media/chat_media.dart';
+import '../../../../../network/model/message/chat_message.dart';
 import '../../../../../theme/chat_constants.dart';
+import '../../../../../theme/chat_theme.dart';
 import '../../../logic/chat_detail/chat_detail_cubit.dart';
 import 'logic/video_player_bloc.dart';
 
@@ -48,7 +49,7 @@ class VideoMessageItem extends StatelessWidget {
                 ClipRRect(
                   borderRadius: ChatConstants.borderRadius,
                   child: Container(
-                    color: ChatConstants.messageBackgroundColor(isYour),
+                    color: ChatTheme.of(context).messageBackgroundColor(isYour),
                     constraints: BoxConstraints(maxHeight: maxHeight),
                     child: VideoPlayer(controller),
                   ),

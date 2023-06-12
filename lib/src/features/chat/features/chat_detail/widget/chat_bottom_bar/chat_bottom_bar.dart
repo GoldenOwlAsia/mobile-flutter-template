@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../../../packages/emoji_picker/emoji_picker.dart';
-import '../../../../../../theme/colors.dart';
 import '../../logic/chat_detail/chat_detail_cubit.dart';
 import '../../logic/send_message/send_message_cubit.dart';
 import 'audio_bar.dart';
@@ -166,7 +164,7 @@ class _ChatBottomBarState extends State<ChatBottomBar> {
           BoxShadow(
             offset: const Offset(2, 2),
             blurRadius: 2,
-            color: AppColors.black.withOpacity(.1),
+            color: Colors.black.withOpacity(.1),
           ),
         ],
       ),
@@ -182,7 +180,7 @@ class _ChatBottomBarState extends State<ChatBottomBar> {
         textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           filled: true,
-          fillColor: AppColors.white,
+          fillColor: Colors.white,
           border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(20)),

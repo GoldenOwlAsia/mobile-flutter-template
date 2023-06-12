@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../../packages/emoji_picker/emoji_picker.dart';
 import '../../../../../../../widgets/button/button.dart';
-import '../../../../../../network/chat/model/message/chat_message.dart';
-import '../../../../../../theme/colors.dart';
+import '../../../../network/model/message/chat_message.dart';
+import '../../../../theme/chat_colors.dart';
 import '../../../../theme/chat_constants.dart';
 import 'select_message.dart';
 
@@ -23,7 +23,7 @@ class SelectReactionDialog extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
-                color: AppColors.background,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Row(
@@ -64,10 +64,10 @@ class SelectReactionDialog extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(width: 1, color: AppColors.black2)),
+              border: Border.all(width: 1, color: ChatColors.black2)),
           child: const Icon(
             Icons.add_rounded,
-            color: AppColors.black2,
+            color: ChatColors.black2,
           )),
     );
   }

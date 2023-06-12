@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:video_player/video_player.dart';
-import '../../../../../../network/chat/model/member/chat_member.dart';
-import '../../../../../../network/chat/model/message/chat_message.dart';
-import '../../../../../../network/chat/model/room/chat_room.dart';
-import '../../../../../../network/domain_manager.dart';
 import '../../../../../../network/model/common/handle.dart';
 import '../../../../../account/logic/account_bloc.dart';
+import '../../../../network/chat_domain.dart';
+import '../../../../network/model/member/chat_member.dart';
+import '../../../../network/model/message/chat_message.dart';
+import '../../../../network/model/room/chat_room.dart';
 
 part 'chat_detail_state.dart';
 
@@ -105,7 +105,7 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
 
   Future startListenNewMessages(String? lastDocId) async {
     try {
-      final Stream<List<MChatMessage>> messageStream = await DomainManager()
+      final Stream<List<MChatMessage>> messageStream = await ChatDomainManager()
           .chatMessage
           .getNewMessageFromIdStream(state.roomId, lastDocId);
 
@@ -116,7 +116,7 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
           if (messageNew.isRead == false &&
               messageNew.idUserFrom != state.currentId) {
             // this is a new message from other. mark seen now
-            await DomainManager()
+            await ChatDomainManager()
                 .chatMessage
                 .saveMessage(messageNew.copyWith(isRead: true));
           } else if (lastMessageJustSend != messageNew.id &&
@@ -149,7 +149,7 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
   void startListenHistoryMessages(String lastDocId) async {
     try {
       emit(state.copyWith(statusLoadNextPage: MStatus.loading));
-      final Stream<List<MChatMessage>> historyStream = await DomainManager()
+      final Stream<List<MChatMessage>> historyStream = await ChatDomainManager()
           .chatMessage
           .getHistoryFromIdStream(
               state.roomId, lastDocId, state.currentCountHistoryMessage);
@@ -169,7 +169,9 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
   void _decreaseUnseen() async {
     final MChatRoom room = state.room;
     if (room.id.isNotEmpty) {
-      await DomainManager().chatRoom.readAllMessage(state.currentId, room.id);
+      await ChatDomainManager()
+          .chatRoom
+          .readAllMessage(state.currentId, room.id);
     }
   }
 

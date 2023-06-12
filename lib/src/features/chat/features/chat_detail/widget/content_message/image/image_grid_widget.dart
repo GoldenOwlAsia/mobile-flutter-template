@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp/widgets/image/image_network.dart';
-import '../../../../../../../network/chat/model/media/chat_media.dart';
-import '../../../../../../../router/coordinator.dart';
+import '../../../../../network/model/media/chat_media.dart';
+import '../../../../../router/chat_coordinator.dart';
 import '../../../../../theme/chat_constants.dart';
 
 class ImageGirdWidget extends StatelessWidget {
@@ -16,33 +16,33 @@ class ImageGirdWidget extends StatelessWidget {
     Widget child;
     switch (media.length) {
       case 1:
-        return _singleImage(media.first);
+        return _singleImage(context, media.first);
       case 2:
         child = SizedBox(
           height: 200,
-          child: _buildImage2(),
+          child: _buildImage2(context),
         );
         break;
       case 3:
         child = SizedBox(
           height: 300,
-          child: _buildImage3(),
+          child: _buildImage3(context),
         );
         break;
       case 4:
         child = SizedBox(
           height: 350,
-          child: _buildImage4(),
+          child: _buildImage4(context),
         );
         break;
       case 5:
         child = SizedBox(
           height: 300,
-          child: _buildImage5(),
+          child: _buildImage5(context),
         );
         break;
       default:
-        child = gridViewImage();
+        child = gridViewImage(context);
         break;
     }
     return ClipRRect(
@@ -51,7 +51,7 @@ class ImageGirdWidget extends StatelessWidget {
     );
   }
 
-  Widget _singleImage(MChatMedia photo) {
+  Widget _singleImage(BuildContext context, MChatMedia photo) {
     double? width;
     double? height;
     if (photo.noHasSize == false) {
@@ -60,7 +60,8 @@ class ImageGirdWidget extends StatelessWidget {
     }
     return GestureDetector(
       onTap: () {
-        AppCoordinator.showPhotoView(media.map((e) => e.url).toList());
+        ChatCoordinator.showPhotoView(
+            context, media.map((e) => e.url).toList());
       },
       child: Container(
         decoration: BoxDecoration(
@@ -80,10 +81,10 @@ class ImageGirdWidget extends StatelessWidget {
     );
   }
 
-  Widget _image(int index) {
+  Widget _image(BuildContext context, int index) {
     return GestureDetector(
       onTap: () {
-        AppCoordinator.showPhotoView(media.map((e) => e.url).toList(),
+        ChatCoordinator.showPhotoView(context, media.map((e) => e.url).toList(),
             initialIndex: index);
       },
       child: XImageNetwork(media[index].url, fit: BoxFit.cover),
@@ -98,33 +99,33 @@ class ImageGirdWidget extends StatelessWidget {
     return Container(width: 1, color: Colors.transparent);
   }
 
-  Widget _buildImage2() {
+  Widget _buildImage2(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
-          child: _image(0),
+          child: _image(context, 0),
         ),
         dividerVertical(),
-        Expanded(child: _image(1))
+        Expanded(child: _image(context, 1))
       ],
     );
   }
 
-  Widget _buildImage3() {
+  Widget _buildImage3(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Expanded(flex: 3, child: _image(0)),
+        Expanded(flex: 3, child: _image(context, 0)),
         dividerVertical(),
         Expanded(
           flex: 2,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(child: _image(1)),
+              Expanded(child: _image(context, 1)),
               dividerHorizontal(),
-              Expanded(child: _image(2))
+              Expanded(child: _image(context, 2))
             ],
           ),
         )
@@ -132,7 +133,7 @@ class ImageGirdWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildImage4() {
+  Widget _buildImage4(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -140,9 +141,9 @@ class ImageGirdWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(child: _image(0)),
+              Expanded(child: _image(context, 0)),
               dividerHorizontal(),
-              Expanded(child: _image(1)),
+              Expanded(child: _image(context, 1)),
             ],
           ),
         ),
@@ -151,9 +152,9 @@ class ImageGirdWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(child: _image(2)),
+              Expanded(child: _image(context, 2)),
               dividerHorizontal(),
-              Expanded(child: _image(3))
+              Expanded(child: _image(context, 3))
             ],
           ),
         )
@@ -161,7 +162,7 @@ class ImageGirdWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildImage5() {
+  Widget _buildImage5(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -169,9 +170,9 @@ class ImageGirdWidget extends StatelessWidget {
           flex: 3,
           child: Row(
             children: [
-              Expanded(child: _image(0)),
+              Expanded(child: _image(context, 0)),
               dividerVertical(),
-              Expanded(child: _image(1)),
+              Expanded(child: _image(context, 1)),
             ],
           ),
         ),
@@ -181,11 +182,11 @@ class ImageGirdWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(child: _image(2)),
+              Expanded(child: _image(context, 2)),
               dividerVertical(),
-              Expanded(child: _image(3)),
+              Expanded(child: _image(context, 3)),
               dividerVertical(),
-              Expanded(child: _image(4))
+              Expanded(child: _image(context, 4))
             ],
           ),
         )
@@ -193,7 +194,7 @@ class ImageGirdWidget extends StatelessWidget {
     );
   }
 
-  Widget gridViewImage() {
+  Widget gridViewImage(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: GridView.builder(
@@ -206,7 +207,7 @@ class ImageGirdWidget extends StatelessWidget {
           mainAxisSpacing: 1.0,
           childAspectRatio: 0.8,
         ),
-        itemBuilder: (_, i) => _image(i),
+        itemBuilder: (_, i) => _image(context, i),
         itemCount: media.length,
       ),
     );

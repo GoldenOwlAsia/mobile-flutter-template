@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myapp/widgets/image/image_network.dart';
 
 import '../../../../../../localization/localization_utils.dart';
-import '../../../../../../network/chat/model/media/chat_media.dart';
-import '../../../../../../network/chat/model/message/chat_message.dart';
-import '../../../../../../theme/colors.dart';
+import '../../../../network/model/media/chat_media.dart';
+import '../../../../network/model/message/chat_message.dart';
+import '../../../../theme/chat_colors.dart';
+import '../../../../theme/chat_theme.dart';
 
 class ReplyMessageBar extends StatelessWidget {
   const ReplyMessageBar({
@@ -20,7 +21,7 @@ class ReplyMessageBar extends StatelessWidget {
   final VoidCallback onClickReply;
   @override
   Widget build(BuildContext context) {
-    const primaryColor = AppColors.primary;
+    final primaryColor = ChatTheme.of(context).primaryColor;
     final replyMessageIcon = _replyMessageIcon(context);
     return InkWell(
       onTap: onClickReply,
@@ -30,11 +31,11 @@ class ReplyMessageBar extends StatelessWidget {
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-          color: AppColors.lightGrey,
+          color: ChatColors.grey4,
         ),
         child: IntrinsicHeight(
           child: Row(children: [
-            const Icon(Icons.reply, color: primaryColor),
+            Icon(Icons.reply, color: primaryColor),
             const SizedBox(width: 12),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 4),
@@ -52,7 +53,7 @@ class ReplyMessageBar extends StatelessWidget {
               children: [
                 Text(
                   S.of(context).chat_reply_to(messageOwner ?? ''),
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: primaryColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
@@ -66,7 +67,7 @@ class ReplyMessageBar extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: const TextStyle(
-                      color: AppColors.black,
+                      color: Colors.black,
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
@@ -95,7 +96,7 @@ class ReplyMessageBar extends StatelessWidget {
           height: 40,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            color: AppColors.grey,
+            color: Colors.grey,
           ),
           child: child);
     }

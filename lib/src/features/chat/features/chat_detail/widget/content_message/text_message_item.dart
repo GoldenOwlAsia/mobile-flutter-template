@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import '../../../../../../network/chat/model/message/chat_message.dart';
-import '../../../../theme/chat_constants.dart';
+import '../../../../network/model/message/chat_message.dart';
+import '../../../../theme/chat_theme.dart';
 import '../container_message.dart';
 import 'preview_link/linkify_widget.dart';
 import 'preview_link/preview_link_widget.dart';
@@ -21,7 +21,7 @@ class TextMessageItem extends StatelessWidget {
           textAlign: TextAlign.left,
           style: TextStyle(
             fontSize: 80,
-            color: ChatConstants.messageTextColor(isYour),
+            color: ChatTheme.of(context).messageTextColor(isYour),
           ),
         ),
       );
@@ -31,7 +31,7 @@ class TextMessageItem extends StatelessWidget {
       haveReply: message.messageReply?.id.isNotEmpty == true,
       child: LinkifyWidget(
         text: message.content,
-        color: ChatConstants.messageTextColor(isYour),
+        color: ChatTheme.of(context).messageTextColor(isYour),
         options: const LinkifyOptions(humanize: false),
         onOpen: (link) => launchUrlString(link.url),
       ),

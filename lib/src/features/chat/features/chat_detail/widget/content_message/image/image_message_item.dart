@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../../../network/chat/model/media/chat_media.dart';
+import '../../../../../network/model/media/chat_media.dart';
 import 'image_grid_widget.dart';
 
 class ImageMessageItem extends StatelessWidget {

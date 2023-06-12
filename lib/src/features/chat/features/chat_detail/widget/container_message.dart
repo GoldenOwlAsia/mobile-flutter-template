@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../theme/chat_constants.dart';
+import '../../../theme/chat_theme.dart';
 
 class ContainerMessage extends StatelessWidget {
   const ContainerMessage(this.isYour,
@@ -20,7 +19,7 @@ class ContainerMessage extends StatelessWidget {
           bottomLeft: radius,
           bottomRight: radius,
         ),
-        color: ChatConstants.messageBackgroundColor(isYour),
+        color: ChatTheme.of(context).messageBackgroundColor(isYour),
       ),
       padding: const EdgeInsets.all(10),
       child: child,

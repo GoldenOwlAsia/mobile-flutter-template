@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myapp/widgets/state/state_empty_widget.dart';
+import 'package:myapp/widgets/state/state_error_widget.dart';
+import 'package:myapp/widgets/state/state_loading_widget.dart';
 import '../../cubit/chat_room_cubit.dart';
 import '../../widget/chat_room_card.dart';
 
@@ -17,7 +20,7 @@ class ChatRoomView extends StatelessWidget {
               title: const Text('Chat'),
             ),
             body: CustomScrollView(
-              slivers: [buildListChat(context, state)],
+              slivers: [_builder(context, state)],
             ),
           );
         },
@@ -25,29 +28,46 @@ class ChatRoomView extends StatelessWidget {
     );
   }
 
-  Widget buildListChat(BuildContext context, state) {
+  Widget _builder(BuildContext context, ChatRoomState state) {
+    if (state.data.isLoading) {
+      return const SliverFillRemaining(
+        child: XStateLoadingWidget(),
+      );
+    }
+    if (state.data.isError) {
+      return const SliverFillRemaining(
+        child: XStateErrorWidget(),
+      );
+    }
+    final data = state.listChatAll;
+    if (data.isEmpty) {
+      return const SliverFillRemaining(
+        child: XStateEmptyWidget(),
+      );
+    }
+    return buildListChat(context, state);
+  }
+
+  Widget buildListChat(BuildContext context, ChatRoomState state) {
     final listChat = state.listChatAll;
-    return SliverPadding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      sliver: SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            final item = listChat[index];
-            final isOnline = state.isOnlineOfRom(item);
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ChatRoomCard(
-                  chatRoom: item,
-                  isOnline: isOnline,
-                  currentId: state.currentId,
-                ),
-                const Divider(height: 1, indent: 86, endIndent: 20),
-              ],
-            );
-          },
-          childCount: listChat.length,
-        ),
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          final item = listChat[index];
+          final isOnline = state.isOnlineOfRom(item);
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ChatRoomCard(
+                chatRoom: item,
+                isOnline: isOnline,
+                currentId: state.currentId,
+              ),
+              const Divider(height: 1, indent: 86, endIndent: 20),
+            ],
+          );
+        },
+        childCount: listChat.length,
       ),
     );
   }

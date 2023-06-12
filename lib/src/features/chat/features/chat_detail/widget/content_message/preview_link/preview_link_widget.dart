@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/widgets/image/image_network.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import '../../../../../theme/chat_constants.dart';
+import '../../../../../theme/chat_theme.dart';
 import '../../container_message.dart';
 import 'preview_link.dart';
 import 'preview_link_bloc.dart';
@@ -11,12 +11,12 @@ class MetadataLinkWidget extends StatelessWidget {
   const MetadataLinkWidget(this.link, {required this.isYour, super.key});
   final String link;
   final bool isYour;
-  TextStyle get titleStyle => TextStyle(
-      color: ChatConstants.messageTextColor(isYour),
+  TextStyle titleStyle(BuildContext context) => TextStyle(
+      color: ChatTheme.of(context).messageTextColor(isYour),
       fontSize: 14,
       fontWeight: FontWeight.bold);
-  TextStyle get bodyStyle => TextStyle(
-      color: ChatConstants.messageTextColor(isYour),
+  TextStyle bodyStyle(BuildContext context) => TextStyle(
+      color: ChatTheme.of(context).messageTextColor(isYour),
       fontSize: 12,
       fontWeight: FontWeight.normal);
   @override
@@ -34,8 +34,8 @@ class MetadataLinkWidget extends StatelessWidget {
               onTap: () => launchUrlString(link),
               child: Center(
                   child: state.link?.isSmallImage == true
-                      ? _buildPreviewLinkWithIcon(state.link!)
-                      : _buildPreviewLinkWithImage(state.link!)),
+                      ? _buildPreviewLinkWithIcon(context, state.link!)
+                      : _buildPreviewLinkWithImage(context, state.link!)),
             ),
           );
         },
@@ -43,7 +43,8 @@ class MetadataLinkWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildPreviewLinkWithImage(PreviewLinkData metaDataLink) {
+  Widget _buildPreviewLinkWithImage(
+      BuildContext context, PreviewLinkData metaDataLink) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -57,7 +58,7 @@ class MetadataLinkWidget extends StatelessWidget {
             metaDataLink.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: titleStyle,
+            style: titleStyle(context),
           ),
         if (metaDataLink.description.isNotEmpty) ...[
           const SizedBox(height: 4),
@@ -65,14 +66,15 @@ class MetadataLinkWidget extends StatelessWidget {
             metaDataLink.description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: bodyStyle,
+            style: bodyStyle(context),
           ),
         ],
       ],
     );
   }
 
-  Widget _buildPreviewLinkWithIcon(PreviewLinkData metaDataLink) {
+  Widget _buildPreviewLinkWithIcon(
+      BuildContext context, PreviewLinkData metaDataLink) {
     return BlocBuilder<PreviewLinkBloc, PreviewLinkState>(
       builder: (_, state) {
         return Row(
@@ -86,7 +88,7 @@ class MetadataLinkWidget extends StatelessWidget {
                       metaDataLink.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: titleStyle,
+                      style: titleStyle(context),
                     ),
                   if (metaDataLink.description.isNotEmpty) ...[
                     const SizedBox(height: 4),
@@ -94,7 +96,7 @@ class MetadataLinkWidget extends StatelessWidget {
                       metaDataLink.description,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: bodyStyle,
+                      style: bodyStyle(context),
                     ),
                   ]
                 ],
