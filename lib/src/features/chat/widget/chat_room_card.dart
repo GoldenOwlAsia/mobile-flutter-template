@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../widgets/image/image_avatar.dart';
-import '../../../network/chat/model/member/chat_member.dart';
-import '../../../network/chat/model/message/chat_message.dart';
-import '../../../network/chat/model/room/chat_room.dart';
-import '../../../router/coordinator.dart';
-import '../../../theme/colors.dart';
+import '../theme/chat_colors.dart';
+import 'image_avatar.dart';
 import '../../../utils/date/date_helper.dart';
+import '../network/model/member/chat_member.dart';
+import '../network/model/message/chat_message.dart';
+import '../network/model/room/chat_room.dart';
+import '../router/chat_coordinator.dart';
 import 'count_unseen_badge.dart';
 
 class ChatRoomCard extends StatelessWidget {
@@ -25,7 +25,7 @@ class ChatRoomCard extends StatelessWidget {
     MChatMessage? messageNew = chatRoom.messageNew;
 
     return InkWell(
-      onTap: () => AppCoordinator.showChatRoomDetail(chatRoom),
+      onTap: () => ChatCoordinator.showChatRoomDetail(context, chatRoom),
       child: ListTile(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -56,7 +56,7 @@ class ChatRoomCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(width: 1, color: Colors.white),
-                      color: AppColors.primary,
+                      color: Colors.white,
                     ),
                   ),
                 )
@@ -74,7 +74,7 @@ class ChatRoomCard extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           member.name,
           style: const TextStyle(
-            color: AppColors.black2,
+            color: ChatColors.black2,
             fontWeight: FontWeight.w700,
             fontSize: 16,
           ),
@@ -82,7 +82,7 @@ class ChatRoomCard extends StatelessWidget {
         trailing: Text(
           DateHelper.getFormatChatTime(chatRoom.updatedAt.toDate()),
           style: const TextStyle(
-              color: AppColors.black2,
+              color: ChatColors.black2,
               fontSize: 12,
               fontWeight: FontWeight.w400),
         ));
@@ -91,7 +91,7 @@ class ChatRoomCard extends StatelessWidget {
   Widget _buildSubTitle(MChatMember member) {
     final unRead = chatRoom.unReadOf(currentId);
     final style = TextStyle(
-      color: AppColors.black2,
+      color: ChatColors.black2,
       fontWeight: unRead ? FontWeight.w700 : FontWeight.w400,
       fontSize: 14,
     );

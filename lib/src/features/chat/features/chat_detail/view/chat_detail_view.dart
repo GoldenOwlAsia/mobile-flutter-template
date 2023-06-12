@@ -4,8 +4,10 @@ import 'package:myapp/packages/dismiss_keyboard/dismiss_keyboard.dart';
 import 'package:myapp/src/network/model/common/handle.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import '../../../../../../widgets/common/indicator.dart';
-import '../../../../../network/chat/model/message/chat_message.dart';
-import '../../../../../network/chat/model/room/chat_room.dart';
+import '../../../network/model/message/chat_message.dart';
+import '../../../network/model/room/chat_room.dart';
+import '../../../theme/chat_theme.dart';
+import '../../../theme/inherited_chat_theme.dart';
 import '../logic/chat_detail/chat_detail_cubit.dart';
 import '../logic/send_message/send_message_cubit.dart';
 import '../widget/chat_bottom_bar/chat_bottom_bar.dart';
@@ -18,43 +20,48 @@ class ChatDetailView extends StatelessWidget {
   final MChatRoom room;
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => ChatDetailCubit(room)),
-        BlocProvider(create: (_) => SendMessageCubit(room)),
-      ],
-      child: BlocBuilder<ChatDetailCubit, ChatDetailState>(
-        buildWhen: (p, c) => p.room != c.room,
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(state.currentMember().name),
-              centerTitle: true,
-            ),
-            floatingActionButton: BlocBuilder<ChatDetailCubit, ChatDetailState>(
-                buildWhen: (p, c) => p.showScrollDown != c.showScrollDown,
-                builder: (context, state) {
-                  if (state.showScrollDown == false) {
-                    return const SizedBox.shrink();
-                  }
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 128.0),
-                    child: ScrollToBottomButton(
-                      onPressed: () =>
-                          context.read<ChatDetailCubit>().scrollToBottom(),
-                    ),
-                  );
-                }),
-            body: DismissKeyBoard(
-              child: Column(
-                children: [
-                  Expanded(child: _builder()),
-                  const ChatBottomBar(),
-                ],
+    return InheritedChatTheme(
+      theme: const DefaultChatTheme(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => ChatDetailCubit(room)),
+          BlocProvider(create: (_) => SendMessageCubit(room)),
+        ],
+        child: BlocBuilder<ChatDetailCubit, ChatDetailState>(
+          buildWhen: (p, c) => p.room != c.room,
+          builder: (context, state) {
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(state.currentMember().name),
+                centerTitle: true,
               ),
-            ),
-          );
-        },
+              floatingActionButton:
+                  BlocBuilder<ChatDetailCubit, ChatDetailState>(
+                      buildWhen: (p, c) => p.showScrollDown != c.showScrollDown,
+                      builder: (context, state) {
+                        if (state.showScrollDown == false) {
+                          return const SizedBox.shrink();
+                        }
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 128.0),
+                          child: ScrollToBottomButton(
+                            onPressed: () => context
+                                .read<ChatDetailCubit>()
+                                .scrollToBottom(),
+                          ),
+                        );
+                      }),
+              body: DismissKeyBoard(
+                child: Column(
+                  children: [
+                    Expanded(child: _builder()),
+                    const ChatBottomBar(),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

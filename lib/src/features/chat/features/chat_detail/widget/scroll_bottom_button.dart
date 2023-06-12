@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../theme/colors.dart';
 import '../../../../../theme/decorations.dart';
+import '../../../theme/chat_colors.dart';
 
 class ScrollToBottomButton extends StatelessWidget {
   const ScrollToBottomButton({super.key, required this.onPressed});
@@ -15,12 +15,12 @@ class ScrollToBottomButton extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-            color: AppColors.lightGrey,
+            color: ChatColors.grey4,
             shape: BoxShape.circle,
             boxShadow: AppDecorations.shadow),
-        child: const Icon(
+        child: Icon(
           Icons.arrow_downward_outlined,
-          color: AppColors.primary,
+          color: Theme.of(context).primaryColor,
         ),
       ),
     );

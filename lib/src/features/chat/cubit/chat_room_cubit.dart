@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
-import '../../../network/chat/model/online/chat_online.dart';
-import '../../../network/chat/model/room/chat_room.dart';
-import '../../../network/domain_manager.dart';
 import '../../../network/model/common/error_code.dart';
 import '../../../network/model/common/handle.dart';
 import '../../account/logic/account_bloc.dart';
 import '../../common/logic/stream_bloc.dart';
+import '../network/chat_domain.dart';
+import '../network/model/online/chat_online.dart';
+import '../network/model/room/chat_room.dart';
 
 part 'chat_room_state.dart';
 
@@ -19,7 +19,7 @@ class ChatRoomCubit extends StreamCubit<ChatRoomState, List<MChatRoom>> {
 
   @override
   Stream<List<MChatRoom>> get getStream =>
-      DomainManager().chatRoom.getChatRoomsStream();
+      ChatDomainManager().chatRoom.getChatRoomsStream();
 
   @override
   Future<void> close() {
@@ -48,7 +48,7 @@ class ChatRoomCubit extends StreamCubit<ChatRoomState, List<MChatRoom>> {
           [];
       ids = ids.where((e) => e.isNotEmpty).toList();
       final Stream<List<MChatOnline>> onlineStream =
-          DomainManager().chatOnline.snapshotMultipleOnlineStream(ids);
+          ChatDomainManager().chatOnline.snapshotMultipleOnlineStream(ids);
       await onlineSubscription?.cancel();
       onlineSubscription = onlineStream.listen((event) async {
         emit(state.copyWith(onlineData: MHandle.completed(event)));

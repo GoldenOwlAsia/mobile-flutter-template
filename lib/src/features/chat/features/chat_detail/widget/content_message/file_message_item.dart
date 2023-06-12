@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../../network/chat/model/media/chat_media.dart';
-import '../../../../theme/chat_constants.dart';
+import '../../../../network/model/media/chat_media.dart';
+import '../../../../theme/chat_theme.dart';
 import '../container_message.dart';
 
 class FilesMessageItem extends StatelessWidget {
@@ -16,7 +16,7 @@ class FilesMessageItem extends StatelessWidget {
         children: [
           Icon(
             Icons.file_present_rounded,
-            color: ChatConstants.messageTextColor(isYour),
+            color: ChatTheme.of(context).messageTextColor(isYour),
           ),
           const SizedBox(width: 6),
           Expanded(
@@ -26,7 +26,7 @@ class FilesMessageItem extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 14,
-                color: ChatConstants.messageTextColor(isYour),
+                color: ChatTheme.of(context).messageTextColor(isYour),
               ),
             ),
           ),

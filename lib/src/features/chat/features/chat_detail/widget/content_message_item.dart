@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../network/chat/model/message/chat_message.dart';
+import '../../../network/model/message/chat_message.dart';
 import 'content_message/audio_message_item.dart';
 import 'content_message/file_message_item.dart';
 import 'content_message/image/image_message_item.dart';

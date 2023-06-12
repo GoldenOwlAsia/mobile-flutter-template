@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
+import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/common/error_code.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
@@ -35,7 +36,9 @@ class SignRepositoryImpl extends SignRepository {
         email: user.email,
         name: user.fullName,
       );
-      return MResult.success(newUser);
+      final userResult = await DomainManager().user.getOrAddUser(newUser);
+
+      return MResult.success(userResult.data ?? newUser);
     } catch (e) {
       return MResult.exception(e);
     }

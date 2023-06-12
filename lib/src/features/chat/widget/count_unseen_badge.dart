@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/colors.dart';
-
 class CountUnseenBadge extends StatelessWidget {
-  const CountUnseenBadge(
-      {super.key,
-      required this.count,
-      this.backgroundColor = AppColors.primary});
+  const CountUnseenBadge({super.key, required this.count});
   final int count;
-  final Color backgroundColor;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: backgroundColor),
+      decoration:
+          const BoxDecoration(shape: BoxShape.circle, color: Colors.red),
       child: Text(count > 99 ? '99+' : count.toString(),
           textAlign: TextAlign.center,
           style: const TextStyle(
