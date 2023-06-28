@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MChatRoomHelper {
   static String idChatRoomOf(String a, String b) {
-    final text = a.compareTo(b) > 1 ? '$a+$b' : '$b+$a';
+    final text = a.compareTo(b) == 1 ? '$a+$b' : '$b+$a';
     return 'chatroom+$text';
   }
 
