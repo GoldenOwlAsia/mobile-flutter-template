@@ -30,7 +30,6 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
     return videoControllers[key]!;
   }
 
-  String lastMessageJustSend = '';
   StreamSubscription? newMessageSubscription;
   StreamSubscription? historyMessageSubscription;
 
@@ -116,14 +115,7 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
           if (messageNew.isRead == false &&
               messageNew.idUserFrom != state.currentId) {
             // this is a new message from other. mark seen now
-            await ChatDomainManager()
-                .chatMessage
-                .saveMessage(messageNew.copyWith(isRead: true));
-          } else if (lastMessageJustSend != messageNew.id &&
-              messageNew.idUserFrom == state.currentId) {
-            // this is a new message that user just send
-            lastMessageJustSend = messageNew.id;
-            // handle new message here. if have
+            await ChatDomainManager().chatMessage.updateReadMessage(messageNew);
           }
         }
         // Else: Beside have new message, this list also update When user reaction or edit.

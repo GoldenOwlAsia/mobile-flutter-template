@@ -121,7 +121,11 @@ class XHttp {
           throw FlutterError(S.text.error_unknown);
         }
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
+      _log.w('> API CATCH Error< $e');
+      _log.w('> API CATCH Body< $bodyResponse');
+      rethrow;
+    } catch (e) {
       _log.w('> API CATCH Error< $e');
       _log.w('> API CATCH Body< $bodyResponse');
       rethrow;

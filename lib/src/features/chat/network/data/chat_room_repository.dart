@@ -9,5 +9,13 @@ abstract class ChatRoomRepository {
   Future<MResult<MChatRoom>> readAllMessage(String userId, String roomId);
   Future<MResult<MChatRoom>> getChatRoomDetail(String id);
   Future<MResult<MChatRoom>> chatWithUser(MUser otherUser);
-  Future<MResult> updateLastMessageForRoom(MChatMessage message);
+
+  Future<MResult<MChatRoom>> getChatRoomById(String chatRoomId);
+
+  // update chat room
+  Future<MResult> updateLastMessage(MChatMessage message);
+  Future<MResult> updateLastTimeUpdate(String? id);
+  Future<MResult<MChatRoom>> readLastMessage(
+      MChatRoom chatRoom, String currentId);
+  Future<MResult> deleteChatroom(String id);
 }

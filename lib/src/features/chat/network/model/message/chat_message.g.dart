@@ -14,7 +14,6 @@ _$_MChatMessage _$$_MChatMessageFromJson(Map<String, dynamic> json) =>
           ? null
           : MChatMessage.fromJson(
               json['message_reply'] as Map<String, dynamic>),
-      shareLocation: json['share_location'] as bool? ?? false,
       idUserFrom: json['id_user_from'] as String? ?? '',
       idChatRoom: json['id_chat_room'] as String? ?? '',
       medias: (json['medias'] as List<dynamic>?)
@@ -37,7 +36,6 @@ Map<String, dynamic> _$$_MChatMessageToJson(_$_MChatMessage instance) =>
       'id': instance.id,
       'content': instance.content,
       'message_reply': instance.messageReply?.toJson(),
-      'share_location': instance.shareLocation,
       'id_user_from': instance.idUserFrom,
       'id_chat_room': instance.idChatRoom,
       'medias': instance.medias.map((e) => e.toJson()).toList(),

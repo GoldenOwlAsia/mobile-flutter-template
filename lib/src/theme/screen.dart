@@ -1,4 +1,3 @@
-import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -6,8 +5,8 @@ import 'package:flutter/services.dart';
 class AppScreens {
   const AppScreens._();
 
-  /// Get [MediaQueryData] from [ui.window]
-  static MediaQueryData get mediaQuery => MediaQueryData.fromWindow(ui.window);
+  /// Get [MediaQueryData]
+  static late MediaQueryData mediaQuery;
 
   /// The number of device pixels for each logical pixel.
   static double get scale => mediaQuery.devicePixelRatio;
@@ -24,10 +23,10 @@ class AppScreens {
   /// The vertical pixels of this size.
   static int get heightPixels => (height * scale).toInt();
 
-  /// Top offset in the [ui.window], usually is the notch size.
+  /// Top offset, usually is the notch size.
   static double get topSafeHeight => mediaQuery.padding.top;
 
-  /// Bottom offset in the [ui.window], usually is the action bar/navigation bar size.
+  /// Bottom offset, usually is the action bar/navigation bar size.
   static double get bottomSafeHeight => mediaQuery.padding.bottom;
 
   /// Height exclude top and bottom safe height.

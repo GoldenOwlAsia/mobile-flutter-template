@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/src/network/model/common/error_code.dart';
 
 import '../../../../network/model/common/result.dart';
 
@@ -50,7 +51,19 @@ class BaseCollectionReference<T> {
     }
   }
 
-  Future<MResult<String>> remove(String id) async {
+  Future<MResult> update(String? id, Map<Object, Object?> data) async {
+    if (id == null) {
+      return MResult.error(MErrorCode.unknown);
+    }
+    try {
+      await ref.doc(id).update(data).timeout(const Duration(seconds: 5));
+      return MResult.success('');
+    } catch (e) {
+      return MResult.exception(e);
+    }
+  }
+
+  Future<MResult<String>> delete(String id) async {
     try {
       await ref.doc(id).delete().timeout(const Duration(seconds: 5));
       return MResult.success(id);
@@ -59,7 +72,7 @@ class BaseCollectionReference<T> {
     }
   }
 
-  Future<MResult<List<T>>> query() async {
+  Future<MResult<List<T>>> getAll() async {
     try {
       final QuerySnapshot<T> query =
           await ref.get().timeout(const Duration(seconds: 5));

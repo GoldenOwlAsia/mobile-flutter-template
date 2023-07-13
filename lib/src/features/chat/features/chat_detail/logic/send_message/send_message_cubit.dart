@@ -9,13 +9,13 @@ import 'package:photo_manager/photo_manager.dart';
 import '../../../../../../../packages/media_picker/media_picker.dart';
 import '../../../../../../dialogs/toast_wrapper.dart';
 import '../../../../../../localization/localization_utils.dart';
-import '../../../../network/blob/data/file_type_helper.dart';
-import '../../../../network/blob/model/blob_model.dart';
+import '../../../../../../network/blob/model/upload_model.dart';
 import '../../../../../../network/model/common/handle.dart';
 import '../../../../../../network/model/common/result.dart';
 import '../../../../../../services/permission_service.dart';
 import '../../../../../account/logic/account_bloc.dart';
 import '../../../../network/chat_domain.dart';
+import '../../../../network/chat_upload_service.dart';
 import '../../../../network/model/media/chat_media.dart';
 import '../../../../network/model/message/chat_message.dart';
 import '../../../../network/model/room/chat_room.dart';
@@ -55,14 +55,14 @@ class SendMessageCubit extends Cubit<SendMessageState> {
       return;
     }
     emit(state.copyWith(isUploadFiles: true));
-    final List<MResult<MBlob>> uploadResults =
-        await ChatDomainManager().blob.uploadAssetFiles(assets);
+    final List<MResult<MUpload>> uploadResults =
+        await ChatUploadService.uploadAssetFiles(assets);
 
     emit(state.copyWith(isUploadFiles: false));
 
     final List<MChatMedia> medias = [];
     for (int i = 0; i < uploadResults.length; i++) {
-      final MBlob? blob = uploadResults[i].data;
+      final MUpload? blob = uploadResults[i].data;
       if (uploadResults[i].isSuccess && blob != null) {
         medias.add(MChatMedia.fromAsset(assets[i], blob.url));
       }
@@ -97,18 +97,9 @@ class SendMessageCubit extends Cubit<SendMessageState> {
 
   Future sendMessage(MChatMessage message) async {
     emit(state.copySendNewMessage());
-    // saveMessage: send new message from user chat
     final messageResult =
-        await ChatDomainManager().chatMessage.saveMessage(message);
-
+        await ChatDomainManager().chatMessage.sendMessage(message);
     emit(state.copyWith(sendMessage: MHandle.result(messageResult)));
-    if (messageResult.isSuccess) {
-      await _updateLastMessageForRoom(messageResult.data!);
-    }
-  }
-
-  Future _updateLastMessageForRoom(MChatMessage message) {
-    return ChatDomainManager().chatRoom.updateLastMessageForRoom(message);
   }
 
   Future onClickCamera(BuildContext context) async {
@@ -137,7 +128,7 @@ class SendMessageCubit extends Cubit<SendMessageState> {
       switch (action.action) {
         case SelectMessageAction.reaction:
           message = message.addReaction(action.content, state.currentId);
-          return ChatDomainManager().chatMessage.saveMessage(message);
+          return ChatDomainManager().chatMessage.updateReactionList(message);
         case SelectMessageAction.reply:
           emit(state.copyWith(messageReply: message));
           break;
@@ -178,9 +169,8 @@ class SendMessageCubit extends Cubit<SendMessageState> {
       return;
     }
     emit(state.copyWith(isUploadFiles: true));
-    final MResult<MBlob> uploadResult = await ChatDomainManager()
-        .blob
-        .uploadFile(path, FileTypeHelper.mediaTypeAudio);
+    final MResult<MUpload> uploadResult =
+        await ChatUploadService.uploadFile(path, AssetType.audio);
     emit(state.copyWith(isUploadFiles: false));
 
     if (uploadResult.isError) {

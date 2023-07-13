@@ -58,10 +58,10 @@ class SocialListButton extends StatelessWidget {
   }
 
   Padding _buildLineDivider(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 8),
       child: Row(
-        children: const [
+        children: [
           Expanded(child: Divider()),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),

@@ -33,7 +33,7 @@ class ChatRoomRepositoryImpl extends ChatRoomRepository {
   }
 
   @override
-  Future<MResult> updateLastMessageForRoom(MChatMessage message) async {
+  Future<MResult> updateLastMessage(MChatMessage message) async {
     final roomResult = await roomRef.get(message.idChatRoom);
     if (roomResult.isError) {
       // Get room fail
@@ -48,9 +48,11 @@ class ChatRoomRepositoryImpl extends ChatRoomRepository {
         members.add(e.copyWith(countNewMessage: e.countNewMessage + 1));
       }
     }
-    room = room.copyWith(
-        messageNew: message, updatedAt: Timestamp.now(), members: members);
-    return roomRef.set(room);
+    return roomRef.update(message.idChatRoom, {
+      'messageNew': message.toJson(),
+      'time': Timestamp.now(),
+      'members': members,
+    });
   }
 
   @override
@@ -68,5 +70,43 @@ class ChatRoomRepositoryImpl extends ChatRoomRepository {
     }
     final room = roomResult.data!.copyWithDecreaseUnseen(userId, 0);
     return roomRef.set(room);
+  }
+
+  @override
+  Future<MResult> deleteChatroom(String id) {
+    return roomRef.delete(id);
+  }
+
+  @override
+  Future<MResult<MChatRoom>> getChatRoomById(String chatRoomId) {
+    return roomRef.get(chatRoomId);
+  }
+
+  @override
+  Future<MResult<MChatRoom>> readLastMessage(
+      MChatRoom chatRoom, String currentId) async {
+    final room = chatRoom.copyWith();
+    final List<MChatMember> members = List.from(room.members);
+    for (int i = 0; i < members.length; i++) {
+      if (members[i].id == currentId) {
+        members[i] = members[i].copyWith(countNewMessage: 0);
+      }
+    }
+    var lastMessage =
+        currentId != room.messageNew?.idUserFrom ? room.messageNew : null;
+    if (lastMessage != null) {
+      lastMessage = lastMessage.copyWith(isRead: true);
+    }
+    roomRef.update(room.id, {
+      'members': members.map((e) => e.toJson()).toList(),
+      if (lastMessage != null) 'messageNew': lastMessage.toJson()
+    });
+
+    return MResult.success(room);
+  }
+
+  @override
+  Future<MResult> updateLastTimeUpdate(String? id) {
+    return roomRef.update(id, {'time': Timestamp.now()});
   }
 }

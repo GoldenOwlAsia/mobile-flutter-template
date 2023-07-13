@@ -102,9 +102,6 @@ class ReplyMessageBar extends StatelessWidget {
     }
 
     if (message.medias.isEmpty) {
-      if (message.shareLocation) {
-        return containerOf(const Icon(Icons.location_on_outlined));
-      }
       return null;
     }
     final MChatMedia media = message.medias.first;

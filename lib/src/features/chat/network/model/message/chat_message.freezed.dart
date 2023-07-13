@@ -23,7 +23,6 @@ mixin _$MChatMessage {
   String get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   MChatMessage? get messageReply => throw _privateConstructorUsedError;
-  bool get shareLocation => throw _privateConstructorUsedError;
   String get idUserFrom => throw _privateConstructorUsedError;
   String get idChatRoom => throw _privateConstructorUsedError;
   List<MChatMedia> get medias => throw _privateConstructorUsedError;
@@ -50,7 +49,6 @@ abstract class $MChatMessageCopyWith<$Res> {
       {String id,
       String content,
       MChatMessage? messageReply,
-      bool shareLocation,
       String idUserFrom,
       String idChatRoom,
       List<MChatMedia> medias,
@@ -78,7 +76,6 @@ class _$MChatMessageCopyWithImpl<$Res, $Val extends MChatMessage>
     Object? id = null,
     Object? content = null,
     Object? messageReply = freezed,
-    Object? shareLocation = null,
     Object? idUserFrom = null,
     Object? idChatRoom = null,
     Object? medias = null,
@@ -100,10 +97,6 @@ class _$MChatMessageCopyWithImpl<$Res, $Val extends MChatMessage>
           ? _value.messageReply
           : messageReply // ignore: cast_nullable_to_non_nullable
               as MChatMessage?,
-      shareLocation: null == shareLocation
-          ? _value.shareLocation
-          : shareLocation // ignore: cast_nullable_to_non_nullable
-              as bool,
       idUserFrom: null == idUserFrom
           ? _value.idUserFrom
           : idUserFrom // ignore: cast_nullable_to_non_nullable
@@ -160,7 +153,6 @@ abstract class _$$_MChatMessageCopyWith<$Res>
       {String id,
       String content,
       MChatMessage? messageReply,
-      bool shareLocation,
       String idUserFrom,
       String idChatRoom,
       List<MChatMedia> medias,
@@ -187,7 +179,6 @@ class __$$_MChatMessageCopyWithImpl<$Res>
     Object? id = null,
     Object? content = null,
     Object? messageReply = freezed,
-    Object? shareLocation = null,
     Object? idUserFrom = null,
     Object? idChatRoom = null,
     Object? medias = null,
@@ -209,10 +200,6 @@ class __$$_MChatMessageCopyWithImpl<$Res>
           ? _value.messageReply
           : messageReply // ignore: cast_nullable_to_non_nullable
               as MChatMessage?,
-      shareLocation: null == shareLocation
-          ? _value.shareLocation
-          : shareLocation // ignore: cast_nullable_to_non_nullable
-              as bool,
       idUserFrom: null == idUserFrom
           ? _value.idUserFrom
           : idUserFrom // ignore: cast_nullable_to_non_nullable
@@ -252,7 +239,6 @@ class _$_MChatMessage with DiagnosticableTreeMixin implements _MChatMessage {
       {required this.id,
       this.content = '',
       this.messageReply,
-      this.shareLocation = false,
       this.idUserFrom = '',
       this.idChatRoom = '',
       final List<MChatMedia> medias = const [],
@@ -273,9 +259,6 @@ class _$_MChatMessage with DiagnosticableTreeMixin implements _MChatMessage {
   final String content;
   @override
   final MChatMessage? messageReply;
-  @override
-  @JsonKey()
-  final bool shareLocation;
   @override
   @JsonKey()
   final String idUserFrom;
@@ -312,7 +295,7 @@ class _$_MChatMessage with DiagnosticableTreeMixin implements _MChatMessage {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MChatMessage(id: $id, content: $content, messageReply: $messageReply, shareLocation: $shareLocation, idUserFrom: $idUserFrom, idChatRoom: $idChatRoom, medias: $medias, reactions: $reactions, isRead: $isRead, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'MChatMessage(id: $id, content: $content, messageReply: $messageReply, idUserFrom: $idUserFrom, idChatRoom: $idChatRoom, medias: $medias, reactions: $reactions, isRead: $isRead, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -323,7 +306,6 @@ class _$_MChatMessage with DiagnosticableTreeMixin implements _MChatMessage {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('messageReply', messageReply))
-      ..add(DiagnosticsProperty('shareLocation', shareLocation))
       ..add(DiagnosticsProperty('idUserFrom', idUserFrom))
       ..add(DiagnosticsProperty('idChatRoom', idChatRoom))
       ..add(DiagnosticsProperty('medias', medias))
@@ -342,8 +324,6 @@ class _$_MChatMessage with DiagnosticableTreeMixin implements _MChatMessage {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.messageReply, messageReply) ||
                 other.messageReply == messageReply) &&
-            (identical(other.shareLocation, shareLocation) ||
-                other.shareLocation == shareLocation) &&
             (identical(other.idUserFrom, idUserFrom) ||
                 other.idUserFrom == idUserFrom) &&
             (identical(other.idChatRoom, idChatRoom) ||
@@ -365,7 +345,6 @@ class _$_MChatMessage with DiagnosticableTreeMixin implements _MChatMessage {
       id,
       content,
       messageReply,
-      shareLocation,
       idUserFrom,
       idChatRoom,
       const DeepCollectionEquality().hash(_medias),
@@ -393,7 +372,6 @@ abstract class _MChatMessage implements MChatMessage {
           {required final String id,
           final String content,
           final MChatMessage? messageReply,
-          final bool shareLocation,
           final String idUserFrom,
           final String idChatRoom,
           final List<MChatMedia> medias,
@@ -412,8 +390,6 @@ abstract class _MChatMessage implements MChatMessage {
   String get content;
   @override
   MChatMessage? get messageReply;
-  @override
-  bool get shareLocation;
   @override
   String get idUserFrom;
   @override

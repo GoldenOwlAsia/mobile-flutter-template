@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/features/settings/logic/setting_bloc.dart';
 import 'package:myapp/src/router/router.dart';
+import 'package:myapp/src/theme/screen.dart';
 import 'package:myapp/src/theme/themes.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 
@@ -20,6 +21,7 @@ class _MyAppState extends State<MyApp> {
   final _appRouter = GetIt.I<AppRouter>();
   @override
   Widget build(BuildContext context) {
+    AppScreens.mediaQuery = MediaQuery.of(context);
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => SettingBloc()),
