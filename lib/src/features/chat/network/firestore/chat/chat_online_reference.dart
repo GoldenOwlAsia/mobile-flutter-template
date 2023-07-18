@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 import '../../../../../network/model/common/result.dart';
 import '../../../../account/logic/account_bloc.dart';
 import '../../model/online/chat_online.dart';
-import '../base_collection.dart';
+import '../../../../../network/firebase/base_collection.dart';
 import '../collection_keys.dart';
 
 class ChatOnlineReference extends BaseCollectionReference<MChatOnline> {

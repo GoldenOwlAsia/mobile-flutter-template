@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:myapp/src/features/chat/network/firestore/base_collection.dart';
+import 'package:myapp/src/network/firebase/base_collection.dart';
 import '../../model/common/result.dart';
 import '../../model/user/user.dart';
 

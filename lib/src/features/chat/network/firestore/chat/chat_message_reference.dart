@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../model/message/chat_message.dart';
-import '../base_collection.dart';
+import '../../../../../network/firebase/base_collection.dart';
 import '../collection_keys.dart';
 
 class ChatMessageReference extends BaseCollectionReference<MChatMessage> {

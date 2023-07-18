@@ -49,6 +49,26 @@ class Utils {
     }
     return newList;
   }
+
+  static List<List<T>> splice<T>(List<T> list, int number) {
+    if (list.isEmpty) {
+      return [];
+    }
+    final spliceNumber = number < 1 ? 1 : number;
+    if (spliceNumber > list.length) {
+      return [list];
+    }
+    final int count = list.length ~/ spliceNumber;
+    final List<List<T>> result = [];
+    for (int i = 0; i < count; i++) {
+      final index = i * spliceNumber;
+      result.add(list.sublist(index, index + spliceNumber));
+    }
+    if (list.length % spliceNumber != 0) {
+      result.add(list.sublist(count * spliceNumber));
+    }
+    return result;
+  }
 }
 
 bool isNullOrEmpty(Object? object) {

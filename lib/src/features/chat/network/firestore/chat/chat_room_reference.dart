@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
-import 'package:myapp/src/features/chat/network/firestore/base_collection.dart';
+import 'package:myapp/src/network/firebase/base_collection.dart';
 import 'package:myapp/src/features/chat/network/firestore/collection_keys.dart';
 import '../../../../account/logic/account_bloc.dart';
 import '../../model/member/chat_member.dart';

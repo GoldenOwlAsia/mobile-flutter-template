@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/src/network/model/common/error_code.dart';
 
-import '../../../../network/model/common/result.dart';
+import '../../utils/utils.dart';
+import '../model/common/result.dart';
 
 class BaseCollectionReference<T> {
   BaseCollectionReference(this.ref,
       {required this.setObjectId, required this.getObjectId});
+
   void log(dynamic value) => debugPrint('$value');
   final CollectionReference<T> ref;
   final T Function(T, String id) setObjectId;
@@ -78,6 +80,35 @@ class BaseCollectionReference<T> {
           await ref.get().timeout(const Duration(seconds: 5));
       final docs = query.docs.map((e) => e.data()).toList();
 
+      return MResult.success(docs);
+    } catch (e) {
+      return MResult.exception(e);
+    }
+  }
+
+  Stream<QuerySnapshot<T>> snapshotsAll() {
+    return ref.snapshots();
+  }
+
+  // WhereIn limit 10 item
+  // https://cloud.google.com/firestore/docs/query-data/queries
+  Future<MResult<List<T>>> getDataByIds(List<String> rooms) async {
+    if (rooms.isEmpty) {
+      return MResult.success([]);
+    }
+    try {
+      List<Query<T>> queries = [];
+      final spliceRooms = Utils.splice(rooms, 10);
+      for (final e in spliceRooms) {
+        Query<T> queryChat = ref.where("id", whereIn: e);
+        queries.add(queryChat);
+      }
+      final List<QuerySnapshot<T>> results =
+          await Future.wait([for (final e in queries) e.get()]);
+      final List<T> docs = [];
+      for (final e in results) {
+        docs.addAll(e.docs.map((e) => e.data()).toList());
+      }
       return MResult.success(docs);
     } catch (e) {
       return MResult.exception(e);
