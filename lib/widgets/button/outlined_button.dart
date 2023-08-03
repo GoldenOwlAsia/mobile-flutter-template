@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'button.dart';
+import '../common/indicator.dart';
 
 class XOutlinedButton extends StatelessWidget {
   final bool busy;
@@ -15,8 +15,8 @@ class XOutlinedButton extends StatelessWidget {
     this.child,
     this.busy = false,
     this.enabled = true,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,7 @@ class XOutlinedButton extends StatelessWidget {
               }
             }
           : null,
-      child: XBusyTitle(
-        busy: busy,
-        title: title,
-        child: child,
-      ),
+      child: busy ? const XIndicator(radius: 12) : (child ?? Text(title ?? '')),
     );
   }
 }

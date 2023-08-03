@@ -5,7 +5,7 @@ import '../../src/network/model/common/handle.dart';
 import '../../src/network/model/common/pagination/pagination.dart';
 import '../common/indicator.dart';
 
-class XStatePaginationWidget extends StatelessWidget {
+class XStatePaginationWidget extends StatefulWidget {
   const XStatePaginationWidget({
     required this.page,
     required this.loadMore,
@@ -17,20 +17,30 @@ class XStatePaginationWidget extends StatelessWidget {
   final bool autoLoad;
 
   @override
+  State<XStatePaginationWidget> createState() => _XStatePaginationWidgetState();
+}
+
+class _XStatePaginationWidgetState extends State<XStatePaginationWidget> {
+  Timer? timer;
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (page.canNext && autoLoad) {
-      Timer(
-        const Duration(milliseconds: 50),
-        loadMore,
-      );
+    if (widget.page.canNext && widget.autoLoad) {
+      timer?.cancel();
+      timer = Timer(const Duration(milliseconds: 50), widget.loadMore);
     }
-    if (page.status == MStatus.loading) {
+    if (widget.page.status == MStatus.loading) {
       return const XIndicator();
-    } else if (page.hasMore == false) {
+    } else if (widget.page.hasMore == false) {
       return const Text('');
-    } else if (page.status == MStatus.failure) {
+    } else if (widget.page.status == MStatus.failure) {
       return InkWell(
-        onTap: loadMore,
+        onTap: widget.loadMore,
         child: const Text(
           'Something went wrong',
           textAlign: TextAlign.center,

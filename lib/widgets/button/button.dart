@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/widgets/common/indicator.dart';
 
+import 'model/button_size.dart';
+
 /// A button that shows a busy indicator in place of title
 class XButton extends StatelessWidget {
   final bool busy;
@@ -8,6 +10,7 @@ class XButton extends StatelessWidget {
   final String? title;
   final Widget? child;
   final VoidCallback? onPressed;
+  final ButtonSize? size;
 
   const XButton({
     this.onPressed,
@@ -15,60 +18,35 @@ class XButton extends StatelessWidget {
     this.child,
     this.busy = false,
     this.enabled = true,
-    Key? key,
-  }) : super(key: key);
+    this.size,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: enabled
-          ? () {
-              if (onPressed != null || busy == false) {
-                onPressed?.call();
-              }
-            }
-          : null,
-      child: XBusyTitle(
-        busy: busy,
-        title: title,
-        child: child,
-      ),
-    );
-  }
-}
-
-class XBusyTitle extends StatelessWidget {
-  final bool busy;
-  final String? title;
-  final Widget? child;
-  const XBusyTitle({
-    this.title,
-    this.child,
-    this.busy = false,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    const double padding = 12;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const SizedBox(width: padding * 2),
-        Expanded(
-          child: child ??
-              Text(
-                title ?? '',
-                maxLines: 1,
-                textAlign: TextAlign.center,
-              ),
+    final size = this.size ?? ButtonSize.medium();
+    return ElevatedButtonTheme(
+      data: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(size.minWidth, size.height),
+          padding: EdgeInsets.symmetric(horizontal: size.padding),
         ),
-        if (busy)
-          const XIndicator(radius: padding)
-        else
-          const SizedBox(width: padding * 2),
-      ],
+      ),
+      child: ElevatedButton(
+        onPressed: enabled
+            ? () {
+                if (onPressed != null || busy == false) {
+                  onPressed?.call();
+                }
+              }
+            : null,
+        child: DefaultTextStyle(
+          style: size.style,
+          child: busy
+              ? const XIndicator(radius: 12)
+              : (child ?? Text(title ?? '')),
+        ),
+      ),
     );
   }
 }

@@ -2,9 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:myapp/widgets/button/text_button.dart';
 
 import '../../../widgets/button/button.dart';
+import '../../../widgets/button/model/button_size.dart';
 import '../../../widgets/button/outlined_button.dart';
 import '../widget/dev_screen_layout.dart';
 import '../widget/dev_title.dart';
+
+enum EButtonSize { small, medium, large }
+
+extension EButtonSizeExt on EButtonSize {
+  ButtonSize toSize() {
+    switch (this) {
+      case EButtonSize.small:
+        return ButtonSize.small();
+      case EButtonSize.medium:
+        return ButtonSize.medium();
+      case EButtonSize.large:
+        return ButtonSize.large();
+    }
+  }
+}
 
 class DevButtonScreen extends StatefulWidget {
   const DevButtonScreen({Key? key}) : super(key: key);
@@ -16,6 +32,7 @@ class DevButtonScreen extends StatefulWidget {
 class _DevButtonScreenState extends State<DevButtonScreen> {
   bool busy = false;
   bool enabled = true;
+  EButtonSize size = EButtonSize.medium;
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +58,36 @@ class _DevButtonScreenState extends State<DevButtonScreen> {
                 enabled = !enabled;
               });
             }),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Row(
+            children: [
+              const Text('Button Size'),
+              const Spacer(),
+              DropdownButton<EButtonSize>(
+                  items: EButtonSize.values
+                      .map((e) => DropdownMenuItem<EButtonSize>(
+                            value: e,
+                            child: Text(e.name),
+                          ))
+                      .toList(),
+                  value: size,
+                  onChanged: (e) {
+                    setState(() {
+                      size = e ?? size;
+                    });
+                  }),
+            ],
+          ),
+        ),
         _title('1. Primary Button'),
-        XButton(
-          title: 'Button',
-          busy: busy,
-          enabled: enabled,
+        Center(
+          child: XButton(
+            title: 'Button',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
         ),
         spacer,
         XOutlinedButton(
@@ -55,8 +97,9 @@ class _DevButtonScreenState extends State<DevButtonScreen> {
         ),
         spacer,
         XTextButton(
-          title: 'Text Action Button',
-          onPressed: enabled ? () {} : null,
+          title: 'Text Button',
+          busy: busy,
+          enabled: enabled,
         ),
       ],
     );

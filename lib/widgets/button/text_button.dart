@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
 
+import '../common/indicator.dart';
+
 class XTextButton extends StatelessWidget {
   const XTextButton({
-    required this.title,
     this.onPressed,
-    this.padding,
+    this.title,
+    this.child,
+    this.busy = false,
+    this.enabled = true,
     super.key,
   });
 
-  final String title;
+  final bool busy;
+  final bool enabled;
+  final String? title;
+  final Widget? child;
   final VoidCallback? onPressed;
-  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: TextButton.styleFrom(
-        padding: padding,
-      ),
-      onPressed: onPressed,
-      child: Text(title),
+      onPressed: enabled
+          ? () {
+              if (onPressed != null || busy == false) {
+                onPressed?.call();
+              }
+            }
+          : null,
+      child: busy ? const XIndicator(radius: 12) : (child ?? Text(title ?? '')),
     );
   }
 }

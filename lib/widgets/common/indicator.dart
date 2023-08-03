@@ -10,20 +10,16 @@ class XIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (kIsWeb || Platform.isAndroid) {
-      return Center(
-        child: SizedBox(
-          width: radius * 2,
-          height: radius * 2,
-          child: CircularProgressIndicator(
-              backgroundColor: Theme.of(context).colorScheme.onBackground,
-              strokeWidth: 1.5),
-        ),
+      return SizedBox(
+        width: radius * 2,
+        height: radius * 2,
+        child: CircularProgressIndicator(
+            backgroundColor: Theme.of(context).colorScheme.onBackground,
+            strokeWidth: 1.5),
       );
     }
-    return Center(
-      child: CupertinoActivityIndicator(
-        radius: radius,
-      ),
+    return CupertinoActivityIndicator(
+      radius: radius,
     );
   }
 }
