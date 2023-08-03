@@ -34,7 +34,6 @@ class AccountNoUserCard extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: XTextButton(
               title: 'Sign in / Sign up',
-              padding: const EdgeInsets.symmetric(vertical: 8),
               onPressed: () {
                 AppCoordinator.showSignInScreen();
               },

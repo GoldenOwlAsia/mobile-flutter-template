@@ -41,9 +41,6 @@ class AppCoordinator {
   static Future<T?> showSampleScreen<T extends Object?>() =>
       context.pushNamed<T>(AppRouteNames.sample.name);
 
-  static Future<T?> showFriendsScreen<T extends Object?>() =>
-      context.pushNamed<T>(AppRouteNames.friends.name);
-
   static Future<T?> showSampleDetails<T extends Object?>(
           {required String id}) =>
       context.pushNamed<T>(

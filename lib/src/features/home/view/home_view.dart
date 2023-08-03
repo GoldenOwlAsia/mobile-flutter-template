@@ -4,8 +4,6 @@ import 'package:myapp/src/dialogs/toast_wrapper.dart';
 import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/widgets/button/text_button.dart';
 
-import '../../chat/router/chat_coordinator.dart';
-
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -29,14 +27,6 @@ class HomeView extends StatelessWidget {
             const XTextButton(
               title: 'Show sample view',
               onPressed: AppCoordinator.showSampleScreen,
-            ),
-            const XTextButton(
-              title: 'Show friends view',
-              onPressed: AppCoordinator.showFriendsScreen,
-            ),
-            XTextButton(
-              title: 'Show chat view',
-              onPressed: () => ChatCoordinator.showChatRoom(context),
             ),
           ],
         ),

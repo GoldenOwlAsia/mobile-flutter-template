@@ -11,11 +11,8 @@ enum AppRouteNames {
     paramName: 'id',
   ),
   profile(path: '/profile'),
-  friends(path: '/friends'),
   settings(path: '/settings'),
-  photoView(path: '/photoView'),
-  chatRooms(path: '/chatRooms'),
-  chatRoomDetail(path: '/chatRoomDetail');
+  photoView(path: '/photoView');
 
   const AppRouteNames({
     required this.path,

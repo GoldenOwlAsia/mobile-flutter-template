@@ -119,7 +119,6 @@ class SigninView extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: XTextButton(
         title: 'Forgot password?',
-        padding: EdgeInsets.zero,
         onPressed: AppCoordinator.showForgotPasswordScreen,
       ),
     );

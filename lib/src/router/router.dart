@@ -12,16 +12,10 @@ import 'package:myapp/src/features/dashboard/view/dashboard_view.dart';
 import 'package:myapp/src/features/home/view/home_view.dart';
 import 'package:myapp/src/features/sample/view/sample_detail_view.dart';
 import 'package:myapp/src/features/sample/view/sample_list_view.dart';
-
-import '../features/chat/features/chat_detail/view/chat_detail_notfound.dart';
-import '../features/chat/features/chat_detail/view/chat_detail_view.dart';
-import '../features/chat/features/chat_room/chat_room_view.dart';
-import '../features/chat/features/photoview/photo_view.dart';
-import '../features/chat/network/model/room/chat_room.dart';
 import '../features/common/view/not_found_view.dart';
-import '../features/friends/view/friends_view.dart';
+import '../features/photo_view/photo_view_page.dart';
 import 'coordinator.dart';
-import '../features/chat/router/extra/photo_view_extra.dart';
+import 'extras/photo_view_extra.dart';
 import 'route_name.dart';
 
 class AppRouter {
@@ -105,33 +99,6 @@ class AppRouter {
             builder: (_, __) => const DevScreen(),
           ),
         ],
-      ),
-      GoRoute(
-        path: AppRouteNames.friends.path,
-        name: AppRouteNames.friends.name,
-        builder: (_, __) => const FriendsView(),
-      ),
-      GoRoute(
-        path: AppRouteNames.chatRooms.path,
-        name: AppRouteNames.chatRooms.name,
-        builder: (_, __) => const ChatRoomView(),
-      ),
-      GoRoute(
-        parentNavigatorKey: AppCoordinator.navigatorKey,
-        path: AppRouteNames.chatRoomDetail.path,
-        name: AppRouteNames.chatRoomDetail.name,
-        builder: (context, state) {
-          final extra = state.extra;
-          MChatRoom? room;
-          if (extra != null && extra is MChatRoom) {
-            room = extra;
-          }
-          if (room == null) {
-            return const ChatDetailNotFound();
-          } else {
-            return ChatDetailView(room: room);
-          }
-        },
       ),
       GoRoute(
         parentNavigatorKey: AppCoordinator.navigatorKey,
