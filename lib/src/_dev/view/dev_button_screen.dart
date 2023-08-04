@@ -4,6 +4,7 @@ import 'package:myapp/widgets/button/text_button.dart';
 import '../../../widgets/button/button.dart';
 import '../../../widgets/button/model/button_size.dart';
 import '../../../widgets/button/outlined_button.dart';
+import '../../../widgets/button/secondary_button.dart';
 import '../widget/dev_screen_layout.dart';
 import '../widget/dev_title.dart';
 
@@ -81,26 +82,66 @@ class _DevButtonScreenState extends State<DevButtonScreen> {
           ),
         ),
         _title('1. Primary Button'),
-        Center(
-          child: XButton(
+        ...[
+          XButton(
             title: 'Button',
             busy: busy,
             enabled: enabled,
             size: size.toSize(),
           ),
-        ),
-        spacer,
-        XOutlinedButton(
-          title: 'OutlinedButton',
-          busy: busy,
-          enabled: enabled,
-        ),
-        spacer,
-        XTextButton(
-          title: 'Text Button',
-          busy: busy,
-          enabled: enabled,
-        ),
+          XButton(
+            title: 'Button',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XSecondaryButton(
+            title: 'SecondaryButton',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XSecondaryButton(
+            title: 'SecondaryButton',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XOutlinedButton(
+            title: 'OutlinedButton',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XOutlinedButton(
+            title: 'OutlinedButton',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XTextButton(
+            title: 'Text Button',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XTextButton(
+            title: 'Text Button',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+        ]
+            .map((e) => Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [e, spacer],
+                ))
+            .toList()
       ],
     );
   }

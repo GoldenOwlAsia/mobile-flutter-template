@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../common/indicator.dart';
+import 'package:myapp/widgets/common/indicator.dart';
+
 import 'model/button_size.dart';
 
-class XOutlinedButton extends StatelessWidget {
-  const XOutlinedButton({
+class XSecondaryButton extends StatelessWidget {
+  const XSecondaryButton({
     this.onPressed,
     this.title,
     this.child,
@@ -15,8 +16,8 @@ class XOutlinedButton extends StatelessWidget {
   });
 
   final bool busy;
-  final Widget? icon;
   final bool enabled;
+  final Widget? icon;
   final String? title;
   final Widget? child;
   final VoidCallback? onPressed;
@@ -32,23 +33,23 @@ class XOutlinedButton extends StatelessWidget {
             }
           }
         : null;
-    final foregroundColor = Theme.of(context).primaryColor;
+    final foregroundColor = Theme.of(context).colorScheme.onPrimary;
     final indicator =
         XIndicator(radius: size.iconSize / 2, color: foregroundColor);
-
     return SizedBox(
       height: size.height,
-      child: OutlinedButtonTheme(
-        data: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
+      child: ElevatedButtonTheme(
+        data: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
             foregroundColor: foregroundColor,
-            textStyle: size.style.copyWith(),
+            textStyle: size.style,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
             minimumSize: Size(size.minWidth, size.height),
             padding: EdgeInsets.symmetric(horizontal: size.padding),
           ),
         ),
         child: icon != null
-            ? OutlinedButton.icon(
+            ? ElevatedButton.icon(
                 onPressed: onPressed,
                 label: child ?? Text(title ?? ''),
                 icon: busy
@@ -58,7 +59,7 @@ class XOutlinedButton extends StatelessWidget {
                             size: size.iconSize, color: foregroundColor),
                         child: icon!),
               )
-            : OutlinedButton(
+            : ElevatedButton(
                 onPressed: onPressed,
                 child: busy ? indicator : (child ?? Text(title ?? '')),
               ),

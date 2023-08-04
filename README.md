@@ -45,6 +45,10 @@ Base project made with much: . Contains Bloc, Route, and much more!
 - [About code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
   In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
+- Must know
+  - Model name start with `M`: MUser, MProduct, MGroup...
+  - Common widget start with `X`: XButton, XText, XAppbar... - There widget under folder  `lib/widgets/`
+  - App Constants class or service start with `Add`: AppStyles, AppColor, AppRouter, AppCoordinator,.. and UserPrefs
 
 
 # Dependencies
@@ -146,5 +150,5 @@ Checkout [wiki](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki) f
 
 | Account | Profile | Login |
 |------------|-------------|-------------|
-|  <img src="./resources/images/account.png" width=300> |  <img src="./resources/images/profile.png" width=300> | <img src="./resources/images/login.png" width=300> |
+|  <img src="./resources/images/account.png" width=250> |  <img src="./resources/images/profile.png" width=250> | <img src="./resources/images/login.png" width=250> |
 
