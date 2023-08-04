@@ -31,6 +31,6 @@ enum AppRouteNames {
     return path.replaceFirst('/', '');
   }
 
-  String get buildPathParam => '$path:${paramName!}';
-  String get buildSubPathParam => '$subPath:${paramName!}';
+  String get buildPathParam => '$path:$paramName';
+  String get buildSubPathParam => '$subPath:$paramName';
 }
