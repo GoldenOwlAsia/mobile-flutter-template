@@ -82,33 +82,66 @@ class _DevButtonScreenState extends State<DevButtonScreen> {
           ),
         ),
         _title('1. Primary Button'),
-        XButton(
-          title: 'Button',
-          busy: busy,
-          enabled: enabled,
-          size: size.toSize(),
-        ),
-        spacer,
-        XSecondaryButton(
-          title: 'SecondaryButton',
-          busy: busy,
-          enabled: enabled,
-          size: size.toSize(),
-        ),
-        spacer,
-        XOutlinedButton(
-          title: 'OutlinedButton',
-          busy: busy,
-          enabled: enabled,
-          size: size.toSize(),
-        ),
-        spacer,
-        XTextButton(
-          title: 'Text Button',
-          busy: busy,
-          enabled: enabled,
-          size: size.toSize(),
-        ),
+        ...[
+          XButton(
+            title: 'Button',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XButton(
+            title: 'Button',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XSecondaryButton(
+            title: 'SecondaryButton',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XSecondaryButton(
+            title: 'SecondaryButton',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XOutlinedButton(
+            title: 'OutlinedButton',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XOutlinedButton(
+            title: 'OutlinedButton',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XTextButton(
+            title: 'Text Button',
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+          XTextButton(
+            title: 'Text Button',
+            icon: const Icon(Icons.add),
+            busy: busy,
+            enabled: enabled,
+            size: size.toSize(),
+          ),
+        ]
+            .map((e) => Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [e, spacer],
+                ))
+            .toList()
       ],
     );
   }
