@@ -36,6 +36,7 @@ dependencies:
   validators: ^3.0.0
 
   # WIDGET
+  photo_view: ^0.14.0
   modal_bottom_sheet: ^3.0.0-pre
   bot_toast: ^4.0.3
   flutter_svg: ^2.0.4
@@ -69,25 +70,10 @@ dependencies:
   # uni_links: ^0.5.1
   # firebase_remote_config: ^3.0.9
 
-  ## CAMERA & MEDIA
-  wechat_camera_picker: ^3.8.0
-  wechat_assets_picker: ^8.4.2
-  photo_manager: ^2.6.0
-  flutter_sound: ^9.2.13
-  video_player: ^2.6.1
-  emoji_picker_flutter: ^1.5.4
-  linkify: ^5.0.0
-  # link_preview_generator: ^1.2.0
-  audio_wave: ^0.1.5
-  photo_view: ^0.14.0
-  audioplayers: ^4.0.1
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.1
-  auto_route_generator: ^6.0.0
   build_runner: ^2.3.0
   freezed: ^2.3.2
   json_serializable: ^6.6.1
