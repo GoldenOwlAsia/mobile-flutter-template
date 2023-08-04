@@ -64,7 +64,7 @@ https://github.com/GoldenOwlAsia/mobile-flutter-template.git
 2. Go to project root and execute the following command in console to update this project config
 
 ```sh
-sh initialize.sh
+sudo sh initialize.sh
 ```
 
 - [x] Remove git, update readme
