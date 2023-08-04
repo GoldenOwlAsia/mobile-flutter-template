@@ -5,13 +5,6 @@ import 'model/button_size.dart';
 
 /// A button that shows a busy indicator in place of title
 class XButton extends StatelessWidget {
-  final bool busy;
-  final bool enabled;
-  final String? title;
-  final Widget? child;
-  final VoidCallback? onPressed;
-  final ButtonSize? size;
-
   const XButton({
     this.onPressed,
     this.title,
@@ -22,26 +15,35 @@ class XButton extends StatelessWidget {
     super.key,
   });
 
+  final bool busy;
+  final bool enabled;
+  final String? title;
+  final Widget? child;
+  final VoidCallback? onPressed;
+  final ButtonSize? size;
+
   @override
   Widget build(BuildContext context) {
     final size = this.size ?? ButtonSize.medium();
-    return ElevatedButtonTheme(
-      data: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          minimumSize: Size(size.minWidth, size.height),
-          padding: EdgeInsets.symmetric(horizontal: size.padding),
+    return SizedBox(
+      height: size.height,
+      child: ElevatedButtonTheme(
+        data: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Theme.of(context).colorScheme.onPrimary,
+            textStyle: size.style.copyWith(),
+            minimumSize: Size(size.minWidth, size.height),
+            padding: EdgeInsets.symmetric(horizontal: size.padding),
+          ),
         ),
-      ),
-      child: ElevatedButton(
-        onPressed: enabled
-            ? () {
-                if (onPressed != null || busy == false) {
-                  onPressed?.call();
+        child: ElevatedButton(
+          onPressed: enabled
+              ? () {
+                  if (onPressed != null || busy == false) {
+                    onPressed?.call();
+                  }
                 }
-              }
-            : null,
-        child: DefaultTextStyle(
-          style: size.style,
+              : null,
           child: busy
               ? const XIndicator(radius: 12)
               : (child ?? Text(title ?? '')),

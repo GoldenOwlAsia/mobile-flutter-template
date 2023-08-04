@@ -9,7 +9,6 @@ class AppTheme {
   static ThemeData light() => ThemeData(
         fontFamily: fontFamily,
         scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
-
         /// dialog
         dialogTheme: DialogTheme(
           backgroundColor: Colors.white,
