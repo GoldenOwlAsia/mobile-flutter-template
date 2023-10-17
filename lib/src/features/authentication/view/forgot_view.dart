@@ -5,7 +5,7 @@ import 'package:myapp/src/features/authentication/logic/forgot_bloc.dart';
 import 'package:myapp/src/features/authentication/widget/sign_title.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/widgets/button/button.dart';
-import 'package:myapp/widgets/froms/input.dart';
+import 'package:myapp/widgets/forms/input.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({Key? key}) : super(key: key);

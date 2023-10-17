@@ -11,7 +11,7 @@ import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/src/theme/colors.dart';
 import 'package:myapp/widgets/button/button.dart';
 import 'package:myapp/widgets/button/text_button.dart';
-import 'package:myapp/widgets/froms/input.dart';
+import 'package:myapp/widgets/forms/input.dart';
 
 class SigninView extends StatelessWidget {
   const SigninView({Key? key}) : super(key: key);

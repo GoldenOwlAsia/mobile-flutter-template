@@ -5,7 +5,7 @@ import 'package:myapp/src/features/authentication/logic/signup_bloc.dart';
 import 'package:myapp/src/features/authentication/widget/sign_title.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/widgets/button/button.dart';
-import 'package:myapp/widgets/froms/input.dart';
+import 'package:myapp/widgets/forms/input.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({Key? key}) : super(key: key);
