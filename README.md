@@ -77,6 +77,7 @@ Base project made with much: . Contains Bloc, Route, and much more!
   - iOS production: `ios/config/GoogleService-Info.plist`
   - Update `firebase_options_prod.dart`
   - Update `firebase_options_stg.dart`
+  - Update `REVERSED_CLIENT_ID` on file info.plist
 
 4. [Try to run this code](#run-this-template)
 
