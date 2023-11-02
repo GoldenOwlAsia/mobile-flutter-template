@@ -14,8 +14,7 @@ import 'model/web_menu_item.dart';
 
 class WebviewPage extends StatefulWidget {
   const WebviewPage(
-      {required this.title, required this.url, this.onSubmitted, Key? key})
-      : super(key: key);
+      {required this.title, required this.url, this.onSubmitted, super.key});
 
   final String? title;
   final String url;
@@ -161,7 +160,7 @@ class _WebviewPageState extends State<WebviewPage> {
           children: [
             ...[WebMenuItem.goBack, WebMenuItem.goForward, WebMenuItem.reload]
                 .map(_buildIconButton)
-                .toList(),
+                ,
             PopupMenuButton<WebMenuItem>(
               icon: const Icon(Icons.more_vert, color: AppColors.textSecondary),
               enableFeedback: true,

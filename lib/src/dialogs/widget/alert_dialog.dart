@@ -28,8 +28,8 @@ class XAlertDialog extends StatelessWidget {
     this.titleWidget,
     this.contentWidget,
     this.actions = const [],
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final String? title;
   final String? content;
   final Widget? titleWidget;

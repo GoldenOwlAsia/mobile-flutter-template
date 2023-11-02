@@ -3,7 +3,7 @@ import 'package:myapp/src/router/coordinator.dart';
 import '../../../../gen/assets.gen.dart';
 
 class SampleItemListView extends StatelessWidget {
-  const SampleItemListView({Key? key}) : super(key: key);
+  const SampleItemListView({super.key});
 
   @override
   Widget build(BuildContext context) {

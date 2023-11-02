@@ -5,7 +5,7 @@ import 'package:myapp/widgets/button/text_button.dart';
 import 'package:myapp/widgets/card/card.dart';
 
 class AccountNoUserCard extends StatelessWidget {
-  const AccountNoUserCard({Key? key}) : super(key: key);
+  const AccountNoUserCard({super.key});
   @override
   Widget build(BuildContext context) {
     return XCard(

@@ -4,8 +4,8 @@ import 'package:myapp/src/localization/localization_utils.dart';
 import 'form_error.dart';
 
 class PhoneFormzInput extends FormzInput<String, FormError> {
-  const PhoneFormzInput.pure([String value = '']) : super.pure(value);
-  const PhoneFormzInput.dirty([String value = '']) : super.dirty(value);
+  const PhoneFormzInput.pure([super.value = '']) : super.pure();
+  const PhoneFormzInput.dirty([super.value = '']) : super.dirty();
 
   static final RegExp phoneRegExp = RegExp(
     r'0([3|5|7|8|9])+([0-9]{8})\b',

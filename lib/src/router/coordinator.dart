@@ -20,8 +20,8 @@ class AppCoordinator {
   }) =>
       context.goNamed(
         name,
-        params: params,
-        queryParams: queryParams,
+        pathParameters: params,
+        queryParameters: queryParams,
         extra: extra,
       );
 
@@ -45,7 +45,7 @@ class AppCoordinator {
           {required String id}) =>
       context.pushNamed<T>(
         AppRouteNames.sampleDetails.name,
-        params: {AppRouteNames.sampleDetails.paramName!: id},
+        pathParameters: {AppRouteNames.sampleDetails.paramName!: id},
       );
 
   static Future<T?> showProfile<T extends Object?>() =>

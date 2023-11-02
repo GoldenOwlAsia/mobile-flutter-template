@@ -7,7 +7,7 @@ import '../../router/route_name.dart';
 int _tapCount = 0;
 
 class DevWrapButton extends StatelessWidget {
-  const DevWrapButton({this.child, Key? key}) : super(key: key);
+  const DevWrapButton({this.child, super.key});
   final Widget? child;
   @override
   Widget build(BuildContext context) {

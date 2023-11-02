@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 class XInput extends StatefulWidget {
   const XInput({
     required this.value,
-    Key? key,
+    super.key,
     this.onChanged,
     this.keyboardType,
     this.obscureText = false,
@@ -15,7 +15,7 @@ class XInput extends StatefulWidget {
     this.autofocus = false,
     this.inputFormatters,
     this.onFieldSubmitted,
-  }) : super(key: key);
+  });
   final String value;
   final TextInputType? keyboardType;
   final bool obscureText;

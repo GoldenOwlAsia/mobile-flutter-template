@@ -24,7 +24,7 @@ extension EButtonSizeExt on EButtonSize {
 }
 
 class DevButtonScreen extends StatefulWidget {
-  const DevButtonScreen({Key? key}) : super(key: key);
+  const DevButtonScreen({super.key});
 
   @override
   State<DevButtonScreen> createState() => _DevButtonScreenState();
@@ -135,13 +135,11 @@ class _DevButtonScreenState extends State<DevButtonScreen> {
             enabled: enabled,
             size: size.toSize(),
           ),
-        ]
-            .map((e) => Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [e, spacer],
-                ))
-            .toList()
+        ].map((e) => Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [e, spacer],
+            ))
       ],
     );
   }

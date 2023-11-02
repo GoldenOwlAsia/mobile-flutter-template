@@ -6,7 +6,7 @@ import '../widget/dev_screen_layout.dart';
 import '../widget/dev_title.dart';
 
 class DevDeviceScreen extends StatelessWidget {
-  const DevDeviceScreen({Key? key}) : super(key: key);
+  const DevDeviceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

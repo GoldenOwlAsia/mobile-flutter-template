@@ -10,8 +10,8 @@ class XStatePaginationWidget extends StatefulWidget {
     required this.page,
     required this.loadMore,
     this.autoLoad = true,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final MPagination page;
   final Function() loadMore;
   final bool autoLoad;
@@ -58,8 +58,8 @@ class XBoxLoadMore extends StatelessWidget {
     required this.page,
     required this.loadMore,
     this.child,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final MPagination page;
   final Function() loadMore;
   final Widget? child;

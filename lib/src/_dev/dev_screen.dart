@@ -8,7 +8,7 @@ import 'view/dev_dialog_screen.dart';
 import 'widget/dev_navigation_title.dart';
 
 class DevScreen extends StatelessWidget {
-  const DevScreen({Key? key}) : super(key: key);
+  const DevScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

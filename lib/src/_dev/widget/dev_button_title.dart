@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DevButtonTitle extends StatelessWidget {
-  const DevButtonTitle(this.title, {required this.onTap, Key? key})
-      : super(key: key);
+  const DevButtonTitle(this.title, {required this.onTap, super.key});
   final GestureTapCallback? onTap;
   final String title;
   @override

@@ -6,7 +6,7 @@ import 'package:myapp/widgets/card/card.dart';
 import 'package:myapp/widgets/common/nav_icon.dart';
 
 class AccountUserCard extends StatelessWidget {
-  const AccountUserCard({required this.user, Key? key}) : super(key: key);
+  const AccountUserCard({required this.user, super.key});
   final MUser user;
   @override
   Widget build(BuildContext context) {

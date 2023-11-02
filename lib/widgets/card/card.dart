@@ -5,8 +5,8 @@ class XCard extends StatelessWidget {
     this.padding = const EdgeInsets.all(16),
     this.child,
     this.borderColor,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final EdgeInsetsGeometry? padding;
   final Widget? child;
   final Color? borderColor;

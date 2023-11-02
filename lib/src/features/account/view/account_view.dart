@@ -8,7 +8,7 @@ import 'package:myapp/widgets/card/card.dart';
 import 'package:myapp/widgets/card/card_section.dart';
 
 class AccountHomeView extends StatelessWidget {
-  const AccountHomeView({Key? key}) : super(key: key);
+  const AccountHomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

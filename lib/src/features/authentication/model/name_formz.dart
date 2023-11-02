@@ -4,8 +4,8 @@ import 'package:myapp/src/localization/localization_utils.dart';
 import 'form_error.dart';
 
 class NameFormzInput extends FormzInput<String, FormError> {
-  const NameFormzInput.pure([String value = '']) : super.pure(value);
-  const NameFormzInput.dirty([String value = '']) : super.dirty(value);
+  const NameFormzInput.pure([super.value = '']) : super.pure();
+  const NameFormzInput.dirty([super.value = '']) : super.dirty();
 
   @override
   FormError? validator(String? value) {
