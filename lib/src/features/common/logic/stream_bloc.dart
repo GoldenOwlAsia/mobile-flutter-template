@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class StreamCubit<T, D> extends Cubit<T> {
-  StreamCubit(T initialState) : super(initialState) {
+  StreamCubit(super.initialState) {
     initialize();
   }
   Stream<D> get getStream;

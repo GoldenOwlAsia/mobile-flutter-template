@@ -3,7 +3,7 @@ import 'package:myapp/src/router/coordinator.dart';
 import 'navigation_bar_item.dart';
 
 class DashboardBloc extends Cubit<XNavigationBarItems> {
-  DashboardBloc(XNavigationBarItems current) : super(current);
+  DashboardBloc(super.current);
 
   void onDestinationSelected(int index) {
     emit(XNavigationBarItems.values[index]);

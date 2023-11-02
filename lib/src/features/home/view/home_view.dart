@@ -5,7 +5,7 @@ import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/widgets/button/text_button.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class XLoadingAlert extends StatelessWidget {
-  const XLoadingAlert({Key? key}) : super(key: key);
+  const XLoadingAlert({super.key});
 
   @override
   Widget build(BuildContext context) {

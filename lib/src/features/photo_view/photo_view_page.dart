@@ -8,8 +8,7 @@ import '../../../../../widgets/common/indicator.dart';
 
 class PhotoViewPage extends StatefulWidget {
   const PhotoViewPage(
-      {Key? key, this.initialIndex = 0, required this.galleryItems})
-      : super(key: key);
+      {super.key, this.initialIndex = 0, required this.galleryItems});
   final int initialIndex;
   final List<String> galleryItems;
 

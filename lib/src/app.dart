@@ -11,7 +11,7 @@ import 'package:myapp/src/theme/themes.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();

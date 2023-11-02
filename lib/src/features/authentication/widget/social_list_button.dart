@@ -11,7 +11,7 @@ import 'package:myapp/src/network/model/social_type.dart';
 import 'package:myapp/widgets/common/indicator.dart';
 
 class SocialListButton extends StatelessWidget {
-  const SocialListButton({Key? key}) : super(key: key);
+  const SocialListButton({super.key});
 
   @override
   Widget build(BuildContext context) {

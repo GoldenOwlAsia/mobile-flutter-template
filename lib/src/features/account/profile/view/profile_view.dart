@@ -6,7 +6,7 @@ import 'package:myapp/widgets/card/card.dart';
 import 'package:myapp/widgets/card/card_section.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {

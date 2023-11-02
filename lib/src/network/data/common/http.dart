@@ -91,12 +91,6 @@ class XHttp {
   }) async {
     String bodyResponse = '';
     try {
-      // Check internet
-      var connectivityResult = await (Connectivity().checkConnectivity());
-      if (connectivityResult == ConnectivityResult.none) {
-        throw FlutterError(S.text.error_noInternet);
-      }
-
       final Response response = await _dio.request(
         url,
         data: data,
@@ -147,5 +141,11 @@ class XHttp {
       {Object? data, Map<String, dynamic>? queryParameters}) {
     return request(XMethod.post, url,
         data: data, queryParameters: queryParameters);
+  }
+
+  Future<bool> checkConnectivity()async{
+    final connectivityResult = await(Connectivity().checkConnectivity());
+    return connectivityResult != ConnectivityResult.none;
+
   }
 }

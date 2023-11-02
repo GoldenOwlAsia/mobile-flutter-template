@@ -5,7 +5,7 @@ import '../widget/dev_button_title.dart';
 import '../widget/dev_screen_layout.dart';
 
 class DevDialogScreen extends StatelessWidget {
-  const DevDialogScreen({Key? key}) : super(key: key);
+  const DevDialogScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

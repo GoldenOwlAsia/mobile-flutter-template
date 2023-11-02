@@ -25,54 +25,51 @@ Base project made with much: . Contains Bloc, Route, and much more!
 
 1. Download or clone this repo by using the link below:
 
-```
-https://github.com/GoldenOwlAsia/mobile-flutter-template.git
-```
+    ```
+    https://github.com/GoldenOwlAsia/mobile-flutter-template.git
+    ```
 
 2. Go to project root and execute the following command in console to get the required dependencies:
 
-```
-flutter pub get
-```
+    ```
+    flutter pub get
+    ```
 
 3. Now run the generator
 
-```
-flutter packages pub run build_runner build
-```
+    ```
+    flutter packages pub run build_runner build
+    ```
 
 4. To run staging project
 
-```
-flutter run --flavor staging --target lib/main_staging.dart
-```
+    ```
+    flutter run --flavor staging --target lib/main_staging.dart
+    ```
 
 5. To run production project
 
-```
-flutter run --flavor production --target lib/main_production.dart
-```
+    ```
+    flutter run --flavor production --target lib/main_production.dart
+    ```
 
 ## Use this template to create your project
 
 1. Download or clone this repo by using the link below:
 
-```
-https://github.com/GoldenOwlAsia/mobile-flutter-template.git
-```
+      ```
+      https://github.com/GoldenOwlAsia/mobile-flutter-template.git
+      ```
 
 2. Go to project root and execute the following command in console to update this project config
-
-```sh
-sudo sh initialize.sh
-```
-
+    ```sh
+    ./customizer.sh your.package.name
+    ```
 - [x] Remove git, update readme
-- [ ] Change your app-name in `pubspec.yaml`
+- [x] Change your bundle-id
 
 3. Change your app builder id (iOS & Android)
 
-- Update your appID
 - Replace/Update your firebase config as your project.
   - Android staging: `android/app/src/staging/google-services.json`
   - Android production: `android/app/src/production/google-services.json`
@@ -80,6 +77,7 @@ sudo sh initialize.sh
   - iOS production: `ios/config/GoogleService-Info.plist`
   - Update `firebase_options_prod.dart`
   - Update `firebase_options_stg.dart`
+  - Update `REVERSED_CLIENT_ID` on file info.plist
 
 4. [Try to run this code](#run-this-template)
 

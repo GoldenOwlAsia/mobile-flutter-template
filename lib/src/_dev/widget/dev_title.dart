@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class DevTitle extends StatelessWidget {
-  const DevTitle(this.title, {this.body, this.horizontalPadding = 16, Key? key})
-      : super(key: key);
+  const DevTitle(this.title,
+      {this.body, this.horizontalPadding = 16, super.key});
   final String title;
   final String? body;
   final double horizontalPadding;

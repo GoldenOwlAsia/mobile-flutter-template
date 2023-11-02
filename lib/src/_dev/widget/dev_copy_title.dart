@@ -5,8 +5,8 @@ class DevCopyTitle extends StatelessWidget {
   const DevCopyTitle(
     this.title,
     this.body, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final String title;
   final String? body;
   @override

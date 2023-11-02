@@ -14,7 +14,7 @@ import 'package:myapp/widgets/button/text_button.dart';
 import 'package:myapp/widgets/forms/input.dart';
 
 class SigninView extends StatelessWidget {
-  const SigninView({Key? key}) : super(key: key);
+  const SigninView({super.key});
 
   @override
   Widget build(BuildContext context) {

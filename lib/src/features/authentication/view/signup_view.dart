@@ -8,7 +8,7 @@ import 'package:myapp/widgets/button/button.dart';
 import 'package:myapp/widgets/forms/input.dart';
 
 class SignupView extends StatelessWidget {
-  const SignupView({Key? key}) : super(key: key);
+  const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class XStatusToast extends StatelessWidget {
-  const XStatusToast(this.message, {this.icon, Key? key}) : super(key: key);
+  const XStatusToast(this.message, {this.icon, super.key});
   final Widget? icon;
   final String? message;
   @override

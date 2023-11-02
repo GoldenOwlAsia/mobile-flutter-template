@@ -3,8 +3,7 @@ import 'package:myapp/widgets/card/card.dart';
 import 'package:myapp/widgets/common/nav_icon.dart';
 
 class XCardSection extends StatelessWidget {
-  const XCardSection({Key? key, required this.children, this.borderColor})
-      : super(key: key);
+  const XCardSection({super.key, required this.children, this.borderColor});
   final List<Widget> children;
   final Color? borderColor;
 
@@ -33,10 +32,10 @@ class XCardSection extends StatelessWidget {
 class XCardSectionButton extends StatelessWidget {
   const XCardSectionButton({
     required this.title,
-    Key? key,
+    super.key,
     this.onTap,
     this.trailing,
-  }) : super(key: key);
+  });
 
   final String title;
   final Widget? trailing;

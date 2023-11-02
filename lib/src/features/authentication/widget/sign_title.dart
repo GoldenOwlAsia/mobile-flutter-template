@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignTitle extends StatelessWidget {
-  const SignTitle(this.text, {Key? key}) : super(key: key);
+  const SignTitle(this.text, {super.key});
   final String text;
   @override
   Widget build(BuildContext context) {

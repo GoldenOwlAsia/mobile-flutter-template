@@ -4,8 +4,8 @@ import 'package:myapp/src/localization/localization_utils.dart';
 import 'form_error.dart';
 
 class EmailFormzInput extends FormzInput<String, FormError> {
-  const EmailFormzInput.pure([String value = '']) : super.pure(value);
-  const EmailFormzInput.dirty([String value = '']) : super.dirty(value);
+  const EmailFormzInput.pure([super.value = '']) : super.pure();
+  const EmailFormzInput.dirty([super.value = '']) : super.dirty();
 
   static final RegExp emailRegExp = RegExp(
     r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
