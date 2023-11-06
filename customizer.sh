@@ -15,15 +15,15 @@ fi
 # exit when any command fails
 set -e
 
-if [[ $# -lt 2 ]]; then
+if [[ $# -lt 1 ]]; then
    echo "Usage: bash customizer.sh my.new.package" >&2
-   exit 2
+   exit 1
 fi
 
 PACKAGE=$1
 SUBDIR=${PACKAGE//.//} # Replaces . with /
 oldPackage="com.pingak9.template"
-oldPackageFolder="com/pingak9/template"
+oldPackageFolder=${oldPackage//.//}
 
 for n in $(find . -type d \( -path '*/src/androidTest' -or -path '*/src/main' -or -path '*/src/test' \) )
 do
