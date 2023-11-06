@@ -63,7 +63,7 @@ Base project made with much: . Contains Bloc, Route, and much more!
 
 2. Go to project root and execute the following command in console to update this project config
     ```sh
-    ./customizer.sh your.package.name
+    sudo sh ./customizer.sh your.package.name
     ```
 - [x] Remove git, update readme
 - [x] Change your bundle-id
