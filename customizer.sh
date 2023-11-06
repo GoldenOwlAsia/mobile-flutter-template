@@ -54,4 +54,5 @@ echo "Removing additional files"
 mv README-SAMPLE.md README.md
 rm -rf .git
 rm -rf customizer.sh
+rm -rf ./resources
 echo "Done!"
