@@ -14,8 +14,14 @@ Future main() async {
   if (kIsWeb) {
     runApp(const MyApp());
   } else {
-    runZonedGuarded<Future<void>>(() async {
-      runApp(const MyApp());
-    }, FirebaseCrashlytics.instance.recordError);
+    FlutterError.onError = (errorDetails) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    };
+    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
+    runApp(const MyApp());
   }
 }
