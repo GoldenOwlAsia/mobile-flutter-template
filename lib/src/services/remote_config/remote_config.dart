@@ -1,4 +1,4 @@
-import 'package:myapp/src/config/devices/app_Info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:version/version.dart';
 
 class RemoteConfig {
@@ -9,11 +9,12 @@ class RemoteConfig {
   });
 
   factory RemoteConfig.ds() {
-    return RemoteConfig(forceVersion: Version.parse(AppInfo.package.version));
+    return RemoteConfig(forceVersion: Version.parse('0.0.0'));
   }
 
-  bool get needForceUpdate {
-    final currentVersion = Version.parse(AppInfo.package.version);
+  Future<bool> needForceUpdate() async {
+    final package = await PackageInfo.fromPlatform();
+    final currentVersion = Version.parse(package.version);
     return currentVersion < forceVersion;
   }
 

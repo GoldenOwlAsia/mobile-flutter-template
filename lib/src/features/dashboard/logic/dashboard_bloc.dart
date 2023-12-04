@@ -10,7 +10,7 @@ class DashboardBloc extends Cubit<XNavigationBarItems> {
   }
 
   Future checkForceUpdate() async {
-    final needForceUpdate = RemoteConfigService.config.needForceUpdate;
+    final needForceUpdate = await RemoteConfigService.config.needForceUpdate();
     if (needForceUpdate) {
       XAlert.showForceUpdate();
       return true;
