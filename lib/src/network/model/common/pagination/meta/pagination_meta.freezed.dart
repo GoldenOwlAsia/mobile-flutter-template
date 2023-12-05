@@ -104,11 +104,11 @@ class _$MPaginationMetaCopyWithImpl<$Res, $Val extends MPaginationMeta>
 }
 
 /// @nodoc
-abstract class _$$_MPaginationMetaCopyWith<$Res>
+abstract class _$$MPaginationMetaImplCopyWith<$Res>
     implements $MPaginationMetaCopyWith<$Res> {
-  factory _$$_MPaginationMetaCopyWith(
-          _$_MPaginationMeta value, $Res Function(_$_MPaginationMeta) then) =
-      __$$_MPaginationMetaCopyWithImpl<$Res>;
+  factory _$$MPaginationMetaImplCopyWith(_$MPaginationMetaImpl value,
+          $Res Function(_$MPaginationMetaImpl) then) =
+      __$$MPaginationMetaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_MPaginationMetaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MPaginationMetaCopyWithImpl<$Res>
-    extends _$MPaginationMetaCopyWithImpl<$Res, _$_MPaginationMeta>
-    implements _$$_MPaginationMetaCopyWith<$Res> {
-  __$$_MPaginationMetaCopyWithImpl(
-      _$_MPaginationMeta _value, $Res Function(_$_MPaginationMeta) _then)
+class __$$MPaginationMetaImplCopyWithImpl<$Res>
+    extends _$MPaginationMetaCopyWithImpl<$Res, _$MPaginationMetaImpl>
+    implements _$$MPaginationMetaImplCopyWith<$Res> {
+  __$$MPaginationMetaImplCopyWithImpl(
+      _$MPaginationMetaImpl _value, $Res Function(_$MPaginationMetaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_MPaginationMetaCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? lastPage = null,
   }) {
-    return _then(_$_MPaginationMeta(
+    return _then(_$MPaginationMetaImpl(
       pageSize: null == pageSize
           ? _value.pageSize
           : pageSize // ignore: cast_nullable_to_non_nullable
@@ -169,10 +169,10 @@ class __$$_MPaginationMetaCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MPaginationMeta
+class _$MPaginationMetaImpl
     with DiagnosticableTreeMixin
     implements _MPaginationMeta {
-  const _$_MPaginationMeta(
+  const _$MPaginationMetaImpl(
       {@JsonKey(name: 'page_size') required this.pageSize,
       @JsonKey(name: 'total_count') required this.totalCount,
       @JsonKey(name: 'page_number') required this.pageNumber,
@@ -180,8 +180,8 @@ class _$_MPaginationMeta
       @JsonKey(name: 'next_page') this.nextPage = 0,
       @JsonKey(name: 'last_page') required this.lastPage});
 
-  factory _$_MPaginationMeta.fromJson(Map<String, dynamic> json) =>
-      _$$_MPaginationMetaFromJson(json);
+  factory _$MPaginationMetaImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MPaginationMetaImplFromJson(json);
 
   @override
   @JsonKey(name: 'page_size')
@@ -224,7 +224,7 @@ class _$_MPaginationMeta
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MPaginationMeta &&
+            other is _$MPaginationMetaImpl &&
             (identical(other.pageSize, pageSize) ||
                 other.pageSize == pageSize) &&
             (identical(other.totalCount, totalCount) ||
@@ -247,12 +247,13 @@ class _$_MPaginationMeta
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MPaginationMetaCopyWith<_$_MPaginationMeta> get copyWith =>
-      __$$_MPaginationMetaCopyWithImpl<_$_MPaginationMeta>(this, _$identity);
+  _$$MPaginationMetaImplCopyWith<_$MPaginationMetaImpl> get copyWith =>
+      __$$MPaginationMetaImplCopyWithImpl<_$MPaginationMetaImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MPaginationMetaToJson(
+    return _$$MPaginationMetaImplToJson(
       this,
     );
   }
@@ -266,10 +267,10 @@ abstract class _MPaginationMeta implements MPaginationMeta {
           @JsonKey(name: 'prev_page') final int? prevPage,
           @JsonKey(name: 'next_page') final int? nextPage,
           @JsonKey(name: 'last_page') required final int lastPage}) =
-      _$_MPaginationMeta;
+      _$MPaginationMetaImpl;
 
   factory _MPaginationMeta.fromJson(Map<String, dynamic> json) =
-      _$_MPaginationMeta.fromJson;
+      _$MPaginationMetaImpl.fromJson;
 
   @override
   @JsonKey(name: 'page_size')
@@ -291,6 +292,6 @@ abstract class _MPaginationMeta implements MPaginationMeta {
   int get lastPage;
   @override
   @JsonKey(ignore: true)
-  _$$_MPaginationMetaCopyWith<_$_MPaginationMeta> get copyWith =>
+  _$$MPaginationMetaImplCopyWith<_$MPaginationMetaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

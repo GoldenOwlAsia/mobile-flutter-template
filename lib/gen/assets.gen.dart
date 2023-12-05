@@ -22,8 +22,11 @@ class $AssetsLottiesGen {
   /// File path: assets/lotties/location-animation.json
   String get locationAnimation => 'assets/lotties/location-animation.json';
 
+  /// File path: assets/lotties/rocket.json
+  String get rocket => 'assets/lotties/rocket.json';
+
   /// List of all assets
-  List<String> get values => [locationAnimation];
+  List<String> get values => [locationAnimation, rocket];
 }
 
 class $AssetsSvgsGen {

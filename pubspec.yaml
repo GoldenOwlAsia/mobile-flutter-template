@@ -30,6 +30,7 @@ dependencies:
   json_annotation: ^4.8.1
   dio: ^5.3.3
   connectivity_plus: ^4.0.2
+  version: ^3.0.2
   intl: ^0.18.1
   permission_handler: ^10.4.5
   share_plus: ^7.2.1
@@ -56,10 +57,11 @@ dependencies:
   # FIREBASE
   firebase_core: ^2.21.0
   firebase_analytics: ^10.6.3
-  # firebase_app_check: ^0.1.4+1
+  firebase_app_check: ^0.2.1+6
   firebase_crashlytics: ^3.4.3
   firebase_auth: ^4.12.1
   google_sign_in: ^6.1.5
+  firebase_remote_config: ^4.0.2
   firebase_messaging: ^14.7.3
   cloud_firestore: ^4.12.2
   # flutter_local_notifications: ^12.0.4
@@ -68,7 +70,6 @@ dependencies:
   # flutter_facebook_auth: ^5.0.6
   # sign_in_with_apple: ^4.2.0
   # uni_links: ^0.5.1
-  # firebase_remote_config: ^3.0.9
 
 dev_dependencies:
   flutter_test:
