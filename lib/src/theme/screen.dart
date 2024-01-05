@@ -36,10 +36,4 @@ class AppScreens {
   static void updateStatusBarStyle(SystemUiOverlayStyle style) {
     SystemChrome.setSystemUIOverlayStyle(style);
   }
-
-  /// Scale factor for the text.
-  static double get textScaleFactor => mediaQuery.textScaleFactor;
-
-  /// Return a fixed font size according to text scale factor.
-  static double fixedFontSize(double fontSize) => fontSize / textScaleFactor;
 }

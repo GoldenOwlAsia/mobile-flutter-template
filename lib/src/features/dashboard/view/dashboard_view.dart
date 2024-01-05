@@ -26,10 +26,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> with LifecycleMixin {
       create: (context) => DashboardBloc(widget.currentItem),
       child: BlocBuilder<DashboardBloc, XNavigationBarItems>(
         builder: (context, state) {
-          return WillPopScope(
-            onWillPop: () async {
+          return PopScope(
+            canPop: false,
+            onPopInvoked: (didPop) async {
               context.read<DashboardBloc>().goHome();
-              return false;
             },
             child: Scaffold(
               body: widget.body,

@@ -1,9 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-
-import '../../../localization/localization_utils.dart';
+import 'package:myapp/src/services/user_prefs.dart';
 
 enum XMethod {
   get,
@@ -16,70 +14,63 @@ enum XMethod {
 
 class XHttp {
   factory XHttp() => instance;
-  XHttp._internal() {
-    final BaseOptions options = BaseOptions(
-      responseType: ResponseType.json,
-      validateStatus: (status) {
-        return true;
-      },
-      baseUrl: _baseUrl,
-      headers: _headers,
-      connectTimeout: _connectTimeout,
-      receiveTimeout: _receiveTimeout,
-      sendTimeout: _sendTimeout,
-    );
-
-    _dio = Dio(options);
-  }
+  XHttp._internal();
 
   static final XHttp instance = XHttp._internal();
   static XHttp get I => instance;
-  late Dio _dio;
 
-  String? tokenType;
   String? tokenApi;
-  final Logger _log = Logger();
+  final Logger _log = Logger(
+    printer: PrettyPrinter(
+        methodCount: 0, // Number of method calls to be displayed
+        printTime: false // Should each log print contain a timestamp
+        ),
+  );
 
-  String _baseUrl = '';
-  Duration _connectTimeout = const Duration(seconds: 10);
-  Duration _receiveTimeout = const Duration(seconds: 10);
-  Duration _sendTimeout = const Duration(seconds: 5);
+  String baseUrl = 'http://13.251.254.214:8000/';
+
+  final int _defaultSecondTimeout = 15;
 
   Map<String, String> get _headers => {
         'Content-type': 'application/json',
         'Accept': 'application/json',
-        "Authorization": "$tokenType $tokenApi"
       };
 
   /// Configure Dio
-  void configDio({
-    Duration? connectTimeout,
-    Duration? receiveTimeout,
-    Duration? sendTimeout,
-    String? baseUrl,
-    List<Interceptor>? interceptors,
-  }) {
-    _connectTimeout = connectTimeout ?? _connectTimeout;
-    _receiveTimeout = receiveTimeout ?? _receiveTimeout;
-    _sendTimeout = sendTimeout ?? _sendTimeout;
-    _baseUrl = baseUrl ?? _baseUrl;
-
-    _dio = Dio(_dio.options.copyWith(
-      baseUrl: _baseUrl,
-      headers: _headers,
-      connectTimeout: _connectTimeout,
-      receiveTimeout: _receiveTimeout,
-      sendTimeout: _sendTimeout,
-    ));
+  Dio _configDio({bool ignoreToken = false, int? timeout, String? token}) {
+    final durationTimeout = Duration(seconds: timeout ?? _defaultSecondTimeout);
+    final String? tokenValue = ignoreToken ? null : token ?? tokenApi;
+    final headers = {
+      ..._headers,
+      if (tokenValue?.isNotEmpty == true) "Authorization": "Bearer $tokenValue",
+    };
+    final option = BaseOptions(
+      responseType: ResponseType.json,
+      validateStatus: (status) {
+        return true;
+      },
+      baseUrl: baseUrl,
+      headers: headers,
+      connectTimeout: durationTimeout,
+      receiveTimeout: durationTimeout,
+      sendTimeout: durationTimeout,
+    );
+    return Dio(option);
   }
 
-  void setTokenApi(String tokenApi, {String tokenType = "Bearer"}) {
-    this.tokenType = tokenType;
-    this.tokenApi = tokenApi;
-    configDio();
+  void removeTokenApi() {
+    UserPrefs.I.setToken(null);
+    tokenApi = '';
   }
 
-  Future<String> request(
+  void setTokenApi(String token) {
+    UserPrefs.I.setToken(token);
+    // ignore: avoid_print
+    print('setTokenApi: $token');
+    tokenApi = token;
+  }
+
+  Future<Response> request(
     XMethod method,
     String url, {
     Object? data,
@@ -88,10 +79,16 @@ class XHttp {
     ProgressCallback? onReceiveProgress,
     CancelToken? cancelToken,
     Options? options,
+    bool ignoreToken = false,
+    int attemptFailed = 0,
+    int? timeout,
+    String? token,
   }) async {
-    String bodyResponse = '';
+    Object? bodyResponse;
     try {
-      final Response response = await _dio.request(
+      final Response response = await _configDio(
+              ignoreToken: ignoreToken, timeout: timeout, token: token)
+          .request(
         url,
         data: data,
         queryParameters: queryParameters,
@@ -101,27 +98,16 @@ class XHttp {
         cancelToken: cancelToken,
       );
       bodyResponse = response.data;
-      _log.i('> RESPONSE [${response.statusCode}]<  $url');
-
-      if (response.statusCode == null) {
-        throw FlutterError(S.text.error_unknown);
-      }
-      if (response.statusCode! <= 299) {
-        return bodyResponse;
-      } else {
-        if (response.statusCode! >= 400) {
-          throw FlutterError(S.text.error_noInternet);
-        } else {
-          throw FlutterError(S.text.error_unknown);
-        }
-      }
+      _log.i('> RESPONSE Status< [${response.statusCode}]<  $url');
+      _log.i('> RESPONSE Body< ${response.data.toString()}');
+      return response;
     } on DioException catch (e) {
-      _log.w('> API CATCH Error< $e');
-      _log.w('> API CATCH Body< $bodyResponse');
+      _log.e('> API CATCH Error< $e');
+      _log.e('> API CATCH Body< $bodyResponse');
       rethrow;
     } catch (e) {
-      _log.w('> API CATCH Error< $e');
-      _log.w('> API CATCH Body< $bodyResponse');
+      _log.e('> API CATCH Error< $e');
+      _log.e('> API CATCH Body< $bodyResponse');
       rethrow;
     }
   }
@@ -133,19 +119,91 @@ class XHttp {
   }
 
   // NOTE: Example simple GET/POST, You can customize it according to your project's.
-  Future<String> get(String url) {
-    return request(XMethod.get, url);
+  Future<Response> get(
+    String url, {
+    Map<String, dynamic>? queryParameters,
+    bool ignoreToken = false,
+    int? timeout,
+    String? token,
+  }) {
+    return request(
+      XMethod.get,
+      url,
+      queryParameters: queryParameters,
+      ignoreToken: ignoreToken,
+      timeout: timeout,
+      token: token,
+    );
   }
 
-  Future<String> post(String url,
-      {Object? data, Map<String, dynamic>? queryParameters}) {
-    return request(XMethod.post, url,
-        data: data, queryParameters: queryParameters);
+  Future<Response> post(
+    String url, {
+    Object? data,
+    bool ignoreToken = false,
+    int? timeout,
+    String? token,
+  }) {
+    return request(
+      XMethod.post,
+      url,
+      data: data,
+      ignoreToken: ignoreToken,
+      timeout: timeout,
+      token: token,
+    );
   }
 
-  Future<bool> checkConnectivity()async{
-    final connectivityResult = await(Connectivity().checkConnectivity());
+  Future<Response> put(
+    String url, {
+    Object? data,
+    bool ignoreToken = false,
+    int? timeout,
+    String? token,
+  }) {
+    return request(
+      XMethod.put,
+      url,
+      data: data,
+      ignoreToken: ignoreToken,
+      timeout: timeout,
+      token: token,
+    );
+  }
+
+  Future<Response> patch(
+    String url, {
+    Object? data,
+    bool ignoreToken = false,
+    int? timeout,
+    String? token,
+  }) {
+    return request(
+      XMethod.patch,
+      url,
+      data: data,
+      ignoreToken: ignoreToken,
+      timeout: timeout,
+      token: token,
+    );
+  }
+
+  Future<Response> delete(
+    String url, {
+    bool ignoreToken = false,
+    int? timeout,
+    String? token,
+  }) {
+    return request(
+      XMethod.delete,
+      url,
+      ignoreToken: ignoreToken,
+      timeout: timeout,
+      token: token,
+    );
+  }
+
+  Future<bool> checkConnectivity() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
     return connectivityResult != ConnectivityResult.none;
-
   }
 }

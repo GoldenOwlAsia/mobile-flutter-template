@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class _keys {
   static const String theme = 'app-theme';
   static const String user = 'user';
+  static const String token = 'token';
 }
 
 class UserPrefs {
@@ -33,6 +34,21 @@ class UserPrefs {
 
   void setTheme(ThemeMode value) {
     _prefs.setString(_keys.theme, value.toString().toLowerCase());
+  }
+
+  String getToken() {
+    try {
+      return _prefs.getString(_keys.token) ?? '';
+    } catch (_) {}
+    return '';
+  }
+
+  void setToken(String? value) {
+    if (value == null) {
+      _prefs.remove(_keys.token);
+    } else {
+      _prefs.setString(_keys.token, value);
+    }
   }
 
   // user

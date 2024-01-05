@@ -43,6 +43,7 @@ class XButton extends StatelessWidget {
         data: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             foregroundColor: foregroundColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             textStyle: size.style.copyWith(),
             minimumSize: Size(size.minWidth, size.height),
             padding: EdgeInsets.symmetric(horizontal: size.padding),

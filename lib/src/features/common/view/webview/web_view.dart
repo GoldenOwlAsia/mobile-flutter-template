@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:myapp/src/utils/extension.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -14,17 +15,27 @@ import 'model/web_menu_item.dart';
 
 class WebviewPage extends StatefulWidget {
   const WebviewPage(
-      {required this.title, required this.url, this.onSubmitted, super.key});
+      {required this.title,
+      required this.url,
+      this.onSubmitted,
+      super.key,
+      this.disableRedirect = false});
 
   final String? title;
   final String url;
   final Function(String)? onSubmitted;
+  final bool disableRedirect;
 
   @override
   State<WebviewPage> createState() => _WebviewPageState();
 
-  static Future show(BuildContext context, String url,
-      {String? title, Function(String)? onSubmitted}) async {
+  static Future show(
+    BuildContext context,
+    String url, {
+    String? title,
+    Function(String)? onSubmitted,
+    bool disableRedirect = false,
+  }) async {
     return showBarModalBottomSheet<bool>(
       expand: true,
       context: context,
@@ -32,6 +43,7 @@ class WebviewPage extends StatefulWidget {
         title: title ?? url,
         url: url,
         onSubmitted: onSubmitted,
+        disableRedirect: disableRedirect,
       ),
       isDismissible: false,
       enableDrag: false,
@@ -103,6 +115,13 @@ class _WebviewPageState extends State<WebviewPage> {
           onPageStarted: (String url) {},
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            if (request.url.urlTrim() != widget.url.urlTrim() &&
+                widget.disableRedirect) {
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
         ),
       )
       ..loadRequest(Uri.parse(fixUrl));
@@ -120,7 +139,8 @@ class _WebviewPageState extends State<WebviewPage> {
         ),
         leading: const CloseButton(),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(context),
+      bottomNavigationBar:
+          widget.disableRedirect ? null : _buildBottomNavigationBar(context),
       body: Column(
         children: [
           if (_progress != 100)
@@ -159,8 +179,7 @@ class _WebviewPageState extends State<WebviewPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ...[WebMenuItem.goBack, WebMenuItem.goForward, WebMenuItem.reload]
-                .map(_buildIconButton)
-                ,
+                .map(_buildIconButton),
             PopupMenuButton<WebMenuItem>(
               icon: const Icon(Icons.more_vert, color: AppColors.textSecondary),
               enableFeedback: true,
@@ -211,7 +230,7 @@ class _WebviewPageState extends State<WebviewPage> {
       if (value.startsWith('https://') || value.startsWith('http://')) {
         return value;
       } else {
-        return 'http://$value';
+        return 'https://$value';
       }
     } else {
       return 'https://www.google.com/search?q=$value';
