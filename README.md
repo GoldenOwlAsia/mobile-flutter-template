@@ -79,7 +79,17 @@ Base project made with much: . Contains Bloc, Route, and much more!
   - Update `firebase_options_stg.dart`
   - Update `REVERSED_CLIENT_ID` on file info.plist
 
-4. [Try to run this code](#run-this-template)
+4. Update Firebase config - by run command
+    ```
+    flutterfire config \
+      --project={YOUR_FIREBASE_ID_PROJECT} \
+      --out={part to save firebase_options.dart} \
+      --ios-bundle-id={BUNDLE_ID_APP} \
+      --android-app-id={APP_ID}
+    ```
+    -> [Read More here](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki/Flavors)
+
+5. [Try to run this code](#run-this-template)
 
 # Code Conventions
 
