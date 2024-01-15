@@ -4,6 +4,7 @@
 
 - [How to Use](#how-to-use)
 - [Code Conventions](#code-conventions)
+- [Git Conventions](#git-conventions)
 - [dependencies](#Dependencies)
 
 ## Prerequisites
@@ -22,7 +23,7 @@
 - [Tasks - Trello]()
 - [Source code - Gitlap]()
 
-## How to Use
+# How to Use
 
 - **Step 1:** Download or clone this repo by using the link below:
 
@@ -108,6 +109,11 @@
   - Common widget start with `X`: XButton, XText, XAppbar... - These widgets under folder `lib/widgets/`
   - App Constants class or service start with `Add`: AppStyles, AppColor, AppRouter, AppCoordinator,.. and UserPrefs
 
+
+# Git Conventions
+- [Git Versioning and Code Reviews](https://www.notion.so/jimmy9/Git-Versioning-and-Code-Reviews-dea414c5e38d4db7b36180e395843968)
+- [Gitflow workflow](https://jimmy9.notion.site/Gitflow-workflow-414b8914b7e64a4d8198d47e6d9cc2f8?pvs=4)
+
 ## Dependencies
 
 - [flutter_bloc](https://pub.dev/packages/flutter_bloc) A dart package that helps implement the BLoC pattern. Learn more at [bloclibrary.dev](https://bloclibrary.dev/#/)!
@@ -116,6 +122,5 @@
 
 - [flutter_gen](https://pub.dev/packages/flutter_gen) The Flutter code generator for your assets, fonts, colors, … — Get rid of all String-based APIs.
 
-## Code structure
 
 ## Screenshot
