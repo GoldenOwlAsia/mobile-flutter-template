@@ -1,46 +1,35 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-aabPath = '../build/app/outputs/flutter-apk/app-release.aab'
-apkPath = '../build/app/outputs/flutter-apk/app-release.apk'
-appID = '1:526180610767:android:ae2be982eaabbf74bffdba'
+aabPath = '../build/app/outputs/bundle/release/app-release.aab'
+apkPath = '../build/app/outputs/apk/release/app-release.apk'
+firebaseAppID = '1:526180610767:android:ae2be982eaabbf74bffdba'
 
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+  desc "Submit a new beta build to Google Play"
+  lane :beta do
+    sh "flutter build appbundle -v"
+    upload_to_play_store(
+      track: 'internal', # production, beta, alpha, internal
+      aab: aabPath,
+      # release_status: 'draft',  # Remove after enable beta
+    )
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
+  desc "Deploy with Firebase"
+  lane :firebase do
     sh "flutter build apk --release"
-    changelog = sh("git log -20 --pretty=format:%s")
+    # This project is not linked to a Google Play account.
     firebase_app_distribution(
-      app: appID, 
-      groups: 'GoldenOwl',
+      app: firebaseAppID,
+      testers: "jimmy.to.goldenowl@gmail.com",
+      groups: "Tester",
+      release_notes: sh("git log -10 --pretty='%s'"),
       android_artifact_path: apkPath,
-      release_notes: changelog,
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
     )
   end
 
-  # desc "Deploy a new version to the Google Play"
-  # lane :deploy do
-  #   gradle(task: "clean assembleRelease")
-  #   upload_to_play_store
-  # end
 end
