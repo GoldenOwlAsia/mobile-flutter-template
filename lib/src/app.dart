@@ -1,7 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/features/settings/logic/setting_bloc.dart';
@@ -29,15 +28,8 @@ class _MyAppState extends State<MyApp> {
       ],
       child: BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
         return MaterialApp.router(
-          localizationsDelegates: [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en', ''),
-          ],
+          localizationsDelegates: S.localizationsDelegates,
+          supportedLocales: S.supportedLocales,
           onGenerateTitle: (BuildContext context) =>
               S.of(context).common_appTitle,
           builder: BotToastInit(),
