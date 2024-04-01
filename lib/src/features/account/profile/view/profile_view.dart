@@ -43,7 +43,6 @@ class ProfileView extends StatelessWidget {
                 final result =
                     await context.read<AccountBloc>().onLogOut(context);
                 if (result == true) {
-                  // ignore: use_build_context_synchronously
                   AppCoordinator.pop();
                 }
               },
@@ -60,7 +59,6 @@ class ProfileView extends StatelessWidget {
                 final result =
                     await context.read<AccountBloc>().onRemoveAccount(context);
                 if (result == true) {
-                  // ignore: use_build_context_synchronously
                   AppCoordinator.pop();
                 }
               },

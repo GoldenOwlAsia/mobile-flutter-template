@@ -110,7 +110,6 @@ class XMultiTextField extends StatelessWidget {
     );
   }
 
-  // ignore: avoid_field_initializers_in_const_classes
   final _textController = TextEditingController();
 
   Future _showAddItem(BuildContext context) async {

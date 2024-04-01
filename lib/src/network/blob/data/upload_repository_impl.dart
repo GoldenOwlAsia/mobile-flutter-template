@@ -1,4 +1,3 @@
-// ignore: depend_on_referenced_packages
 import 'package:http_parser/http_parser.dart' as http_parser;
 import '../../model/common/result.dart';
 import '../model/upload_model.dart';

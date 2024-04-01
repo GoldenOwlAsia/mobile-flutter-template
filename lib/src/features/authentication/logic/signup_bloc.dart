@@ -33,8 +33,9 @@ class SignupBloc extends Cubit<SignupState> {
         .signUpWithEmail(email: email, password: password, name: name);
     if (result.isSuccess) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-      // ignore: use_build_context_synchronously
-      signupDecision(context, result.data!);
+      if (context.mounted) {
+        signupDecision(context, result.data!);
+      }
     } else {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));
       XAlert.show(title: 'Signup fail', body: result.error);
