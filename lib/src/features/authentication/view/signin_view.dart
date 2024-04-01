@@ -73,7 +73,7 @@ class SigninView extends StatelessWidget {
           enabled: state.isValidated,
           title: S.of(context).common_next,
           onPressed: () async {
-            context.read<SigninBloc>().loginWithEmail(context);
+            context.read<SigninBloc>().loginWithEmail();
           },
         ),
         const SizedBox(height: 32.0),

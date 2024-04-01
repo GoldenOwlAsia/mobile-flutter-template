@@ -29,8 +29,7 @@ class SocialListButton extends StatelessWidget {
                 title: S.of(context).sign_signin_signinWithApple,
                 busy: state.status.isInProgress &&
                     state.loginType == MSocialType.apple,
-                onPressed: () =>
-                    context.read<SigninBloc>().loginWithApple(context),
+                onPressed: () => context.read<SigninBloc>().loginWithApple(),
               ),
             ],
             space,
@@ -39,8 +38,7 @@ class SocialListButton extends StatelessWidget {
               title: S.of(context).sign_signin_signinWithFacebook,
               busy: state.status.isInProgress &&
                   state.loginType == MSocialType.facebook,
-              onPressed: () =>
-                  context.read<SigninBloc>().loginWithFacebook(context),
+              onPressed: () => context.read<SigninBloc>().loginWithFacebook(),
             ),
             space,
             _buildButton(
@@ -48,8 +46,7 @@ class SocialListButton extends StatelessWidget {
               title: S.of(context).sign_signin_signinWithGoogle,
               busy: state.status.isInProgress &&
                   state.loginType == MSocialType.google,
-              onPressed: () =>
-                  context.read<SigninBloc>().loginWithGoogle(context),
+              onPressed: () => context.read<SigninBloc>().loginWithGoogle(),
             ),
           ],
         );
