@@ -204,6 +204,6 @@ class XHttp {
 
   Future<bool> checkConnectivity() async {
     final connectivityResult = await (Connectivity().checkConnectivity());
-    return connectivityResult != ConnectivityResult.none;
+    return connectivityResult.contains(ConnectivityResult.none);
   }
 }
