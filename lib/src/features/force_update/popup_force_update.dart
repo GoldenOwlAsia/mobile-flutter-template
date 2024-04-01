@@ -6,7 +6,7 @@ import 'package:myapp/widgets/button/button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PopupForceUpdateApp extends StatelessWidget {
-  const PopupForceUpdateApp({Key? key}) : super(key: key);
+  const PopupForceUpdateApp({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
