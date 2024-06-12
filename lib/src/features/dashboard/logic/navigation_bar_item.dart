@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/router/route_name.dart';
+import 'package:myapp/src/core/router/route_name.dart';
 
 enum XNavigationBarItems {
   home(

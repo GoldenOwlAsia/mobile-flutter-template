@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/button/text_button.dart';
-
-import '../../../widgets/button/button.dart';
-import '../../../widgets/button/model/button_size.dart';
-import '../../../widgets/button/outlined_button.dart';
-import '../../../widgets/button/secondary_button.dart';
-import '../widget/dev_screen_layout.dart';
-import '../widget/dev_title.dart';
+import 'package:myapp/src/_dev/widget/dev_screen_layout.dart';
+import 'package:myapp/src/_dev/widget/dev_title.dart';
+import 'package:myapp/src/core/widgets/button/button.dart';
+import 'package:myapp/src/core/widgets/button/model/button_size.dart';
+import 'package:myapp/src/core/widgets/button/outlined_button.dart';
+import 'package:myapp/src/core/widgets/button/secondary_button.dart';
+import 'package:myapp/src/core/widgets/button/text_button.dart';
 
 enum EButtonSize { small, medium, large }
 

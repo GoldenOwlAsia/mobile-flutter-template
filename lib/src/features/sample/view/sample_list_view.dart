@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/router/coordinator.dart';
-import '../../../../gen/assets.gen.dart';
+import 'package:myapp/src/core/gen/assets.gen.dart';
+import 'package:myapp/src/core/router/coordinator.dart';
 
 class SampleItemListView extends StatelessWidget {
   const SampleItemListView({super.key});

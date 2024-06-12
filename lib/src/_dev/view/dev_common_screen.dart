@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/features/common/view/not_found_view.dart';
-import 'package:myapp/src/features/common/view/webview/web_view.dart';
-import 'package:myapp/widgets/button/button.dart';
-
-import '../../../gen/assets.gen.dart';
-import '../../../widgets/state/state_empty_widget.dart';
-import '../../../widgets/state/state_error_widget.dart';
-import '../../../widgets/state/state_loading_widget.dart';
-import '../../dialogs/toast_wrapper.dart';
-import '../../localization/localization_utils.dart';
-import '../widget/dev_button_title.dart';
-import '../widget/dev_navigation_title.dart';
-import '../widget/dev_screen_layout.dart';
+import 'package:myapp/src/_dev/widget/dev_button_title.dart';
+import 'package:myapp/src/_dev/widget/dev_navigation_title.dart';
+import 'package:myapp/src/_dev/widget/dev_screen_layout.dart';
+import 'package:myapp/src/core/dialogs/toast_wrapper.dart';
+import 'package:myapp/src/core/gen/assets.gen.dart';
+import 'package:myapp/src/core/localization/localization_utils.dart';
+import 'package:myapp/src/core/widgets/button/button.dart';
+import 'package:myapp/src/core/widgets/state/state_empty_widget.dart';
+import 'package:myapp/src/core/widgets/state/state_error_widget.dart';
+import 'package:myapp/src/core/widgets/state/state_loading_widget.dart';
+import 'package:myapp/src/core/common/view/not_found_view.dart';
+import 'package:myapp/src/core/common/view/webview/web_view.dart';
 
 class DevCommonScreen extends StatelessWidget {
   const DevCommonScreen({super.key});
@@ -51,7 +50,7 @@ class DevCommonScreen extends StatelessWidget {
           'Empty Notification',
           (_) => viewOf(
             XStateEmptyWidget(
-              iconSvg: Assets.svgs.stateEmptyNotification,
+              iconSvg: Assets.svgs.stateEmptyNotification.path,
               title: 'No notifications yet',
               body:
                   "You're all caught up!\n Check back later for new notifications",

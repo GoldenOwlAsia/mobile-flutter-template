@@ -5,7 +5,7 @@
 // https://flutter.dev/docs/cookbook/testing/unit/introduction
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myapp/src/utils/extension.dart';
+import 'package:myapp/src/core/utils/extension/string.ext.dart';
 
 void main() {
   group('String Extension', () {

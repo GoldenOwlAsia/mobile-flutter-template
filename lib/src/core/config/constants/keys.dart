@@ -1,0 +1,3 @@
+class AppKeys {
+  AppKeys._();
+}

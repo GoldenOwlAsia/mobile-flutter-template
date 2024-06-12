@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/src/router/coordinator.dart';
+import 'package:myapp/src/core/dialogs/alert_wrapper.dart';
+import 'package:myapp/src/core/router/coordinator.dart';
+import 'package:myapp/src/core/services/remote_config/remote_config_service.dart';
 import 'navigation_bar_item.dart';
-import 'package:myapp/src/dialogs/alert_wrapper.dart';
-import 'package:myapp/src/services/remote_config/remote_config_service.dart';
 
 class DashboardBloc extends Cubit<XNavigationBarItems> {
   DashboardBloc(super.current) {

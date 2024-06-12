@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/src/_dev/widget/dev_wrap_button.dart';
-import 'package:myapp/src/dialogs/toast_wrapper.dart';
-import 'package:myapp/src/router/coordinator.dart';
-import 'package:myapp/src/router/route_name.dart';
-import 'package:myapp/widgets/button/text_button.dart';
+import 'package:myapp/src/core/dialogs/toast_wrapper.dart';
+import 'package:myapp/src/core/router/coordinator.dart';
+import 'package:myapp/src/core/router/route_name.dart';
+import 'package:myapp/src/core/widgets/button/text_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

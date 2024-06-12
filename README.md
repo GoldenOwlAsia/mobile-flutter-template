@@ -99,9 +99,9 @@ Base project made with much: . Contains Bloc, Route, and much more!
   In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
 
 - Must know
-  - Model name start with `M`: MUser, MProduct, MGroup...
+  - Model name start with `M`: UserModel, MProduct, MGroup...
   - Common widget start with `X`: XButton, XText, XAppbar... - There widget under folder `lib/widgets/`
-  - App Constants class or service start with `Add`: AppStyles, AppColor, AppRouter, AppCoordinator,.. and UserPrefs
+  - App Constants class or service start with `Add`: AppStyles, AppColor, AppRouter, AppCoordinator,.. and PrefsUtils
 
 # Dependencies
 
