@@ -5,18 +5,54 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "staging (Debug)",
+      "name": "Staging Debug Mode",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_staging.dart",
-      "args": ["--flavor", "staging", "--target","lib/main_staging.dart"]
+      "args": [
+        "--flavor",
+        "staging",
+        "-t",
+        "lib/main_staging.dart"
+      ],
+      "preLaunchTask": "stagingENV"
     },
     {
-      "name": "product (Debug)",
+      "name": "Staging Release Mode",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart",
-      "args": ["--flavor", "production", "--target", "lib/main.dart"]
+      "flutterMode": "release",
+      "args": [
+        "--flavor",
+        "staging",
+        "-t",
+        "lib/main_staging.dart"
+      ],
+      "preLaunchTask": "stagingENV"
+    },
+    {
+      "name": "Production Debug Mode",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--flavor",
+        "production",
+        "-t",
+        "lib/main.dart"
+      ],
+      "preLaunchTask": "productionENV"
+    },
+    {
+      "name": "Production Release Mode",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": [
+        "--flavor",
+        "production",
+        "-t",
+        "lib/main.dart"
+      ],
+      "preLaunchTask": "productionENV",
     },
   ]
 }

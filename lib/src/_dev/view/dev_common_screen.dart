@@ -51,7 +51,7 @@ class DevCommonScreen extends StatelessWidget {
           'Empty Notification',
           (_) => viewOf(
             XStateEmptyWidget(
-              iconSvg: Assets.svgs.stateEmptyNotification,
+              iconSvg: Assets.svgs.stateEmptyNotification.path,
               title: 'No notifications yet',
               body:
                   "You're all caught up!\n Check back later for new notifications",

@@ -9,12 +9,12 @@ part of 'pagination_meta.dart';
 _$MPaginationMetaImpl _$$MPaginationMetaImplFromJson(
         Map<String, dynamic> json) =>
     _$MPaginationMetaImpl(
-      pageSize: json['page_size'] as int,
-      totalCount: json['total_count'] as int,
-      pageNumber: json['page_number'] as int,
-      prevPage: json['prev_page'] as int? ?? 0,
-      nextPage: json['next_page'] as int? ?? 0,
-      lastPage: json['last_page'] as int,
+      pageSize: (json['page_size'] as num).toInt(),
+      totalCount: (json['total_count'] as num).toInt(),
+      pageNumber: (json['page_number'] as num).toInt(),
+      prevPage: (json['prev_page'] as num?)?.toInt() ?? 0,
+      nextPage: (json['next_page'] as num?)?.toInt() ?? 0,
+      lastPage: (json['last_page'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$MPaginationMetaImplToJson(

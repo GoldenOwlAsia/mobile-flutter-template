@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/src/features/dashboard/logic/navigation_bar_item.dart';
 import 'package:myapp/src/features/common/logic/lifecycle_mixin.dart';
@@ -28,7 +31,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with LifecycleMixin {
         builder: (context, state) {
           return PopScope(
             canPop: false,
-            onPopInvoked: (didPop) async {
+            onPopInvokedWithResult: (didPop, _) async {
               context.read<DashboardBloc>().goHome();
             },
             child: Scaffold(
@@ -46,4 +49,19 @@ class _DashBoardScreenState extends State<DashBoardScreen> with LifecycleMixin {
 
   @override
   void onResume() {}
+
+  @override
+  void didChangeViewFocus(ViewFocusEvent event) {}
+
+  @override
+  void handleCancelBackGesture() {}
+
+  @override
+  void handleCommitBackGesture() {}
+
+  @override
+  bool handleStartBackGesture(PredictiveBackEvent backEvent) => false;
+
+  @override
+  void handleUpdateBackGestureProgress(PredictiveBackEvent backEvent) {}
 }
