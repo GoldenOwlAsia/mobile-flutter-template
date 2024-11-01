@@ -15,7 +15,7 @@ class XIndicator extends StatelessWidget {
         width: radius * 2,
         height: radius * 2,
         child: CircularProgressIndicator(
-          backgroundColor: color ?? Theme.of(context).colorScheme.onBackground,
+          backgroundColor: color ?? Theme.of(context).colorScheme.onSurface,
           strokeWidth: 1.5,
         ),
       );

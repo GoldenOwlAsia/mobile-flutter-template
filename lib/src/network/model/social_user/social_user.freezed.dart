@@ -12,7 +12,7 @@ part of 'social_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MSocialUser _$MSocialUserFromJson(Map<String, dynamic> json) {
   return _MSocialUser.fromJson(json);
@@ -39,8 +39,12 @@ mixin _$MSocialUser {
   int? get gender => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
 
+  /// Serializes this MSocialUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MSocialUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MSocialUserCopyWith<MSocialUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +78,8 @@ class _$MSocialUserCopyWithImpl<$Res, $Val extends MSocialUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MSocialUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,6 +168,8 @@ class __$$MSocialUserImplCopyWithImpl<$Res>
       _$MSocialUserImpl _value, $Res Function(_$MSocialUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MSocialUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -274,7 +282,7 @@ class _$MSocialUserImpl implements _MSocialUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MSocialUserImpl &&
@@ -293,12 +301,14 @@ class _$MSocialUserImpl implements _MSocialUser {
             (identical(other.phone, phone) || other.phone == phone));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, userID, accessToken,
       idToken, fullName, email, avatar, birthDate, gender, phone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MSocialUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MSocialUserImplCopyWith<_$MSocialUserImpl> get copyWith =>
@@ -330,21 +340,21 @@ abstract class _MSocialUser implements MSocialUser {
 
   @override
   MSocialType get type;
-  @override
 
   /// Apple and Facebook userID
-  String? get userID;
   @override
+  String? get userID;
 
   /// Facebook & Google Access Token
-  String? get accessToken;
   @override
+  String? get accessToken;
 
   /// Google ID Token
-  String? get idToken;
   @override
+  String? get idToken;
 
   /// FB and Google information
+  @override
   String? get fullName;
   @override
   String? get email;
@@ -356,8 +366,11 @@ abstract class _MSocialUser implements MSocialUser {
   int? get gender;
   @override
   String? get phone;
+
+  /// Create a copy of MSocialUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MSocialUserImplCopyWith<_$MSocialUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

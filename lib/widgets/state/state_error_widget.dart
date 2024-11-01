@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../gen/assets.gen.dart';
-import '../../src/localization/localization_utils.dart';
-import '../../src/theme/styles.dart';
-import '../button/outlined_button.dart';
+import 'package:myapp/gen/assets.gen.dart';
+import 'package:myapp/src/localization/localization_utils.dart';
+import 'package:myapp/src/theme/styles.dart';
+import 'package:myapp/widgets/button/outlined_button.dart';
 
 class XStateErrorWidget extends StatelessWidget {
   const XStateErrorWidget({
@@ -19,7 +17,7 @@ class XStateErrorWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SvgPicture.asset(Assets.svgs.stateError),
+        Assets.svgs.stateError.svg(),
         const SizedBox(height: 15),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),

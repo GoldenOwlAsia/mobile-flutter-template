@@ -16,7 +16,7 @@ _$MSocialUserImpl _$$MSocialUserImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String?,
       avatar: json['avatar'] as String?,
       birthDate: json['birth_date'] as String?,
-      gender: json['gender'] as int?,
+      gender: (json['gender'] as num?)?.toInt(),
       phone: json['phone'] as String?,
     );
 

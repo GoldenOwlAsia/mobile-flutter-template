@@ -24,7 +24,7 @@ class XStateEmptyWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SvgPicture.asset(iconSvg ?? Assets.svgs.stateEmpty),
+        SvgPicture.asset(iconSvg ?? Assets.svgs.stateEmpty.path),
         const SizedBox(height: 15),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),

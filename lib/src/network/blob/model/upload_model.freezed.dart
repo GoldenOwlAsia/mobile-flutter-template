@@ -12,7 +12,7 @@ part of 'upload_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MUpload _$MUploadFromJson(Map<String, dynamic> json) {
   return _MUpload.fromJson(json);
@@ -22,8 +22,12 @@ MUpload _$MUploadFromJson(Map<String, dynamic> json) {
 mixin _$MUpload {
   String get url => throw _privateConstructorUsedError;
 
+  /// Serializes this MUpload to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MUpload
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MUploadCopyWith<MUpload> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -45,6 +49,8 @@ class _$MUploadCopyWithImpl<$Res, $Val extends MUpload>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MUpload
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +83,8 @@ class __$$MUploadImplCopyWithImpl<$Res>
       _$MUploadImpl _value, $Res Function(_$MUploadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MUpload
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,18 +124,20 @@ class _$MUploadImpl with DiagnosticableTreeMixin implements _MUpload {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MUploadImpl &&
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MUpload
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MUploadImplCopyWith<_$MUploadImpl> get copyWith =>
@@ -148,8 +158,11 @@ abstract class _MUpload implements MUpload {
 
   @override
   String get url;
+
+  /// Create a copy of MUpload
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MUploadImplCopyWith<_$MUploadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

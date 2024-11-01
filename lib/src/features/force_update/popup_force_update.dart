@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:myapp/gen/assets.gen.dart';
 import 'package:myapp/src/config/constants/links.dart';
 import 'package:myapp/widgets/button/button.dart';
@@ -19,7 +18,7 @@ class PopupForceUpdateApp extends StatelessWidget {
         children: [
           SizedBox(
             width: 100,
-            child: Lottie.asset(Assets.lotties.rocket),
+            child: Assets.lotties.rocket.lottie(),
           ),
           Text(
             "Your application update is available",

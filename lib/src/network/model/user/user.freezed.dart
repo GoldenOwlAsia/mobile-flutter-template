@@ -12,7 +12,7 @@ part of 'user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MUser _$MUserFromJson(Map<String, dynamic> json) {
   return _MUser.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$MUser {
   String? get avatar => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
 
+  /// Serializes this MUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MUserCopyWith<MUser> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -48,6 +52,8 @@ class _$MUserCopyWithImpl<$Res, $Val extends MUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +101,8 @@ class __$$MUserImplCopyWithImpl<$Res>
       _$MUserImpl _value, $Res Function(_$MUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,7 +156,7 @@ class _$MUserImpl extends _MUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MUserImpl &&
@@ -158,11 +166,13 @@ class _$MUserImpl extends _MUser {
             (identical(other.email, email) || other.email == email));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, avatar, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MUserImplCopyWith<_$MUserImpl> get copyWith =>
@@ -194,8 +204,11 @@ abstract class _MUser extends MUser {
   String? get avatar;
   @override
   String? get email;
+
+  /// Create a copy of MUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MUserImplCopyWith<_$MUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

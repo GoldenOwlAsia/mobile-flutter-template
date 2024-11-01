@@ -161,8 +161,7 @@ class XMultiTextField extends StatelessWidget {
                             suffixIcon: IconButton(
                               icon: Icon(
                                 Icons.add,
-                                color:
-                                    Theme.of(context).colorScheme.onBackground,
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                               onPressed: () {
                                 valueInput = _textController.text;

@@ -22,9 +22,10 @@ class XHttp {
   String? tokenApi;
   final Logger _log = Logger(
     printer: PrettyPrinter(
-        methodCount: 0, // Number of method calls to be displayed
-        printTime: false // Should each log print contain a timestamp
-        ),
+      methodCount: 0, // Number of method calls to be displayed
+      // Should each log print contain a timestamp
+      dateTimeFormat: DateTimeFormat.dateAndTime,
+    ),
   );
 
   String baseUrl = 'http://13.251.254.214:8000/';

@@ -25,7 +25,7 @@ class SocialListButton extends StatelessWidget {
             if (kIsWeb == false && Platform.isIOS) ...[
               space,
               _buildButton(
-                icon: Assets.svgs.icApple,
+                icon: Assets.svgs.icApple.path,
                 title: S.of(context).sign_signin_signinWithApple,
                 busy: state.status.isInProgress &&
                     state.loginType == MSocialType.apple,
@@ -34,7 +34,7 @@ class SocialListButton extends StatelessWidget {
             ],
             space,
             _buildButton(
-              icon: Assets.svgs.icFacebook,
+              icon: Assets.svgs.icFacebook.path,
               title: S.of(context).sign_signin_signinWithFacebook,
               busy: state.status.isInProgress &&
                   state.loginType == MSocialType.facebook,
@@ -42,7 +42,7 @@ class SocialListButton extends StatelessWidget {
             ),
             space,
             _buildButton(
-              icon: Assets.svgs.icGoogle,
+              icon: Assets.svgs.icGoogle.path,
               title: S.of(context).sign_signin_signinWithGoogle,
               busy: state.status.isInProgress &&
                   state.loginType == MSocialType.google,

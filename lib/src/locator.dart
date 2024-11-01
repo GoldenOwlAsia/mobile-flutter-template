@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:myapp/src/config/devices/app_info.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
@@ -23,7 +24,8 @@ Future initializeApp({String? name, FirebaseOptions? firebaseOptions}) async {
   await Future.wait([
     AppInfo.initialize(),
     UserPrefs.instance.initialize(),
-    XFirebaseMessage.instance.initialize()
+    XFirebaseMessage.instance.initialize(),
+    dotenv.load(fileName: ".env"),
   ]);
   await RemoteConfigService.getRemoteConfig();
 
