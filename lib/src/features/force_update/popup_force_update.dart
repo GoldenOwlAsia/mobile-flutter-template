@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/gen/assets.gen.dart';
+import 'package:myapp/generated/assets/assets.gen.dart';
 import 'package:myapp/src/config/constants/links.dart';
 import 'package:myapp/widgets/button/button.dart';
 import 'package:url_launcher/url_launcher.dart';

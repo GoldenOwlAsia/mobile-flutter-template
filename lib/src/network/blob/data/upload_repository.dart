@@ -1,5 +1,5 @@
-import '../../model/common/result.dart';
-import '../model/upload_model.dart';
+import 'package:myapp/src/network/blob/model/upload_model.dart';
+import 'package:myapp/src/network/model/common/result.dart';
 
 abstract class UploadRepository {
   Future<MResult<MUpload?>> uploadImage(String path);

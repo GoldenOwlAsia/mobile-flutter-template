@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/generated/assets/assets.gen.dart';
+import 'package:myapp/src/_dev/widget/dev_button_title.dart';
+import 'package:myapp/src/_dev/widget/dev_navigation_title.dart';
+import 'package:myapp/src/_dev/widget/dev_screen_layout.dart';
+import 'package:myapp/src/dialogs/toast_wrapper.dart';
 import 'package:myapp/src/features/common/view/not_found_view.dart';
 import 'package:myapp/src/features/common/view/webview/web_view.dart';
+import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/widgets/button/button.dart';
-
-import '../../../gen/assets.gen.dart';
-import '../../../widgets/state/state_empty_widget.dart';
-import '../../../widgets/state/state_error_widget.dart';
-import '../../../widgets/state/state_loading_widget.dart';
-import '../../dialogs/toast_wrapper.dart';
-import '../../localization/localization_utils.dart';
-import '../widget/dev_button_title.dart';
-import '../widget/dev_navigation_title.dart';
-import '../widget/dev_screen_layout.dart';
+import 'package:myapp/widgets/state/state_empty_widget.dart';
+import 'package:myapp/widgets/state/state_error_widget.dart';
+import 'package:myapp/widgets/state/state_loading_widget.dart';
 
 class DevCommonScreen extends StatelessWidget {
   const DevCommonScreen({super.key});

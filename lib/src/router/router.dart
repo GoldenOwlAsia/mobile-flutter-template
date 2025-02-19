@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/src/_dev/dev_screen.dart';
+import 'package:myapp/src/features/common/view/not_found_view.dart';
 import 'package:myapp/src/features/dashboard/logic/navigation_bar_item.dart';
 import 'package:myapp/src/features/account/profile/view/profile_view.dart';
 import 'package:myapp/src/features/account/view/account_view.dart';
@@ -10,13 +11,12 @@ import 'package:myapp/src/features/authentication/view/signin_view.dart';
 import 'package:myapp/src/features/authentication/view/signup_view.dart';
 import 'package:myapp/src/features/dashboard/view/dashboard_view.dart';
 import 'package:myapp/src/features/home/view/home_view.dart';
+import 'package:myapp/src/features/photo_view/photo_view_page.dart';
 import 'package:myapp/src/features/sample/view/sample_detail_view.dart';
 import 'package:myapp/src/features/sample/view/sample_list_view.dart';
-import '../features/common/view/not_found_view.dart';
-import '../features/photo_view/photo_view_page.dart';
-import 'coordinator.dart';
-import 'extras/photo_view_extra.dart';
-import 'route_name.dart';
+import 'package:myapp/src/router/coordinator.dart';
+import 'package:myapp/src/router/extras/photo_view_extra.dart';
+import 'package:myapp/src/router/route_name.dart';
 
 class AppRouter {
   late final router = GoRouter(
@@ -70,8 +70,8 @@ class AppRouter {
                     path: AppRouteNames.sampleDetails.buildSubPathParam,
                     name: AppRouteNames.sampleDetails.name,
                     builder: (_, state) {
-                      final id =
-                          state.pathParameters[AppRouteNames.sampleDetails.paramName]!;
+                      final id = state.pathParameters[
+                          AppRouteNames.sampleDetails.paramName]!;
                       return SampleItemDetailsView(id: id);
                     },
                   )

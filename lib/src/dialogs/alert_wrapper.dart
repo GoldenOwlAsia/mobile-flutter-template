@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/src/features/force_update/popup_force_update.dart';
+import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/src/router/coordinator.dart';
-
-import '../localization/localization_utils.dart';
 
 class XAlert {
   static get context => AppCoordinator.context;

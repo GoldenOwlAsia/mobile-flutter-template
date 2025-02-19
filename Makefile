@@ -7,6 +7,9 @@ clean:
 get:
 	flutter pub get
 
+pubUpgrade:
+	flutter pub upgrade --major-versions --tighten
+
 format:
 	dart format .
 
@@ -27,5 +30,17 @@ signingReport:
 
 genLanguage:
 	flutter gen-l10n
+
+envStag:
+	cat .env.staging > .env
+
+envProd:
+	cat .env.production > .env
+
+buildAndroidStag:
+	cat .env.staging > .env; flutter build appbundle --flavor staging -t lib/main_staging.dart
+
+buildAndroidProd:
+	cat .env.production > .env; flutter build appbundle --flavor production
 	
 # keytool -list -v -keystore android/app/release-keystore.jks -alias <key alias>

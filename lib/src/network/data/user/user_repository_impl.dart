@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:myapp/src/network/data/user/user_reference.dart';
 import 'package:myapp/src/network/data/user/user_repository.dart';
+import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
-
-import '../../model/common/result.dart';
 
 class UserRepositoryImpl extends UserRepository {
   final usersRef = UserReference();
@@ -26,7 +25,7 @@ class UserRepositoryImpl extends UserRepository {
   Future<MResult<MUser>> getOrAddUser(MUser user) {
     return usersRef.getOrAddUser(user);
   }
-  
+
   @override
   Future<MResult<List<MUser>>> getUsers() {
     return usersRef.getUsers();
