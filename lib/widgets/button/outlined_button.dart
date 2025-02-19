@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../common/indicator.dart';
-import 'model/button_size.dart';
+import 'package:myapp/widgets/button/model/button_size.dart';
+import 'package:myapp/widgets/common/indicator.dart';
 
 class XOutlinedButton extends StatelessWidget {
   const XOutlinedButton({

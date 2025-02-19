@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:myapp/src/features/common/view/webview/model/web_menu_item.dart';
+import 'package:myapp/src/theme/colors.dart';
 import 'package:myapp/src/utils/extension.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:validators/validators.dart';
-
-import '../../../../theme/colors.dart';
-import 'model/web_menu_item.dart';
 
 class WebviewPage extends StatefulWidget {
   const WebviewPage(
@@ -91,8 +90,6 @@ class _WebviewPageState extends State<WebviewPage> {
         if (currentUrl != null) {
           Share.share(currentUrl);
         }
-        break;
-      default:
         break;
     }
   }

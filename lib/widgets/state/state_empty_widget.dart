@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../gen/assets.gen.dart';
-import '../../src/localization/localization_utils.dart';
-import '../../src/theme/styles.dart';
+import 'package:myapp/generated/assets/assets.gen.dart';
+import 'package:myapp/src/localization/localization_utils.dart';
+import 'package:myapp/src/theme/styles.dart';
 
 class XStateEmptyWidget extends StatelessWidget {
   const XStateEmptyWidget({

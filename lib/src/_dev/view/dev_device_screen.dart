@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/_dev/widget/dev_copy_title.dart';
+import 'package:myapp/src/_dev/widget/dev_screen_layout.dart';
+import 'package:myapp/src/_dev/widget/dev_title.dart';
+import 'package:myapp/src/config/devices/app_info.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import '../../config/devices/app_info.dart';
-import '../widget/dev_copy_title.dart';
-import '../widget/dev_screen_layout.dart';
-import '../widget/dev_title.dart';
 
 class DevDeviceScreen extends StatelessWidget {
   const DevDeviceScreen({super.key});

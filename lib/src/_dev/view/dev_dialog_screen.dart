@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../dialogs/alert_wrapper.dart';
-import '../../dialogs/toast_wrapper.dart';
-import '../widget/dev_button_title.dart';
-import '../widget/dev_screen_layout.dart';
+import 'package:myapp/src/_dev/widget/dev_button_title.dart';
+import 'package:myapp/src/_dev/widget/dev_screen_layout.dart';
+import 'package:myapp/src/dialogs/alert_wrapper.dart';
+import 'package:myapp/src/dialogs/toast_wrapper.dart';
 
 class DevDialogScreen extends StatelessWidget {
   const DevDialogScreen({super.key});

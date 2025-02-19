@@ -5,7 +5,7 @@ class AppDecorations {
     BoxShadow(
       offset: const Offset(2, 2),
       blurRadius: 2,
-      color: Colors.black.withOpacity(.1),
+      color: Colors.black.withValues(alpha: 0.1),
     ),
   ];
 

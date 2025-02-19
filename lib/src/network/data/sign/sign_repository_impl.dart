@@ -3,10 +3,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/common/error_code.dart';
+import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
-
-import '../../model/common/result.dart';
 
 class SignRepositoryImpl extends SignRepository {
   @override

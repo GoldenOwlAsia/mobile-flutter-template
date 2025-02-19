@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widget/dev_screen_layout.dart';
+import 'package:myapp/src/_dev/widget/dev_screen_layout.dart';
 
 class DevCardScreen extends StatelessWidget {
   const DevCardScreen({super.key});

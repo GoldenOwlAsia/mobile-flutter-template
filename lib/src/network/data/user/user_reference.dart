@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:myapp/src/network/firebase/base_collection.dart';
-import '../../model/common/result.dart';
-import '../../model/user/user.dart';
+import 'package:myapp/src/network/model/common/result.dart';
+import 'package:myapp/src/network/model/user/user.dart';
 
 class UserReference extends BaseCollectionReference<MUser> {
   UserReference()
