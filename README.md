@@ -1,6 +1,6 @@
-![screenshot](resources/images/github-banner.png)
-
-# Flutter Boilerplate
+<h1 align="center">
+    GoldenOwl Flutter Boilerplate
+</h1>
 
 Fork this project then start you project with a lot of stuck prepare
 
