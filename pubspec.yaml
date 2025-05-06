@@ -21,7 +21,7 @@ dependencies:
   logger: ^2.5.0
   device_info_plus: ^11.3.0
   package_info_plus: ^8.2.1
-  shared_preferences: ^2.5.2
+  shared_preferences: ^2.5.3
   flutter_dotenv: ^5.2.1
   environment_config: ^3.2.0
   url_launcher: ^6.3.1
