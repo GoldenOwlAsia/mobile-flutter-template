@@ -14,7 +14,6 @@
         "-t",
         "lib/main_staging.dart"
       ],
-      "preLaunchTask": "stagingENV"
     },
     {
       "name": "Staging Release Mode",
@@ -27,7 +26,6 @@
         "-t",
         "lib/main_staging.dart"
       ],
-      "preLaunchTask": "stagingENV"
     },
     {
       "name": "Production Debug Mode",
@@ -39,7 +37,6 @@
         "-t",
         "lib/main.dart"
       ],
-      "preLaunchTask": "productionENV"
     },
     {
       "name": "Production Release Mode",
@@ -52,7 +49,6 @@
         "-t",
         "lib/main.dart"
       ],
-      "preLaunchTask": "productionENV",
     },
   ]
 }
