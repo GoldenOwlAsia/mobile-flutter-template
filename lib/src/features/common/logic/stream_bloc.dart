@@ -35,7 +35,7 @@ abstract class StreamCubit<T, D> extends Cubit<T> {
   void onStreamData(D? data);
 
   /// Called when an error is fired in the stream
-  void onStreamError(error);
+  void onStreamError(dynamic error);
 
   /// Called before the data is set for the ViewModel
   D transformData(D data) {

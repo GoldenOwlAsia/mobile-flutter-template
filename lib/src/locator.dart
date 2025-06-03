@@ -25,7 +25,7 @@ Future initializeApp({String? name, FirebaseOptions? firebaseOptions}) async {
     AppInfo.initialize(),
     UserPrefs.instance.initialize(),
     XFirebaseMessage.instance.initialize(),
-    dotenv.load(fileName: ".env"),
+    dotenv.load(fileName: '.env.$name'),
   ]);
   await RemoteConfigService.getRemoteConfig();
 

@@ -9,15 +9,9 @@ import 'package:myapp/src/theme/screen.dart';
 import 'package:myapp/src/theme/themes.dart';
 import 'package:myapp/src/localization/localization_utils.dart';
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final _appRouter = GetIt.I<AppRouter>();
   @override
   Widget build(BuildContext context) {
     AppScreens.mediaQuery = MediaQuery.of(context);
@@ -30,13 +24,12 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp.router(
           localizationsDelegates: S.localizationsDelegates,
           supportedLocales: S.supportedLocales,
-          onGenerateTitle: (BuildContext context) =>
-              S.of(context).common_appTitle,
+          onGenerateTitle: (context) => S.of(context).common_appTitle,
           builder: BotToastInit(),
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: state.themeMode,
-          routerConfig: _appRouter.router,
+          routerConfig: GetIt.I<AppRouter>().router,
         );
       }),
     );

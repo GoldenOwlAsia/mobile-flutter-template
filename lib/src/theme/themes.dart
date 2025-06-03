@@ -11,7 +11,7 @@ class AppTheme {
         scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
 
         /// dialog
-        dialogTheme: DialogTheme(
+        dialogTheme: DialogThemeData(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),

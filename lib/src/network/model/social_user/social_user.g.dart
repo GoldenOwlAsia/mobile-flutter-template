@@ -6,8 +6,7 @@ part of 'social_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MSocialUserImpl _$$MSocialUserImplFromJson(Map<String, dynamic> json) =>
-    _$MSocialUserImpl(
+_MSocialUser _$MSocialUserFromJson(Map<String, dynamic> json) => _MSocialUser(
       type: $enumDecode(_$MSocialTypeEnumMap, json['type']),
       userID: json['user_i_d'] as String?,
       accessToken: json['access_token'] as String?,
@@ -20,7 +19,7 @@ _$MSocialUserImpl _$$MSocialUserImplFromJson(Map<String, dynamic> json) =>
       phone: json['phone'] as String?,
     );
 
-Map<String, dynamic> _$$MSocialUserImplToJson(_$MSocialUserImpl instance) =>
+Map<String, dynamic> _$MSocialUserToJson(_MSocialUser instance) =>
     <String, dynamic>{
       'type': _$MSocialTypeEnumMap[instance.type]!,
       'user_i_d': instance.userID,

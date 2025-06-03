@@ -6,12 +6,10 @@ part of 'upload_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MUploadImpl _$$MUploadImplFromJson(Map<String, dynamic> json) =>
-    _$MUploadImpl(
+_MUpload _$MUploadFromJson(Map<String, dynamic> json) => _MUpload(
       url: json['url'] as String,
     );
 
-Map<String, dynamic> _$$MUploadImplToJson(_$MUploadImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MUploadToJson(_MUpload instance) => <String, dynamic>{
       'url': instance.url,
     };

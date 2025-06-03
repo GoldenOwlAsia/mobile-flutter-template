@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,113 +10,82 @@ part of 'pagination_meta.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MPaginationMeta _$MPaginationMetaFromJson(Map<String, dynamic> json) {
-  return _MPaginationMeta.fromJson(json);
-}
-
 /// @nodoc
-mixin _$MPaginationMeta {
+mixin _$MPaginationMeta implements DiagnosticableTreeMixin {
   @JsonKey(name: 'page_size')
-  int get pageSize => throw _privateConstructorUsedError;
+  int get pageSize;
   @JsonKey(name: 'total_count')
-  int get totalCount => throw _privateConstructorUsedError;
+  int get totalCount;
   @JsonKey(name: 'page_number')
-  int get pageNumber => throw _privateConstructorUsedError;
+  int get pageNumber;
   @JsonKey(name: 'prev_page')
-  int? get prevPage => throw _privateConstructorUsedError;
+  int? get prevPage;
   @JsonKey(name: 'next_page')
-  int? get nextPage => throw _privateConstructorUsedError;
+  int? get nextPage;
   @JsonKey(name: 'last_page')
-  int get lastPage => throw _privateConstructorUsedError;
-
-  /// Serializes this MPaginationMeta to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get lastPage;
 
   /// Create a copy of MPaginationMeta
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MPaginationMetaCopyWith<MPaginationMeta> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MPaginationMetaCopyWith<$Res> {
-  factory $MPaginationMetaCopyWith(
-          MPaginationMeta value, $Res Function(MPaginationMeta) then) =
-      _$MPaginationMetaCopyWithImpl<$Res, MPaginationMeta>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'page_size') int pageSize,
-      @JsonKey(name: 'total_count') int totalCount,
-      @JsonKey(name: 'page_number') int pageNumber,
-      @JsonKey(name: 'prev_page') int? prevPage,
-      @JsonKey(name: 'next_page') int? nextPage,
-      @JsonKey(name: 'last_page') int lastPage});
-}
-
-/// @nodoc
-class _$MPaginationMetaCopyWithImpl<$Res, $Val extends MPaginationMeta>
-    implements $MPaginationMetaCopyWith<$Res> {
-  _$MPaginationMetaCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MPaginationMeta
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $MPaginationMetaCopyWith<MPaginationMeta> get copyWith =>
+      _$MPaginationMetaCopyWithImpl<MPaginationMeta>(
+          this as MPaginationMeta, _$identity);
+
+  /// Serializes this MPaginationMeta to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? pageSize = null,
-    Object? totalCount = null,
-    Object? pageNumber = null,
-    Object? prevPage = freezed,
-    Object? nextPage = freezed,
-    Object? lastPage = null,
-  }) {
-    return _then(_value.copyWith(
-      pageSize: null == pageSize
-          ? _value.pageSize
-          : pageSize // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalCount: null == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      pageNumber: null == pageNumber
-          ? _value.pageNumber
-          : pageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      prevPage: freezed == prevPage
-          ? _value.prevPage
-          : prevPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      nextPage: freezed == nextPage
-          ? _value.nextPage
-          : nextPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      lastPage: null == lastPage
-          ? _value.lastPage
-          : lastPage // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'MPaginationMeta'))
+      ..add(DiagnosticsProperty('pageSize', pageSize))
+      ..add(DiagnosticsProperty('totalCount', totalCount))
+      ..add(DiagnosticsProperty('pageNumber', pageNumber))
+      ..add(DiagnosticsProperty('prevPage', prevPage))
+      ..add(DiagnosticsProperty('nextPage', nextPage))
+      ..add(DiagnosticsProperty('lastPage', lastPage));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MPaginationMeta &&
+            (identical(other.pageSize, pageSize) ||
+                other.pageSize == pageSize) &&
+            (identical(other.totalCount, totalCount) ||
+                other.totalCount == totalCount) &&
+            (identical(other.pageNumber, pageNumber) ||
+                other.pageNumber == pageNumber) &&
+            (identical(other.prevPage, prevPage) ||
+                other.prevPage == prevPage) &&
+            (identical(other.nextPage, nextPage) ||
+                other.nextPage == nextPage) &&
+            (identical(other.lastPage, lastPage) ||
+                other.lastPage == lastPage));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, pageSize, totalCount, pageNumber,
+      prevPage, nextPage, lastPage);
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MPaginationMeta(pageSize: $pageSize, totalCount: $totalCount, pageNumber: $pageNumber, prevPage: $prevPage, nextPage: $nextPage, lastPage: $lastPage)';
   }
 }
 
 /// @nodoc
-abstract class _$$MPaginationMetaImplCopyWith<$Res>
-    implements $MPaginationMetaCopyWith<$Res> {
-  factory _$$MPaginationMetaImplCopyWith(_$MPaginationMetaImpl value,
-          $Res Function(_$MPaginationMetaImpl) then) =
-      __$$MPaginationMetaImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $MPaginationMetaCopyWith<$Res> {
+  factory $MPaginationMetaCopyWith(
+          MPaginationMeta value, $Res Function(MPaginationMeta) _then) =
+      _$MPaginationMetaCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'page_size') int pageSize,
@@ -127,12 +97,12 @@ abstract class _$$MPaginationMetaImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MPaginationMetaImplCopyWithImpl<$Res>
-    extends _$MPaginationMetaCopyWithImpl<$Res, _$MPaginationMetaImpl>
-    implements _$$MPaginationMetaImplCopyWith<$Res> {
-  __$$MPaginationMetaImplCopyWithImpl(
-      _$MPaginationMetaImpl _value, $Res Function(_$MPaginationMetaImpl) _then)
-      : super(_value, _then);
+class _$MPaginationMetaCopyWithImpl<$Res>
+    implements $MPaginationMetaCopyWith<$Res> {
+  _$MPaginationMetaCopyWithImpl(this._self, this._then);
+
+  final MPaginationMeta _self;
+  final $Res Function(MPaginationMeta) _then;
 
   /// Create a copy of MPaginationMeta
   /// with the given fields replaced by the non-null parameter values.
@@ -146,29 +116,29 @@ class __$$MPaginationMetaImplCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? lastPage = null,
   }) {
-    return _then(_$MPaginationMetaImpl(
+    return _then(_self.copyWith(
       pageSize: null == pageSize
-          ? _value.pageSize
+          ? _self.pageSize
           : pageSize // ignore: cast_nullable_to_non_nullable
               as int,
       totalCount: null == totalCount
-          ? _value.totalCount
+          ? _self.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
               as int,
       pageNumber: null == pageNumber
-          ? _value.pageNumber
+          ? _self.pageNumber
           : pageNumber // ignore: cast_nullable_to_non_nullable
               as int,
       prevPage: freezed == prevPage
-          ? _value.prevPage
+          ? _self.prevPage
           : prevPage // ignore: cast_nullable_to_non_nullable
               as int?,
       nextPage: freezed == nextPage
-          ? _value.nextPage
+          ? _self.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
               as int?,
       lastPage: null == lastPage
-          ? _value.lastPage
+          ? _self.lastPage
           : lastPage // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -177,19 +147,16 @@ class __$$MPaginationMetaImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MPaginationMetaImpl
-    with DiagnosticableTreeMixin
-    implements _MPaginationMeta {
-  const _$MPaginationMetaImpl(
+class _MPaginationMeta with DiagnosticableTreeMixin implements MPaginationMeta {
+  const _MPaginationMeta(
       {@JsonKey(name: 'page_size') required this.pageSize,
       @JsonKey(name: 'total_count') required this.totalCount,
       @JsonKey(name: 'page_number') required this.pageNumber,
       @JsonKey(name: 'prev_page') this.prevPage = 0,
       @JsonKey(name: 'next_page') this.nextPage = 0,
       @JsonKey(name: 'last_page') required this.lastPage});
-
-  factory _$MPaginationMetaImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MPaginationMetaImplFromJson(json);
+  factory _MPaginationMeta.fromJson(Map<String, dynamic> json) =>
+      _$MPaginationMetaFromJson(json);
 
   @override
   @JsonKey(name: 'page_size')
@@ -210,14 +177,23 @@ class _$MPaginationMetaImpl
   @JsonKey(name: 'last_page')
   final int lastPage;
 
+  /// Create a copy of MPaginationMeta
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MPaginationMeta(pageSize: $pageSize, totalCount: $totalCount, pageNumber: $pageNumber, prevPage: $prevPage, nextPage: $nextPage, lastPage: $lastPage)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MPaginationMetaCopyWith<_MPaginationMeta> get copyWith =>
+      __$MPaginationMetaCopyWithImpl<_MPaginationMeta>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MPaginationMetaToJson(
+      this,
+    );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'MPaginationMeta'))
       ..add(DiagnosticsProperty('pageSize', pageSize))
@@ -232,7 +208,7 @@ class _$MPaginationMetaImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MPaginationMetaImpl &&
+            other is _MPaginationMeta &&
             (identical(other.pageSize, pageSize) ||
                 other.pageSize == pageSize) &&
             (identical(other.totalCount, totalCount) ||
@@ -252,59 +228,76 @@ class _$MPaginationMetaImpl
   int get hashCode => Object.hash(runtimeType, pageSize, totalCount, pageNumber,
       prevPage, nextPage, lastPage);
 
-  /// Create a copy of MPaginationMeta
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MPaginationMetaImplCopyWith<_$MPaginationMetaImpl> get copyWith =>
-      __$$MPaginationMetaImplCopyWithImpl<_$MPaginationMetaImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MPaginationMetaImplToJson(
-      this,
-    );
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MPaginationMeta(pageSize: $pageSize, totalCount: $totalCount, pageNumber: $pageNumber, prevPage: $prevPage, nextPage: $nextPage, lastPage: $lastPage)';
   }
 }
 
-abstract class _MPaginationMeta implements MPaginationMeta {
-  const factory _MPaginationMeta(
-          {@JsonKey(name: 'page_size') required final int pageSize,
-          @JsonKey(name: 'total_count') required final int totalCount,
-          @JsonKey(name: 'page_number') required final int pageNumber,
-          @JsonKey(name: 'prev_page') final int? prevPage,
-          @JsonKey(name: 'next_page') final int? nextPage,
-          @JsonKey(name: 'last_page') required final int lastPage}) =
-      _$MPaginationMetaImpl;
+/// @nodoc
+abstract mixin class _$MPaginationMetaCopyWith<$Res>
+    implements $MPaginationMetaCopyWith<$Res> {
+  factory _$MPaginationMetaCopyWith(
+          _MPaginationMeta value, $Res Function(_MPaginationMeta) _then) =
+      __$MPaginationMetaCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'page_size') int pageSize,
+      @JsonKey(name: 'total_count') int totalCount,
+      @JsonKey(name: 'page_number') int pageNumber,
+      @JsonKey(name: 'prev_page') int? prevPage,
+      @JsonKey(name: 'next_page') int? nextPage,
+      @JsonKey(name: 'last_page') int lastPage});
+}
 
-  factory _MPaginationMeta.fromJson(Map<String, dynamic> json) =
-      _$MPaginationMetaImpl.fromJson;
+/// @nodoc
+class __$MPaginationMetaCopyWithImpl<$Res>
+    implements _$MPaginationMetaCopyWith<$Res> {
+  __$MPaginationMetaCopyWithImpl(this._self, this._then);
 
-  @override
-  @JsonKey(name: 'page_size')
-  int get pageSize;
-  @override
-  @JsonKey(name: 'total_count')
-  int get totalCount;
-  @override
-  @JsonKey(name: 'page_number')
-  int get pageNumber;
-  @override
-  @JsonKey(name: 'prev_page')
-  int? get prevPage;
-  @override
-  @JsonKey(name: 'next_page')
-  int? get nextPage;
-  @override
-  @JsonKey(name: 'last_page')
-  int get lastPage;
+  final _MPaginationMeta _self;
+  final $Res Function(_MPaginationMeta) _then;
 
   /// Create a copy of MPaginationMeta
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MPaginationMetaImplCopyWith<_$MPaginationMetaImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? pageSize = null,
+    Object? totalCount = null,
+    Object? pageNumber = null,
+    Object? prevPage = freezed,
+    Object? nextPage = freezed,
+    Object? lastPage = null,
+  }) {
+    return _then(_MPaginationMeta(
+      pageSize: null == pageSize
+          ? _self.pageSize
+          : pageSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCount: null == totalCount
+          ? _self.totalCount
+          : totalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      pageNumber: null == pageNumber
+          ? _self.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      prevPage: freezed == prevPage
+          ? _self.prevPage
+          : prevPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nextPage: freezed == nextPage
+          ? _self.nextPage
+          : nextPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lastPage: null == lastPage
+          ? _self.lastPage
+          : lastPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
+
+// dart format on

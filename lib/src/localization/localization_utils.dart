@@ -3,10 +3,12 @@ import 'package:myapp/generated/i18n/app_localizations.dart' as al;
 import 'package:myapp/src/router/coordinator.dart';
 
 class S {
-  static get delegate => al.AppLocalizations.delegate;
-  static get localizationsDelegates =>
+  static LocalizationsDelegate<al.AppLocalizations> get delegate =>
+      al.AppLocalizations.delegate;
+  static List<LocalizationsDelegate> get localizationsDelegates =>
       al.AppLocalizations.localizationsDelegates;
-  static get supportedLocales => al.AppLocalizations.supportedLocales;
+  static List<Locale> get supportedLocales =>
+      al.AppLocalizations.supportedLocales;
 
   static al.AppLocalizations of(BuildContext context) {
     return al.AppLocalizations.of(context)!;

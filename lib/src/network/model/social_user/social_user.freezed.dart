@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,143 +10,76 @@ part of 'social_user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MSocialUser _$MSocialUserFromJson(Map<String, dynamic> json) {
-  return _MSocialUser.fromJson(json);
-}
 
 /// @nodoc
 mixin _$MSocialUser {
-  MSocialType get type => throw _privateConstructorUsedError;
+  MSocialType get type;
 
   /// Apple and Facebook userID
-  String? get userID => throw _privateConstructorUsedError;
+  String? get userID;
 
   /// Facebook & Google Access Token
-  String? get accessToken => throw _privateConstructorUsedError;
+  String? get accessToken;
 
   /// Google ID Token
-  String? get idToken => throw _privateConstructorUsedError;
+  String? get idToken;
 
   /// FB and Google information
-  String? get fullName => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError;
-  String? get birthDate => throw _privateConstructorUsedError;
-  int? get gender => throw _privateConstructorUsedError;
-  String? get phone => throw _privateConstructorUsedError;
-
-  /// Serializes this MSocialUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get fullName;
+  String? get email;
+  String? get avatar;
+  String? get birthDate;
+  int? get gender;
+  String? get phone;
 
   /// Create a copy of MSocialUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MSocialUserCopyWith<MSocialUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MSocialUserCopyWith<$Res> {
-  factory $MSocialUserCopyWith(
-          MSocialUser value, $Res Function(MSocialUser) then) =
-      _$MSocialUserCopyWithImpl<$Res, MSocialUser>;
-  @useResult
-  $Res call(
-      {MSocialType type,
-      String? userID,
-      String? accessToken,
-      String? idToken,
-      String? fullName,
-      String? email,
-      String? avatar,
-      String? birthDate,
-      int? gender,
-      String? phone});
-}
-
-/// @nodoc
-class _$MSocialUserCopyWithImpl<$Res, $Val extends MSocialUser>
-    implements $MSocialUserCopyWith<$Res> {
-  _$MSocialUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MSocialUser
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $MSocialUserCopyWith<MSocialUser> get copyWith =>
+      _$MSocialUserCopyWithImpl<MSocialUser>(this as MSocialUser, _$identity);
+
+  /// Serializes this MSocialUser to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? type = null,
-    Object? userID = freezed,
-    Object? accessToken = freezed,
-    Object? idToken = freezed,
-    Object? fullName = freezed,
-    Object? email = freezed,
-    Object? avatar = freezed,
-    Object? birthDate = freezed,
-    Object? gender = freezed,
-    Object? phone = freezed,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as MSocialType,
-      userID: freezed == userID
-          ? _value.userID
-          : userID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accessToken: freezed == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      idToken: freezed == idToken
-          ? _value.idToken
-          : idToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fullName: freezed == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      avatar: freezed == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      birthDate: freezed == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as int?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MSocialUser &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.idToken, idToken) || other.idToken == idToken) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.phone, phone) || other.phone == phone));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, userID, accessToken,
+      idToken, fullName, email, avatar, birthDate, gender, phone);
+
+  @override
+  String toString() {
+    return 'MSocialUser(type: $type, userID: $userID, accessToken: $accessToken, idToken: $idToken, fullName: $fullName, email: $email, avatar: $avatar, birthDate: $birthDate, gender: $gender, phone: $phone)';
   }
 }
 
 /// @nodoc
-abstract class _$$MSocialUserImplCopyWith<$Res>
-    implements $MSocialUserCopyWith<$Res> {
-  factory _$$MSocialUserImplCopyWith(
-          _$MSocialUserImpl value, $Res Function(_$MSocialUserImpl) then) =
-      __$$MSocialUserImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $MSocialUserCopyWith<$Res> {
+  factory $MSocialUserCopyWith(
+          MSocialUser value, $Res Function(MSocialUser) _then) =
+      _$MSocialUserCopyWithImpl;
   @useResult
   $Res call(
       {MSocialType type,
@@ -161,12 +95,11 @@ abstract class _$$MSocialUserImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MSocialUserImplCopyWithImpl<$Res>
-    extends _$MSocialUserCopyWithImpl<$Res, _$MSocialUserImpl>
-    implements _$$MSocialUserImplCopyWith<$Res> {
-  __$$MSocialUserImplCopyWithImpl(
-      _$MSocialUserImpl _value, $Res Function(_$MSocialUserImpl) _then)
-      : super(_value, _then);
+class _$MSocialUserCopyWithImpl<$Res> implements $MSocialUserCopyWith<$Res> {
+  _$MSocialUserCopyWithImpl(this._self, this._then);
+
+  final MSocialUser _self;
+  final $Res Function(MSocialUser) _then;
 
   /// Create a copy of MSocialUser
   /// with the given fields replaced by the non-null parameter values.
@@ -184,45 +117,45 @@ class __$$MSocialUserImplCopyWithImpl<$Res>
     Object? gender = freezed,
     Object? phone = freezed,
   }) {
-    return _then(_$MSocialUserImpl(
+    return _then(_self.copyWith(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as MSocialType,
       userID: freezed == userID
-          ? _value.userID
+          ? _self.userID
           : userID // ignore: cast_nullable_to_non_nullable
               as String?,
       accessToken: freezed == accessToken
-          ? _value.accessToken
+          ? _self.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
       idToken: freezed == idToken
-          ? _value.idToken
+          ? _self.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
               as String?,
       fullName: freezed == fullName
-          ? _value.fullName
+          ? _self.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
-          ? _value.email
+          ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
       avatar: freezed == avatar
-          ? _value.avatar
+          ? _self.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
       birthDate: freezed == birthDate
-          ? _value.birthDate
+          ? _self.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
               as String?,
       gender: freezed == gender
-          ? _value.gender
+          ? _self.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as int?,
       phone: freezed == phone
-          ? _value.phone
+          ? _self.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -231,8 +164,8 @@ class __$$MSocialUserImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MSocialUserImpl implements _MSocialUser {
-  const _$MSocialUserImpl(
+class _MSocialUser implements MSocialUser {
+  const _MSocialUser(
       {required this.type,
       this.userID,
       this.accessToken,
@@ -243,9 +176,8 @@ class _$MSocialUserImpl implements _MSocialUser {
       this.birthDate,
       this.gender,
       this.phone});
-
-  factory _$MSocialUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MSocialUserImplFromJson(json);
+  factory _MSocialUser.fromJson(Map<String, dynamic> json) =>
+      _$MSocialUserFromJson(json);
 
   @override
   final MSocialType type;
@@ -276,16 +208,26 @@ class _$MSocialUserImpl implements _MSocialUser {
   @override
   final String? phone;
 
+  /// Create a copy of MSocialUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'MSocialUser(type: $type, userID: $userID, accessToken: $accessToken, idToken: $idToken, fullName: $fullName, email: $email, avatar: $avatar, birthDate: $birthDate, gender: $gender, phone: $phone)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MSocialUserCopyWith<_MSocialUser> get copyWith =>
+      __$MSocialUserCopyWithImpl<_MSocialUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MSocialUserToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MSocialUserImpl &&
+            other is _MSocialUser &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.accessToken, accessToken) ||
@@ -306,71 +248,99 @@ class _$MSocialUserImpl implements _MSocialUser {
   int get hashCode => Object.hash(runtimeType, type, userID, accessToken,
       idToken, fullName, email, avatar, birthDate, gender, phone);
 
-  /// Create a copy of MSocialUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MSocialUserImplCopyWith<_$MSocialUserImpl> get copyWith =>
-      __$$MSocialUserImplCopyWithImpl<_$MSocialUserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MSocialUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'MSocialUser(type: $type, userID: $userID, accessToken: $accessToken, idToken: $idToken, fullName: $fullName, email: $email, avatar: $avatar, birthDate: $birthDate, gender: $gender, phone: $phone)';
   }
 }
 
-abstract class _MSocialUser implements MSocialUser {
-  const factory _MSocialUser(
-      {required final MSocialType type,
-      final String? userID,
-      final String? accessToken,
-      final String? idToken,
-      final String? fullName,
-      final String? email,
-      final String? avatar,
-      final String? birthDate,
-      final int? gender,
-      final String? phone}) = _$MSocialUserImpl;
+/// @nodoc
+abstract mixin class _$MSocialUserCopyWith<$Res>
+    implements $MSocialUserCopyWith<$Res> {
+  factory _$MSocialUserCopyWith(
+          _MSocialUser value, $Res Function(_MSocialUser) _then) =
+      __$MSocialUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {MSocialType type,
+      String? userID,
+      String? accessToken,
+      String? idToken,
+      String? fullName,
+      String? email,
+      String? avatar,
+      String? birthDate,
+      int? gender,
+      String? phone});
+}
 
-  factory _MSocialUser.fromJson(Map<String, dynamic> json) =
-      _$MSocialUserImpl.fromJson;
+/// @nodoc
+class __$MSocialUserCopyWithImpl<$Res> implements _$MSocialUserCopyWith<$Res> {
+  __$MSocialUserCopyWithImpl(this._self, this._then);
 
-  @override
-  MSocialType get type;
-
-  /// Apple and Facebook userID
-  @override
-  String? get userID;
-
-  /// Facebook & Google Access Token
-  @override
-  String? get accessToken;
-
-  /// Google ID Token
-  @override
-  String? get idToken;
-
-  /// FB and Google information
-  @override
-  String? get fullName;
-  @override
-  String? get email;
-  @override
-  String? get avatar;
-  @override
-  String? get birthDate;
-  @override
-  int? get gender;
-  @override
-  String? get phone;
+  final _MSocialUser _self;
+  final $Res Function(_MSocialUser) _then;
 
   /// Create a copy of MSocialUser
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MSocialUserImplCopyWith<_$MSocialUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? type = null,
+    Object? userID = freezed,
+    Object? accessToken = freezed,
+    Object? idToken = freezed,
+    Object? fullName = freezed,
+    Object? email = freezed,
+    Object? avatar = freezed,
+    Object? birthDate = freezed,
+    Object? gender = freezed,
+    Object? phone = freezed,
+  }) {
+    return _then(_MSocialUser(
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as MSocialType,
+      userID: freezed == userID
+          ? _self.userID
+          : userID // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accessToken: freezed == accessToken
+          ? _self.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idToken: freezed == idToken
+          ? _self.idToken
+          : idToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fullName: freezed == fullName
+          ? _self.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _self.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      birthDate: freezed == birthDate
+          ? _self.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gender: freezed == gender
+          ? _self.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as int?,
+      phone: freezed == phone
+          ? _self.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
+
+// dart format on

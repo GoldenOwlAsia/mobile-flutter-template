@@ -5,7 +5,7 @@ import 'package:myapp/src/localization/localization_utils.dart';
 import 'package:myapp/src/router/coordinator.dart';
 
 class XAlert {
-  static get context => AppCoordinator.context;
+  static BuildContext get context => AppCoordinator.context;
 
   /// show the dialog
   static Future<String?> show({

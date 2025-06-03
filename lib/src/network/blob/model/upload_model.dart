@@ -5,7 +5,7 @@ part 'upload_model.freezed.dart';
 part 'upload_model.g.dart';
 
 @freezed
-class MUpload with _$MUpload {
+abstract class MUpload with _$MUpload {
   const factory MUpload({
     required String url,
   }) = _MUpload;
