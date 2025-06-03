@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,157 +10,31 @@ part of 'user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MUser _$MUserFromJson(Map<String, dynamic> json) {
-  return _MUser.fromJson(json);
-}
 
 /// @nodoc
 mixin _$MUser {
-  String get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-
-  /// Serializes this MUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get id;
+  String? get name;
+  String? get avatar;
+  String? get email;
 
   /// Create a copy of MUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MUserCopyWith<MUser> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MUserCopyWith<$Res> {
-  factory $MUserCopyWith(MUser value, $Res Function(MUser) then) =
-      _$MUserCopyWithImpl<$Res, MUser>;
-  @useResult
-  $Res call({String id, String? name, String? avatar, String? email});
-}
-
-/// @nodoc
-class _$MUserCopyWithImpl<$Res, $Val extends MUser>
-    implements $MUserCopyWith<$Res> {
-  _$MUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MUser
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = freezed,
-    Object? avatar = freezed,
-    Object? email = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      avatar: freezed == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
+  $MUserCopyWith<MUser> get copyWith =>
+      _$MUserCopyWithImpl<MUser>(this as MUser, _$identity);
 
-/// @nodoc
-abstract class _$$MUserImplCopyWith<$Res> implements $MUserCopyWith<$Res> {
-  factory _$$MUserImplCopyWith(
-          _$MUserImpl value, $Res Function(_$MUserImpl) then) =
-      __$$MUserImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String id, String? name, String? avatar, String? email});
-}
-
-/// @nodoc
-class __$$MUserImplCopyWithImpl<$Res>
-    extends _$MUserCopyWithImpl<$Res, _$MUserImpl>
-    implements _$$MUserImplCopyWith<$Res> {
-  __$$MUserImplCopyWithImpl(
-      _$MUserImpl _value, $Res Function(_$MUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = freezed,
-    Object? avatar = freezed,
-    Object? email = freezed,
-  }) {
-    return _then(_$MUserImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      avatar: freezed == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MUserImpl extends _MUser {
-  const _$MUserImpl({required this.id, this.name, this.avatar, this.email})
-      : super._();
-
-  factory _$MUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MUserImplFromJson(json);
-
-  @override
-  final String id;
-  @override
-  final String? name;
-  @override
-  final String? avatar;
-  @override
-  final String? email;
-
-  @override
-  String toString() {
-    return 'MUser(id: $id, name: $name, avatar: $avatar, email: $email)';
-  }
+  /// Serializes this MUser to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MUserImpl &&
+            other is MUser &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
@@ -170,45 +45,155 @@ class _$MUserImpl extends _MUser {
   @override
   int get hashCode => Object.hash(runtimeType, id, name, avatar, email);
 
-  /// Create a copy of MUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MUserImplCopyWith<_$MUserImpl> get copyWith =>
-      __$$MUserImplCopyWithImpl<_$MUserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'MUser(id: $id, name: $name, avatar: $avatar, email: $email)';
   }
 }
 
-abstract class _MUser extends MUser {
-  const factory _MUser(
-      {required final String id,
-      final String? name,
-      final String? avatar,
-      final String? email}) = _$MUserImpl;
-  const _MUser._() : super._();
+/// @nodoc
+abstract mixin class $MUserCopyWith<$Res> {
+  factory $MUserCopyWith(MUser value, $Res Function(MUser) _then) =
+      _$MUserCopyWithImpl;
+  @useResult
+  $Res call({String id, String? name, String? avatar, String? email});
+}
 
-  factory _MUser.fromJson(Map<String, dynamic> json) = _$MUserImpl.fromJson;
+/// @nodoc
+class _$MUserCopyWithImpl<$Res> implements $MUserCopyWith<$Res> {
+  _$MUserCopyWithImpl(this._self, this._then);
+
+  final MUser _self;
+  final $Res Function(MUser) _then;
+
+  /// Create a copy of MUser
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = freezed,
+    Object? avatar = freezed,
+    Object? email = freezed,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _self.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _MUser extends MUser {
+  const _MUser({required this.id, this.name, this.avatar, this.email})
+      : super._();
+  factory _MUser.fromJson(Map<String, dynamic> json) => _$MUserFromJson(json);
 
   @override
-  String get id;
+  final String id;
   @override
-  String? get name;
+  final String? name;
   @override
-  String? get avatar;
+  final String? avatar;
   @override
-  String? get email;
+  final String? email;
 
   /// Create a copy of MUser
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MUserImplCopyWith<_$MUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$MUserCopyWith<_MUser> get copyWith =>
+      __$MUserCopyWithImpl<_MUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MUserToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MUser &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, avatar, email);
+
+  @override
+  String toString() {
+    return 'MUser(id: $id, name: $name, avatar: $avatar, email: $email)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$MUserCopyWith<$Res> implements $MUserCopyWith<$Res> {
+  factory _$MUserCopyWith(_MUser value, $Res Function(_MUser) _then) =
+      __$MUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String id, String? name, String? avatar, String? email});
+}
+
+/// @nodoc
+class __$MUserCopyWithImpl<$Res> implements _$MUserCopyWith<$Res> {
+  __$MUserCopyWithImpl(this._self, this._then);
+
+  final _MUser _self;
+  final $Res Function(_MUser) _then;
+
+  /// Create a copy of MUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? name = freezed,
+    Object? avatar = freezed,
+    Object? email = freezed,
+  }) {
+    return _then(_MUser(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _self.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

@@ -5,7 +5,7 @@ part 'pagination_meta.freezed.dart';
 part 'pagination_meta.g.dart';
 
 @freezed
-class MPaginationMeta with _$MPaginationMeta {
+abstract class MPaginationMeta with _$MPaginationMeta {
   const factory MPaginationMeta({
     @JsonKey(name: 'page_size') required int pageSize,
     @JsonKey(name: 'total_count') required int totalCount,

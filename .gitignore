@@ -60,3 +60,5 @@ app.*.map.json
 **/fastlane/Preview.html
 **/fastlane/screenshots/**/*.png
 **/fastlane/test_output
+
+/lib/generated/i18n/

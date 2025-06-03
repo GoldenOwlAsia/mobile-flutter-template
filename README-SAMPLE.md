@@ -9,7 +9,7 @@
 
 ## Prerequisites
 
-- Flutter 3.10.x
+- Flutter 3.32.x
 - Android Studio - [latest version](https://developer.android.com/studio/install?gclid=Cj0KCQjwiIOmBhDjARIsAP6YhSWAACh94FR8rU7TUR5My3O9zfbvsdcwq3MuupLn6QDGX5KUDQAv_l0aAjg1EALw_wcB&gclsrc=aw.ds)
 - MacOS & XCode (for build & debug iOS)
 

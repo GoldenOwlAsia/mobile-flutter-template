@@ -88,7 +88,10 @@ class _WebviewPageState extends State<WebviewPage> {
       case WebMenuItem.shareLink:
         final currentUrl = await controller.currentUrl();
         if (currentUrl != null) {
-          Share.share(currentUrl);
+          SharePlus.instance.share(ShareParams(
+            uri: Uri.parse(currentUrl),
+            downloadFallbackEnabled: false,
+          ));
         }
         break;
     }

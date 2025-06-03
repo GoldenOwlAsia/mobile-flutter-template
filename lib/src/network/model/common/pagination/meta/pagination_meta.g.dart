@@ -6,9 +6,8 @@ part of 'pagination_meta.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MPaginationMetaImpl _$$MPaginationMetaImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MPaginationMetaImpl(
+_MPaginationMeta _$MPaginationMetaFromJson(Map<String, dynamic> json) =>
+    _MPaginationMeta(
       pageSize: (json['page_size'] as num).toInt(),
       totalCount: (json['total_count'] as num).toInt(),
       pageNumber: (json['page_number'] as num).toInt(),
@@ -17,8 +16,7 @@ _$MPaginationMetaImpl _$$MPaginationMetaImplFromJson(
       lastPage: (json['last_page'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$MPaginationMetaImplToJson(
-        _$MPaginationMetaImpl instance) =>
+Map<String, dynamic> _$MPaginationMetaToJson(_MPaginationMeta instance) =>
     <String, dynamic>{
       'page_size': instance.pageSize,
       'total_count': instance.totalCount,

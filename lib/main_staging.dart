@@ -9,7 +9,9 @@ import 'package:myapp/src/locator.dart';
 
 Future main() async {
   await initializeApp(
-      name: "staging", firebaseOptions: DefaultFirebaseOptions.currentPlatform);
+    name: "staging",
+    firebaseOptions: DefaultFirebaseOptions.currentPlatform,
+  );
   if (kIsWeb) {
     runApp(const MyApp());
   } else {

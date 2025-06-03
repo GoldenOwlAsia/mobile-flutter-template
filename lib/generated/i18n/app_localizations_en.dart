@@ -50,19 +50,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get common_gallery_request_title => 'Gallery Permission was denied';
 
   @override
-  String get common_gallery_request_content => 'We need your gallery to upload your profile avatar or create photo message, Do you want to grant permission?';
+  String get common_gallery_request_content =>
+      'We need your gallery to upload your profile avatar or create photo message, Do you want to grant permission?';
 
   @override
   String get common_camera_request_title => 'Camera Permission was denied';
 
   @override
-  String get common_camera_request_content => 'We need your camera to upload your profile avatar or create photo message, Do you want to grant permission?';
+  String get common_camera_request_content =>
+      'We need your camera to upload your profile avatar or create photo message, Do you want to grant permission?';
 
   @override
-  String get camera_choose_option_take_image => 'Please choose option to take image';
+  String get camera_choose_option_take_image =>
+      'Please choose option to take image';
 
   @override
-  String get camera_choose_option_take_video => 'Please choose option to take video';
+  String get camera_choose_option_take_video =>
+      'Please choose option to take video';
 
   @override
   String get camera_image_from_camera => 'Image from camera';
@@ -83,7 +87,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error_unknown => 'An Unknown Error Occurred';
 
   @override
-  String get error_somethingWrongTryAgain => 'Something went wrong, try again...';
+  String get error_somethingWrongTryAgain =>
+      'Something went wrong, try again...';
 
   @override
   String get error_fieldRequired => 'This field is required';
@@ -92,7 +97,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error_not_login_yet => 'Not Login yet!';
 
   @override
-  String get error_upload_file_fail => 'Upload failed. Please check the file and try again.';
+  String get error_upload_file_fail =>
+      'Upload failed. Please check the file and try again.';
 
   @override
   String get sign_signin_signinWithApple => 'Login with Apple';

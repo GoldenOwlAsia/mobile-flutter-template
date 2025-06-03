@@ -6,13 +6,13 @@ import 'widget/status_toast.dart';
 
 class XToast {
   static CancelFunc? loadingCancel;
-  static get isShowLoading => loadingCancel != null;
+  static bool get isShowLoading => loadingCancel != null;
 
   static void show(String? message) {
     BotToast.showText(text: message ?? '');
   }
 
-  static showLoading() {
+  static void showLoading() {
     if (isShowLoading == false) {
       loadingCancel = BotToast.showCustomLoading(
         toastBuilder: (_) => const XLoadingAlert(),
@@ -22,7 +22,7 @@ class XToast {
     }
   }
 
-  static hideLoading() {
+  static void hideLoading() {
     if (isShowLoading) {
       loadingCancel?.call();
       loadingCancel = null;

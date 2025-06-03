@@ -6,7 +6,7 @@ part 'social_user.freezed.dart';
 part 'social_user.g.dart';
 
 @freezed
-class MSocialUser with _$MSocialUser {
+abstract class MSocialUser with _$MSocialUser {
   const factory MSocialUser({
     required MSocialType type,
 
