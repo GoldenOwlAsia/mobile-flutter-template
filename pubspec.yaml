@@ -82,7 +82,9 @@ dev_dependencies:
 
 flutter_gen:
   output: lib/generated/assets
-
+  exclude:
+      - .env.production
+      - .env.staging
   integrations:
     flutter_svg: true
     lottie: true
