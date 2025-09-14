@@ -38,9 +38,9 @@ class MPagination<T> {
     int? countData,
   }) {
     final data = [...this.data, ...items];
-    return this.copyWith(
+    return copyWith(
       data: data,
-      page: this.page + 1,
+      page: page + 1,
       totalPage: totalPage ?? this.totalPage,
       countData: countData ?? this.countData,
       status: MStatus.initial,
@@ -49,9 +49,9 @@ class MPagination<T> {
 
   MPagination<T> addAllFromModel(MPaginationResponse<T> model) {
     final data = [...this.data, ...model.data];
-    return this.copyWith(
+    return copyWith(
       data: data,
-      page: this.page + 1,
+      page: page + 1,
       totalPage: model.meta.pageNumber,
       countData: model.meta.totalCount,
       status: MStatus.initial,
@@ -60,9 +60,9 @@ class MPagination<T> {
 
   MPagination<T> addAllFromResult(MResult<MPaginationResponse<T>> result) {
     if (result.isSuccess && result.data != null) {
-      return this.addAllFromModel(result.data!);
+      return addAllFromModel(result.data!);
     } else {
-      return this.copyWith(status: MStatus.failure);
+      return copyWith(status: MStatus.failure);
     }
   }
 

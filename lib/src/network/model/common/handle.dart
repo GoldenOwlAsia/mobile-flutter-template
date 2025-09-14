@@ -5,7 +5,7 @@ part 'status.dart';
 
 class MHandle<T> {
   MHandle.result(MResult<T> result) {
-    this.message = result.error;
+    message = result.error;
     _data = result.data;
     _status = result.isError ? MStatus.failure : MStatus.success;
   }
@@ -16,8 +16,8 @@ class MHandle<T> {
   }
 
   MHandle.completed(T data) {
-    this._data = data;
-    this.message = '';
+    _data = data;
+    message = '';
     _status = MStatus.success;
   }
   MHandle.loading({this.message}) {

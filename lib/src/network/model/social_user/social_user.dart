@@ -33,15 +33,15 @@ abstract class MSocialUser with _$MSocialUser {
 
   factory MSocialUser.fromGoogleAccount(
     GoogleSignInAccount account,
-    GoogleSignInAuthentication googleAuth,
+    String accessToken,
   ) {
     return MSocialUser(
       type: MSocialType.google,
       fullName: account.displayName,
       email: account.email,
       avatar: account.photoUrl,
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
+      accessToken: accessToken,
+      idToken: account.authentication.idToken,
     );
   }
 
