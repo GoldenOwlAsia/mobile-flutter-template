@@ -31,8 +31,7 @@ class XSearchField<T> extends StatelessWidget {
                     effectiveDecoration.copyWith(errorText: field.errorText),
                 isEmpty: isNullOrEmpty(value),
                 isFocused: Focus.of(context).hasFocus,
-                child: GestureDetector(
-                    onTap: this.onShowSearch, child: this.child),
+                child: GestureDetector(onTap: onShowSearch, child: child),
               );
             },
           ),

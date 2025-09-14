@@ -1,172 +1,176 @@
-<h1 align="center">
-    GoldenOwl Flutter Boilerplate
-</h1>
+# GoldenOwl Flutter Boilerplate
 
-Fork this project then start you project with a lot of stuck prepare
+Kickstart your next Flutter project with this production-ready boilerplate — pre-configured with **Bloc**, **Routing**, and other essentials to help you focus on building features, not setup.
 
-Base project made with much: . Contains Bloc, Route, and much more!
+---
 
-## Table of contents
+## Table of Contents
 
-- [How to Use](#how-to-use)
+- [Prerequisites](#prerequisites)
+- [How to Run](#how-to-run)
+- [Using This Template](#using-this-template)
 - [Code Conventions](#code-conventions)
 - [Dependencies](#dependencies)
-- [Code structure](#code-structure)
+- [Code Structure](#code-structure)
+- [Navigation Stack](#navigation-stack)
+- [Wiki](#wiki)
+- [Screenshots](#screenshots)
+
+---
 
 ## Prerequisites
 
-- Flutter: >=3.7.0 <4.0.0
-- [Firebase staging](https://console.firebase.google.com/u/0/project/flutter-app-ec8dd/settings/iam)
-- [Firebase prod](https://console.firebase.google.com/u/0/project/template-app-prod-3a034/settings/iam)
+- **Flutter:** `>=3.35.3`
+- **Firebase Projects:**
+  - [Firebase Staging](https://console.firebase.google.com/u/0/project/flutter-app-ec8dd/settings/iam)
+  - [Firebase Production](https://console.firebase.google.com/u/0/project/template-app-prod-3a034/settings/iam)
 
-## How to Use
+---
 
-## Run this template
+## How to Run
 
-1. Download or clone this repo by using the link below:
+1. **Clone the repo:**
 
-    ```
-    https://github.com/GoldenOwlAsia/mobile-flutter-template.git
-    ```
+   ```sh
+   git clone https://github.com/GoldenOwlAsia/mobile-flutter-template.git
+   ```
 
-2. Go to project root and execute the following command in console to get the required dependencies:
+2. **Install dependencies:**
 
-    ```
-    flutter pub get
-    ```
+   ```sh
+   flutter pub get
+   ```
 
-3. Now run the generator
+3. **Generate code:**
 
-    ```
-    flutter packages pub run build_runner build
-    ```
+   ```sh
+   flutter packages pub run build_runner build
+   ```
 
-4. To run staging project
+4. **Run the app (Staging):**
 
-    ```
-    flutter run --flavor staging --target lib/main_staging.dart
-    ```
+   ```sh
+   flutter run --flavor staging --target lib/main_staging.dart
+   ```
 
-5. To run production project
+5. **Run the app (Production):**
 
-    ```
-    flutter run --flavor production --target lib/main_production.dart
-    ```
+   ```sh
+   flutter run --flavor production --target lib/main_production.dart
+   ```
 
-## Use this template to create your project
+---
 
-1. Download or clone this repo by using the link below:
+## Using This Template
 
-      ```
-      https://github.com/GoldenOwlAsia/mobile-flutter-template.git
-      ```
+1. **Clone this repo:**
 
-2. Go to project root and execute the following command in console to update this project config
-    ```sh
-    sudo sh ./customizer.sh your.package.name
-    ```
-- [x] Remove git, update readme
-- [x] Change your bundle-id
+   ```sh
+   git clone https://github.com/GoldenOwlAsia/mobile-flutter-template.git
+   ```
 
-3. Change your app builder id (iOS & Android)
+2. **Customize the package name:**
 
-- Replace/Update your firebase config as your project.
-  - Android staging: `android/app/src/staging/google-services.json`
-  - Android production: `android/app/src/production/google-services.json`
-  - iOS staging: `ios/config/GoogleService-Info.plist`
-  - iOS production: `ios/config/GoogleService-Info.plist`
-  - Update `firebase_options_prod.dart`
-  - Update `firebase_options_stg.dart`
-  - Update `REVERSED_CLIENT_ID` on file info.plist
+   ```sh
+   sudo sh ./customizer.sh your.package.name
+   ```
 
-4. Update Firebase config - by run command
-    ```
-    flutterfire config \
-      --project={YOUR_FIREBASE_ID_PROJECT} \
-      --out={part to save firebase_options.dart} \
-      --ios-bundle-id={BUNDLE_ID_APP} \
-      --android-app-id={APP_ID}
-    ```
-    -> [Read More here](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki/Flavors)
+   ✅ This will:
+   - Remove the existing git history  
+   - Update the README  
+   - Change your bundle ID  
 
-5. [Try to run this code](#run-this-template)
+3. **Update your Firebase config:**
 
-# Code Conventions
+   - **Android**
+     - `android/app/src/staging/google-services.json`
+     - `android/app/src/production/google-services.json`
+   - **iOS**
+     - `ios/config/GoogleService-Info.plist` (staging & production)
+   - Update:
+     - `firebase_options_stg.dart`
+     - `firebase_options_prod.dart`
+     - `REVERSED_CLIENT_ID` in `Info.plist`
+
+4. **Regenerate Firebase options:**
+
+   ```sh
+   flutterfire config      --project={YOUR_FIREBASE_PROJECT_ID}      --out={PATH_TO_SAVE/firebase_options.dart}      --ios-bundle-id={BUNDLE_ID_APP}      --android-app-id={APP_ID}
+   ```
+
+   → [Read More in the Wiki](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki/Flavors)
+
+5. **Run the app:** [Follow steps here](#how-to-run)
+
+---
+
+## Code Conventions
 
 - [analysis_options.yaml](analysis_options.yaml)
-- [About code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
+- [Effective Code in Flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
-  In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
+**Best Practices:**
 
-- Must know
-  - Model name start with `M`: MUser, MProduct, MGroup...
-  - Common widget start with `X`: XButton, XText, XAppbar... - There widget under folder `lib/widgets/`
-  - App Constants class or service start with `Add`: AppStyles, AppColor, AppRouter, AppCoordinator,.. and UserPrefs
+- Modularize widgets to be as independent and reusable as possible.
+- Follow naming conventions:
+  - **Models:** start with `M` → `MUser`, `MProduct`, `MGroup`
+  - **Common Widgets:** start with `X` → `XButton`, `XText`, `XAppBar` (stored in `lib/widgets/`)
+  - **App Constants/Services:** start with `App` → `AppStyles`, `AppColor`, `AppRouter`, `AppCoordinator`, `UserPrefs`
 
-# Dependencies
+---
 
-![](resources/images/dependencies.jpg)
+## Dependencies
 
-## Helper
+![Dependencies](resources/images/dependencies.jpg)
 
-- [logger](https://pub.dev/packages/logger): Small, easy to use and extensible logger which prints beautiful logs.
+### Helpers
 
-- [url_launcher](https://pub.dev/packages/url_launcher): A Flutter plugin for launching a URL in the mobile platform. Supports iOS, Android, web, Windows, macOS, and Linux.
+- [logger](https://pub.dev/packages/logger) – Pretty logging
+- [url_launcher](https://pub.dev/packages/url_launcher) – Launch URLs
+- [auto_route](https://pub.dev/packages/auto_route) – Router generator
+- [get_it](https://pub.dev/packages/get_it) – Service Locator
+- [intl](https://pub.dev/packages/intl) – i18n, formatting
+- [shared_preferences](https://pub.dev/packages/shared_preferences) – Key-value storage
+- [package_info_plus](https://pub.dev/packages/package_info_plus) – App package info
+- [device_info_plus](https://pub.dev/packages/device_info_plus) – Device info
+- [permission_handler](https://pub.dev/packages/permission_handler) – Permission management
 
-- [auto_route](https://pub.dev/packages/auto_route): Auto route generator, Manager router
+### HTTP / API
 
-- [get_it](https://pub.dev/packages/get_it): This is a simple Service Locator
+- [http](https://pub.dev/packages/http) – HTTP requests
 
-- [intl](https://pub.dev/packages/intl): This package provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
+### Firebase
 
-- [shared_preferences](https://pub.dev/packages/shared_preferences): Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
+- [FlutterFire](https://firebase.flutter.dev/) – Auth, Analytics, Crashlytics, Storage, Firestore
 
-- [package_info_plus](https://pub.dev/packages/package_info_plus): This Flutter plugin provides an API for querying information about an application package.
+### State Management
 
-- [device_info_plus](https://pub.dev/packages/device_info_plus): Get current device information from within the Flutter application.
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc) – Recommended BLoC pattern [Docs](https://bloclibrary.dev/#/)
 
-- [permission_handler](https://pub.dev/packages/permission_handler): Permission plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
+### Assets / Code Generation
 
-## HTTP, API
+- [flutter_gen](https://pub.dev/packages/flutter_gen) – Strongly typed assets, fonts, colors
 
-- [http](https://pub.dev/packages/http): A composable, Future-based library for making HTTP requests.
+### Localization
 
-## Flutter Fire
+- [localization](https://pub.dev/packages/localization) – Simplified translations
 
-> The official Firebase plugins for Flutter. sign_in, analytics, crashlytics, storage, firestore
+### Widgets
 
-- [Flutter Fire](https://firebase.flutter.dev/)
-
-## State Management
-
-> State Management is still the hottest topic in Flutter Community. There are tons of choices available and it’s super intimidating for a beginner to choose one. Also, all of them have their pros and cons. So, what’s the best approach
-
-**A recommended approach**
-
-- [flutter_bloc](https://pub.dev/packages/flutter_bloc): Widgets that make it easy to integrate blocs and cubits into Flutter. [Learn more](https://bloclibrary.dev/#/)
-
-## Flutter Gen
-
-- [flutter_gen](https://pub.dev/packages/flutter_gen): The Flutter code generator for your assets, fonts, colors, … — Get rid of all String-based APIs.
-
-## Localization
-
-- [localization](https://pub.dev/packages/localization): Package to simplify in-app translation.
-
-## Widget
-
-- [shimmer](https://pub.dev/packages/shimmer): Shimmer loading animation
+- [shimmer](https://pub.dev/packages/shimmer) – Loading shimmer effect
 - [flutter_html](https://pub.dev/packages/flutter_html)
 - [webview_flutter](https://pub.dev/packages/webview_flutter)
 
-## Image
+### Image & Cache
 
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
 - [flutter_cache_manager](https://pub.dev/packages/flutter_cache_manager)
 
-# Code structure
+---
 
-Here is the core folder structure which flutter provides.
+## Code Structure
+
+### Default Flutter Structure
 
 ```
 flutter-app/
@@ -178,7 +182,7 @@ flutter-app/
 |- test
 ```
 
-Here is the folder structure we have been using in this project
+### Project Structure Used
 
 ```
 lib/
@@ -189,7 +193,7 @@ lib/
   |- feature/
     |- dashboard/
       |- widget/
-      |- controller
+      |- controller/
       |- dashboard_screen.dart
     |- home/
     |- login/
@@ -200,19 +204,25 @@ lib/
   |- image/
   |- view/
 |- main.dart
-|- modules
+|- modules/
 ```
+
+---
 
 ## Navigation Stack
 
-![](resources/images/screens.png)
+![Navigation Stack](resources/images/screens.png)
+
+---
 
 ## Wiki
 
-Checkout [wiki](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki) for more info
+Check out the [Wiki](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki) for more detailed guides.
 
-## Screenshot
+---
 
-| Account                                              | Profile                                              | Login                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------- |
+## Screenshots
+
+| Account | Profile | Login |
+| ------ | ------- | ----- |
 | <img src="./resources/images/account.png" width=250> | <img src="./resources/images/profile.png" width=250> | <img src="./resources/images/login.png" width=250> |

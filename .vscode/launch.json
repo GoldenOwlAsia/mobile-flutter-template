@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Staging Debug Mode",
+      "name": "Staging Debug",
       "request": "launch",
       "type": "dart",
       "args": [
@@ -16,7 +16,7 @@
       ],
     },
     {
-      "name": "Staging Release Mode",
+      "name": "Staging Release",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
@@ -28,7 +28,7 @@
       ],
     },
     {
-      "name": "Production Debug Mode",
+      "name": "Prod Debug",
       "request": "launch",
       "type": "dart",
       "args": [
@@ -39,7 +39,7 @@
       ],
     },
     {
-      "name": "Production Release Mode",
+      "name": "Prod Release",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",

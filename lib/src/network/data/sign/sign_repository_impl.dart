@@ -1,13 +1,48 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/domain_manager.dart';
-import 'package:myapp/src/network/model/common/error_code.dart';
 import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
 
 class SignRepositoryImpl extends SignRepository {
+  // https://isaacadariku.medium.com/google-sign-in-flutter-migration-guide-pre-7-0-versions-to-v7-version-cdc9efd7f182
+  // https://pub.dev/packages/google_sign_in/changelog#700
+  final _googleSignIn = GoogleSignIn.instance;
+  bool _isGoogleSignInInitialized = false;
+  Future<void> _initializeGoogleSignIn() async {
+    try {
+      await _googleSignIn.initialize();
+      _isGoogleSignInInitialized = true;
+    } catch (e) {
+      debugPrint('Failed to initialize Google Sign-In: $e');
+    }
+  }
+
+  /// Always check Google sign in initialization before use
+  Future<void> _ensureGoogleSignInInitialized() async {
+    if (!_isGoogleSignInInitialized) {
+      await _initializeGoogleSignIn();
+    }
+  }
+
+  Future<String?> getAccessTokenForScopes(List<String> scopes) async {
+    await _ensureGoogleSignInInitialized();
+
+    try {
+      final authClient = _googleSignIn.authorizationClient;
+      // Try to get existing authorization
+      var authorization = await authClient.authorizationForScopes(scopes);
+      authorization ??= await authClient.authorizeScopes(scopes);
+      return authorization.accessToken;
+    } catch (error) {
+      debugPrint('Failed to get access token for scopes: $error');
+      return null;
+    }
+  }
+
   @override
   Future<MResult<MUser>> connectBEWithApple(MSocialUser user) {
     // TODO: implement connectBEWithApple
@@ -81,22 +116,19 @@ class SignRepositoryImpl extends SignRepository {
   @override
   Future<MResult<MSocialUser>> loginWithGoogle() async {
     try {
-      final GoogleSignIn googleSignIn = GoogleSignIn();
-
-      final bool isSignedIn = await googleSignIn.isSignedIn();
-      if (isSignedIn) {
-        await googleSignIn.signOut();
+      const scopes = ['email'];
+      await _ensureGoogleSignInInitialized();
+      final GoogleSignInAccount googleUser =
+          await _googleSignIn.authenticate(scopeHint: scopes);
+      final accessToken = await getAccessTokenForScopes(scopes);
+      if (accessToken == null) {
+        return MResult.error('Failed to get access token');
       }
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-      final googleAuth = await googleUser?.authentication;
-      if (googleUser != null && googleAuth != null) {
-        return MResult.success(
-            MSocialUser.fromGoogleAccount(googleUser, googleAuth));
-      } else {
-        return MResult.error(MErrorCode.unknown);
-      }
-    } catch (e) {
-      return MResult.exception(e);
+      // googleUser
+      return MResult.success(
+          MSocialUser.fromGoogleAccount(googleUser, accessToken));
+    } catch (error) {
+      return MResult.exception(error);
     }
   }
 
