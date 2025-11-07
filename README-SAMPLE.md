@@ -5,7 +5,7 @@
 - [How to Use](#how-to-use)
 - [Code Conventions](#code-conventions)
 - [Git Conventions](#git-conventions)
-- [dependencies](#Dependencies)
+- [dependencies](#dependencies)
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@
 - [Tasks - Trello]()
 - [Source code - Gitlap]()
 
-# How to Use
+## How to Use
 
 - **Step 1:** Download or clone this repo by using the link below:
 
@@ -33,7 +33,7 @@
 
 - **Step 2:** Install Flutter
 
-  - Install the platform-specific SDK [here](https://flutter.dev/docs/get-started/install)
+  - Install the platform-specific SDK — see the [Flutter installation guide](https://flutter.dev/docs/get-started/install)
 
 - **Step 3:** Setup flutter and run locally
 
@@ -44,6 +44,7 @@
     ```
 
   - Connect your physical device or open simulator. then run your app
+
     ```sh
     flutter run
     ```
@@ -51,25 +52,26 @@
 - **Step 4:**
   This project uses inject library that works with code generation, execute the following command to generate files (re-run every time you change one of these files)
 
-      - Firstly, If you have not install flutter_gen yet. [Click here](https://pub.dev/packages/flutter_gen#installation)
-      - Secondly, generate files for packages that use build_runner (auto_route, freezed...)
-          ```sh
-          flutter pub run build_runner build --delete-conflicting-outputs
-          ```
+  - Firstly, if you have not installed flutter_gen yet, see the flutter_gen installation guide: [flutter_gen installation](https://pub.dev/packages/flutter_gen#installation)
+  - Secondly, generate files for packages that use build_runner (auto_route, freezed...)
+
+    ```sh
+    flutter pub run build_runner build --delete-conflicting-outputs
+    ```
 
 - **Step 5:** Execute the following command to build app:
 
-  ### Android:
+  ### Android
 
   1. Change version and build number in `pubspec.yaml`
 
-     ```
+     ```sh
      flutter build appbundle
      ```
 
   2. Or run command line below to build with your build version
 
-     ```
+     ```sh
      flutter build appbundle --build-name=1.2.0 --build-number=2
      ```
 
@@ -78,7 +80,7 @@
   ### iOS
 
   1. Change version and build number in Xcode
-  2. Access https://developer.apple.com/ to download profile and signing your app
+  2. Access <https://developer.apple.com/> to download profile and signing your app
 
   - **Manually:** Pod install then Open Xcode to deploy
 
@@ -109,8 +111,8 @@
   - Common widget start with `X`: XButton, XText, XAppbar... - These widgets under folder `lib/widgets/`
   - App Constants class or service start with `Add`: AppStyles, AppColor, AppRouter, AppCoordinator,.. and UserPrefs
 
+## Git Conventions
 
-# Git Conventions
 - [Git Versioning and Code Reviews](https://www.notion.so/jimmy9/Git-Versioning-and-Code-Reviews-dea414c5e38d4db7b36180e395843968)
 - [Gitflow workflow](https://jimmy9.notion.site/Gitflow-workflow-414b8914b7e64a4d8198d47e6d9cc2f8?pvs=4)
 
@@ -121,6 +123,5 @@
 - [go_route](https://pub.dev/packages/go_route) It’s a Flutter navigation package
 
 - [flutter_gen](https://pub.dev/packages/flutter_gen) The Flutter code generator for your assets, fonts, colors, … — Get rid of all String-based APIs.
-
 
 ## Screenshot

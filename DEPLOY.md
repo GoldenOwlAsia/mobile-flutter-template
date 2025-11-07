@@ -1,5 +1,25 @@
 # Deploy document
 
+## DATA Requirements for first Release
+
+### Design
+
+- Splash screen image (1125x2436)
+- **[android]** bootsplash logo 1125\*2436 provided by design team
+- **[android]** store app icon (PNG or JPEG, up to 1 MB, 512 px by 512 px)
+- **[android]** feature graphic (set of 5 screenshots under the logo : PNG or JPEG, up to 15 MB, and 1,024 px by 500 px)
+- **[android]** app screenshots (2-8 phone screenshots. Screenshots must be PNG or JPEG, up to 8 MB each, 16:9 or 9:16 aspect ratio, with each side between 320 px and 3,840 px)
+- mipmap files, icons for all resolutions. They will be generated from the 512 or 1024 logo provided. Use generator : with logo source file to generate them. <https://makeappicon.com/>
+
+### Data
+
+- App name (appears under icon)
+- **[android]** short description (80 characters)
+- **[android & iOS]** full description (4000 characters)
+- **[iOS]** keywords
+- **[iOS]** Marketing Url (brand website)
+- **[iOS]** Subtitle
+
 ## Release Process
 
 1. Create a release branch from develop:
@@ -17,9 +37,11 @@
     ```bash
     git tag -a v1.0.0 -m "Release version 1.0.0"
     ```
+
 4. Merge the release branch into both main and develop.
 
 ## Hotfix Process
+
 1. Create a hotfix branch from main:
 
     ```bash
@@ -35,10 +57,13 @@
     git commit -m "Fix critical bug"
     git push origin hotfix/1.0.1
     ```
+
 3. Create a pull request to merge the hotfix into main.
 
 4. After code review and testing, merge the hotfix into both main and develop.
+
 ## Deployment
+
 Before deploying to production, ensure that the main branch contains the stable and tested code:
 
     ```bash
@@ -46,15 +71,19 @@ Before deploying to production, ensure that the main branch contains the stable 
     git pull origin main
     ```
 
-# Deploy for Android
-## Deploy Firebase App Distribution 
-- [Link firebase Distribute](https://console.firebase.google.com/project/yourapp/appdistribution/)
-   - Contact client@gmail.com for access to Firebase
+## Deploy for Android
 
-### Manually
+### Deploy Firebase App Distribution
+
+- [Link firebase Distribute](https://console.firebase.google.com/project/yourapp/appdistribution/)
+  - Contact <client@gmail.com> for access to Firebase
+
+#### Manually
+
 1. Create an appbunlde
    - Running the following at the command line:
-      ```
+
+      ```sh
          flutter build apk
       ```
 
@@ -62,11 +91,14 @@ Before deploying to production, ensure that the main branch contains the stable 
 3. Download and Check if build is stable.
 4. Update release notes and release to other testers.
 5. Announce new build with release notes in Slack channel.
-### Via Fastlane
+
+#### Via Fastlane
+
 1. create file `android/.env` then add your key `FIREBASE_CLI_TOKEN`
 2. cd to android folder then run `fastlane firebase build_number:[your-build-number]`
 
 ### Via CircleCI
+
 1. Create sit-android branch from develop, any branch that starts with sit-android/. e.g., sit-android/2.3.0, sit-android/2.3.1
 2. Make sure version is correct. Will use current version in project. Build number will auto-increment based from firebase last build
 3. Push branch. This will trigger job in CircleCI.
@@ -75,49 +107,63 @@ Before deploying to production, ensure that the main branch contains the stable 
 6. Update release notes and release to other testers.
 7. Announce new build with release notes in Slack channel.
 
-## Deploy to Google Play Console
-- [Link Google Play Console](https://play.google.com/apps/publish)
-   - Contact client@gmail.com for access to Google Play Console
+### Deploy to Google Play Console
 
-### Manually
+- [Link Google Play Console](https://play.google.com/apps/publish)
+  - Contact <client@gmail.com> for access to Google Play Console
+
+#### Manually
+
 You go to the production page of the app on the Google Play Console
+
 1. Create an appbunlde
    - Running the following at the command line:
-      ```
+
+      ```sh
          flutter build appbunlde
       ```
-   Make sure version is correct. Will use current version in project. 
+
+   Make sure version is correct. Will use current version in project.
 2. Upload the build to beta testing
 
 ### Via Fastlane
-- Add file play-store-credentials.json -> Follow https://docs.fastlane.tools/actions/supply/#setup to get one 
+
+- Add file play-store-credentials.json -> Follow <https://docs.fastlane.tools/actions/supply/#setup> to get one
 - cd to android folder then run fastlane beta
 
 ### Via CircleCI
+
 1. Create release-android branch from develop, any branch that starts with release-android/. e.g., release-android/2.3.0, release-android/2.3.1
 2. Make sure version is correct. Will use current version in project. Build number will auto-increment based from firebase last build
 3. Push branch. This will trigger job in CircleCI.
 4. Wait to be uploaded in Google Play Console.
 
-# Deploy for iOS
-## 1. Signing
+## Deploy for iOS
 
-- Contact client@gmail.com for access to Developer & Appstore account
+### 1. Signing
+
+- Contact <client@gmail.com> for access to Developer & Appstore account
 - Running the following at the command line for auto signing:
-   ```
+
+   ```sh
    fastlane sync_signing_sit
    ```
-   or 
-   ```
+
+   or
+
+   ```sh
    fastlane sync_signing_prod
    ```
+
 - Or you can setup manually
 
-## 2. Deploy to Firebase App Distribution 
-### Manually
+### 2. Deploy to Firebase App Distribution
+
+#### Manually
 
 1. Running the following at the command line to sync your code:
-      ```
+
+      ```sh
          flutter build ios --release --no-codesig
       ```
 
@@ -126,7 +172,8 @@ You go to the production page of the app on the Google Play Console
 4. Update release notes and release to other testers.
 5. Announce new build with release notes in Slack channel.
 
-### Via CircleCI
+#### Via CircleCI
+
 1. Create sit-ios branch from develop, any branch that starts with sit-ios/. e.g., sit-ios/2.3.0, sit-ios/2.3.1
 2. Make sure version is correct. Will use current version in project. Build number will auto-increment based from firebase last build
 3. Push branch. This will trigger job in CircleCI.
@@ -135,11 +182,13 @@ You go to the production page of the app on the Google Play Console
 6. Update release notes and release to other testers.
 7. Announce new build with release notes in Slack channel.
 
-## 2. Deploy to TestFlight 
-### Manually
+### 2. Deploy to TestFlight
+
+#### Manually
 
 1. Running the following at the command line to sync your code:
-      ```
+
+      ```sh
          flutter build ios --release --no-codesig
       ```
 
@@ -148,7 +197,8 @@ You go to the production page of the app on the Google Play Console
 4. Update release notes and release to other testers.
 5. Announce new build with release notes in Slack channel and wait for tester verify.
 
-### Via CircleCI
+#### Via CircleCI
+
 1. Create release-ios branch from develop, any branch that starts with release-ios/. e.g., release-ios/2.3.0, release-ios/2.3.1
 2. Make sure version is correct. Will use current version in project. Build number will auto-increment based from firebase last build
 3. Push branch. This will trigger job in CircleCI.

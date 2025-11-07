@@ -56,7 +56,7 @@ Kickstart your next Flutter project with this production-ready boilerplate — p
 5. **Run the app (Production):**
 
    ```sh
-   flutter run --flavor production --target lib/main_production.dart
+   flutter run --flavor production --target lib/main.dart
    ```
 
 ---
@@ -100,7 +100,18 @@ Kickstart your next Flutter project with this production-ready boilerplate — p
 
    → [Read More in the Wiki](https://github.com/GoldenOwlAsia/mobile-flutter-template/wiki/Flavors)
 
-5. **Run the app:** [Follow steps here](#how-to-run)
+5. Change App Icon
+  For  icons for all resolutions. They will be generated from the 512 or 1024 logo provided. Use generator : with logo source file to generate them. <https://makeappicon.com/>
+
+- Android: Then add a new folder named after your new app name inside android/app/src folder
+- iOS: Replace ios/Runner/Assets.xcassets/AppIcon.appiconset/ folder
+
+6. Change Splash Screen
+
+- Android: Set the background color value ./android/app/src/main/res/drawable/ic_launcher_background.xml
+- iOS: Open `LaunchScreen.storyboard` with XCode then edit
+
+7. **Run the app:** [Follow steps here](#how-to-run)
 
 ---
 
