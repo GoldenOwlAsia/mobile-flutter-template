@@ -97,9 +97,9 @@ class BaseCollectionReference<T> {
     }
     try {
       List<Query<T>> queries = [];
-      final spliceRooms = Utils.splice(rooms, 10);
-      for (final e in spliceRooms) {
-        Query<T> queryChat = ref.where("id", whereIn: e);
+      final roomChunks = Utils.chunk(rooms, 10);
+      for (final chunk in roomChunks) {
+        Query<T> queryChat = ref.where("id", whereIn: chunk);
         queries.add(queryChat);
       }
       final List<QuerySnapshot<T>> results =

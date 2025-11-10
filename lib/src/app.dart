@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppScreens.mediaQuery = MediaQuery.of(context);
+    AppScreens.init(context);
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => SettingBloc()),

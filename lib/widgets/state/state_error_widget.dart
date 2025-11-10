@@ -24,7 +24,7 @@ class XStateErrorWidget extends StatelessWidget {
           child: Text(
             S.of(context).error_somethingWrongTryAgain,
             textAlign: TextAlign.center,
-            style: AppStyles.title,
+            style: AppStyles.titleMedium,
           ),
         ),
         const SizedBox(height: 16),

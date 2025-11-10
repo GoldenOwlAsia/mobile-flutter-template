@@ -1,64 +1,75 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/theme/styles.dart';
-
 import 'colors.dart';
+import 'styles.dart';
 
+/// Application theme configuration
+/// Simple theme setup with essential customizations only
 class AppTheme {
+  AppTheme._();
+
+  /// Default font family for the app
   static const String? fontFamily = null;
 
+  /// Light theme with basic essential customizations
   static ThemeData light() => ThemeData(
-        fontFamily: fontFamily,
-        scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
-
-        /// dialog
-        dialogTheme: DialogThemeData(
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-
-        /// Colors
-        primaryColor: AppColors.primary,
         brightness: Brightness.light,
+        fontFamily: fontFamily,
+        useMaterial3: true,
 
-        /// Text
+        // Primary colors
+        primarySwatch: Colors.pink,
+        primaryColor: AppColors.primary,
+
+        // Background colors
+        scaffoldBackgroundColor: AppColors.background,
+
+        // Typography
         textTheme: AppStyles.textTheme,
 
-        /// ColorScheme
+        // Color scheme
         colorScheme: const ColorScheme.light(
           primary: AppColors.primary,
+          secondary: AppColors.secondary,
+          error: AppColors.error,
+          surface: AppColors.surface,
         ),
 
-        // Appbar
+        // AppBar
         appBarTheme: const AppBarTheme(
-          // default system appbar icon is white
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.textOnPrimary,
+          elevation: 0,
+          centerTitle: false,
         ),
 
-        /// input
-        inputDecorationTheme: const InputDecorationTheme(),
-
-        /// Button
-        buttonTheme: const ButtonThemeData(),
+        // Elevated buttons
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            fixedSize: const Size.fromHeight(50),
-          ),
-        ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            fixedSize: const Size.fromHeight(50),
+            backgroundColor: AppColors.primary,
+            foregroundColor: AppColors.textOnPrimary,
+            minimumSize: const Size(0, 48),
           ),
         ),
 
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(),
+        // Input decoration
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
-        iconTheme: const IconThemeData(),
       );
 
-  // do not support dark theme yet
-  static ThemeData dark() => light();
+  /// Dark theme (same as light for now)
+  static ThemeData dark() => light().copyWith(
+        brightness: Brightness.dark,
+        colorScheme: const ColorScheme.dark(
+          primary: AppColors.primary,
+          secondary: AppColors.secondary,
+          error: AppColors.error,
+        ),
+      );
+
+  /// Get current theme brightness
+  static bool isDark(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark;
+  }
 }
