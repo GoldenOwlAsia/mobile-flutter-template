@@ -6,7 +6,7 @@ import 'package:logger/logger.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:myapp/src/features/common/view/webview/model/web_menu_item.dart';
 import 'package:myapp/src/theme/colors.dart';
-import 'package:myapp/src/utils/extension.dart';
+import 'package:myapp/src/utils/string.ext.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -116,7 +116,7 @@ class _WebviewPageState extends State<WebviewPage> {
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.urlTrim() != widget.url.urlTrim() &&
+            if (request.url.urlTrim != widget.url.urlTrim &&
                 widget.disableRedirect) {
               return NavigationDecision.prevent;
             }
@@ -162,7 +162,7 @@ class _WebviewPageState extends State<WebviewPage> {
     return Container(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
       decoration: BoxDecoration(
-        color: AppColors.grey4,
+        color: AppColors.neutral200,
         border: Border.all(width: 1.0, color: Colors.white),
         boxShadow: const [
           BoxShadow(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/utils/logger.dart';
 import 'package:myapp/src/utils/utils.dart';
 import 'package:myapp/src/dialogs/toast_wrapper.dart';
 

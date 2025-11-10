@@ -30,7 +30,7 @@ class XStateEmptyWidget extends StatelessWidget {
           child: Text(
             title ?? S.of(context).common_list_empty_title,
             textAlign: TextAlign.center,
-            style: AppStyles.title,
+            style: AppStyles.titleMedium,
           ),
         ),
         if (body?.isNotEmpty == true) ...[
@@ -40,7 +40,7 @@ class XStateEmptyWidget extends StatelessWidget {
             child: Text(
               body!,
               textAlign: TextAlign.center,
-              style: AppStyles.body,
+              style: AppStyles.bodyMedium,
             ),
           ),
         ],
