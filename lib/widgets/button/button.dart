@@ -27,9 +27,12 @@ class XButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = this.size ?? ButtonSize.medium();
+    /// - When busy=true, button visually appears enabled (intentional UX design)
+    ///   but the onPressed callback is blocked internally
+    /// - When enabled=false, button is fully disabled (null onPressed)
     final onPressed = enabled
         ? () {
-            if (this.onPressed != null || busy == false) {
+            if (busy == false) {
               this.onPressed?.call();
             }
           }

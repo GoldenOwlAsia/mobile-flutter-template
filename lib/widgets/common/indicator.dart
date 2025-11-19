@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+/// Cross-platform loading indicator.
 class XIndicator extends StatelessWidget {
   const XIndicator({this.radius = 15, this.color, super.key});
   final double radius;
@@ -10,7 +12,7 @@ class XIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb || Platform.isAndroid) {
+    if (kIsWeb || !Platform.isIOS && !Platform.isMacOS) {
       return SizedBox(
         width: radius * 2,
         height: radius * 2,
@@ -20,6 +22,7 @@ class XIndicator extends StatelessWidget {
         ),
       );
     }
+
     return CupertinoActivityIndicator(
       radius: radius,
       color: color,

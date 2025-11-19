@@ -33,6 +33,8 @@ class XImageNetwork extends StatelessWidget {
 
   Widget _buildPlaceHolder() {
     return Container(
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         color: Colors.grey[200],
       ),
