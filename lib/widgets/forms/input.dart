@@ -15,20 +15,26 @@ class XInput extends StatefulWidget {
     this.autofocus = false,
     this.inputFormatters,
     this.onFieldSubmitted,
+    this.focusNode,
+    this.enabled = true,
+    this.readOnly = false,
+    this.validator,
   });
   final String value;
   final TextInputType? keyboardType;
   final bool obscureText;
-
   final ValueChanged<String>? onChanged;
   final InputDecoration? decoration;
   final int? maxLength;
   final bool autofocus;
-  // style
   final TextAlign textAlign;
   final TextStyle? style;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(String)? onFieldSubmitted;
+  final FocusNode? focusNode;
+  final bool enabled;
+  final bool readOnly;
+  final String? Function(String?)? validator;
 
   @override
   State<XInput> createState() => _XInputState();
@@ -36,12 +42,12 @@ class XInput extends StatefulWidget {
 
 class _XInputState extends State<XInput> {
   late TextEditingController _controller;
-  String get value => widget.value;
-  bool obscureText = false;
+  late bool _obscureText;
+
   @override
   void initState() {
     super.initState();
-    obscureText = widget.obscureText;
+    _obscureText = widget.obscureText;
     _controller = TextEditingController(text: widget.value);
   }
 
@@ -56,47 +62,59 @@ class _XInputState extends State<XInput> {
     super.didUpdateWidget(oldWidget);
 
     if (_controller.text != widget.value) {
+      final cursorPosition = _controller.selection.baseOffset;
       _controller.text = widget.value;
+      // Preserve cursor position when possible
+      if (cursorPosition <= widget.value.length) {
+        _controller.selection = TextSelection.fromPosition(
+          TextPosition(offset: cursorPosition),
+        );
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    Widget? buildActions() {
-      final List<Widget> actions = [];
-      if (value.isNotEmpty) {
-        actions.add(
-          InkWell(
-            onTap: () {
-              widget.onChanged?.call('');
-            },
-            child: const Icon(Icons.cancel),
-          ),
-        );
-      }
-      if (widget.obscureText) {
+    Widget? buildSuffixActions() {
+      final actions = <Widget>[];
+
+      // Clear button
+      if (_controller.text.isNotEmpty && widget.enabled && !widget.readOnly) {
         actions.add(
           IconButton(
+            icon: const Icon(Icons.cancel, size: 20),
+            tooltip: 'Clear',
             onPressed: () {
-              setState(() {
-                obscureText = !obscureText;
-              });
+              _controller.clear();
+              widget.onChanged?.call('');
             },
-            icon: Icon(
-              obscureText
-                  ? Icons.visibility_outlined
-                  : Icons.visibility_off_outlined,
-            ),
           ),
         );
       }
 
-      if (actions.isEmpty) {
-        return null;
+      // Password visibility toggle
+      if (widget.obscureText) {
+        actions.add(
+          IconButton(
+            icon: Icon(
+              _obscureText
+                  ? Icons.visibility_outlined
+                  : Icons.visibility_off_outlined,
+              size: 20,
+            ),
+            tooltip: _obscureText ? 'Show password' : 'Hide password',
+            onPressed: () {
+              setState(() {
+                _obscureText = !_obscureText;
+              });
+            },
+          ),
+        );
       }
-      if (actions.length == 1) {
-        return actions[0];
-      }
+
+      if (actions.isEmpty) return null;
+      if (actions.length == 1) return actions.first;
+
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: actions,
@@ -105,13 +123,17 @@ class _XInputState extends State<XInput> {
 
     return TextFormField(
       controller: _controller,
+      focusNode: widget.focusNode,
       onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
       style: widget.style,
       textAlign: widget.textAlign,
-      obscureText: obscureText,
+      obscureText: _obscureText,
       maxLength: widget.maxLength,
       autofocus: widget.autofocus,
+      enabled: widget.enabled,
+      readOnly: widget.readOnly,
+      validator: widget.validator,
       scrollPhysics: const NeverScrollableScrollPhysics(),
       inputFormatters: widget.inputFormatters,
       onFieldSubmitted: widget.onFieldSubmitted,
@@ -123,7 +145,9 @@ class _XInputState extends State<XInput> {
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         filled: false,
         errorStyle: const TextStyle(fontSize: 14, letterSpacing: 0.25),
-        suffixIcon: buildActions(),
+        suffixIcon: buildSuffixActions(),
+        // Ensure consistent counter style
+        counterStyle: const TextStyle(fontSize: 12),
       ),
     );
   }

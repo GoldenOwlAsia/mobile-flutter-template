@@ -5,10 +5,6 @@ class XNavIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(
-      Icons.arrow_forward_ios,
-      size: 18,
-      color: Color(0xFF999999),
-    );
+    return const Icon(Icons.arrow_forward_ios);
   }
 }
