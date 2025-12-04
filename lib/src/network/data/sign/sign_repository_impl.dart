@@ -1,16 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
-import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
 
+@Injectable(as: SignRepository)
 class SignRepositoryImpl extends SignRepository {
   // https://isaacadariku.medium.com/google-sign-in-flutter-migration-guide-pre-7-0-versions-to-v7-version-cdc9efd7f182
   // https://pub.dev/packages/google_sign_in/changelog#700
   final _googleSignIn = GoogleSignIn.instance;
+
+  SignRepositoryImpl();
   bool _isGoogleSignInInitialized = false;
   Future<void> _initializeGoogleSignIn() async {
     try {
@@ -70,9 +73,8 @@ class SignRepositoryImpl extends SignRepository {
         email: user.email,
         name: user.fullName,
       );
-      final userResult = await DomainManager().user.getOrAddUser(newUser);
 
-      return MResult.success(userResult.data ?? newUser);
+      return MResult.success(newUser);
     } catch (e) {
       return MResult.exception(e);
     }

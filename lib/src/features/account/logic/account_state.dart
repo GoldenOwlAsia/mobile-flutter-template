@@ -5,9 +5,10 @@ class AccountState extends Equatable {
     required this.user,
     this.locale = 'vi',
   });
+
   factory AccountState.ds() {
     return AccountState(
-      user: UserPrefs.I.getUser() ?? MUser.empty(),
+      user: MUser.empty(),
     );
   }
 
@@ -34,6 +35,22 @@ class AccountState extends Equatable {
     return AccountState(
       user: user ?? this.user,
       locale: locale ?? this.locale,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'user': user.toJson(),
+      'locale': locale,
+    };
+  }
+
+  factory AccountState.fromJson(Map<String, dynamic> json) {
+    return AccountState(
+      user: json['user'] != null
+          ? MUser.fromJson(json['user'] as Map<String, dynamic>)
+          : MUser.empty(),
+      locale: json['locale'] as String? ?? 'vi',
     );
   }
 }

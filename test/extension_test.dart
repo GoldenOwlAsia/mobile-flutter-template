@@ -10,16 +10,16 @@ import 'package:myapp/src/utils/string.ext.dart';
 void main() {
   group('String Extension', () {
     test('Trim url case 1', () {
-      expect('http://google.com'.urlTrim, 'google.com');
+      expect('http://google.com'.urlTrim(), 'google.com');
     });
     test('Trim url case 2', () {
-      expect('http://google.com/'.urlTrim, 'google.com');
+      expect('http://google.com/'.urlTrim(), 'google.com');
     });
     test('Trim url case 3', () {
-      expect('https://www.google.com'.urlTrim, 'google.com');
+      expect('https://www.google.com'.urlTrim(), 'google.com');
     });
     test('Trim url case 4', () {
-      expect('https://www.google.com/'.urlTrim, 'google.com');
+      expect('https://www.google.com/'.urlTrim(), 'google.com');
     });
 
     test('String validation', () {

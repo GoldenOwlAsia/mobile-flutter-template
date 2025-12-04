@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/features/authentication/model/email_fromz.dart';
@@ -15,10 +16,11 @@ import 'package:myapp/src/router/coordinator.dart';
 
 part 'signin_state.dart';
 
+@injectable
 class SigninBloc extends Cubit<SigninState> {
-  SigninBloc() : super(const SigninState());
+  final DomainManager domain;
 
-  DomainManager get domain => DomainManager();
+  SigninBloc(this.domain) : super(const SigninState());
 
   Future loginWithEmail() async {
     if (state.status.isInProgress) return;
@@ -85,17 +87,26 @@ class SigninBloc extends Cubit<SigninState> {
 
   Future connectBEWithGoogle(MSocialUser user) async {
     final result = await domain.sign.connectBEWithGoogle(user);
-    return loginDecision(result, socialType: user.type);
+    if (result.isSuccess) {
+      final userResult = await domain.user.getOrAddUser(result.data!);
+      return loginDecision(userResult, socialType: user.type);
+    }
   }
 
   Future connectBEWithFacebook(MSocialUser user) async {
     final result = await domain.sign.connectBEWithFacebook(user);
-    return loginDecision(result, socialType: user.type);
+    if (result.isSuccess) {
+      final userResult = await domain.user.getOrAddUser(result.data!);
+      return loginDecision(userResult, socialType: user.type);
+    }
   }
 
   Future connectBEWithApple(MSocialUser user) async {
     final result = await domain.sign.connectBEWithApple(user);
-    return loginDecision(result, socialType: user.type);
+    if (result.isSuccess) {
+      final userResult = await domain.user.getOrAddUser(result.data!);
+      return loginDecision(userResult, socialType: user.type);
+    }
   }
 
   Future loginDecision(MResult<MUser> result, {MSocialType? socialType}) async {
@@ -110,9 +121,7 @@ class SigninBloc extends Cubit<SigninState> {
   }
 
   void onEmailChanged(String value) {
-    final formz = state.email.isPure
-        ? EmailFormzInput.pure(value)
-        : EmailFormzInput.dirty(value);
+    final formz = EmailFormzInput.pure(value);
     emit(state.copyWith(email: formz));
   }
 

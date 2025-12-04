@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/authentication/model/email_fromz.dart';
 import 'package:myapp/src/network/domain_manager.dart';
@@ -10,9 +11,11 @@ import 'package:myapp/src/router/coordinator.dart';
 
 part 'forgot_state.dart';
 
+@injectable
 class ForgotBloc extends Cubit<ForgotState> {
-  ForgotBloc() : super(const ForgotState());
-  DomainManager get domain => DomainManager();
+  final DomainManager domain;
+
+  ForgotBloc(this.domain) : super(const ForgotState());
 
   /// Step 3 (Register)
   Future onEnteredConfirmPassword(BuildContext context) async {
@@ -38,9 +41,7 @@ class ForgotBloc extends Cubit<ForgotState> {
   }
 
   void onEmailChanged(String value) {
-    final email = state.email.isPure
-        ? EmailFormzInput.pure(value)
-        : EmailFormzInput.dirty(value);
+    final email = EmailFormzInput.pure(value);
     emit(state.copyWith(email: email));
   }
 }

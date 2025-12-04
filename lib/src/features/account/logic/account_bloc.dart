@@ -2,23 +2,25 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/generated/l10n/localization_utils.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/user/user.dart';
-import 'package:myapp/src/services/user_prefs.dart';
 
 part 'account_state.dart';
 
-class AccountBloc extends Cubit<AccountState> {
-  AccountBloc() : super(AccountState.ds()) {
+@injectable
+class AccountBloc extends HydratedCubit<AccountState> {
+  final DomainManager domain;
+
+  AccountBloc(this.domain) : super(AccountState.ds()) {
     syncUserData();
   }
 
   StreamController<MUser> statusStream = StreamController.broadcast();
-  DomainManager get domain => DomainManager();
 
   Future syncUserData() async {
     final String id = state.user.id;
@@ -85,9 +87,25 @@ class AccountBloc extends Cubit<AccountState> {
     return false;
   }
 
-  void onUserChange(AccountState newstate) {
-    // setup token and param http
-    UserPrefs.instance.setUser(newstate.user);
-    emit(newstate);
+  void onUserChange(AccountState newState) {
+    emit(newState);
+  }
+
+  @override
+  AccountState? fromJson(Map<String, dynamic> json) {
+    try {
+      return AccountState.fromJson(json);
+    } catch (_) {
+      return AccountState.ds();
+    }
+  }
+
+  @override
+  Map<String, dynamic>? toJson(AccountState state) {
+    try {
+      return state.toJson();
+    } catch (_) {
+      return null;
+    }
   }
 }
