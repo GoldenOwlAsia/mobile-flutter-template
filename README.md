@@ -20,7 +20,7 @@ Kickstart your next Flutter project with this production-ready boilerplate — p
 
 ## Prerequisites
 
-- **Flutter:** `>=3.35.3`
+- **Flutter:** `>=3.38.x`
 - **Firebase Projects:**
   - [Firebase Staging](https://console.firebase.google.com/u/0/project/flutter-app-ec8dd/settings/iam)
   - [Firebase Production](https://console.firebase.google.com/u/0/project/template-app-prod-3a034/settings/iam)

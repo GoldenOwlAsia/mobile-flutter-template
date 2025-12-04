@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Staging Debug",
+      "name": "Staging",
       "request": "launch",
       "type": "dart",
       "args": [
@@ -16,19 +16,7 @@
       ],
     },
     {
-      "name": "Staging Release",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "release",
-      "args": [
-        "--flavor",
-        "staging",
-        "-t",
-        "lib/main_staging.dart"
-      ],
-    },
-    {
-      "name": "Prod Debug",
+      "name": "Prod",
       "request": "launch",
       "type": "dart",
       "args": [
@@ -37,18 +25,6 @@
         "-t",
         "lib/main.dart"
       ],
-    },
-    {
-      "name": "Prod Release",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "release",
-      "args": [
-        "--flavor",
-        "production",
-        "-t",
-        "lib/main.dart"
-      ],
-    },
+    }
   ]
 }
