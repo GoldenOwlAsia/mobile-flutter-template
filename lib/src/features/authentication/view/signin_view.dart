@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:myapp/generated/injectable/injection.dart';
 import 'package:myapp/src/features/authentication/logic/signin_bloc.dart';
 import 'package:myapp/src/features/authentication/widget/sign_title.dart';
 import 'package:myapp/src/features/authentication/widget/social_list_button.dart';
@@ -19,7 +20,7 @@ class SigninView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SigninBloc(),
+      create: (_) => getIt<SigninBloc>(),
       child: Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.white,

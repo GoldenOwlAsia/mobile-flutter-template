@@ -1,16 +1,13 @@
-import 'package:myapp/src/network/data/sign/sign_repository_impl.dart';
-import 'blob/data/upload_repository_impl.dart';
-import 'data/user/user_repository_impl.dart';
+import 'package:injectable/injectable.dart';
+import 'package:myapp/src/network/blob/data/upload_repository.dart';
+import 'package:myapp/src/network/data/sign/sign_repository.dart';
+import 'package:myapp/src/network/data/user/user_repository.dart';
 
+@injectable
 class DomainManager {
-  factory DomainManager() {
-    _internal ??= DomainManager._();
-    return _internal!;
-  }
-  DomainManager._();
-  static DomainManager? _internal;
+  final UserRepository user;
+  final UploadRepository upload;
+  final SignRepository sign;
 
-  final user = UserRepositoryImpl();
-  final upload = UploadRepositoryImpl();
-  final sign = SignRepositoryImpl();
+  DomainManager(this.user, this.upload, this.sign);
 }

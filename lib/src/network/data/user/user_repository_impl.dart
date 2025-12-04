@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 import 'package:myapp/src/network/data/user/user_reference.dart';
 import 'package:myapp/src/network/data/user/user_repository.dart';
 import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 
+@Injectable(as: UserRepository)
 class UserRepositoryImpl extends UserRepository {
-  final usersRef = UserReference();
+  final UserReference usersRef;
+
+  UserRepositoryImpl(this.usersRef);
   @override
   Future<MResult<MUser>> getUser(String id) async {
     try {

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:get_it/get_it.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:myapp/generated/injectable/injection.dart';
 import 'package:myapp/src/config/devices/app_info.dart';
-import 'package:myapp/src/features/account/logic/account_bloc.dart';
-import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/router/router.dart';
 import 'package:myapp/src/services/remote_config/remote_config_service.dart';
 import 'package:myapp/src/services/user_prefs.dart';
@@ -20,6 +20,13 @@ Future initializeApp({String? name, FirebaseOptions? firebaseOptions}) async {
     DeviceOrientation.portraitUp,
   ]);
   _locator();
+
+  // Initialize HydratedBlocStorage
+  final appDocDir = await getApplicationDocumentsDirectory();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: HydratedStorageDirectory(appDocDir.path),
+  );
+
   await Firebase.initializeApp(name: name, options: firebaseOptions);
   await Future.wait([
     AppInfo.initialize(),
@@ -34,8 +41,6 @@ Future initializeApp({String? name, FirebaseOptions? firebaseOptions}) async {
 }
 
 void _locator() {
-  GetIt.I.registerLazySingleton(() => DomainManager());
-  GetIt.I.registerLazySingleton(() => AppRouter());
-  GetIt.I.registerLazySingleton(() => AccountBloc());
+  configureDependencies();
+  getIt.registerLazySingleton(() => AppRouter());
 }
-

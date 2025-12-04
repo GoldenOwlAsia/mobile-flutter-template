@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:myapp/generated/injectable/injection.dart';
 import 'package:myapp/src/features/authentication/logic/signup_bloc.dart';
 import 'package:myapp/src/features/authentication/widget/sign_title.dart';
 import 'package:myapp/generated/l10n/localization_utils.dart';
@@ -13,7 +14,7 @@ class SignupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SignupBloc(),
+      create: (_) => getIt<SignupBloc>(),
       child: BlocBuilder<SignupBloc, SignupState>(
         builder: (context, SignupState state) {
           return Scaffold(

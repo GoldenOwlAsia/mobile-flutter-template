@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/dialogs/toast_wrapper.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
@@ -15,10 +16,11 @@ import 'package:myapp/src/router/coordinator.dart';
 
 part 'signup_state.dart';
 
+@injectable
 class SignupBloc extends Cubit<SignupState> {
-  SignupBloc() : super(const SignupState());
+  final DomainManager domain;
 
-  DomainManager get domain => DomainManager();
+  SignupBloc(this.domain) : super(const SignupState());
 
   Future signupWithEmail(BuildContext context) async {
     if (state.status.isInProgress) return;
@@ -49,9 +51,7 @@ class SignupBloc extends Cubit<SignupState> {
   }
 
   void onEmailChanged(String value) {
-    final formz = state.email.isPure
-        ? EmailFormzInput.pure(value)
-        : EmailFormzInput.dirty(value);
+    final formz = EmailFormzInput.pure(value);
     emit(state.copyWith(email: formz));
   }
 

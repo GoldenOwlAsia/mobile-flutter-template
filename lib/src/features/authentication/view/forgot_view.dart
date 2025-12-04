@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:myapp/generated/injectable/injection.dart';
 import 'package:myapp/src/features/authentication/logic/forgot_bloc.dart';
 import 'package:myapp/src/features/authentication/widget/sign_title.dart';
 import 'package:myapp/generated/l10n/localization_utils.dart';
@@ -13,7 +14,7 @@ class ForgotPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ForgotBloc(),
+      create: (_) => getIt<ForgotBloc>(),
       child: BlocBuilder<ForgotBloc, ForgotState>(
         builder: (context, ForgotState state) {
           return Scaffold(
