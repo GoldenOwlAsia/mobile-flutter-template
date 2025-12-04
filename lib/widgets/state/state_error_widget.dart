@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/generated/assets/assets.gen.dart';
-import 'package:myapp/src/localization/localization_utils.dart';
+import 'package:myapp/generated/l10n/localization_utils.dart';
 import 'package:myapp/src/theme/styles.dart';
 import 'package:myapp/widgets/button/outlined_button.dart';
 

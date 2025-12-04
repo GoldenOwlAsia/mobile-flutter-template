@@ -17,13 +17,17 @@ import 'package:myapp/src/features/sample/view/sample_list_view.dart';
 import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/src/router/extras/photo_view_extra.dart';
 import 'package:myapp/src/router/route_name.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class AppRouter {
   late final router = GoRouter(
     navigatorKey: AppCoordinator.navigatorKey,
     initialLocation: AppRouteNames.home.path,
     debugLogDiagnostics: kDebugMode,
-    observers: [BotToastNavigatorObserver()],
+    observers: [
+      BotToastNavigatorObserver(),
+      SentryNavigatorObserver(),
+    ],
     routes: <RouteBase>[
       GoRoute(
         parentNavigatorKey: AppCoordinator.navigatorKey,

@@ -32,7 +32,6 @@
 /build/
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
@@ -62,3 +61,5 @@ app.*.map.json
 **/fastlane/test_output
 
 .instructions.md
+
+.cursor/rules/snyk_rules.mdc

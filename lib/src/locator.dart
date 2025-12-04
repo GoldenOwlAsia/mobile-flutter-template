@@ -38,3 +38,4 @@ void _locator() {
   GetIt.I.registerLazySingleton(() => AppRouter());
   GetIt.I.registerLazySingleton(() => AccountBloc());
 }
+
