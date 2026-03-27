@@ -31,8 +31,11 @@ class SignupBloc extends Cubit<SignupState> {
     final email = state.email.value;
     final password = state.password.value;
     final name = state.name.value;
-    final result = await domain.sign
-        .signUpWithEmail(email: email, password: password, name: name);
+    final result = await domain.sign.signUpWithEmail(
+      email: email,
+      password: password,
+      name: name,
+    );
     if (result.isSuccess) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       if (context.mounted) {

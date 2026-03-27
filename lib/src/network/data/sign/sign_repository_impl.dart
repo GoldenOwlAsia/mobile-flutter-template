@@ -63,10 +63,12 @@ class SignRepositoryImpl extends SignRepository {
     try {
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
-          accessToken: user.accessToken, idToken: user.idToken);
+        accessToken: user.accessToken,
+        idToken: user.idToken,
+      );
       // Once signed in, return the UserCredential
-      final UserCredential result =
-          await FirebaseAuth.instance.signInWithCredential(credential);
+      final UserCredential result = await FirebaseAuth.instance
+          .signInWithCredential(credential);
       final firebaseUser = result.user;
       final newUser = MUser(
         id: firebaseUser?.uid ?? '',
@@ -103,8 +105,10 @@ class SignRepositoryImpl extends SignRepository {
   }
 
   @override
-  Future<MResult<MUser>> loginWithEmail(
-      {required String email, required String password}) {
+  Future<MResult<MUser>> loginWithEmail({
+    required String email,
+    required String password,
+  }) {
     // TODO: implement loginWithEmail
     throw UnimplementedError();
   }
@@ -120,15 +124,17 @@ class SignRepositoryImpl extends SignRepository {
     try {
       const scopes = ['email'];
       await _ensureGoogleSignInInitialized();
-      final GoogleSignInAccount googleUser =
-          await _googleSignIn.authenticate(scopeHint: scopes);
+      final GoogleSignInAccount googleUser = await _googleSignIn.authenticate(
+        scopeHint: scopes,
+      );
       final accessToken = await getAccessTokenForScopes(scopes);
       if (accessToken == null) {
         return MResult.error('Failed to get access token');
       }
       // googleUser
       return MResult.success(
-          MSocialUser.fromGoogleAccount(googleUser, accessToken));
+        MSocialUser.fromGoogleAccount(googleUser, accessToken),
+      );
     } catch (error) {
       return MResult.exception(error);
     }
@@ -146,8 +152,11 @@ class SignRepositoryImpl extends SignRepository {
   }
 
   @override
-  Future<MResult<MUser>> signUpWithEmail(
-      {required String email, required String password, required String name}) {
+  Future<MResult<MUser>> signUpWithEmail({
+    required String email,
+    required String password,
+    required String name,
+  }) {
     // TODO: implement signUpWithEmail
     throw UnimplementedError();
   }

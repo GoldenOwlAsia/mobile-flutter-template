@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum WebMenuItem {
-  goBack,
-  goForward,
-  reload,
-  openBrowser,
-  copyLink,
-  shareLink,
-}
+enum WebMenuItem { goBack, goForward, reload, openBrowser, copyLink, shareLink }
 
 extension WebMenuItemExtension on WebMenuItem {
   String nameOf() {

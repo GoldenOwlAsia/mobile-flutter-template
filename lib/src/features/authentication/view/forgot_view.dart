@@ -32,7 +32,9 @@ class ForgotPasswordView extends StatelessWidget {
                       key: const Key('forgot_passwordConfirmInput_textField'),
                       onChanged: context.read<ForgotBloc>().onEmailChanged,
                       decoration: InputDecoration(
-                          labelText: 'Email', errorText: state.error),
+                        labelText: 'Email',
+                        errorText: state.error,
+                      ),
                       autofocus: true,
                     ),
                     const SizedBox(height: 32.0),

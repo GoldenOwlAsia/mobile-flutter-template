@@ -99,24 +99,14 @@ class AppScreens {
 
   // MARK: - Responsive Values
   /// Get responsive value based on screen size
-  static T responsive<T>({
-    required T mobile,
-    T? tablet,
-    T? desktop,
-  }) {
+  static T responsive<T>({required T mobile, T? tablet, T? desktop}) {
     if (isDesktop && desktop != null) return desktop;
     if (isTablet && tablet != null) return tablet;
     return mobile;
   }
 
   /// Get value based on breakpoints
-  static T breakpoint<T>({
-    required T xs,
-    T? sm,
-    T? md,
-    T? lg,
-    T? xl,
-  }) {
+  static T breakpoint<T>({required T xs, T? sm, T? md, T? lg, T? xl}) {
     if (isXL && xl != null) return xl;
     if (isLG && lg != null) return lg;
     if (isMD && md != null) return md;
@@ -126,38 +116,25 @@ class AppScreens {
 
   // MARK: - Spacing and Sizing Helpers
   /// Get responsive padding based on screen size
-  static EdgeInsets get responsivePadding => EdgeInsets.all(
-        responsive(
-          mobile: 16.0,
-          tablet: 24.0,
-          desktop: 32.0,
-        ),
-      );
+  static EdgeInsets get responsivePadding =>
+      EdgeInsets.all(responsive(mobile: 16.0, tablet: 24.0, desktop: 32.0));
 
   /// Get responsive horizontal padding
   static EdgeInsets get responsiveHorizontalPadding => EdgeInsets.symmetric(
-        horizontal: responsive(
-          mobile: 16.0,
-          tablet: 24.0,
-          desktop: 32.0,
-        ),
-      );
+    horizontal: responsive(mobile: 16.0, tablet: 24.0, desktop: 32.0),
+  );
 
   /// Get responsive vertical padding
   static EdgeInsets get responsiveVerticalPadding => EdgeInsets.symmetric(
-        vertical: responsive(
-          mobile: 16.0,
-          tablet: 20.0,
-          desktop: 24.0,
-        ),
-      );
+    vertical: responsive(mobile: 16.0, tablet: 20.0, desktop: 24.0),
+  );
 
   /// Get responsive content width (with max width constraints)
   static double get contentWidth => responsive(
-        mobile: width,
-        tablet: width * 0.8,
-        desktop: 1200.0,
-      ).clamp(0.0, width);
+    mobile: width,
+    tablet: width * 0.8,
+    desktop: 1200.0,
+  ).clamp(0.0, width);
 
   // MARK: - System UI Control
   /// Update status bar style

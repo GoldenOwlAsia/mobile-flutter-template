@@ -31,16 +31,30 @@ signingReport:
 genLanguage:
 	flutter gen-l10n
 
-envStag:
-	cat .env.staging > .env
+BUILD_TIME := $(shell date +"%Y-%m-%d_%H-%M-%S")
 
-envProd:
-	cat .env.production > .env
+DEBUG_INFO_STG_DIR := debug-info/debug-info-staging/$(BUILD_TIME)
 
 buildAndroidStag:
-	cat .env.staging > .env; flutter build appbundle --flavor staging -t lib/main_staging.dart
+	mkdir -p $(DEBUG_INFO_STG_DIR)
+	flutter build appbundle --flavor staging -t lib/main_staging.dart --obfuscate --split-debug-info=$(DEBUG_INFO_STG_DIR) --dart-define-from-file=.env.staging
+
+DEBUG_INFO_PROD_DIR := debug-info/debug-info-prod/$(BUILD_TIME)
 
 buildAndroidProd:
-	cat .env.production > .env; flutter build appbundle --flavor production
+	mkdir -p $(DEBUG_INFO_PROD_DIR)
+	flutter build appbundle --flavor production --obfuscate --split-debug-info=$(DEBUG_INFO_PROD_DIR) --dart-define-from-file=.env.production
+
+buildIOSStag:
+	flutter build ios --flavor staging -t lib/main_staging.dart --dart-define-from-file=.env.staging
+
+buildIOSProd:
+	flutter build ios --flavor production --dart-define-from-file=.env.production
+
+testCoverage:
+	flutter test --coverage && lcov -r coverage/lcov.info "lib/generated/*" "lib/packages/*" "lib/src/_dev/*" "lib/src/core/app_bloc/*" "lib/src/core/config" "lib/src/core/router/*" "lib/src/core/resource/*" "lib/src/network/common/*" "lib/src/network/model/*" "lib/src/services/remote_config" "lib/src/core/theme" -o coverage/lcov.info --ignore-errors unused
 	
+uploadSymbols:
+	dart run sentry_dart_plugin --sentry-define=ignore_missing=true
+
 # keytool -list -v -keystore android/app/release-keystore.jks -alias <key alias>

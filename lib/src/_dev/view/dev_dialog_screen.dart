@@ -12,14 +12,20 @@ class DevDialogScreen extends StatelessWidget {
     return DevScreenLayout(
       'Dialog',
       children: [
-        DevButtonTitle('1. Show Dialog', onTap: () {
-          XAlert.show(title: 'Dialog Title', body: 'Dialog content');
-        }),
-        DevButtonTitle('2. Show full screen loading', onTap: () async {
-          XToast.showLoading();
-          await Future.delayed(const Duration(seconds: 1));
-          XToast.hideLoading();
-        }),
+        DevButtonTitle(
+          '1. Show Dialog',
+          onTap: () {
+            XAlert.show(title: 'Dialog Title', body: 'Dialog content');
+          },
+        ),
+        DevButtonTitle(
+          '2. Show full screen loading',
+          onTap: () async {
+            XToast.showLoading();
+            await Future.delayed(const Duration(seconds: 1));
+            XToast.hideLoading();
+          },
+        ),
       ],
     );
   }

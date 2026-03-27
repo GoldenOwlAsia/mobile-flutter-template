@@ -51,9 +51,9 @@ extension StringExtensions on String {
   /// Capitalize first letter of each word
   String get capitalizeWords {
     if (isEmpty) return this;
-    return split(' ')
-        .map((word) => word.isEmpty ? word : word.capitalize)
-        .join(' ');
+    return split(
+      ' ',
+    ).map((word) => word.isEmpty ? word : word.capitalize).join(' ');
   }
 
   /// Get file extension from path or URL
@@ -70,8 +70,11 @@ extension StringExtensions on String {
   // MARK: - String Generation
 
   /// Generate random string of specified length
-  static String random(int length,
-      {bool includeNumbers = true, bool includeSymbols = false}) {
+  static String random(
+    int length, {
+    bool includeNumbers = true,
+    bool includeSymbols = false,
+  }) {
     const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const numbers = '0123456789';
     const symbols = '!@#\$%^&*()_+-=[]{}|;:,.<>?';
@@ -82,7 +85,9 @@ extension StringExtensions on String {
 
     final random = DateTime.now().millisecondsSinceEpoch;
     return List.generate(
-        length, (index) => chars[(random + index) % chars.length]).join();
+      length,
+      (index) => chars[(random + index) % chars.length],
+    ).join();
   }
 
   String urlTrim() {

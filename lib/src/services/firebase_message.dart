@@ -51,10 +51,10 @@ class XFirebaseMessage {
     /// heads up notifications.
     await FirebaseMessaging.instance
         .setForegroundNotificationPresentationOptions(
-      alert: true, // Required to display a heads up notification
-      badge: true,
-      sound: true,
-    );
+          alert: true, // Required to display a heads up notification
+          badge: true,
+          sound: true,
+        );
     configForegroundNotification();
     configOnMessageOpenApp();
     isNotificationsInitialized = true;
@@ -95,7 +95,8 @@ class XFirebaseMessage {
 
   @pragma('vm:entry-point')
   static Future<void> _firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {
+    RemoteMessage message,
+  ) async {
     // If you're going to use other Firebase services in the background, such as Firestore,
     // make sure you call `initializeApp` before using other Firebase services.
     await Firebase.initializeApp();

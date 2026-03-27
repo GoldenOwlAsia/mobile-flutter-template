@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 /// Application icon constants for essential icons
 class AppIcons {
-
   // MARK: - Navigation
   static const IconData back = Icons.arrow_back;
   static const IconData menu = Icons.menu;

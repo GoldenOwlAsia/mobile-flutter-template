@@ -16,7 +16,9 @@ class Utils {
   /// final numbers = Utils.listOf(jsonData, (e) => int.parse(e.toString()));
   /// ```
   static List<T> listOf<T>(
-      dynamic data, T Function(dynamic element) toElement) {
+    dynamic data,
+    T Function(dynamic element) toElement,
+  ) {
     if (data != null && data is List) {
       try {
         return data.map(toElement).toList();

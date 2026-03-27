@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DevCopyTitle extends StatelessWidget {
-  const DevCopyTitle(
-    this.title,
-    this.body, {
-    super.key,
-  });
+  const DevCopyTitle(this.title, this.body, {super.key});
   final String title;
   final String? body;
   @override

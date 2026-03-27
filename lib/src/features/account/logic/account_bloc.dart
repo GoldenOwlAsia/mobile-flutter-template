@@ -39,9 +39,7 @@ class AccountBloc extends HydratedCubit<AccountState> {
   }
 
   void onEditProfileSuccess({required String name}) {
-    onUserChange(
-      state.copyWith(user: state.user.copyWith(name: name)),
-    );
+    onUserChange(state.copyWith(user: state.user.copyWith(name: name)));
   }
 
   Future onLogOut(BuildContext context) async {

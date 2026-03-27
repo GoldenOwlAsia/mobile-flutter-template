@@ -6,8 +6,11 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 class PhotoViewPage extends StatefulWidget {
-  const PhotoViewPage(
-      {super.key, this.initialIndex = 0, required this.galleryItems});
+  const PhotoViewPage({
+    super.key,
+    this.initialIndex = 0,
+    required this.galleryItems,
+  });
   final int initialIndex;
   final List<String> galleryItems;
 
@@ -34,9 +37,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
   @override
   void dispose() {
     pageController.dispose();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     super.dispose();
   }
 
@@ -65,7 +66,10 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
             ),
           ),
           const Positioned(
-              top: 64, left: 16, child: BackButton(color: Colors.white)),
+            top: 64,
+            left: 16,
+            child: BackButton(color: Colors.white),
+          ),
         ],
       ),
     );

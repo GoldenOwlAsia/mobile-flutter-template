@@ -1,6 +1,1 @@
-enum MSocialType {
-  facebook,
-  google,
-  email,
-  apple,
-}
+enum MSocialType { facebook, google, email, apple }

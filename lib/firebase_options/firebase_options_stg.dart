@@ -73,8 +73,10 @@ class DefaultFirebaseOptions {
     projectId: 'flutter-app-ec8dd',
     databaseURL: 'https://flutter-app-ec8dd.firebaseio.com',
     storageBucket: 'flutter-app-ec8dd.appspot.com',
-    androidClientId: '526180610767-c20bio3mvfva7nb9k994qno8erif1r4v.apps.googleusercontent.com',
-    iosClientId: '526180610767-q3sip9vcbchpa6q2p0rlno2vb8imbfa7.apps.googleusercontent.com',
+    androidClientId:
+        '526180610767-c20bio3mvfva7nb9k994qno8erif1r4v.apps.googleusercontent.com',
+    iosClientId:
+        '526180610767-q3sip9vcbchpa6q2p0rlno2vb8imbfa7.apps.googleusercontent.com',
     iosBundleId: 'com.pingak9.template.stg',
   );
 }

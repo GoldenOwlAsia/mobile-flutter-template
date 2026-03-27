@@ -27,6 +27,7 @@ class XButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = this.size ?? ButtonSize.medium();
+
     /// - When busy=true, button visually appears enabled (intentional UX design)
     ///   but the onPressed callback is blocked internally
     /// - When enabled=false, button is fully disabled (null onPressed)
@@ -38,8 +39,10 @@ class XButton extends StatelessWidget {
           }
         : null;
     final foregroundColor = Theme.of(context).colorScheme.onPrimary;
-    final indicator =
-        XIndicator(radius: size.iconSize / 2, color: foregroundColor);
+    final indicator = XIndicator(
+      radius: size.iconSize / 2,
+      color: foregroundColor,
+    );
     return SizedBox(
       height: size.height,
       child: ElevatedButtonTheme(
@@ -60,8 +63,11 @@ class XButton extends StatelessWidget {
                     ? indicator
                     : IconTheme(
                         data: IconThemeData(
-                            size: size.iconSize, color: foregroundColor),
-                        child: icon!),
+                          size: size.iconSize,
+                          color: foregroundColor,
+                        ),
+                        child: icon!,
+                      ),
               )
             : ElevatedButton(
                 onPressed: onPressed,

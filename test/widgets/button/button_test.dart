@@ -10,10 +10,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: XButton(
-              title: 'Test Button',
-              onPressed: () {},
-            ),
+            body: XButton(title: 'Test Button', onPressed: () {}),
           ),
         ),
       );
@@ -22,15 +19,13 @@ void main() {
       expect(find.byType(ElevatedButton), findsOneWidget);
     });
 
-    testWidgets('renders with custom child widget',
-        (WidgetTester tester) async {
+    testWidgets('renders with custom child widget', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: XButton(
-              child: const Text('Custom Child'),
-              onPressed: () {},
-            ),
+            body: XButton(child: const Text('Custom Child'), onPressed: () {}),
           ),
         ),
       );
@@ -38,8 +33,9 @@ void main() {
       expect(find.text('Custom Child'), findsOneWidget);
     });
 
-    testWidgets('child takes precedence over title',
-        (WidgetTester tester) async {
+    testWidgets('child takes precedence over title', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -95,8 +91,9 @@ void main() {
       expect(pressed, isTrue);
     });
 
-    testWidgets('button visually enabled when busy but blocks callback',
-        (WidgetTester tester) async {
+    testWidgets('button visually enabled when busy but blocks callback', (
+      WidgetTester tester,
+    ) async {
       bool pressed = false;
 
       await tester.pumpWidget(
@@ -127,11 +124,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: XButton(
-              title: 'Loading',
-              busy: true,
-              onPressed: () {},
-            ),
+            body: XButton(title: 'Loading', busy: true, onPressed: () {}),
           ),
         ),
       );
@@ -140,8 +133,9 @@ void main() {
       expect(find.text('Loading'), findsNothing);
     });
 
-    testWidgets('shows indicator instead of icon when busy',
-        (WidgetTester tester) async {
+    testWidgets('shows indicator instead of icon when busy', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -159,8 +153,9 @@ void main() {
       expect(find.byIcon(Icons.add), findsNothing);
     });
 
-    testWidgets('is disabled when enabled is false',
-        (WidgetTester tester) async {
+    testWidgets('is disabled when enabled is false', (
+      WidgetTester tester,
+    ) async {
       bool pressed = false;
 
       await tester.pumpWidget(
@@ -186,15 +181,12 @@ void main() {
       expect(pressed, isFalse);
     });
 
-    testWidgets('button with null onPressed creates empty handler',
-        (WidgetTester tester) async {
+    testWidgets('button with null onPressed creates empty handler', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: XButton(
-              title: 'No Callback',
-            ),
-          ),
+          home: Scaffold(body: XButton(title: 'No Callback')),
         ),
       );
 
@@ -222,15 +214,13 @@ void main() {
         expect(sizedBox.height, equals(32));
       });
 
-      testWidgets('applies medium size by default',
-          (WidgetTester tester) async {
+      testWidgets('applies medium size by default', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XButton(
-                title: 'Medium',
-                onPressed: () {},
-              ),
+              body: XButton(title: 'Medium', onPressed: () {}),
             ),
           ),
         );
@@ -270,10 +260,7 @@ void main() {
               ),
             ),
             home: Scaffold(
-              body: XButton(
-                title: 'Themed',
-                onPressed: () {},
-              ),
+              body: XButton(title: 'Themed', onPressed: () {}),
             ),
           ),
         );
@@ -282,15 +269,12 @@ void main() {
       });
     });
 
-    testWidgets('handles empty title and child gracefully',
-        (WidgetTester tester) async {
+    testWidgets('handles empty title and child gracefully', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: XButton(
-              onPressed: () {},
-            ),
-          ),
+          home: Scaffold(body: XButton(onPressed: () {})),
         ),
       );
 
@@ -298,8 +282,9 @@ void main() {
       expect(find.text(''), findsOneWidget);
     });
 
-    testWidgets('enabled + busy shows enabled UI but blocks callback',
-        (WidgetTester tester) async {
+    testWidgets('enabled + busy shows enabled UI but blocks callback', (
+      WidgetTester tester,
+    ) async {
       bool pressed = false;
 
       await tester.pumpWidget(
@@ -327,8 +312,9 @@ void main() {
       expect(pressed, isFalse);
     });
 
-    testWidgets('icon button with busy state shows indicator label',
-        (WidgetTester tester) async {
+    testWidgets('icon button with busy state shows indicator label', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(

@@ -48,8 +48,9 @@ void main() {
         final user = MUser(id: '123', email: 'test@example.com', name: 'Test');
         final expectedResult = MResult.success(user);
 
-        when(() => mockUserReference.getOrAddUser(user))
-            .thenAnswer((_) async => expectedResult);
+        when(
+          () => mockUserReference.getOrAddUser(user),
+        ).thenAnswer((_) async => expectedResult);
 
         final result = await repository.getOrAddUser(user);
 
@@ -66,8 +67,9 @@ void main() {
         ];
         final expectedResult = MResult.success(users);
 
-        when(() => mockUserReference.getUsers())
-            .thenAnswer((_) async => expectedResult);
+        when(
+          () => mockUserReference.getUsers(),
+        ).thenAnswer((_) async => expectedResult);
 
         final result = await repository.getUsers();
 

@@ -9,10 +9,8 @@ class XBottomBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XBottomAppBar(
-        child: ElevatedButton(
-      onPressed: onPressed,
-      child: child,
-    ));
+      child: ElevatedButton(onPressed: onPressed, child: child),
+    );
   }
 }
 
@@ -27,7 +25,11 @@ class XBottomAppBar extends StatelessWidget {
       color: Theme.of(context).bottomAppBarTheme.color,
       child: Container(
         padding: EdgeInsets.fromLTRB(
-            16, 8, 16, 10 + MediaQuery.of(context).viewInsets.bottom),
+          16,
+          8,
+          16,
+          10 + MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: child,
       ),
     );

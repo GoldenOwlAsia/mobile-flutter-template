@@ -81,8 +81,9 @@ class AppDecorations {
   static const BorderRadius radiusXL = BorderRadius.all(Radius.circular(24));
 
   /// Circular border radius (999px)
-  static const BorderRadius radiusCircular =
-      BorderRadius.all(Radius.circular(999));
+  static const BorderRadius radiusCircular = BorderRadius.all(
+    Radius.circular(999),
+  );
 
   // MARK: - Border Styles
   /// Default border for containers
@@ -108,72 +109,71 @@ class AppDecorations {
   // MARK: - Container Decorations
   /// Standard card decoration
   static BoxDecoration get cardDecoration => BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: radiusM,
-        boxShadow: shadowCard,
-        border: Border.all(color: AppColors.border),
-      );
+    color: AppColors.surface,
+    borderRadius: radiusM,
+    boxShadow: shadowCard,
+    border: Border.all(color: AppColors.border),
+  );
 
   /// Elevated card decoration
   static BoxDecoration get cardElevatedDecoration => BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: radiusM,
-        boxShadow: shadowMedium,
-      );
+    color: AppColors.surface,
+    borderRadius: radiusM,
+    boxShadow: shadowMedium,
+  );
 
   /// Modal decoration for dialogs and bottom sheets
   static BoxDecoration get modalDecoration => BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
-        ),
-        boxShadow: shadowModal,
-      );
+    color: AppColors.surface,
+    borderRadius: const BorderRadius.only(
+      topLeft: Radius.circular(16),
+      topRight: Radius.circular(16),
+    ),
+    boxShadow: shadowModal,
+  );
 
   /// Button decoration
   static BoxDecoration get buttonDecoration => BoxDecoration(
-        color: AppColors.primary,
-        borderRadius: radiusS,
-        boxShadow: shadowLight,
-      );
+    color: AppColors.primary,
+    borderRadius: radiusS,
+    boxShadow: shadowLight,
+  );
 
   /// Outlined button decoration
   static BoxDecoration get buttonOutlinedDecoration => BoxDecoration(
-        color: Colors.transparent,
-        borderRadius: radiusS,
-        border: Border.all(color: AppColors.primary, width: 1),
-      );
+    color: Colors.transparent,
+    borderRadius: radiusS,
+    border: Border.all(color: AppColors.primary, width: 1),
+  );
 
   // MARK: - Input Decorations
   /// Standard input field decoration
   static InputDecoration get inputDefault => InputDecoration(
-        filled: true,
-        fillColor: AppColors.surface,
-        border: OutlineInputBorder(
-          borderRadius: radiusS,
-          borderSide: const BorderSide(color: AppColors.border),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: radiusS,
-          borderSide: const BorderSide(color: AppColors.border),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: radiusS,
-          borderSide: const BorderSide(color: AppColors.focus, width: 2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: radiusS,
-          borderSide: const BorderSide(color: AppColors.error),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: radiusS,
-          borderSide: const BorderSide(color: AppColors.error, width: 2),
-        ),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        hintStyle: TextStyle(color: AppColors.textSecondary),
-      );
+    filled: true,
+    fillColor: AppColors.surface,
+    border: OutlineInputBorder(
+      borderRadius: radiusS,
+      borderSide: const BorderSide(color: AppColors.border),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: radiusS,
+      borderSide: const BorderSide(color: AppColors.border),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: radiusS,
+      borderSide: const BorderSide(color: AppColors.focus, width: 2),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: radiusS,
+      borderSide: const BorderSide(color: AppColors.error),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: radiusS,
+      borderSide: const BorderSide(color: AppColors.error, width: 2),
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    hintStyle: TextStyle(color: AppColors.textSecondary),
+  );
 
   /// Input field with no border
   static const InputDecoration inputNoBorder = InputDecoration(
@@ -187,44 +187,43 @@ class AppDecorations {
 
   /// Underline input decoration
   static InputDecoration get inputUnderline => InputDecoration(
-        border: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.border),
-        ),
-        enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.border),
-        ),
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.focus, width: 2),
-        ),
-        errorBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.error),
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 12),
-        hintStyle: TextStyle(color: AppColors.textSecondary),
-      );
+    border: const UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.border),
+    ),
+    enabledBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.border),
+    ),
+    focusedBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.focus, width: 2),
+    ),
+    errorBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.error),
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 12),
+    hintStyle: TextStyle(color: AppColors.textSecondary),
+  );
 
   /// Search input decoration
   static InputDecoration get inputSearch => InputDecoration(
-        filled: true,
-        fillColor: AppColors.surfaceVariant,
-        border: OutlineInputBorder(
-          borderRadius: radiusCircular,
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: radiusCircular,
-          borderSide: BorderSide.none,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: radiusCircular,
-          borderSide: const BorderSide(color: AppColors.focus, width: 2),
-        ),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        hintText: 'Search...',
-        hintStyle: TextStyle(color: AppColors.textSecondary),
-        prefixIcon: Icon(Icons.search, color: AppColors.textSecondary),
-      );
+    filled: true,
+    fillColor: AppColors.surfaceVariant,
+    border: OutlineInputBorder(
+      borderRadius: radiusCircular,
+      borderSide: BorderSide.none,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: radiusCircular,
+      borderSide: BorderSide.none,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: radiusCircular,
+      borderSide: const BorderSide(color: AppColors.focus, width: 2),
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    hintText: 'Search...',
+    hintStyle: TextStyle(color: AppColors.textSecondary),
+    prefixIcon: Icon(Icons.search, color: AppColors.textSecondary),
+  );
 
   // MARK: - Gradient Decorations
   /// Primary gradient for buttons and backgrounds
@@ -250,11 +249,7 @@ class AppDecorations {
 
   /// Shimmer gradient for loading states
   static const LinearGradient gradientShimmer = LinearGradient(
-    colors: [
-      Color(0xFFE0E0E0),
-      Color(0xFFF5F5F5),
-      Color(0xFFE0E0E0),
-    ],
+    colors: [Color(0xFFE0E0E0), Color(0xFFF5F5F5), Color(0xFFE0E0E0)],
     stops: [0.0, 0.5, 1.0],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,

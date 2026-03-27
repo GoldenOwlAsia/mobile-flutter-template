@@ -13,12 +13,13 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:validators/validators.dart';
 
 class WebviewPage extends StatefulWidget {
-  const WebviewPage(
-      {required this.title,
-      required this.url,
-      this.onSubmitted,
-      super.key,
-      this.disableRedirect = false});
+  const WebviewPage({
+    required this.title,
+    required this.url,
+    this.onSubmitted,
+    super.key,
+    this.disableRedirect = false,
+  });
 
   final String? title;
   final String url;
@@ -52,8 +53,9 @@ class WebviewPage extends StatefulWidget {
 
 class _WebviewPageState extends State<WebviewPage> {
   int _progress = 0;
-  Logger log =
-      Logger(printer: PrefixPrinter(SimplePrinter(), info: 'INFO webview: '));
+  Logger log = Logger(
+    printer: PrefixPrinter(SimplePrinter(), info: 'INFO webview: '),
+  );
   late WebViewController controller;
 
   void onSelected(WebMenuItem item) async {
@@ -88,10 +90,12 @@ class _WebviewPageState extends State<WebviewPage> {
       case WebMenuItem.shareLink:
         final currentUrl = await controller.currentUrl();
         if (currentUrl != null) {
-          SharePlus.instance.share(ShareParams(
-            uri: Uri.parse(currentUrl),
-            downloadFallbackEnabled: false,
-          ));
+          SharePlus.instance.share(
+            ShareParams(
+              uri: Uri.parse(currentUrl),
+              downloadFallbackEnabled: false,
+            ),
+          );
         }
         break;
     }
@@ -139,8 +143,9 @@ class _WebviewPageState extends State<WebviewPage> {
         ),
         leading: const CloseButton(),
       ),
-      bottomNavigationBar:
-          widget.disableRedirect ? null : _buildBottomNavigationBar(context),
+      bottomNavigationBar: widget.disableRedirect
+          ? null
+          : _buildBottomNavigationBar(context),
       body: Column(
         children: [
           if (_progress != 100)
@@ -150,9 +155,7 @@ class _WebviewPageState extends State<WebviewPage> {
               color: Theme.of(context).primaryColor,
               backgroundColor: const Color(0xFF707070),
             ),
-          Expanded(
-            child: WebViewWidget(controller: controller),
-          ),
+          Expanded(child: WebViewWidget(controller: controller)),
         ],
       ),
     );
@@ -178,8 +181,11 @@ class _WebviewPageState extends State<WebviewPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ...[WebMenuItem.goBack, WebMenuItem.goForward, WebMenuItem.reload]
-                .map(_buildIconButton),
+            ...[
+              WebMenuItem.goBack,
+              WebMenuItem.goForward,
+              WebMenuItem.reload,
+            ].map(_buildIconButton),
             PopupMenuButton<WebMenuItem>(
               icon: const Icon(Icons.more_vert, color: AppColors.textSecondary),
               enableFeedback: true,
@@ -209,20 +215,12 @@ class _WebviewPageState extends State<WebviewPage> {
       value: item,
       padding: const EdgeInsets.symmetric(horizontal: 24),
       height: 32,
-      child: Center(
-        child: Text(
-          item.nameOf(),
-          textAlign: TextAlign.center,
-        ),
-      ),
+      child: Center(child: Text(item.nameOf(), textAlign: TextAlign.center)),
     );
   }
 
   Widget _buildIconButton(WebMenuItem item) {
-    return IconButton(
-      onPressed: () => onSelected(item),
-      icon: item.iconOf(),
-    );
+    return IconButton(onPressed: () => onSelected(item), icon: item.iconOf());
   }
 
   String fixUrlFromText(String value) {

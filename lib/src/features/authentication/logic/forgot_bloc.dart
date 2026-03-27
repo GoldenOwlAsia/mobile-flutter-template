@@ -24,8 +24,9 @@ class ForgotBloc extends Cubit<ForgotState> {
     }
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-    final MResult<String> result =
-        await domain.sign.forgotPassword(state.email.value);
+    final MResult<String> result = await domain.sign.forgotPassword(
+      state.email.value,
+    );
     if (result.isSuccess) {
       await XAlert.show(
         body:
@@ -35,7 +36,9 @@ class ForgotBloc extends Cubit<ForgotState> {
     } else {
       emit(
         state.copyWith(
-            status: FormzSubmissionStatus.failure, error: result.error),
+          status: FormzSubmissionStatus.failure,
+          error: result.error,
+        ),
       );
     }
   }

@@ -9,10 +9,7 @@ class AppInfo {
   static late PackageInfo package;
 
   static Future<void> initialize() async {
-    await Future.wait([
-      loadDevice(),
-      loadPackage(),
-    ]);
+    await Future.wait([loadDevice(), loadPackage()]);
   }
 
   static Future<void> loadDevice() async {

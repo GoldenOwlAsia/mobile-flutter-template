@@ -32,11 +32,7 @@ class MPagination<T> {
   bool get isFirstError => status.isFailure && data.isEmpty;
   bool get isEmpty => status == MStatus.initial && data.isEmpty && page == 1;
   bool get isPure => status == MStatus.initial && page == 0;
-  MPagination<T> addAll(
-    List<T> items, {
-    int? totalPage,
-    int? countData,
-  }) {
+  MPagination<T> addAll(List<T> items, {int? totalPage, int? countData}) {
     final data = [...this.data, ...items];
     return copyWith(
       data: data,

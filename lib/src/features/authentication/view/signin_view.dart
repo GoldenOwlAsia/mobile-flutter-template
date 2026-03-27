@@ -24,10 +24,7 @@ class SigninView extends StatelessWidget {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-        ),
+        appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent),
         body: Container(
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
           child: SingleChildScrollView(
@@ -52,7 +49,9 @@ class SigninView extends StatelessWidget {
           onChanged: context.read<SigninBloc>().onEmailChanged,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-              labelText: "Email", errorText: state.email.errorOf(context)),
+            labelText: "Email",
+            errorText: state.email.errorOf(context),
+          ),
         ),
         const SizedBox(height: 16.0),
         XInput(
@@ -61,8 +60,9 @@ class SigninView extends StatelessWidget {
           onChanged: context.read<SigninBloc>().onPasswordChanged,
           obscureText: true,
           decoration: InputDecoration(
-              labelText: 'Password',
-              errorText: state.password.errorOf(context)),
+            labelText: 'Password',
+            errorText: state.password.errorOf(context),
+          ),
         ),
         const SizedBox(height: 8.0),
         _buildForgotPassword(context),
@@ -91,7 +91,9 @@ class SigninView extends StatelessWidget {
       text: TextSpan(
         children: [
           const TextSpan(
-            text: "Not have account?" '  ',
+            text:
+                "Not have account?"
+                '  ',
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,

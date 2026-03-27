@@ -1,15 +1,10 @@
 part of 'account_bloc.dart';
 
 class AccountState extends Equatable {
-  const AccountState({
-    required this.user,
-    this.locale = 'vi',
-  });
+  const AccountState({required this.user, this.locale = 'vi'});
 
   factory AccountState.ds() {
-    return AccountState(
-      user: MUser.empty(),
-    );
+    return AccountState(user: MUser.empty());
   }
 
   final MUser user;
@@ -28,21 +23,12 @@ class AccountState extends Equatable {
     return copyWith(user: MUser.empty());
   }
 
-  AccountState copyWith({
-    MUser? user,
-    String? locale,
-  }) {
-    return AccountState(
-      user: user ?? this.user,
-      locale: locale ?? this.locale,
-    );
+  AccountState copyWith({MUser? user, String? locale}) {
+    return AccountState(user: user ?? this.user, locale: locale ?? this.locale);
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'user': user.toJson(),
-      'locale': locale,
-    };
+    return {'user': user.toJson(), 'locale': locale};
   }
 
   factory AccountState.fromJson(Map<String, dynamic> json) {

@@ -23,25 +23,17 @@ class ProfileView extends StatelessWidget {
           children: [
             XCardSection(
               children: [
-                XCardSectionButton(
-                  title: 'User Profile',
-                  onTap: () {},
-                ),
-                XCardSectionButton(
-                  title: 'Change password',
-                  onTap: () {},
-                ),
-                XCardSectionButton(
-                  title: 'Address',
-                  onTap: () {},
-                ),
+                XCardSectionButton(title: 'User Profile', onTap: () {}),
+                XCardSectionButton(title: 'Change password', onTap: () {}),
+                XCardSectionButton(title: 'Address', onTap: () {}),
               ],
             ),
             const SizedBox(height: 46),
             InkWell(
               onTap: () async {
-                final result =
-                    await context.read<AccountBloc>().onLogOut(context);
+                final result = await context.read<AccountBloc>().onLogOut(
+                  context,
+                );
                 if (result == true) {
                   AppCoordinator.pop();
                 }
@@ -56,8 +48,9 @@ class ProfileView extends StatelessWidget {
             const SizedBox(height: 16),
             InkWell(
               onTap: () async {
-                final result =
-                    await context.read<AccountBloc>().onRemoveAccount(context);
+                final result = await context
+                    .read<AccountBloc>()
+                    .onRemoveAccount(context);
                 if (result == true) {
                   AppCoordinator.pop();
                 }

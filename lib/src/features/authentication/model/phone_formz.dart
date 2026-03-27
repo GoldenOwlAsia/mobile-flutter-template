@@ -7,9 +7,7 @@ class PhoneFormzInput extends FormzInput<String, FormError> {
   const PhoneFormzInput.pure([super.value = '']) : super.pure();
   const PhoneFormzInput.dirty([super.value = '']) : super.dirty();
 
-  static final RegExp phoneRegExp = RegExp(
-    r'0([3|5|7|8|9])+([0-9]{8})\b',
-  );
+  static final RegExp phoneRegExp = RegExp(r'0([3|5|7|8|9])+([0-9]{8})\b');
 
   @override
   FormError? validator(String? value) {

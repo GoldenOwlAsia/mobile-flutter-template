@@ -33,8 +33,10 @@ class XOutlinedButton extends StatelessWidget {
           }
         : null;
     final foregroundColor = Theme.of(context).primaryColor;
-    final indicator =
-        XIndicator(radius: size.iconSize / 2, color: foregroundColor);
+    final indicator = XIndicator(
+      radius: size.iconSize / 2,
+      color: foregroundColor,
+    );
 
     return SizedBox(
       height: size.height,
@@ -55,8 +57,11 @@ class XOutlinedButton extends StatelessWidget {
                     ? indicator
                     : IconTheme(
                         data: IconThemeData(
-                            size: size.iconSize, color: foregroundColor),
-                        child: icon!),
+                          size: size.iconSize,
+                          color: foregroundColor,
+                        ),
+                        child: icon!,
+                      ),
               )
             : OutlinedButton(
                 onPressed: onPressed,

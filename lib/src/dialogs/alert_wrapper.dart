@@ -16,11 +16,7 @@ class XAlert {
     return showDialog<String>(
       context: context,
       builder: (context) {
-        return XAlertDialog(
-          title: title,
-          content: body,
-          actions: actions,
-        );
+        return XAlertDialog(title: title, content: body, actions: actions);
       },
     );
   }
@@ -44,8 +40,12 @@ class XAlert {
   }
 
   //
-  static Future<bool?> showConfirmDialog(String? title, String? content,
-      {String? textNo, String? textYes}) {
+  static Future<bool?> showConfirmDialog(
+    String? title,
+    String? content, {
+    String? textNo,
+    String? textYes,
+  }) {
     return showDialog<bool?>(
       context: context,
       builder: (context) {
@@ -58,10 +58,7 @@ class XAlert {
               key: false,
               title: textNo ?? S.text.common_no,
             ),
-            XAlertButton<bool>(
-              key: true,
-              title: textYes ?? S.text.common_yes,
-            )
+            XAlertButton<bool>(key: true, title: textYes ?? S.text.common_yes),
           ],
         );
       },
@@ -73,9 +70,7 @@ class XAlert {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return const Dialog(
-          child: PopupForceUpdateApp(),
-        );
+        return const Dialog(child: PopupForceUpdateApp());
       },
     );
   }

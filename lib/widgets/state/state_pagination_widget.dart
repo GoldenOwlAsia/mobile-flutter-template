@@ -40,10 +40,7 @@ class _XStatePaginationWidgetState extends State<XStatePaginationWidget> {
     } else if (widget.page.status == MStatus.failure) {
       return InkWell(
         onTap: widget.loadMore,
-        child: const Text(
-          'Something went wrong',
-          textAlign: TextAlign.center,
-        ),
+        child: const Text('Something went wrong', textAlign: TextAlign.center),
       );
     } else {
       return const SizedBox.shrink();
@@ -66,10 +63,7 @@ class XBoxLoadMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (page.canNext) {
-      Timer(
-        const Duration(milliseconds: 50),
-        loadMore,
-      );
+      Timer(const Duration(milliseconds: 50), loadMore);
     }
     return SizedBox(child: child);
   }

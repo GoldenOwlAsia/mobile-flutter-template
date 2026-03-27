@@ -6,18 +6,12 @@ enum AppRouteNames {
   signUp(path: '/sign-up'),
   forgotPassword(path: '/forgot'),
   sample(path: '/sample'),
-  sampleDetails(
-    path: 'sample-details',
-    paramName: 'id',
-  ),
+  sampleDetails(path: 'sample-details', paramName: 'id'),
   profile(path: '/profile'),
   settings(path: '/settings'),
   photoView(path: '/photoView');
 
-  const AppRouteNames({
-    required this.path,
-    this.paramName,
-  });
+  const AppRouteNames({required this.path, this.paramName});
 
   final String path;
   final String? paramName;

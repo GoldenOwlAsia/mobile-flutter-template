@@ -26,9 +26,7 @@ class AccountNoUserCard extends StatelessWidget {
           const Text(
             'Sign in to shop more easily and enjoy many promotions',
             textAlign: TextAlign.left,
-            style: TextStyle(
-              color: AppColors.textSecondary,
-            ),
+            style: TextStyle(color: AppColors.textSecondary),
           ),
           Container(
             alignment: Alignment.centerLeft,
@@ -38,7 +36,7 @@ class AccountNoUserCard extends StatelessWidget {
                 AppCoordinator.showSignInScreen();
               },
             ),
-          )
+          ),
         ],
       ),
     );

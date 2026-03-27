@@ -2,13 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class XImageNetwork extends StatelessWidget {
-  const XImageNetwork(
-    this.url, {
-    super.key,
-    this.fit,
-    this.width,
-    this.height,
-  });
+  const XImageNetwork(this.url, {super.key, this.fit, this.width, this.height});
 
   final String? url;
   final BoxFit? fit;
@@ -35,17 +29,13 @@ class XImageNetwork extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-      ),
+      decoration: BoxDecoration(color: Colors.grey[200]),
     );
   }
 
   Widget _buildError() {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-      ),
+      decoration: BoxDecoration(color: Colors.grey[200]),
       child: const Icon(Icons.error),
     );
   }

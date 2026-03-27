@@ -70,7 +70,8 @@ class MapUtils {
     final deltaLngRad = (lng2 - lng1) * _degreesToRadians;
 
     // Haversine formula
-    final a = sin(deltaLatRad / 2) * sin(deltaLatRad / 2) +
+    final a =
+        sin(deltaLatRad / 2) * sin(deltaLatRad / 2) +
         cos(lat1Rad) *
             cos(lat2Rad) *
             sin(deltaLngRad / 2) *
@@ -143,8 +144,12 @@ class MapUtils {
     // Ensure filter is non-negative
     final filter = distanceFilter < 0 ? 0.0 : distanceFilter;
 
-    final distanceMeters =
-        getDistanceFromLatLonInMeters(lat1, lng1, lat2, lng2);
+    final distanceMeters = getDistanceFromLatLonInMeters(
+      lat1,
+      lng1,
+      lat2,
+      lng2,
+    );
 
     if (distanceMeters != null) {
       return distanceMeters >= filter;
@@ -228,7 +233,8 @@ class MapUtils {
     final deltaLngRad = (lng2! - lng1!) * _degreesToRadians;
 
     final y = sin(deltaLngRad) * cos(lat2Rad);
-    final x = cos(lat1Rad) * sin(lat2Rad) -
+    final x =
+        cos(lat1Rad) * sin(lat2Rad) -
         sin(lat1Rad) * cos(lat2Rad) * cos(deltaLngRad);
 
     final bearingRad = atan2(y, x);

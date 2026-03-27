@@ -65,17 +65,19 @@ void main() {
     });
 
     group('loginWithGoogle', () {
-      test('should return success when Google authentication succeeds',
-          () async {
-        // Note: This test would require mocking GoogleSignIn.instance
-        // which is challenging.
+      test(
+        'should return success when Google authentication succeeds',
+        () async {
+          // Note: This test would require mocking GoogleSignIn.instance
+          // which is challenging.
 
-        // Expected behavior:
-        // - Should initialize GoogleSignIn if not already initialized
-        // - Should call authenticate with email scope
-        // - Should get access token for scopes
-        // - Should return MResult.success with MSocialUser
-      });
+          // Expected behavior:
+          // - Should initialize GoogleSignIn if not already initialized
+          // - Should call authenticate with email scope
+          // - Should get access token for scopes
+          // - Should return MResult.success with MSocialUser
+        },
+      );
 
       test('should return error when access token is null', () async {
         // Expected behavior:
@@ -83,12 +85,14 @@ void main() {
         // - Should return MResult.error('Failed to get access token')
       });
 
-      test('should return exception result when authentication fails',
-          () async {
-        // Expected behavior:
-        // - If an exception is thrown during authenticate
-        // - Should return MResult.exception(error)
-      });
+      test(
+        'should return exception result when authentication fails',
+        () async {
+          // Expected behavior:
+          // - If an exception is thrown during authenticate
+          // - Should return MResult.exception(error)
+        },
+      );
     });
 
     group('Unimplemented methods', () {

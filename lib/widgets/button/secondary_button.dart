@@ -34,8 +34,10 @@ class XSecondaryButton extends StatelessWidget {
           }
         : null;
     final foregroundColor = Theme.of(context).colorScheme.onPrimary;
-    final indicator =
-        XIndicator(radius: size.iconSize / 2, color: foregroundColor);
+    final indicator = XIndicator(
+      radius: size.iconSize / 2,
+      color: foregroundColor,
+    );
     return SizedBox(
       height: size.height,
       child: ElevatedButtonTheme(
@@ -56,8 +58,11 @@ class XSecondaryButton extends StatelessWidget {
                     ? indicator
                     : IconTheme(
                         data: IconThemeData(
-                            size: size.iconSize, color: foregroundColor),
-                        child: icon!),
+                          size: size.iconSize,
+                          color: foregroundColor,
+                        ),
+                        child: icon!,
+                      ),
               )
             : ElevatedButton(
                 onPressed: onPressed,

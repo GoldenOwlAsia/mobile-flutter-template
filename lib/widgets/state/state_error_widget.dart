@@ -5,10 +5,7 @@ import 'package:myapp/src/theme/styles.dart';
 import 'package:myapp/widgets/button/outlined_button.dart';
 
 class XStateErrorWidget extends StatelessWidget {
-  const XStateErrorWidget({
-    super.key,
-    this.onTap,
-  });
+  const XStateErrorWidget({super.key, this.onTap});
   final GestureTapCallback? onTap;
 
   @override

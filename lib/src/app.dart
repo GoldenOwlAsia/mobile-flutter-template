@@ -20,18 +20,20 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => SettingBloc()),
         BlocProvider(create: (_) => GetIt.I<AccountBloc>()),
       ],
-      child: BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
-        return MaterialApp.router(
-          localizationsDelegates: S.localizationsDelegates,
-          supportedLocales: S.supportedLocales,
-          onGenerateTitle: (context) => S.of(context).common_appTitle,
-          builder: BotToastInit(),
-          theme: AppTheme.light(),
-          darkTheme: AppTheme.dark(),
-          themeMode: state.themeMode,
-          routerConfig: GetIt.I<AppRouter>().router,
-        );
-      }),
+      child: BlocBuilder<SettingBloc, SettingState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            localizationsDelegates: S.localizationsDelegates,
+            supportedLocales: S.supportedLocales,
+            onGenerateTitle: (context) => S.of(context).common_appTitle,
+            builder: BotToastInit(),
+            theme: AppTheme.light(),
+            darkTheme: AppTheme.dark(),
+            themeMode: state.themeMode,
+            routerConfig: GetIt.I<AppRouter>().router,
+          );
+        },
+      ),
     );
   }
 }
