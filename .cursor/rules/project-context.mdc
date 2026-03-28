@@ -1,0 +1,15 @@
+---
+description: Where project standards and Cursor helpers live
+alwaysApply: true
+---
+
+# Project context
+
+This repository is a **Flutter mobile app template** (`myapp` in `pubspec.yaml`).
+
+- **Architecture and layering**: [`rules/architecture.md`](rules/architecture.md)
+- **Security expectations**: [`rules/security-requirements.md`](rules/security-requirements.md)
+- **Cursor slash commands**: [`.cursor/commands/`](.cursor/commands/) — use **Implement** for end-to-end feature work, **Review** / **Security audit** for checks, **Clarify** to reduce ambiguity before coding.
+- **Snyk**: For new or modified first-party code in supported languages, follow `.cursor/rules/snyk_rules.mdc` (scan, fix, rescan).
+
+Dart-specific conventions also apply when editing `lib/**` or `test/**` per `flutter-architecture.mdc`.

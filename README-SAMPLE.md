@@ -166,7 +166,7 @@ flutter run --flavor production --target lib/main.dart
 1. **Update version and build number** in `pubspec.yaml`:
 
    ```yaml
-   version: 1.2.0+2  # version+buildNumber
+   version: 1.2.0+2 # version+buildNumber
    ```
 
 2. **Build app bundle:**

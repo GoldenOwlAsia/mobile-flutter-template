@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "flutter-dart-code-review": {
+      "source": "affaan-m/everything-claude-code",
+      "sourceType": "github",
+      "computedHash": "2b2cafafc1382ec7c79485f3609ec89baae4785a154585794575d21048b5d02c"
+    },
+    "flutter-expert": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "183ca13437c49499c5035b826074bec20e30956235ac8d60fab4c17af0ed2218"
+    }
+  }
+}

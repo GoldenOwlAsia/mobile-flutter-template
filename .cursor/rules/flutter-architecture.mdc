@@ -1,0 +1,17 @@
+---
+description: Flutter template architecture and layering for app code
+globs: lib/**/*.dart
+alwaysApply: false
+---
+
+# Flutter template conventions
+
+Canonical reference: [`rules/architecture.md`](rules/architecture.md). Apply the same layering ideas under `test/` (mirror structure; `bloc_test`, `mocktail`).
+
+- **Layout**: Feature-first under `lib/src/features/<feature>/` with `view/`, `logic/`, `widget/`, `model/` as appropriate; shared UI in `lib/widgets/`.
+- **State**: `flutter_bloc` / `hydrated_bloc`; views stay declarative; blocs/cubits own transitions; no business logic buried in widgets.
+- **Navigation**: `go_router`; register routes under `lib/src/router/`. Pass navigation data via extras or path/query params, not large objects in route state.
+- **DI**: `get_it` + `injectable`; annotate new classes; run codegen when registrations or annotations change.
+- **Networking**: `XHttp` and repositories; DTOs with `freezed` + `json_serializable` under `lib/src/network/model/`.
+- **Generated code**: Do not hand-edit `lib/generated/` (injectable, l10n, flutter_gen). Use `dart run build_runner build --delete-conflicting-outputs` after model/DI changes.
+- **Security**: Follow [`rules/security-requirements.md`](rules/security-requirements.md) (secrets, tokens, HTTPS, logging).

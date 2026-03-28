@@ -11,7 +11,6 @@ class SentryService {
       (options) {
         options.dsn = ENV.I.sentryDNS;
         options.tracesSampleRate = 1.0;
-        options.profilesSampleRate = 1.0;
         options.reportPackages = false;
         options.addInAppInclude('sentry_flutter_example');
         options.considerInAppFramesByDefault = false;
@@ -21,7 +20,6 @@ class SentryService {
         options.sendDefaultPii = true;
         options.reportSilentFlutterErrors = true;
         options.attachScreenshot = true;
-        options.attachViewHierarchy = true;
         // We can enable Sentry debug logging during development. This is likely
         // going to log too much for your app, but can be useful when figuring out
         // configuration issues, e.g. finding out why your events are not uploaded.
