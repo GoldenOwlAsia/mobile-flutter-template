@@ -30,8 +30,6 @@ class XLoadingAlert extends StatelessWidget {
         child: CircularProgressIndicator(strokeWidth: 1.5),
       );
     }
-    return const CupertinoActivityIndicator(
-      radius: radius,
-    );
+    return const CupertinoActivityIndicator(radius: radius);
   }
 }

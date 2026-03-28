@@ -11,4 +11,3 @@ void setupNavigatorForTests() {
     // For now, we'll handle errors gracefully in tests
   }
 }
-

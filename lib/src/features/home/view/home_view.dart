@@ -12,9 +12,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const DevWrapButton(child: Text('Welcome')),
-      ),
+      appBar: AppBar(title: const DevWrapButton(child: Text('Welcome'))),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

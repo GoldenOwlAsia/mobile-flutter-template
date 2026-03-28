@@ -3,6 +3,7 @@ import 'package:myapp/src/_dev/widget/dev_copy_title.dart';
 import 'package:myapp/src/_dev/widget/dev_screen_layout.dart';
 import 'package:myapp/src/_dev/widget/dev_title.dart';
 import 'package:myapp/src/config/devices/app_info.dart';
+import 'package:myapp/src/config/env/env.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class DevDeviceScreen extends StatelessWidget {
@@ -26,6 +27,7 @@ class DevDeviceScreen extends StatelessWidget {
         DevCopyTitle('Package Name', package.packageName),
         DevCopyTitle('Version', '${package.version} +${package.buildNumber}'),
         DevCopyTitle('Build Signature', package.buildSignature),
+        DevCopyTitle('Base API URL', ENV.I.baseApiUrl),
       ],
     );
   }

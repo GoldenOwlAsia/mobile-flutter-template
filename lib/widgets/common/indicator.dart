@@ -23,9 +23,6 @@ class XIndicator extends StatelessWidget {
       );
     }
 
-    return CupertinoActivityIndicator(
-      radius: radius,
-      color: color,
-    );
+    return CupertinoActivityIndicator(radius: radius, color: color);
   }
 }

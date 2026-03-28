@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:myapp/widgets/image/image_network.dart';
 
 class XImageAppBar extends SliverPersistentHeaderDelegate {
-  XImageAppBar(
-      {required this.title, required this.banner, this.leading, this.actions}) {
+  XImageAppBar({
+    required this.title,
+    required this.banner,
+    this.leading,
+    this.actions,
+  }) {
     isShow = false;
   }
 
@@ -24,17 +28,17 @@ class XImageAppBar extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     /// 0 -> 1
     final double dt = shrinkOffset / expandedHeight;
     checkShow(context, dt);
     return Stack(
       fit: StackFit.expand,
       children: [
-        XImageNetwork(
-          banner,
-          fit: BoxFit.cover,
-        ),
+        XImageNetwork(banner, fit: BoxFit.cover),
         Align(
           alignment: Alignment.topCenter,
           child: SizedBox(
@@ -42,17 +46,14 @@ class XImageAppBar extends SliverPersistentHeaderDelegate {
             child: AppBar(
               backgroundColor: isShow ? null : Colors.transparent,
               title: isShow
-                  ? Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    )
+                  ? Text(title, style: Theme.of(context).textTheme.titleLarge)
                   : null,
               leading: leading,
               actions: actions,
               elevation: isShow ? Theme.of(context).appBarTheme.elevation : 0,
             ),
           ),
-        )
+        ),
       ],
     );
   }

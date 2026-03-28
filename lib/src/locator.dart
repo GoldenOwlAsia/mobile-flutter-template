@@ -1,8 +1,8 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:myapp/generated/injectable/injection.dart';
@@ -16,9 +16,7 @@ import 'services/firebase_message.dart';
 
 Future initializeApp({String? name, FirebaseOptions? firebaseOptions}) async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   _locator();
 
   // Initialize HydratedBlocStorage
@@ -32,7 +30,6 @@ Future initializeApp({String? name, FirebaseOptions? firebaseOptions}) async {
     AppInfo.initialize(),
     UserPrefs.instance.initialize(),
     XFirebaseMessage.instance.initialize(),
-    dotenv.load(fileName: '.env.$name'),
   ]);
   await RemoteConfigService.getRemoteConfig();
 

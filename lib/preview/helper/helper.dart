@@ -8,10 +8,7 @@ Widget commonScaffoldWrapper(Widget child) {
     supportedLocales: S.supportedLocales,
     theme: ThemeData.light(),
     home: Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: child,
-      ),
+      body: Padding(padding: const EdgeInsets.all(16.0), child: child),
     ),
   );
 }

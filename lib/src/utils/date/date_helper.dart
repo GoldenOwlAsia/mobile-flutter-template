@@ -216,8 +216,10 @@ class DateHelper {
   // MARK: - Week Calculations
   /// Get weekday index with configurable week start
   /// Returns 1-7 where 1 is either Monday or Sunday based on [startWeekWithSunday]
-  static int getWeekdayIndex(DateTime date,
-      {bool startWeekWithSunday = false}) {
+  static int getWeekdayIndex(
+    DateTime date, {
+    bool startWeekWithSunday = false,
+  }) {
     if (startWeekWithSunday) {
       return date.weekday == DateTime.sunday ? 1 : date.weekday + 1;
     } else {
@@ -232,8 +234,10 @@ class DateHelper {
     bool startWeekWithSunday = false,
   }) {
     final daysInMonth = date.daysInMonth;
-    final dayOfWeek =
-        getWeekdayIndex(date, startWeekWithSunday: startWeekWithSunday);
+    final dayOfWeek = getWeekdayIndex(
+      date,
+      startWeekWithSunday: startWeekWithSunday,
+    );
     final remainingDaysInWeek = DateTime.daysPerWeek - dayOfWeek;
 
     // Check if week extends beyond month
@@ -252,8 +256,10 @@ class DateHelper {
     bool startWeekWithSunday = false,
   }) {
     final dateWithoutTime = date.removeTime();
-    final currentWeekday =
-        getWeekdayIndex(date, startWeekWithSunday: startWeekWithSunday);
+    final currentWeekday = getWeekdayIndex(
+      date,
+      startWeekWithSunday: startWeekWithSunday,
+    );
     final daysDifference = targetWeekday - currentWeekday;
 
     return dateWithoutTime.addDays(daysDifference);
@@ -275,19 +281,19 @@ class DateHelper {
   /// Get number of days in each month for a given year
   /// Returns list of 12 integers representing days in each month
   static List<int> getDaysPerMonth(int year) => <int>[
-        31, // January
-        isLeapYear(year) ? 29 : 28, // February
-        31, // March
-        30, // April
-        31, // May
-        30, // June
-        31, // July
-        31, // August
-        30, // September
-        31, // October
-        30, // November
-        31, // December
-      ];
+    31, // January
+    isLeapYear(year) ? 29 : 28, // February
+    31, // March
+    30, // April
+    31, // May
+    30, // June
+    31, // July
+    31, // August
+    30, // September
+    31, // October
+    30, // November
+    31, // December
+  ];
 
   /// Check if a year is a leap year
   /// Uses efficient bitwise calculation for performance
@@ -430,7 +436,7 @@ class DateHelper {
             'Wednesday',
             'Thursday',
             'Friday',
-            'Saturday'
+            'Saturday',
           ]
         : [
             'Monday',
@@ -439,7 +445,7 @@ class DateHelper {
             'Thursday',
             'Friday',
             'Saturday',
-            'Sunday'
+            'Sunday',
           ];
 
     if (abbreviated) {
@@ -463,7 +469,7 @@ class DateHelper {
       'September',
       'October',
       'November',
-      'December'
+      'December',
     ];
 
     if (abbreviated) {

@@ -37,10 +37,7 @@ class XToast {
   }
 
   static void error(String? message) {
-    _showMessage(
-      const Icon(Icons.error, color: Colors.red, size: 20),
-      message,
-    );
+    _showMessage(const Icon(Icons.error, color: Colors.red, size: 20), message);
   }
 
   static void _showMessage(Widget icon, String? message) {

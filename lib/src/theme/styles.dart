@@ -217,31 +217,31 @@ class AppStyles {
   // MARK: - Material Design 3 TextTheme
   /// Complete Material Design 3 text theme
   static TextTheme get textTheme => const TextTheme(
-        // Display styles
-        displayLarge: displayLarge,
-        displayMedium: displayMedium,
-        displaySmall: displaySmall,
+    // Display styles
+    displayLarge: displayLarge,
+    displayMedium: displayMedium,
+    displaySmall: displaySmall,
 
-        // Headline styles
-        headlineLarge: headlineLarge,
-        headlineMedium: headlineMedium,
-        headlineSmall: headlineSmall,
+    // Headline styles
+    headlineLarge: headlineLarge,
+    headlineMedium: headlineMedium,
+    headlineSmall: headlineSmall,
 
-        // Title styles
-        titleLarge: titleLarge,
-        titleMedium: titleMedium,
-        titleSmall: titleSmall,
+    // Title styles
+    titleLarge: titleLarge,
+    titleMedium: titleMedium,
+    titleSmall: titleSmall,
 
-        // Label styles
-        labelLarge: labelLarge,
-        labelMedium: labelMedium,
-        labelSmall: labelSmall,
+    // Label styles
+    labelLarge: labelLarge,
+    labelMedium: labelMedium,
+    labelSmall: labelSmall,
 
-        // Body styles
-        bodyLarge: bodyLarge,
-        bodyMedium: bodyMedium,
-        bodySmall: bodySmall,
-      );
+    // Body styles
+    bodyLarge: bodyLarge,
+    bodyMedium: bodyMedium,
+    bodySmall: bodySmall,
+  );
 
   // MARK: - Style Variants Helper Methods
   /// Create a variant of any text style with different color

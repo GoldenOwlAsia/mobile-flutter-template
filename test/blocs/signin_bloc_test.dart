@@ -64,9 +64,7 @@ void main() {
         build: () => signinBloc,
         act: (bloc) => bloc.onEmailChanged('test@example.com'),
         expect: () => [
-          SigninState(
-            email: EmailFormzInput.pure('test@example.com'),
-          ),
+          SigninState(email: EmailFormzInput.pure('test@example.com')),
         ],
       );
 
@@ -78,9 +76,7 @@ void main() {
         },
         act: (bloc) => bloc.onEmailChanged('updated@example.com'),
         expect: () => [
-          SigninState(
-            email: EmailFormzInput.pure('updated@example.com'),
-          ),
+          SigninState(email: EmailFormzInput.pure('updated@example.com')),
         ],
       );
     });
@@ -91,9 +87,7 @@ void main() {
         build: () => signinBloc,
         act: (bloc) => bloc.onPasswordChanged('password123'),
         expect: () => [
-          SigninState(
-            password: PasswordFormzInput.dirty('password123'),
-          ),
+          SigninState(password: PasswordFormzInput.dirty('password123')),
         ],
       );
     });
@@ -103,9 +97,7 @@ void main() {
         'does nothing when status is in progress',
         build: () {
           signinBloc.emit(
-            signinBloc.state.copyWith(
-              status: FormzSubmissionStatus.inProgress,
-            ),
+            signinBloc.state.copyWith(status: FormzSubmissionStatus.inProgress),
           );
           return signinBloc;
         },
@@ -137,9 +129,7 @@ void main() {
         'does nothing when status is in progress',
         build: () {
           signinBloc.emit(
-            signinBloc.state.copyWith(
-              status: FormzSubmissionStatus.inProgress,
-            ),
+            signinBloc.state.copyWith(status: FormzSubmissionStatus.inProgress),
           );
           return signinBloc;
         },

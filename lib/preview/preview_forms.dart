@@ -47,7 +47,7 @@ Widget previewInput() {
           prefixIcon: Icon(Icons.phone),
         ),
         onChanged: (value) {},
-      )
+      ),
     ],
   );
 }

@@ -29,10 +29,7 @@ class DevScreenLayout extends StatelessWidget {
       backgroundColor: backgroundColor,
       floatingActionButton: floatingActionButton,
       bottomNavigationBar: bottomNavigationBar,
-      appBar: AppBar(
-        title: Text(title),
-        actions: actions,
-      ),
+      appBar: AppBar(title: Text(title), actions: actions),
       body: ListView(
         controller: controller,
         reverse: reverse,

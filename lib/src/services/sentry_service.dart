@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:myapp/src/config/env/env.dart';
 import 'package:myapp/src/router/coordinator.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -10,7 +9,7 @@ class SentryService {
   static Future<void> setupSentry({required AppRunner appRunner}) async {
     await SentryFlutter.init(
       (options) {
-        options.dsn = dotenv.env['SENTRY_DSN'] ?? '';
+        options.dsn = ENV.I.sentryDNS;
         options.tracesSampleRate = 1.0;
         options.profilesSampleRate = 1.0;
         options.reportPackages = false;
@@ -83,8 +82,8 @@ class SentryService {
       final lastExceptionsJson = lastExceptions?.toJson() ?? {};
       lastExceptionsJson[exceptionValueParam] =
           lastExceptionsJson[exceptionValueParam] +
-              '' +
-              'URL = ${dioException.requestOptions.path}';
+          '' +
+          'URL = ${dioException.requestOptions.path}';
       event.exceptions?.removeLast();
       event.exceptions?.add(SentryException.fromJson(lastExceptionsJson));
       return event;
@@ -103,19 +102,21 @@ class SentryService {
   }
 
   static void addNavigationBreadcrumb({required String screenName}) {
-    Sentry.addBreadcrumb(Breadcrumb(
-      category: 'navigation',
-      message: 'User navigated to $screenName',
-      level: SentryLevel.info,
-    ));
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        category: 'navigation',
+        message: 'User navigated to $screenName',
+        level: SentryLevel.info,
+      ),
+    );
   }
 
-  static void addBreadcrumb(
-      {required String category, required String message}) {
-    Sentry.addBreadcrumb(Breadcrumb(
-      category: category,
-      message: message,
-      level: SentryLevel.info,
-    ));
+  static void addBreadcrumb({
+    required String category,
+    required String message,
+  }) {
+    Sentry.addBreadcrumb(
+      Breadcrumb(category: category, message: message, level: SentryLevel.info),
+    );
   }
 }

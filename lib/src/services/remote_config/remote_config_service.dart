@@ -9,18 +9,21 @@ class RemoteConfigService {
     final remoteConfig = FirebaseRemoteConfig.instance;
 
     try {
-      await remoteConfig.setConfigSettings(RemoteConfigSettings(
-        fetchTimeout: const Duration(minutes: 1),
-        minimumFetchInterval: const Duration(minutes: 5),
-      ));
+      await remoteConfig.setConfigSettings(
+        RemoteConfigSettings(
+          fetchTimeout: const Duration(minutes: 1),
+          minimumFetchInterval: const Duration(minutes: 5),
+        ),
+      );
       await remoteConfig.fetchAndActivate();
       await remoteConfig.ensureInitialized();
       final version = remoteConfig.getString("force_update_version");
       config = RemoteConfig.fromConfig(version);
     } catch (exception) {
       debugPrint(
-          'Unable to fetch remote config. Cached or default values will be '
-          'used');
+        'Unable to fetch remote config. Cached or default values will be '
+        'used',
+      );
     }
   }
 }

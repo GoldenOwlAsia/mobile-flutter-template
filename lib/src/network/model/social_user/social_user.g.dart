@@ -7,17 +7,17 @@ part of 'social_user.dart';
 // **************************************************************************
 
 _MSocialUser _$MSocialUserFromJson(Map<String, dynamic> json) => _MSocialUser(
-      type: $enumDecode(_$MSocialTypeEnumMap, json['type']),
-      userID: json['user_i_d'] as String?,
-      accessToken: json['access_token'] as String?,
-      idToken: json['id_token'] as String?,
-      fullName: json['full_name'] as String?,
-      email: json['email'] as String?,
-      avatar: json['avatar'] as String?,
-      birthDate: json['birth_date'] as String?,
-      gender: (json['gender'] as num?)?.toInt(),
-      phone: json['phone'] as String?,
-    );
+  type: $enumDecode(_$MSocialTypeEnumMap, json['type']),
+  userID: json['user_i_d'] as String?,
+  accessToken: json['access_token'] as String?,
+  idToken: json['id_token'] as String?,
+  fullName: json['full_name'] as String?,
+  email: json['email'] as String?,
+  avatar: json['avatar'] as String?,
+  birthDate: json['birth_date'] as String?,
+  gender: (json['gender'] as num?)?.toInt(),
+  phone: json['phone'] as String?,
+);
 
 Map<String, dynamic> _$MSocialUserToJson(_MSocialUser instance) =>
     <String, dynamic>{

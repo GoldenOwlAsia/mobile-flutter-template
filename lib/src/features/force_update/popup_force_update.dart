@@ -11,15 +11,14 @@ class PopupForceUpdateApp extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Colors.white),
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
-            width: 100,
-            child: Assets.lotties.rocket.lottie(),
-          ),
+          SizedBox(width: 100, child: Assets.lotties.rocket.lottie()),
           Text(
             "Your application update is available",
             textAlign: TextAlign.center,

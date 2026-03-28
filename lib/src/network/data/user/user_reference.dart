@@ -7,15 +7,17 @@ import 'package:myapp/src/network/model/user/user.dart';
 @injectable
 class UserReference extends BaseCollectionReference<MUser> {
   UserReference()
-      : super(
-          FirebaseFirestore.instance.collection('users').withConverter<MUser>(
-                fromFirestore: (snapshot, options) =>
-                    MUser.fromJson(snapshot.data() as Map<String, dynamic>),
-                toFirestore: (chatRoom, _) => chatRoom.toJson(),
-              ),
-          getObjectId: (e) => e.id,
-          setObjectId: (e, id) => e.copyWith(id: id),
-        );
+    : super(
+        FirebaseFirestore.instance
+            .collection('users')
+            .withConverter<MUser>(
+              fromFirestore: (snapshot, options) =>
+                  MUser.fromJson(snapshot.data() as Map<String, dynamic>),
+              toFirestore: (chatRoom, _) => chatRoom.toJson(),
+            ),
+        getObjectId: (e) => e.id,
+        setObjectId: (e, id) => e.copyWith(id: id),
+      );
 
   Future<MResult<MUser>> getOrAddUser(MUser user) async {
     try {
@@ -33,8 +35,9 @@ class UserReference extends BaseCollectionReference<MUser> {
 
   Future<MResult<List<MUser>>> getUsers() async {
     try {
-      final QuerySnapshot<MUser> query =
-          await ref.get().timeout(const Duration(seconds: 10));
+      final QuerySnapshot<MUser> query = await ref.get().timeout(
+        const Duration(seconds: 10),
+      );
       final docs = query.docs.map((e) => e.data()).toList();
       return MResult.success(docs);
     } catch (e) {

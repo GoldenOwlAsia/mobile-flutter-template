@@ -8,9 +8,7 @@ class SampleItemListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sample Items'),
-      ),
+      appBar: AppBar(title: const Text('Sample Items')),
       body: ListView.builder(
         restorationId: 'sampleItemListView',
         itemBuilder: (BuildContext context, int index) {

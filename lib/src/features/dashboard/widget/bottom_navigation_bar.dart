@@ -12,14 +12,17 @@ class XBottomNavigationBar extends StatelessWidget {
       builder: (context, state) {
         return NavigationBar(
           selectedIndex: state.index,
-          onDestinationSelected:
-              context.read<DashboardBloc>().onDestinationSelected,
+          onDestinationSelected: context
+              .read<DashboardBloc>()
+              .onDestinationSelected,
           destinations: XNavigationBarItems.values
-              .map((e) => NavigationDestination(
-                    label: e.label,
-                    icon: Icon(e.icon),
-                    selectedIcon: Icon(e.selectedIcon),
-                  ))
+              .map(
+                (e) => NavigationDestination(
+                  label: e.label,
+                  icon: Icon(e.icon),
+                  selectedIcon: Icon(e.selectedIcon),
+                ),
+              )
               .toList(),
         );
       },

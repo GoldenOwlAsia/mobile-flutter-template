@@ -22,12 +22,13 @@ class XStatusToast extends StatelessWidget {
             child: Text(
               message ?? '',
               style: const TextStyle(
-                  fontWeight: FontWeight.normal,
-                  color: Colors.white,
-                  fontSize: 15,
-                  letterSpacing: 0.2),
+                fontWeight: FontWeight.normal,
+                color: Colors.white,
+                fontSize: 15,
+                letterSpacing: 0.2,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

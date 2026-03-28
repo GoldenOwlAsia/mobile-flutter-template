@@ -64,9 +64,7 @@ void main() {
         build: () => signupBloc,
         act: (bloc) => bloc.onEmailChanged('test@example.com'),
         expect: () => [
-          SignupState(
-            email: EmailFormzInput.pure('test@example.com'),
-          ),
+          SignupState(email: EmailFormzInput.pure('test@example.com')),
         ],
       );
 
@@ -78,9 +76,7 @@ void main() {
         },
         act: (bloc) => bloc.onEmailChanged('updated@example.com'),
         expect: () => [
-          SignupState(
-            email: EmailFormzInput.pure('updated@example.com'),
-          ),
+          SignupState(email: EmailFormzInput.pure('updated@example.com')),
         ],
       );
     });
@@ -91,9 +87,7 @@ void main() {
         build: () => signupBloc,
         act: (bloc) => bloc.onPasswordChanged('password123'),
         expect: () => [
-          SignupState(
-            password: PasswordFormzInput.dirty('password123'),
-          ),
+          SignupState(password: PasswordFormzInput.dirty('password123')),
         ],
       );
     });
@@ -103,11 +97,7 @@ void main() {
         'emits state with updated name',
         build: () => signupBloc,
         act: (bloc) => bloc.onNameChanged('John Doe'),
-        expect: () => [
-          SignupState(
-            name: NameFormzInput.dirty('John Doe'),
-          ),
-        ],
+        expect: () => [SignupState(name: NameFormzInput.dirty('John Doe'))],
       );
     });
 
@@ -116,9 +106,7 @@ void main() {
         'does nothing when status is in progress',
         build: () {
           signupBloc.emit(
-            signupBloc.state.copyWith(
-              status: FormzSubmissionStatus.inProgress,
-            ),
+            signupBloc.state.copyWith(status: FormzSubmissionStatus.inProgress),
           );
           return signupBloc;
         },

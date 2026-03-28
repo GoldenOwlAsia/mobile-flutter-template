@@ -5,8 +5,11 @@ import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/utils/utils.dart';
 
 class BaseCollectionReference<T> {
-  BaseCollectionReference(this.ref,
-      {required this.setObjectId, required this.getObjectId});
+  BaseCollectionReference(
+    this.ref, {
+    required this.setObjectId,
+    required this.getObjectId,
+  });
 
   void log(dynamic value) => debugPrint('$value');
   final CollectionReference<T> ref;
@@ -32,8 +35,9 @@ class BaseCollectionReference<T> {
 
   Future<MResult<T>> add(T item) async {
     try {
-      final DocumentReference<T> doc =
-          await ref.add(item).timeout(const Duration(seconds: 5));
+      final DocumentReference<T> doc = await ref
+          .add(item)
+          .timeout(const Duration(seconds: 5));
       return MResult.success(setObjectId(item, doc.id));
     } catch (e) {
       return MResult.exception(e);
@@ -75,8 +79,9 @@ class BaseCollectionReference<T> {
 
   Future<MResult<List<T>>> getAll() async {
     try {
-      final QuerySnapshot<T> query =
-          await ref.get().timeout(const Duration(seconds: 5));
+      final QuerySnapshot<T> query = await ref.get().timeout(
+        const Duration(seconds: 5),
+      );
       final docs = query.docs.map((e) => e.data()).toList();
 
       return MResult.success(docs);
@@ -102,8 +107,9 @@ class BaseCollectionReference<T> {
         Query<T> queryChat = ref.where("id", whereIn: chunk);
         queries.add(queryChat);
       }
-      final List<QuerySnapshot<T>> results =
-          await Future.wait([for (final e in queries) e.get()]);
+      final List<QuerySnapshot<T>> results = await Future.wait([
+        for (final e in queries) e.get(),
+      ]);
       final List<T> docs = [];
       for (final e in results) {
         docs.addAll(e.docs.map((e) => e.data()).toList());

@@ -113,8 +113,16 @@ extension DateTimeExtensions on DateTime {
     final maxDayInNewMonth = DateTime(newYear, adjustedMonth + 1, 0).day;
     final adjustedDay = day > maxDayInNewMonth ? maxDayInNewMonth : day;
 
-    return DateTime(newYear, adjustedMonth, adjustedDay, hour, minute, second,
-        millisecond, microsecond);
+    return DateTime(
+      newYear,
+      adjustedMonth,
+      adjustedDay,
+      hour,
+      minute,
+      second,
+      millisecond,
+      microsecond,
+    );
   }
 
   /// Add years to this date
@@ -124,11 +132,27 @@ extension DateTimeExtensions on DateTime {
     // Handle leap year edge case (Feb 29 + 1 year)
     if (month == 2 && day == 29 && !_isLeapYear(newYear)) {
       return DateTime(
-          newYear, month, 28, hour, minute, second, millisecond, microsecond);
+        newYear,
+        month,
+        28,
+        hour,
+        minute,
+        second,
+        millisecond,
+        microsecond,
+      );
     }
 
     return DateTime(
-        newYear, month, day, hour, minute, second, millisecond, microsecond);
+      newYear,
+      month,
+      day,
+      hour,
+      minute,
+      second,
+      millisecond,
+      microsecond,
+    );
   }
 
   /// Get the first day of the week containing this date
@@ -139,8 +163,15 @@ extension DateTimeExtensions on DateTime {
   /// Get the last day of the week containing this date
   DateTime getWeekEnd({bool startWeekWithSunday = false}) {
     final weekStart = _getWeekStart(startWeekWithSunday);
-    return weekStart.add(const Duration(
-        days: 6, hours: 23, minutes: 59, seconds: 59, milliseconds: 999));
+    return weekStart.add(
+      const Duration(
+        days: 6,
+        hours: 23,
+        minutes: 59,
+        seconds: 59,
+        milliseconds: 999,
+      ),
+    );
   }
 
   // MARK: - Utility Methods
@@ -166,8 +197,9 @@ extension DateTimeExtensions on DateTime {
   /// Get the week number in the year (1-53)
   int get weekOfYear {
     final startOfYear = DateTime(year, 1, 1);
-    final firstMonday =
-        startOfYear.add(Duration(days: (8 - startOfYear.weekday) % 7));
+    final firstMonday = startOfYear.add(
+      Duration(days: (8 - startOfYear.weekday) % 7),
+    );
 
     if (isBefore(firstMonday)) {
       // This date is in week 1 or belongs to previous year's last week

@@ -45,9 +45,7 @@ void main() {
         build: () => forgotBloc,
         act: (bloc) => bloc.onEmailChanged('test@example.com'),
         expect: () => [
-          ForgotState(
-            email: EmailFormzInput.pure('test@example.com'),
-          ),
+          ForgotState(email: EmailFormzInput.pure('test@example.com')),
         ],
       );
 
@@ -59,9 +57,7 @@ void main() {
         },
         act: (bloc) => bloc.onEmailChanged('updated@example.com'),
         expect: () => [
-          ForgotState(
-            email: EmailFormzInput.pure('updated@example.com'),
-          ),
+          ForgotState(email: EmailFormzInput.pure('updated@example.com')),
         ],
       );
     });
@@ -86,9 +82,7 @@ void main() {
         'does nothing when status is in progress',
         build: () {
           forgotBloc.emit(
-            forgotBloc.state.copyWith(
-              status: FormzSubmissionStatus.inProgress,
-            ),
+            forgotBloc.state.copyWith(status: FormzSubmissionStatus.inProgress),
           );
           return forgotBloc;
         },
@@ -108,8 +102,9 @@ void main() {
         'emits inProgress then success when request succeeds',
         build: () {
           forgotBloc.onEmailChanged('test@example.com');
-          when(() => mockSignRepository.forgotPassword('test@example.com'))
-              .thenAnswer((_) async => MResult.success('Success'));
+          when(
+            () => mockSignRepository.forgotPassword('test@example.com'),
+          ).thenAnswer((_) async => MResult.success('Success'));
           return forgotBloc;
         },
         act: (bloc) async {
@@ -129,8 +124,9 @@ void main() {
           ),
         ],
         verify: (_) {
-          verify(() => mockSignRepository.forgotPassword('test@example.com'))
-              .called(1);
+          verify(
+            () => mockSignRepository.forgotPassword('test@example.com'),
+          ).called(1);
         },
       );
 
@@ -138,8 +134,9 @@ void main() {
         'emits inProgress then failure when request fails',
         build: () {
           forgotBloc.onEmailChanged('test@example.com');
-          when(() => mockSignRepository.forgotPassword('test@example.com'))
-              .thenAnswer((_) async => MResult.error('Email not found'));
+          when(
+            () => mockSignRepository.forgotPassword('test@example.com'),
+          ).thenAnswer((_) async => MResult.error('Email not found'));
           return forgotBloc;
         },
         act: (bloc) async {
@@ -164,8 +161,9 @@ void main() {
           ),
         ],
         verify: (_) {
-          verify(() => mockSignRepository.forgotPassword('test@example.com'))
-              .called(1);
+          verify(
+            () => mockSignRepository.forgotPassword('test@example.com'),
+          ).called(1);
         },
       );
     });

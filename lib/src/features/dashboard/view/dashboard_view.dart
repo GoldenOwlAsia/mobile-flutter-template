@@ -64,4 +64,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with LifecycleMixin {
 
   @override
   void handleUpdateBackGestureProgress(PredictiveBackEvent backEvent) {}
+
+  @override
+  void handleStatusBarTap() {}
 }

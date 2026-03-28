@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class DevTitle extends StatelessWidget {
-  const DevTitle(this.title,
-      {this.body, this.horizontalPadding = 16, super.key});
+  const DevTitle(
+    this.title, {
+    this.body,
+    this.horizontalPadding = 16,
+    super.key,
+  });
   final String title;
   final String? body;
   final double horizontalPadding;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          EdgeInsets.fromLTRB(horizontalPadding, 24, horizontalPadding, 12),
+      padding: EdgeInsets.fromLTRB(
+        horizontalPadding,
+        24,
+        horizontalPadding,
+        12,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

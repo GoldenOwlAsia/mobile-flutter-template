@@ -15,12 +15,13 @@ class XCard extends StatelessWidget {
     return Container(
       padding: padding,
       decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
-            color: borderColor ?? const Color(0xFFD9D9D9),
-            width: 0.5,
-          ),
-          borderRadius: BorderRadius.circular(10)),
+        color: Colors.white,
+        border: Border.all(
+          color: borderColor ?? const Color(0xFFD9D9D9),
+          width: 0.5,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: child,
     );
   }

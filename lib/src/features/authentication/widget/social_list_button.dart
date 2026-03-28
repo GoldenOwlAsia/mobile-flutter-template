@@ -27,7 +27,8 @@ class SocialListButton extends StatelessWidget {
               _buildButton(
                 icon: Assets.svgs.icApple.path,
                 title: S.of(context).sign_signin_signinWithApple,
-                busy: state.status.isInProgress &&
+                busy:
+                    state.status.isInProgress &&
                     state.loginType == MSocialType.apple,
                 onPressed: () => context.read<SigninBloc>().loginWithApple(),
               ),
@@ -36,7 +37,8 @@ class SocialListButton extends StatelessWidget {
             _buildButton(
               icon: Assets.svgs.icFacebook.path,
               title: S.of(context).sign_signin_signinWithFacebook,
-              busy: state.status.isInProgress &&
+              busy:
+                  state.status.isInProgress &&
                   state.loginType == MSocialType.facebook,
               onPressed: () => context.read<SigninBloc>().loginWithFacebook(),
             ),
@@ -44,7 +46,8 @@ class SocialListButton extends StatelessWidget {
             _buildButton(
               icon: Assets.svgs.icGoogle.path,
               title: S.of(context).sign_signin_signinWithGoogle,
-              busy: state.status.isInProgress &&
+              busy:
+                  state.status.isInProgress &&
                   state.loginType == MSocialType.google,
               onPressed: () => context.read<SigninBloc>().loginWithGoogle(),
             ),
@@ -64,10 +67,7 @@ class SocialListButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               'Or',
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xFF797979),
-              ),
+              style: TextStyle(fontSize: 14, color: Color(0xFF797979)),
             ),
           ),
           Expanded(child: Divider()),
@@ -89,8 +89,9 @@ class SocialListButton extends StatelessWidget {
         height: 32,
         alignment: Alignment.center,
         child: AnimatedCrossFade(
-          crossFadeState:
-              busy ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          crossFadeState: busy
+              ? CrossFadeState.showFirst
+              : CrossFadeState.showSecond,
           duration: const Duration(milliseconds: 300),
           firstChild: const XIndicator(radius: 11),
           secondChild: SvgPicture.asset(icon),
@@ -100,9 +101,7 @@ class SocialListButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
         foregroundColor: const Color(0xFF313131),
         fixedSize: const Size.fromHeight(45),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(45),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
         textStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,

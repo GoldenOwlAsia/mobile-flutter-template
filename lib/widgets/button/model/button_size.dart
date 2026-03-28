@@ -20,10 +20,7 @@ class ButtonSize {
       height: 32,
       minWidth: 60,
       iconSize: 16,
-      style: const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
+      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       padding: 12,
     );
   }
@@ -32,10 +29,7 @@ class ButtonSize {
       height: 40,
       minWidth: 80,
       iconSize: 20,
-      style: const TextStyle(
-        fontSize: 15,
-        fontWeight: FontWeight.w600,
-      ),
+      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
       padding: 16,
     );
   }
@@ -44,10 +38,7 @@ class ButtonSize {
       height: 48,
       minWidth: 100,
       iconSize: 24,
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
+      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       padding: 16,
     );
   }

@@ -3,8 +3,9 @@ import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionService {
-  static Future<bool> requestMicrophonePermission(
-      {bool openSetting = true}) async {
+  static Future<bool> requestMicrophonePermission({
+    bool openSetting = true,
+  }) async {
     var status = await Permission.microphone.request();
     if (status.isDenied || status.isPermanentlyDenied) {
       final show = await XAlert.showConfirmDialog(

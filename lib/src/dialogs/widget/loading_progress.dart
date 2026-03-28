@@ -77,12 +77,11 @@ class _XLoadingProgress {
                                   backgroundColor: Colors.white,
                                   strokeWidth: 2,
                                   valueColor: AlwaysStoppedAnimation(
-                                      Theme.of(context).primaryColor),
+                                    Theme.of(context).primaryColor,
+                                  ),
                                 ),
                               )
-                            : const CupertinoActivityIndicator(
-                                radius: 15,
-                              ),
+                            : const CupertinoActivityIndicator(radius: 15),
                       ),
                       if (_dialogMessage.isNotEmpty)
                         Container(

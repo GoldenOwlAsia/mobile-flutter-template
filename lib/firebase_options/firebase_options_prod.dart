@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '535789737885',
     projectId: 'template-app-prod-3a034',
     storageBucket: 'template-app-prod-3a034.appspot.com',
-    iosClientId: '535789737885-n14bfdlqb726ht8lte1he0b9ilpj3c0i.apps.googleusercontent.com',
+    iosClientId:
+        '535789737885-n14bfdlqb726ht8lte1he0b9ilpj3c0i.apps.googleusercontent.com',
     iosBundleId: 'com.pingak9.template',
   );
 }

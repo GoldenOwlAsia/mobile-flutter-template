@@ -1,5 +1,5 @@
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -29,34 +29,37 @@ import 'package:myapp/src/network/data/user/user_repository_impl.dart' as _i832;
 import 'package:myapp/src/network/domain_manager.dart' as _i389;
 
 extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i204.UserReference>(() => _i204.UserReference());
     gh.factory<_i783.SignRepository>(() => _i896.SignRepositoryImpl());
     gh.factory<_i219.UploadRepository>(() => _i294.UploadRepositoryImpl());
     gh.factory<_i606.UserRepository>(
-        () => _i832.UserRepositoryImpl(gh<_i204.UserReference>()));
-    gh.factory<_i389.DomainManager>(() => _i389.DomainManager(
-          gh<_i606.UserRepository>(),
-          gh<_i219.UploadRepository>(),
-          gh<_i783.SignRepository>(),
-        ));
+      () => _i832.UserRepositoryImpl(gh<_i204.UserReference>()),
+    );
+    gh.factory<_i389.DomainManager>(
+      () => _i389.DomainManager(
+        gh<_i606.UserRepository>(),
+        gh<_i219.UploadRepository>(),
+        gh<_i783.SignRepository>(),
+      ),
+    );
     gh.factory<_i646.AccountBloc>(
-        () => _i646.AccountBloc(gh<_i389.DomainManager>()));
-    gh.factory<_i1039.SignupBloc>(
-        () => _i1039.SignupBloc(gh<_i389.DomainManager>()));
-    gh.factory<_i341.SigninBloc>(
-        () => _i341.SigninBloc(gh<_i389.DomainManager>()));
+      () => _i646.AccountBloc(gh<_i389.DomainManager>()),
+    );
     gh.factory<_i202.ForgotBloc>(
-        () => _i202.ForgotBloc(gh<_i389.DomainManager>()));
+      () => _i202.ForgotBloc(gh<_i389.DomainManager>()),
+    );
+    gh.factory<_i341.SigninBloc>(
+      () => _i341.SigninBloc(gh<_i389.DomainManager>()),
+    );
+    gh.factory<_i1039.SignupBloc>(
+      () => _i1039.SignupBloc(gh<_i389.DomainManager>()),
+    );
     return this;
   }
 }

@@ -24,28 +24,25 @@ class AppRouter {
     navigatorKey: AppCoordinator.navigatorKey,
     initialLocation: AppRouteNames.home.path,
     debugLogDiagnostics: kDebugMode,
-    observers: [
-      BotToastNavigatorObserver(),
-      SentryNavigatorObserver(),
-    ],
+    observers: [BotToastNavigatorObserver(), SentryNavigatorObserver()],
     routes: <RouteBase>[
       GoRoute(
         parentNavigatorKey: AppCoordinator.navigatorKey,
         path: AppRouteNames.signIn.path,
         name: AppRouteNames.signIn.name,
-        builder: (_, __) => const SigninView(),
+        builder: (_, _) => const SigninView(),
         routes: <RouteBase>[
           GoRoute(
             parentNavigatorKey: AppCoordinator.navigatorKey,
             path: AppRouteNames.signUp.subPath,
             name: AppRouteNames.signUp.name,
-            builder: (_, __) => const SignupView(),
+            builder: (_, _) => const SignupView(),
           ),
           GoRoute(
             parentNavigatorKey: AppCoordinator.navigatorKey,
             path: AppRouteNames.forgotPassword.subPath,
             name: AppRouteNames.forgotPassword.name,
-            builder: (_, __) => const ForgotPasswordView(),
+            builder: (_, _) => const ForgotPasswordView(),
           ),
         ],
       ),
@@ -59,48 +56,48 @@ class AppRouter {
           GoRoute(
             path: AppRouteNames.home.path,
             name: AppRouteNames.home.name,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: HomeView(),
-            ),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: HomeView()),
             routes: <RouteBase>[
               GoRoute(
                 parentNavigatorKey: AppCoordinator.navigatorKey,
                 path: AppRouteNames.sample.subPath,
                 name: AppRouteNames.sample.name,
-                builder: (_, __) => const SampleItemListView(),
+                builder: (_, _) => const SampleItemListView(),
                 routes: <RouteBase>[
                   GoRoute(
                     parentNavigatorKey: AppCoordinator.navigatorKey,
                     path: AppRouteNames.sampleDetails.buildSubPathParam,
                     name: AppRouteNames.sampleDetails.name,
                     builder: (_, state) {
-                      final id = state.pathParameters[
-                          AppRouteNames.sampleDetails.paramName]!;
+                      final id =
+                          state.pathParameters[AppRouteNames
+                              .sampleDetails
+                              .paramName]!;
                       return SampleItemDetailsView(id: id);
                     },
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
           GoRoute(
             path: AppRouteNames.account.path,
             name: AppRouteNames.account.name,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: AccountHomeView(),
-            ),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: AccountHomeView()),
             routes: <RouteBase>[
               GoRoute(
                 path: AppRouteNames.profile.subPath,
                 name: AppRouteNames.profile.name,
-                builder: (_, __) => const ProfileView(),
-              )
+                builder: (_, _) => const ProfileView(),
+              ),
             ],
           ),
           GoRoute(
             path: AppRouteNames.dev.path,
             name: AppRouteNames.dev.name,
-            builder: (_, __) => const DevScreen(),
+            builder: (_, _) => const DevScreen(),
           ),
         ],
       ),
@@ -117,6 +114,6 @@ class AppRouter {
         },
       ),
     ],
-    errorBuilder: (_, __) => const NotFoundView(),
+    errorBuilder: (_, _) => const NotFoundView(),
   );
 }

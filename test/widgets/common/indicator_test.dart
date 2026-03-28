@@ -4,14 +4,11 @@ import 'package:myapp/widgets/common/indicator.dart';
 
 void main() {
   group('XIndicator', () {
-    testWidgets('should render with default values',
-        (WidgetTester tester) async {
+    testWidgets('should render with default values', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
-            body: XIndicator(),
-          ),
-        ),
+        const MaterialApp(home: Scaffold(body: XIndicator())),
       );
 
       expect(find.byType(XIndicator), findsOneWidget);
@@ -22,9 +19,7 @@ void main() {
 
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: XIndicator(radius: customRadius),
-          ),
+          home: Scaffold(body: XIndicator(radius: customRadius)),
         ),
       );
 
@@ -37,9 +32,7 @@ void main() {
 
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: XIndicator(color: customColor),
-          ),
+          home: Scaffold(body: XIndicator(color: customColor)),
         ),
       );
 
@@ -47,14 +40,11 @@ void main() {
       expect(indicator.color, equals(customColor));
     });
 
-    testWidgets('should use default values when not provided',
-        (WidgetTester tester) async {
+    testWidgets('should use default values when not provided', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
-            body: XIndicator(),
-          ),
-        ),
+        const MaterialApp(home: Scaffold(body: XIndicator())),
       );
 
       final indicator = tester.widget<XIndicator>(find.byType(XIndicator));

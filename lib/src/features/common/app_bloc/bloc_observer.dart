@@ -17,9 +17,11 @@ class XBlocObserver extends BlocObserver {
 
   @override
   void onChange(BlocBase bloc, Change change) {
-    log.f('onChange ${bloc.runtimeType}\n'
-        'From: ${change.currentState}\n'
-        'To: ${change.nextState}');
+    log.f(
+      'onChange ${bloc.runtimeType}\n'
+      'From: ${change.currentState}\n'
+      'To: ${change.nextState}',
+    );
     super.onChange(bloc, change);
   }
 
@@ -37,7 +39,11 @@ class XBlocObserver extends BlocObserver {
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    log.e('Error in : ${bloc.runtimeType}', error: error, stackTrace: stackTrace);
+    log.e(
+      'Error in : ${bloc.runtimeType}',
+      error: error,
+      stackTrace: stackTrace,
+    );
     super.onError(bloc, error, stackTrace);
   }
 }

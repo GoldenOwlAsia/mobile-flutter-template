@@ -21,7 +21,8 @@ class AccountUserCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Text(
-                    'Hello' ',',
+                    'Hello'
+                    ',',
                     style: TextStyle(color: AppColors.textSecondary),
                   ),
                   Text(

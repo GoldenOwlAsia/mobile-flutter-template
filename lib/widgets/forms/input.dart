@@ -115,10 +115,7 @@ class _XInputState extends State<XInput> {
       if (actions.isEmpty) return null;
       if (actions.length == 1) return actions.first;
 
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: actions,
-      );
+      return Row(mainAxisSize: MainAxisSize.min, children: actions);
     }
 
     return TextFormField(

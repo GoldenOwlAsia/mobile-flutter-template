@@ -12,9 +12,12 @@ class XAlertButton<T> {
   final T? key;
   final bool isDestructiveAction;
 
-  XAlertButton(
-      {this.key, this.title, this.child, this.isDestructiveAction = false})
-      : assert(title != null || child != null);
+  XAlertButton({
+    this.key,
+    this.title,
+    this.child,
+    this.isDestructiveAction = false,
+  }) : assert(title != null || child != null);
 
   factory XAlertButton.close({String? title}) {
     return XAlertButton(title: title ?? S.text.common_close);
@@ -45,7 +48,7 @@ class XAlertDialog extends StatelessWidget {
         content: contentWidget ?? (content == null ? null : Text(content!)),
         actions: <Widget>[
           for (int i = 0; i < actionButtons.length; i++)
-            _buildButton(context, actionButtons[i], i)
+            _buildButton(context, actionButtons[i], i),
         ],
       );
     }
@@ -54,7 +57,7 @@ class XAlertDialog extends StatelessWidget {
       content: contentWidget ?? (content == null ? null : Text(content!)),
       actions: <Widget>[
         for (int i = 0; i < actionButtons.length; i++)
-          _buildButton(context, actionButtons[i], i)
+          _buildButton(context, actionButtons[i], i),
       ],
     );
   }

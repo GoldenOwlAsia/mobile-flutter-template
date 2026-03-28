@@ -6,9 +6,7 @@ part 'upload_model.g.dart';
 
 @freezed
 abstract class MUpload with _$MUpload {
-  const factory MUpload({
-    required String url,
-  }) = _MUpload;
+  const factory MUpload({required String url}) = _MUpload;
 
   factory MUpload.fromJson(Map<String, Object?> json) =>
       _$MUploadFromJson(json);

@@ -5,13 +5,12 @@ import 'package:myapp/widgets/forms/input.dart';
 
 void main() {
   group('XInput', () {
-    testWidgets('should render with required value parameter',
-        (WidgetTester tester) async {
+    testWidgets('should render with required value parameter', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: XInput(value: 'test'),
-          ),
+          home: Scaffold(body: XInput(value: 'test')),
         ),
       );
 
@@ -24,26 +23,22 @@ void main() {
 
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: XInput(value: initialValue),
-          ),
+          home: Scaffold(body: XInput(value: initialValue)),
         ),
       );
 
       expect(find.text(initialValue), findsOneWidget);
     });
 
-    testWidgets('should call onChanged when text changes',
-        (WidgetTester tester) async {
+    testWidgets('should call onChanged when text changes', (
+      WidgetTester tester,
+    ) async {
       String? changedValue;
 
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: XInput(
-              value: '',
-              onChanged: (value) => changedValue = value,
-            ),
+            body: XInput(value: '', onChanged: (value) => changedValue = value),
           ),
         ),
       );
@@ -52,13 +47,12 @@ void main() {
       expect(changedValue, equals('New Text'));
     });
 
-    testWidgets('should update when value prop changes',
-        (WidgetTester tester) async {
+    testWidgets('should update when value prop changes', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: XInput(value: 'Initial'),
-          ),
+          home: Scaffold(body: XInput(value: 'Initial')),
         ),
       );
 
@@ -66,9 +60,7 @@ void main() {
 
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: XInput(value: 'Updated'),
-          ),
+          home: Scaffold(body: XInput(value: 'Updated')),
         ),
       );
 
@@ -77,15 +69,13 @@ void main() {
     });
 
     group('Clear button', () {
-      testWidgets('should not show clear button when input is empty',
-          (WidgetTester tester) async {
+      testWidgets('should not show clear button when input is empty', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                onChanged: (_) {},
-              ),
+              body: XInput(value: '', onChanged: (_) {}),
             ),
           ),
         );
@@ -93,15 +83,13 @@ void main() {
         expect(find.byIcon(Icons.cancel), findsNothing);
       });
 
-      testWidgets('should show clear button when input has value',
-          (WidgetTester tester) async {
+      testWidgets('should show clear button when input has value', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: 'test',
-                onChanged: (_) {},
-              ),
+              body: XInput(value: 'test', onChanged: (_) {}),
             ),
           ),
         );
@@ -113,8 +101,9 @@ void main() {
         expect(find.byIcon(Icons.cancel), findsOneWidget);
       });
 
-      testWidgets('should clear text when clear button is tapped',
-          (WidgetTester tester) async {
+      testWidgets('should clear text when clear button is tapped', (
+        WidgetTester tester,
+      ) async {
         String currentValue = 'test';
 
         await tester.pumpWidget(
@@ -139,16 +128,13 @@ void main() {
         expect(currentValue, equals(''));
       });
 
-      testWidgets('should not show clear button when disabled',
-          (WidgetTester tester) async {
+      testWidgets('should not show clear button when disabled', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: 'test',
-                enabled: false,
-                onChanged: (_) {},
-              ),
+              body: XInput(value: 'test', enabled: false, onChanged: (_) {}),
             ),
           ),
         );
@@ -159,16 +145,13 @@ void main() {
         expect(find.byIcon(Icons.cancel), findsNothing);
       });
 
-      testWidgets('should not show clear button when readOnly',
-          (WidgetTester tester) async {
+      testWidgets('should not show clear button when readOnly', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: 'test',
-                readOnly: true,
-                onChanged: (_) {},
-              ),
+              body: XInput(value: 'test', readOnly: true, onChanged: (_) {}),
             ),
           ),
         );
@@ -181,16 +164,12 @@ void main() {
     });
 
     group('Password visibility toggle', () {
-      testWidgets('should obscure text when obscureText is true',
-          (WidgetTester tester) async {
+      testWidgets('should obscure text when obscureText is true', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: 'password',
-                obscureText: true,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: 'password', obscureText: true)),
           ),
         );
 
@@ -198,32 +177,24 @@ void main() {
         expect(xInput.obscureText, isTrue);
       });
 
-      testWidgets('should show visibility toggle when obscureText is true',
-          (WidgetTester tester) async {
+      testWidgets('should show visibility toggle when obscureText is true', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: 'password',
-                obscureText: true,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: 'password', obscureText: true)),
           ),
         );
 
         expect(find.byIcon(Icons.visibility_outlined), findsOneWidget);
       });
 
-      testWidgets('should toggle password visibility when icon is tapped',
-          (WidgetTester tester) async {
+      testWidgets('should toggle password visibility when icon is tapped', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: 'password',
-                obscureText: true,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: 'password', obscureText: true)),
           ),
         );
 
@@ -247,8 +218,9 @@ void main() {
         expect(find.byIcon(Icons.visibility_off_outlined), findsNothing);
       });
 
-      testWidgets('should show both clear and visibility toggle buttons',
-          (WidgetTester tester) async {
+      testWidgets('should show both clear and visibility toggle buttons', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
@@ -271,15 +243,13 @@ void main() {
     });
 
     group('Keyboard type', () {
-      testWidgets('should use specified keyboard type',
-          (WidgetTester tester) async {
+      testWidgets('should use specified keyboard type', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                keyboardType: TextInputType.emailAddress,
-              ),
+              body: XInput(value: '', keyboardType: TextInputType.emailAddress),
             ),
           ),
         );
@@ -288,15 +258,13 @@ void main() {
         expect(xInput.keyboardType, equals(TextInputType.emailAddress));
       });
 
-      testWidgets('should support number keyboard',
-          (WidgetTester tester) async {
+      testWidgets('should support number keyboard', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                keyboardType: TextInputType.number,
-              ),
+              body: XInput(value: '', keyboardType: TextInputType.number),
             ),
           ),
         );
@@ -307,13 +275,12 @@ void main() {
     });
 
     group('Text alignment', () {
-      testWidgets('should use left alignment by default',
-          (WidgetTester tester) async {
+      testWidgets('should use left alignment by default', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(value: 'test'),
-            ),
+            home: Scaffold(body: XInput(value: 'test')),
           ),
         );
 
@@ -321,15 +288,13 @@ void main() {
         expect(xInput.textAlign, equals(TextAlign.left));
       });
 
-      testWidgets('should support center alignment',
-          (WidgetTester tester) async {
+      testWidgets('should support center alignment', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: 'test',
-                textAlign: TextAlign.center,
-              ),
+              body: XInput(value: 'test', textAlign: TextAlign.center),
             ),
           ),
         );
@@ -338,15 +303,13 @@ void main() {
         expect(xInput.textAlign, equals(TextAlign.center));
       });
 
-      testWidgets('should add prefix spacing when centered',
-          (WidgetTester tester) async {
+      testWidgets('should add prefix spacing when centered', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: 'test',
-                textAlign: TextAlign.center,
-              ),
+              body: XInput(value: 'test', textAlign: TextAlign.center),
             ),
           ),
         );
@@ -360,12 +323,7 @@ void main() {
       testWidgets('should enforce max length', (WidgetTester tester) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: '',
-                maxLength: 10,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: '', maxLength: 10)),
           ),
         );
 
@@ -373,16 +331,12 @@ void main() {
         expect(xInput.maxLength, equals(10));
       });
 
-      testWidgets('should display character counter',
-          (WidgetTester tester) async {
+      testWidgets('should display character counter', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: 'test',
-                maxLength: 10,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: 'test', maxLength: 10)),
           ),
         );
 
@@ -398,10 +352,7 @@ void main() {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                inputFormatters: formatters,
-              ),
+              body: XInput(value: '', inputFormatters: formatters),
             ),
           ),
         );
@@ -413,13 +364,12 @@ void main() {
     });
 
     group('Autofocus', () {
-      testWidgets('should not autofocus by default',
-          (WidgetTester tester) async {
+      testWidgets('should not autofocus by default', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(value: ''),
-            ),
+            home: Scaffold(body: XInput(value: '')),
           ),
         );
 
@@ -427,16 +377,12 @@ void main() {
         expect(xInput.autofocus, isFalse);
       });
 
-      testWidgets('should autofocus when specified',
-          (WidgetTester tester) async {
+      testWidgets('should autofocus when specified', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: '',
-                autofocus: true,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: '', autofocus: true)),
           ),
         );
 
@@ -449,9 +395,7 @@ void main() {
       testWidgets('should be enabled by default', (WidgetTester tester) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(value: ''),
-            ),
+            home: Scaffold(body: XInput(value: '')),
           ),
         );
 
@@ -459,16 +403,12 @@ void main() {
         expect(xInput.enabled, isTrue);
       });
 
-      testWidgets('should respect enabled property',
-          (WidgetTester tester) async {
+      testWidgets('should respect enabled property', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: '',
-                enabled: false,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: '', enabled: false)),
           ),
         );
 
@@ -476,16 +416,12 @@ void main() {
         expect(xInput.enabled, isFalse);
       });
 
-      testWidgets('should respect readOnly property',
-          (WidgetTester tester) async {
+      testWidgets('should respect readOnly property', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: '',
-                readOnly: true,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: '', readOnly: true)),
           ),
         );
 
@@ -495,17 +431,15 @@ void main() {
     });
 
     group('FocusNode', () {
-      testWidgets('should accept external FocusNode',
-          (WidgetTester tester) async {
+      testWidgets('should accept external FocusNode', (
+        WidgetTester tester,
+      ) async {
         final focusNode = FocusNode();
 
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                focusNode: focusNode,
-              ),
+              body: XInput(value: '', focusNode: focusNode),
             ),
           ),
         );
@@ -530,17 +464,15 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: Form(
-                child: XInput(
-                  value: '',
-                  validator: validator,
-                ),
+                child: XInput(value: '', validator: validator),
               ),
             ),
           ),
         );
 
-        final textFormField =
-            tester.widget<TextFormField>(find.byType(TextFormField));
+        final textFormField = tester.widget<TextFormField>(
+          find.byType(TextFormField),
+        );
         expect(textFormField.validator, equals(validator));
       });
 
@@ -575,8 +507,9 @@ void main() {
     });
 
     group('Decoration', () {
-      testWidgets('should apply custom decoration',
-          (WidgetTester tester) async {
+      testWidgets('should apply custom decoration', (
+        WidgetTester tester,
+      ) async {
         const decoration = InputDecoration(
           labelText: 'Email',
           hintText: 'Enter your email',
@@ -585,10 +518,7 @@ void main() {
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                decoration: decoration,
-              ),
+              body: XInput(value: '', decoration: decoration),
             ),
           ),
         );
@@ -597,19 +527,15 @@ void main() {
         expect(find.text('Enter your email'), findsOneWidget);
       });
 
-      testWidgets('should merge decoration with defaults',
-          (WidgetTester tester) async {
-        const decoration = InputDecoration(
-          labelText: 'Custom Label',
-        );
+      testWidgets('should merge decoration with defaults', (
+        WidgetTester tester,
+      ) async {
+        const decoration = InputDecoration(labelText: 'Custom Label');
 
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                decoration: decoration,
-              ),
+              body: XInput(value: '', decoration: decoration),
             ),
           ),
         );
@@ -622,8 +548,9 @@ void main() {
     });
 
     group('onFieldSubmitted', () {
-      testWidgets('should call onFieldSubmitted callback',
-          (WidgetTester tester) async {
+      testWidgets('should call onFieldSubmitted callback', (
+        WidgetTester tester,
+      ) async {
         String? submittedValue;
 
         await tester.pumpWidget(
@@ -646,20 +573,15 @@ void main() {
     });
 
     group('Custom style', () {
-      testWidgets('should apply custom text style',
-          (WidgetTester tester) async {
-        const customStyle = TextStyle(
-          fontSize: 18,
-          color: Colors.blue,
-        );
+      testWidgets('should apply custom text style', (
+        WidgetTester tester,
+      ) async {
+        const customStyle = TextStyle(fontSize: 18, color: Colors.blue);
 
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: '',
-                style: customStyle,
-              ),
+              body: XInput(value: '', style: customStyle),
             ),
           ),
         );
@@ -670,15 +592,13 @@ void main() {
     });
 
     group('Accessibility', () {
-      testWidgets('should have tooltip on clear button',
-          (WidgetTester tester) async {
+      testWidgets('should have tooltip on clear button', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: XInput(
-                value: 'test',
-                onChanged: (_) {},
-              ),
+              body: XInput(value: 'test', onChanged: (_) {}),
             ),
           ),
         );
@@ -696,16 +616,12 @@ void main() {
         expect(iconButton.tooltip, equals('Clear'));
       });
 
-      testWidgets('should have tooltip on visibility toggle',
-          (WidgetTester tester) async {
+      testWidgets('should have tooltip on visibility toggle', (
+        WidgetTester tester,
+      ) async {
         await tester.pumpWidget(
           const MaterialApp(
-            home: Scaffold(
-              body: XInput(
-                value: 'password',
-                obscureText: true,
-              ),
-            ),
+            home: Scaffold(body: XInput(value: 'password', obscureText: true)),
           ),
         );
 

@@ -4,8 +4,10 @@ import 'package:myapp/src/network/model/user/user.dart';
 
 abstract class SignRepository {
   // Login with Email
-  Future<MResult<MUser>> loginWithEmail(
-      {required String email, required String password});
+  Future<MResult<MUser>> loginWithEmail({
+    required String email,
+    required String password,
+  });
 
   // Login via SDK
   Future<MResult<MUser>> connectBEWithGoogle(MSocialUser user);
@@ -18,8 +20,11 @@ abstract class SignRepository {
   Future<MResult<MSocialUser>> loginWithApple();
 
   // Sign up with email
-  Future<MResult<MUser>> signUpWithEmail(
-      {required String email, required String password, required String name});
+  Future<MResult<MUser>> signUpWithEmail({
+    required String email,
+    required String password,
+    required String name,
+  });
 
   Future<MResult<String>> forgotPassword(String email);
 

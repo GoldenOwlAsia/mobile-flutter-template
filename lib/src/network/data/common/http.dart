@@ -6,14 +6,7 @@ import 'package:myapp/src/services/user_prefs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// HTTP methods supported by the XHttp client
-enum XMethod {
-  get,
-  post,
-  put,
-  patch,
-  delete,
-  head;
-}
+enum XMethod { get, post, put, patch, delete, head }
 
 /// A singleton HTTP client wrapper around Dio for making API requests.
 /// Provides centralized configuration, authentication, and error handling.
@@ -41,16 +34,16 @@ class XHttp {
   );
 
   /// Base URL for all API requests
-  String baseUrl = ENV.baseApiUrl;
+  String baseUrl = ENV.I.baseApiUrl;
 
   /// Default timeout duration in seconds for API requests
   final int _defaultSecondTimeout = 15;
 
   /// Default headers for all HTTP requests
   Map<String, String> get _headers => {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-      };
+    'Content-type': 'application/json',
+    'Accept': 'application/json',
+  };
 
   /// Configures and returns a Dio instance with custom settings
   ///
@@ -142,17 +135,20 @@ class XHttp {
     );
 
     try {
-      final Response response = await _configDio(
-              ignoreToken: ignoreToken, timeout: timeout, token: token)
-          .request(
-        url,
-        data: data,
-        queryParameters: queryParameters,
-        options: _checkOptions(method.name, options),
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-        cancelToken: cancelToken,
-      );
+      final Response response =
+          await _configDio(
+            ignoreToken: ignoreToken,
+            timeout: timeout,
+            token: token,
+          ).request(
+            url,
+            data: data,
+            queryParameters: queryParameters,
+            options: _checkOptions(method.name, options),
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
+            cancelToken: cancelToken,
+          );
       bodyResponse = response.data;
       _log.i('> RESPONSE Status< [${response.statusCode}]<  $url');
       _log.i('> RESPONSE Body< ${response.data.toString()}');
@@ -217,11 +213,7 @@ class XHttp {
         Breadcrumb(
           type: 'error',
           category: 'http.exception',
-          data: {
-            'url': url,
-            'method': method.name,
-            'error': e.toString(),
-          },
+          data: {'url': url, 'method': method.name, 'error': e.toString()},
           level: SentryLevel.error,
         ),
       );

@@ -13,11 +13,7 @@ import 'package:myapp/widgets/state/state_loading_widget.dart';
   wrapper: commonScaffoldWrapper,
 )
 Widget errorState() {
-  return Center(
-    child: XStateErrorWidget(
-      onTap: () {},
-    ),
-  );
+  return Center(child: XStateErrorWidget(onTap: () {}));
 }
 
 @Preview(
@@ -26,9 +22,7 @@ Widget errorState() {
   wrapper: commonScaffoldWrapper,
 )
 Widget loadingState() {
-  return const Center(
-    child: XStateLoadingWidget(),
-  );
+  return const Center(child: XStateLoadingWidget());
 }
 
 @Preview(
@@ -56,10 +50,7 @@ Widget emptyNotificationState() {
     title: 'No notifications yet',
     body: "You're all caught up!\n Check back later for new notifications",
     bottom: Center(
-      child: XButton(
-        title: 'Back to home',
-        onPressed: () {},
-      ),
+      child: XButton(title: 'Back to home', onPressed: () {}),
     ),
   );
 }

@@ -38,9 +38,9 @@ void main() {
     when(() => mockDomainManager.sign).thenReturn(mockSignRepository);
 
     // Mock getUser to return empty user for syncUserData() called in constructor
-    when(() => mockUserRepository.getUser(any<String>())).thenAnswer(
-      (_) async => MResult.error('No user'),
-    );
+    when(
+      () => mockUserRepository.getUser(any<String>()),
+    ).thenAnswer((_) async => MResult.error('No user'));
 
     HydratedBloc.storage = MockStorage();
     accountBloc = AccountBloc(mockDomainManager);
@@ -59,9 +59,9 @@ void main() {
       blocTest<AccountBloc, AccountState>(
         'emits state with logged in user',
         setUp: () {
-          when(() => mockUserRepository.getUser(any<String>())).thenAnswer(
-            (_) async => MResult.error('No user'),
-          );
+          when(
+            () => mockUserRepository.getUser(any<String>()),
+          ).thenAnswer((_) async => MResult.error('No user'));
         },
         build: () => AccountBloc(mockDomainManager),
         act: (bloc) {
@@ -89,14 +89,17 @@ void main() {
       blocTest<AccountBloc, AccountState>(
         'updates user name in state',
         setUp: () {
-          when(() => mockUserRepository.getUser(any<String>())).thenAnswer(
-            (_) async => MResult.error('No user'),
-          );
+          when(
+            () => mockUserRepository.getUser(any<String>()),
+          ).thenAnswer((_) async => MResult.error('No user'));
         },
         build: () {
           final bloc = AccountBloc(mockDomainManager);
-          final user =
-              MUser(id: '123', email: 'test@example.com', name: 'Old Name');
+          final user = MUser(
+            id: '123',
+            email: 'test@example.com',
+            name: 'Old Name',
+          );
           bloc.onLoginSuccess(user);
           return bloc;
         },
@@ -104,11 +107,7 @@ void main() {
         wait: const Duration(milliseconds: 100),
         expect: () => [
           AccountState(
-            user: MUser(
-              id: '123',
-              email: 'test@example.com',
-              name: 'New Name',
-            ),
+            user: MUser(id: '123', email: 'test@example.com', name: 'New Name'),
           ),
         ],
       );
@@ -118,9 +117,9 @@ void main() {
       blocTest<AccountBloc, AccountState>(
         'emits new state',
         setUp: () {
-          when(() => mockUserRepository.getUser(any<String>())).thenAnswer(
-            (_) async => MResult.error('No user'),
-          );
+          when(
+            () => mockUserRepository.getUser(any<String>()),
+          ).thenAnswer((_) async => MResult.error('No user'));
         },
         build: () => AccountBloc(mockDomainManager),
         act: (bloc) {
@@ -144,8 +143,9 @@ void main() {
         build: () {
           final user = MUser(id: '123', email: 'test@example.com');
           accountBloc.onLoginSuccess(user);
-          when(() => mockUserRepository.getUser('123'))
-              .thenAnswer((_) async => MResult.success(user));
+          when(
+            () => mockUserRepository.getUser('123'),
+          ).thenAnswer((_) async => MResult.success(user));
           return accountBloc;
         },
         act: (bloc) => bloc.syncUserData(),
@@ -158,23 +158,22 @@ void main() {
       blocTest<AccountBloc, AccountState>(
         'logs out when user fetch fails',
         setUp: () {
-          when(() => mockUserRepository.getUser(any<String>())).thenAnswer(
-            (_) async => MResult.error('No user'),
-          );
+          when(
+            () => mockUserRepository.getUser(any<String>()),
+          ).thenAnswer((_) async => MResult.error('No user'));
         },
         build: () {
           final bloc = AccountBloc(mockDomainManager);
           final user = MUser(id: '123', email: 'test@example.com');
           bloc.onLoginSuccess(user);
-          when(() => mockUserRepository.getUser('123'))
-              .thenAnswer((_) async => MResult.error('User not found'));
+          when(
+            () => mockUserRepository.getUser('123'),
+          ).thenAnswer((_) async => MResult.error('User not found'));
           return bloc;
         },
         act: (bloc) => bloc.syncUserData(),
         wait: const Duration(milliseconds: 200),
-        expect: () => [
-          AccountState(user: MUser.empty()),
-        ],
+        expect: () => [AccountState(user: MUser.empty())],
         verify: (_) {
           verify(() => mockUserRepository.getUser('123')).called(1);
         },
@@ -203,11 +202,7 @@ void main() {
 
       test('fromJson returns correct state', () {
         final json = {
-          'user': {
-            'id': '123',
-            'email': 'test@example.com',
-            'name': 'Test',
-          },
+          'user': {'id': '123', 'email': 'test@example.com', 'name': 'Test'},
           'locale': 'en',
         };
         final state = accountBloc.fromJson(json);

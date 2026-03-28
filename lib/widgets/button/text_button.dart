@@ -33,8 +33,10 @@ class XTextButton extends StatelessWidget {
             }
           }
         : null;
-    final indicator =
-        XIndicator(radius: size.iconSize / 2, color: foregroundColor);
+    final indicator = XIndicator(
+      radius: size.iconSize / 2,
+      color: foregroundColor,
+    );
     return SizedBox(
       height: size.height,
       child: TextButtonTheme(
@@ -54,8 +56,11 @@ class XTextButton extends StatelessWidget {
                     ? indicator
                     : IconTheme(
                         data: IconThemeData(
-                            size: size.iconSize, color: foregroundColor),
-                        child: icon!),
+                          size: size.iconSize,
+                          color: foregroundColor,
+                        ),
+                        child: icon!,
+                      ),
               )
             : TextButton(
                 onPressed: onPressed,

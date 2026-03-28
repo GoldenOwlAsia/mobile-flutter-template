@@ -1,14 +1,20 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 class ENV {
+  static final ENV _instance = ENV._internal();
+  ENV._internal();
+
+  factory ENV() => _instance;
+
+  static ENV get instance => _instance;
+  static ENV get I => instance;
+
   static const bool isDev = true;
 
   /// Sentry DSN for error tracking
-  static String get sentryDsn => dotenv.env['SENTRY_DSN'] ?? '';
+  String get sentryDNS => const String.fromEnvironment('SENTRY_DNS');
 
   /// Base API URL
-  static String get baseApiUrl => dotenv.env['BASE_API_URL'] ?? '';
+  String get baseApiUrl => const String.fromEnvironment('BASE_API_URL');
 
   /// Check if Sentry is configured
-  static bool get isSentryEnabled => sentryDsn.isNotEmpty;
+  bool get isSentryEnabled => sentryDNS.isNotEmpty;
 }

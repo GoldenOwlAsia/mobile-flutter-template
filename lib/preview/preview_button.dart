@@ -25,17 +25,26 @@ Widget buttonsSmall() {
       XSecondaryButton(title: 'Secondary', size: size),
       const SizedBox(height: 12),
       XSecondaryButton(
-          title: 'Secondary', icon: const Icon(Icons.add), size: size),
+        title: 'Secondary',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
       const SizedBox(height: 12),
       XOutlinedButton(title: 'Outlined', size: size),
       const SizedBox(height: 12),
       XOutlinedButton(
-          title: 'Outlined', icon: const Icon(Icons.add), size: size),
+        title: 'Outlined',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
       const SizedBox(height: 12),
       XTextButton(title: 'Text Button', size: size),
       const SizedBox(height: 12),
       XTextButton(
-          title: 'Text Button', icon: const Icon(Icons.add), size: size),
+        title: 'Text Button',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
     ],
   );
 }
@@ -58,17 +67,26 @@ Widget buttonsMedium() {
       XSecondaryButton(title: 'Secondary', size: size),
       const SizedBox(height: 12),
       XSecondaryButton(
-          title: 'Secondary', icon: const Icon(Icons.add), size: size),
+        title: 'Secondary',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
       const SizedBox(height: 12),
       XOutlinedButton(title: 'Outlined', size: size),
       const SizedBox(height: 12),
       XOutlinedButton(
-          title: 'Outlined', icon: const Icon(Icons.add), size: size),
+        title: 'Outlined',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
       const SizedBox(height: 12),
       XTextButton(title: 'Text Button', size: size),
       const SizedBox(height: 12),
       XTextButton(
-          title: 'Text Button', icon: const Icon(Icons.add), size: size),
+        title: 'Text Button',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
     ],
   );
 }
@@ -91,17 +109,26 @@ Widget buttonsLarge() {
       XSecondaryButton(title: 'Secondary', size: size),
       const SizedBox(height: 12),
       XSecondaryButton(
-          title: 'Secondary', icon: const Icon(Icons.add), size: size),
+        title: 'Secondary',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
       const SizedBox(height: 12),
       XOutlinedButton(title: 'Outlined', size: size),
       const SizedBox(height: 12),
       XOutlinedButton(
-          title: 'Outlined', icon: const Icon(Icons.add), size: size),
+        title: 'Outlined',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
       const SizedBox(height: 12),
       XTextButton(title: 'Text Button', size: size),
       const SizedBox(height: 12),
       XTextButton(
-          title: 'Text Button', icon: const Icon(Icons.add), size: size),
+        title: 'Text Button',
+        icon: const Icon(Icons.add),
+        size: size,
+      ),
     ],
   );
 }

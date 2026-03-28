@@ -9,21 +9,21 @@ void main() {
         [1],
         [2],
         [3],
-        [4]
+        [4],
       ]);
       expect(Utils.chunk(list, 2), [
         [1, 2],
-        [3, 4]
+        [3, 4],
       ]);
       expect(Utils.chunk(list, 3), [
         [1, 2, 3],
-        [4]
+        [4],
       ]);
       expect(Utils.chunk(list, 4), [
-        [1, 2, 3, 4]
+        [1, 2, 3, 4],
       ]);
       expect(Utils.chunk(list, 5), [
-        [1, 2, 3, 4]
+        [1, 2, 3, 4],
       ]);
     });
   });

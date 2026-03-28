@@ -27,49 +27,61 @@ class SigninBloc extends Cubit<SigninState> {
     if (state.isValidated == false) {
       return;
     }
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.inProgress,
-      loginType: MSocialType.email,
-    ));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        loginType: MSocialType.email,
+      ),
+    );
     final email = state.email.value;
     final password = state.password.value;
-    final result =
-        await domain.sign.loginWithEmail(email: email, password: password);
+    final result = await domain.sign.loginWithEmail(
+      email: email,
+      password: password,
+    );
     return loginDecision(result);
   }
 
   Future loginWithGoogle() async {
     if (state.status.isInProgress) return;
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.inProgress,
-      loginType: MSocialType.google,
-    ));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        loginType: MSocialType.google,
+      ),
+    );
     final result = await domain.sign.loginWithGoogle();
     return loginSocialDecision(result, MSocialType.google);
   }
 
   Future loginWithApple() async {
     if (state.status.isInProgress) return;
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.inProgress,
-      loginType: MSocialType.apple,
-    ));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        loginType: MSocialType.apple,
+      ),
+    );
     final result = await domain.sign.loginWithApple();
     return loginSocialDecision(result, MSocialType.apple);
   }
 
   Future loginWithFacebook() async {
     if (state.status.isInProgress) return;
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.inProgress,
-      loginType: MSocialType.facebook,
-    ));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        loginType: MSocialType.facebook,
+      ),
+    );
     final result = await domain.sign.loginWithFacebook();
     return loginSocialDecision(result, MSocialType.facebook);
   }
 
   Future loginSocialDecision(
-      MResult<MSocialUser> result, MSocialType socialType) async {
+    MResult<MSocialUser> result,
+    MSocialType socialType,
+  ) async {
     if (result.isSuccess) {
       final data = result.data!;
       if (socialType == MSocialType.google) {
