@@ -20,7 +20,7 @@ dependencies:
   # HELPER
   equatable: ^2.0.8
   logger: ^2.7.0
-  device_info_plus: ^12.3.0
+  device_info_plus: ^12.4.0
   package_info_plus: ^9.0.0
   shared_preferences: ^2.5.5
   url_launcher: ^6.3.2
