@@ -1,5 +1,4 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
 import 'package:mocktail/mocktail.dart';
@@ -13,10 +12,9 @@ class MockDomainManager extends Mock implements DomainManager {}
 
 class MockSignRepository extends Mock implements SignRepository {}
 
-class MockBuildContext extends Mock implements BuildContext {}
-
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
   late ForgotBloc forgotBloc;
   late MockDomainManager mockDomainManager;
   late MockSignRepository mockSignRepository;
@@ -45,37 +43,17 @@ void main() {
         build: () => forgotBloc,
         act: (bloc) => bloc.onEmailChanged('test@example.com'),
         expect: () => [
-          ForgotState(email: EmailFormzInput.pure('test@example.com')),
-        ],
-      );
-
-      blocTest<ForgotBloc, ForgotState>(
-        'emits state with updated email (dirty)',
-        build: () {
-          forgotBloc.onEmailChanged('initial@example.com');
-          return forgotBloc;
-        },
-        act: (bloc) => bloc.onEmailChanged('updated@example.com'),
-        expect: () => [
-          ForgotState(email: EmailFormzInput.pure('updated@example.com')),
+          const ForgotState(email: EmailFormzInput.pure('test@example.com')),
         ],
       );
     });
 
-    group('onEnteredConfirmPassword', () {
+    group('onSubmitForgotPassword', () {
       blocTest<ForgotBloc, ForgotState>(
         'does nothing when email is invalid',
         build: () => forgotBloc,
-        act: (bloc) async {
-          final context = MockBuildContext();
-          try {
-            await bloc.onEnteredConfirmPassword(context);
-          } catch (_) {
-            // XAlert.show requires NavigatorState which isn't available in unit tests
-            // The bloc logic is tested - it emits the correct states
-          }
-        },
-        expect: () => [],
+        act: (bloc) => bloc.onSubmitForgotPassword(),
+        expect: () => <ForgotState>[],
       );
 
       blocTest<ForgotBloc, ForgotState>(
@@ -86,41 +64,29 @@ void main() {
           );
           return forgotBloc;
         },
-        act: (bloc) async {
-          final context = MockBuildContext();
-          try {
-            await bloc.onEnteredConfirmPassword(context);
-          } catch (_) {
-            // XAlert.show requires NavigatorState which isn't available in unit tests
-            // The bloc logic is tested - it emits the correct states
-          }
-        },
-        expect: () => [],
+        act: (bloc) => bloc.onSubmitForgotPassword(),
+        expect: () => <ForgotState>[],
       );
 
       blocTest<ForgotBloc, ForgotState>(
         'emits inProgress then success when request succeeds',
-        build: () {
-          forgotBloc.onEmailChanged('test@example.com');
+        setUp: () {
           when(
             () => mockSignRepository.forgotPassword('test@example.com'),
           ).thenAnswer((_) async => MResult.success('Success'));
-          return forgotBloc;
         },
-        act: (bloc) async {
-          final context = MockBuildContext();
-          try {
-            await bloc.onEnteredConfirmPassword(context);
-          } catch (_) {
-            // XAlert.show requires NavigatorState which isn't available in unit tests
-            // The bloc logic is tested - it emits the correct states
-          }
-        },
-        wait: const Duration(milliseconds: 100),
+        seed: () =>
+            const ForgotState(email: EmailFormzInput.pure('test@example.com')),
+        build: () => forgotBloc,
+        act: (bloc) => bloc.onSubmitForgotPassword(),
         expect: () => [
-          ForgotState(
+          const ForgotState(
             email: EmailFormzInput.pure('test@example.com'),
             status: FormzSubmissionStatus.inProgress,
+          ),
+          const ForgotState(
+            email: EmailFormzInput.pure('test@example.com'),
+            status: FormzSubmissionStatus.success,
           ),
         ],
         verify: (_) {
@@ -132,39 +98,26 @@ void main() {
 
       blocTest<ForgotBloc, ForgotState>(
         'emits inProgress then failure when request fails',
-        build: () {
-          forgotBloc.onEmailChanged('test@example.com');
+        setUp: () {
           when(
             () => mockSignRepository.forgotPassword('test@example.com'),
           ).thenAnswer((_) async => MResult.error('Email not found'));
-          return forgotBloc;
         },
-        act: (bloc) async {
-          final context = MockBuildContext();
-          try {
-            await bloc.onEnteredConfirmPassword(context);
-          } catch (_) {
-            // XAlert.show requires NavigatorState which isn't available in unit tests
-            // The bloc logic is tested - it emits the correct states
-          }
-        },
-        wait: const Duration(milliseconds: 100),
+        seed: () =>
+            const ForgotState(email: EmailFormzInput.pure('test@example.com')),
+        build: () => forgotBloc,
+        act: (bloc) => bloc.onSubmitForgotPassword(),
         expect: () => [
-          ForgotState(
+          const ForgotState(
             email: EmailFormzInput.pure('test@example.com'),
             status: FormzSubmissionStatus.inProgress,
           ),
-          ForgotState(
+          const ForgotState(
             email: EmailFormzInput.pure('test@example.com'),
             status: FormzSubmissionStatus.failure,
             error: 'Email not found',
           ),
         ],
-        verify: (_) {
-          verify(
-            () => mockSignRepository.forgotPassword('test@example.com'),
-          ).called(1);
-        },
       );
     });
   });

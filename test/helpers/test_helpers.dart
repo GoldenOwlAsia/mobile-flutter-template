@@ -1,13 +1,16 @@
-// import 'package:flutter/material.dart';
-import 'package:myapp/src/router/coordinator.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:myapp/generated/l10n/app_localizations.dart';
 
-/// Sets up NavigatorState for tests that require UI dependencies
-/// This should be called in setUp() for tests that use XAlert or AppCoordinator
-void setupNavigatorForTests() {
-  // Initialize the navigator key if not already set
-  if (AppCoordinator.navigatorKey.currentState == null) {
-    // final navigatorKey = GlobalKey<NavigatorState>();
-    // Note: In a real test, you'd need to create a MaterialApp widget
-    // For now, we'll handle errors gracefully in tests
-  }
+Widget buildTestableWidget(Widget child) {
+  return MaterialApp(
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
+    home: child,
+  );
+}
+
+Future<void> pumpTestableWidget(WidgetTester tester, Widget child) async {
+  await tester.pumpWidget(buildTestableWidget(child));
+  await tester.pumpAndSettle();
 }

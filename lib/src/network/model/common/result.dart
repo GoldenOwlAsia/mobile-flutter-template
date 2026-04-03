@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'error_code.dart';
+import 'package:myapp/src/network/model/common/error_code.dart';
 
 class MResult<T> {
-  MResult.exception(Object? e) {
-    data = null;
+  final T? data;
+  final String? error;
+
+  const MResult._({this.data, this.error});
+
+  factory MResult.success(T? data) => MResult._(data: data);
+
+  factory MResult.error(String? error) => MResult._(error: error ?? '');
+
+  factory MResult.exception(Object? e) {
+    String? errorMsg;
     if (e is PlatformException) {
-      error = e.message;
+      errorMsg = e.message;
     } else if (e is AssertionError) {
-      error = e.message?.toString();
+      errorMsg = e.message?.toString();
     } else if (e is FlutterError) {
-      error = e.message;
+      errorMsg = e.message;
     }
-    error ??= MErrorCode.unknown;
-  }
-  MResult.error(String? error) {
-    data = null;
-    this.error = error ?? '';
-  }
-  MResult.success(this.data) {
-    error = null;
+    return MResult._(error: errorMsg ?? MErrorCode.unknown);
   }
 
-  T? data;
-  String? error;
   bool get isError => error != null;
   bool get isSuccess => !isError;
 }

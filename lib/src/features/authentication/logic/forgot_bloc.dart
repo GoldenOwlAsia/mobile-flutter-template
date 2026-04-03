@@ -1,13 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/authentication/model/email_fromz.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/common/result.dart';
-import 'package:myapp/src/router/coordinator.dart';
 
 part 'forgot_state.dart';
 
@@ -17,27 +14,21 @@ class ForgotBloc extends Cubit<ForgotState> {
 
   ForgotBloc(this.domain) : super(const ForgotState());
 
-  /// Step 3 (Register)
-  Future onEnteredConfirmPassword(BuildContext context) async {
-    if (state.email.isValid == false || state.status.isInProgress) {
-      return;
-    }
+  Future<void> onSubmitForgotPassword() async {
+    if (state.email.isValid == false || state.status.isInProgress) return;
+
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
     final MResult<String> result = await domain.sign.forgotPassword(
       state.email.value,
     );
     if (result.isSuccess) {
-      await XAlert.show(
-        body:
-            'Your request success! Please check your email to reset your password',
-      );
-      AppCoordinator.pop(true);
+      emit(state.copyWith(status: FormzSubmissionStatus.success));
     } else {
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.failure,
-          error: result.error,
+          error: result.error ?? '',
         ),
       );
     }

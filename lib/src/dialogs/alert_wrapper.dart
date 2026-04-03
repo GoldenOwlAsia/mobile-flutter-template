@@ -22,7 +22,7 @@ class XAlert {
   }
 
   /// Shows a confirmation dialog
-  Future showCustomAlert({
+  Future<String?> showCustomAlert({
     Widget? title,
     Widget? body,
     List<XAlertButton> actions = const [],
@@ -65,7 +65,7 @@ class XAlert {
     );
   }
 
-  static Future showForceUpdate() {
+  static Future<void> showForceUpdate() {
     return showDialog(
       context: context,
       barrierDismissible: false,

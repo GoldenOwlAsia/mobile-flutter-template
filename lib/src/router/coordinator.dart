@@ -17,36 +17,40 @@ class AppCoordinator {
     Map<String, String> params = const <String, String>{},
     Map<String, dynamic> queryParams = const <String, dynamic>{},
     Object? extra,
-  }) => context.goNamed(
-    name,
-    pathParameters: params,
-    queryParameters: queryParams,
-    extra: extra,
-  );
+  }) =>
+      context.goNamed(
+        name,
+        pathParameters: params,
+        queryParameters: queryParams,
+        extra: extra,
+      );
 
-  static void showHomeScreen() => context.goNamed(AppRouteNames.home.name);
+  static void showHomeScreen() =>
+      context.goNamed(AppRouteNames.home.routeName);
+
   static void showAccountScreen() =>
-      context.goNamed(AppRouteNames.account.name);
+      context.goNamed(AppRouteNames.account.routeName);
 
   static Future<T?> showSignInScreen<T extends Object?>() =>
-      context.pushNamed<T>(AppRouteNames.signIn.name);
+      context.pushNamed<T>(AppRouteNames.signIn.routeName);
 
   static Future<T?> showSignUpScreen<T extends Object?>() =>
-      context.pushNamed<T>(AppRouteNames.signUp.name);
+      context.pushNamed<T>(AppRouteNames.signUp.routeName);
 
   static Future<T?> showForgotPasswordScreen<T extends Object?>() =>
-      context.pushNamed<T>(AppRouteNames.forgotPassword.name);
+      context.pushNamed<T>(AppRouteNames.forgotPassword.routeName);
 
   static Future<T?> showSampleScreen<T extends Object?>() =>
-      context.pushNamed<T>(AppRouteNames.sample.name);
+      context.pushNamed<T>(AppRouteNames.sample.routeName);
 
   static Future<T?> showSampleDetails<T extends Object?>({
     required String id,
-  }) => context.pushNamed<T>(
-    AppRouteNames.sampleDetails.name,
-    pathParameters: {AppRouteNames.sampleDetails.paramName!: id},
-  );
+  }) =>
+      context.pushNamed<T>(
+        AppRouteNames.sampleDetails.routeName,
+        pathParameters: {AppRouteNames.sampleDetails.paramName!: id},
+      );
 
   static Future<T?> showProfile<T extends Object?>() =>
-      context.pushNamed<T>(AppRouteNames.profile.name);
+      context.pushNamed<T>(AppRouteNames.profile.routeName);
 }

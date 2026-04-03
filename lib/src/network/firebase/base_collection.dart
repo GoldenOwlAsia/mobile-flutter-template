@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:myapp/src/network/model/common/error_code.dart';
 import 'package:myapp/src/network/model/common/result.dart';
+import 'package:myapp/src/utils/logger.dart';
 import 'package:myapp/src/utils/utils.dart';
 
 class BaseCollectionReference<T> {
@@ -11,7 +11,7 @@ class BaseCollectionReference<T> {
     required this.getObjectId,
   });
 
-  void log(dynamic value) => debugPrint('$value');
+  void log(dynamic value) => xLog.d(value);
   final CollectionReference<T> ref;
   final T Function(T, String id) setObjectId;
   final String Function(T) getObjectId;

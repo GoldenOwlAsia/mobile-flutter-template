@@ -9,10 +9,11 @@ import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/generated/l10n/localization_utils.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/user/user.dart';
+import 'package:myapp/src/utils/logger.dart';
 
 part 'account_state.dart';
 
-@injectable
+@lazySingleton
 class AccountBloc extends HydratedCubit<AccountState> {
   final DomainManager domain;
 
@@ -20,11 +21,9 @@ class AccountBloc extends HydratedCubit<AccountState> {
     syncUserData();
   }
 
-  StreamController<MUser> statusStream = StreamController.broadcast();
-
-  Future syncUserData() async {
+  Future<void> syncUserData() async {
     final String id = state.user.id;
-    if (id.isNotEmpty == true) {
+    if (id.isNotEmpty) {
       final result = await domain.user.getUser(id);
       if (result.isSuccess) {
         onUserChange(state.copyWith(user: result.data));
@@ -42,7 +41,7 @@ class AccountBloc extends HydratedCubit<AccountState> {
     onUserChange(state.copyWith(user: state.user.copyWith(name: name)));
   }
 
-  Future onLogOut(BuildContext context) async {
+  Future<dynamic> onLogOut(BuildContext context) async {
     final key = await XAlert.show(
       title: 'Logout',
       body: 'Are you sure you would like to logout?',
@@ -56,14 +55,14 @@ class AccountBloc extends HydratedCubit<AccountState> {
       ],
     );
     if (key == 'yes') {
-      domain.sign.logOut(state.user);
+      await domain.sign.logOut(state.user);
       onUserChange(state.logOut());
       return true;
     }
     return false;
   }
 
-  Future onRemoveAccount(BuildContext context) async {
+  Future<dynamic> onRemoveAccount(BuildContext context) async {
     final key = await XAlert.show(
       title: 'Remove Account',
       body:
@@ -78,7 +77,7 @@ class AccountBloc extends HydratedCubit<AccountState> {
       ],
     );
     if (key == 'yes') {
-      domain.sign.removeAccount(state.user);
+      await domain.sign.removeAccount(state.user);
       onUserChange(state.logOut());
       return true;
     }
@@ -93,7 +92,8 @@ class AccountBloc extends HydratedCubit<AccountState> {
   AccountState? fromJson(Map<String, dynamic> json) {
     try {
       return AccountState.fromJson(json);
-    } catch (_) {
+    } on Object catch (e, stackTrace) {
+      xLog.e('AccountBloc.fromJson failed', error: e, stackTrace: stackTrace);
       return AccountState.ds();
     }
   }
@@ -102,7 +102,8 @@ class AccountBloc extends HydratedCubit<AccountState> {
   Map<String, dynamic>? toJson(AccountState state) {
     try {
       return state.toJson();
-    } catch (_) {
+    } on Object catch (e, stackTrace) {
+      xLog.e('AccountBloc.toJson failed', error: e, stackTrace: stackTrace);
       return null;
     }
   }

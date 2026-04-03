@@ -1,7 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
-import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/features/authentication/logic/signin_bloc.dart';
@@ -10,6 +9,7 @@ import 'package:myapp/src/features/authentication/model/model_input.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/data/user/user_repository.dart';
 import 'package:myapp/src/network/domain_manager.dart';
+import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 
 class MockDomainManager extends Mock implements DomainManager {}
@@ -23,7 +23,6 @@ class MockAccountBloc extends Mock implements AccountBloc {}
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  // Register fallback values for mocktail
   registerFallbackValue(MUser(id: '', email: ''));
 
   late SigninBloc signinBloc;
@@ -41,16 +40,11 @@ void main() {
     when(() => mockDomainManager.sign).thenReturn(mockSignRepository);
     when(() => mockDomainManager.user).thenReturn(mockUserRepository);
 
-    // Register AccountBloc in GetIt for testing
-    GetIt.instance.reset();
-    GetIt.instance.registerFactory<AccountBloc>(() => mockAccountBloc);
-
-    signinBloc = SigninBloc(mockDomainManager);
+    signinBloc = SigninBloc(mockDomainManager, mockAccountBloc);
   });
 
   tearDown(() {
     signinBloc.close();
-    GetIt.instance.reset();
   });
 
   group('SigninBloc', () {
@@ -64,7 +58,7 @@ void main() {
         build: () => signinBloc,
         act: (bloc) => bloc.onEmailChanged('test@example.com'),
         expect: () => [
-          SigninState(email: EmailFormzInput.pure('test@example.com')),
+          const SigninState(email: EmailFormzInput.pure('test@example.com')),
         ],
       );
 
@@ -76,7 +70,7 @@ void main() {
         },
         act: (bloc) => bloc.onEmailChanged('updated@example.com'),
         expect: () => [
-          SigninState(email: EmailFormzInput.pure('updated@example.com')),
+          const SigninState(email: EmailFormzInput.pure('updated@example.com')),
         ],
       );
     });
@@ -87,7 +81,7 @@ void main() {
         build: () => signinBloc,
         act: (bloc) => bloc.onPasswordChanged('password123'),
         expect: () => [
-          SigninState(password: PasswordFormzInput.dirty('password123')),
+          const SigninState(password: PasswordFormzInput.dirty('password123')),
         ],
       );
     });
@@ -102,26 +96,74 @@ void main() {
           return signinBloc;
         },
         act: (bloc) => bloc.loginWithEmail(),
-        expect: () => [],
+        expect: () => <SigninState>[],
       );
 
       blocTest<SigninBloc, SigninState>(
         'does nothing when form is not validated',
         build: () => signinBloc,
         act: (bloc) => bloc.loginWithEmail(),
-        expect: () => [],
+        expect: () => <SigninState>[],
       );
 
-      // NOTE: Full success/failure flow tests are skipped because they require
-      // static dependencies (AppCoordinator, XAlert, GetIt) that cannot be
-      // easily mocked in unit tests. To properly test these flows, the bloc
-      // should be refactored to inject these dependencies.
-      //
-      // The above blocTests verify:
-      // - State validation (inProgress guard, form validation)
-      // - Field change handlers (onEmailChanged, onPasswordChanged)
-      //
-      // Integration tests should cover the full login flow.
+      blocTest<SigninBloc, SigninState>(
+        'emits success and notifies AccountBloc on successful login',
+        setUp: () {
+          when(
+            () => mockSignRepository.loginWithEmail(
+              email: any(named: 'email'),
+              password: any(named: 'password'),
+            ),
+          ).thenAnswer(
+            (_) async => MResult.success(MUser(id: '1', email: 'test@e.com')),
+          );
+          when(
+            () => mockAccountBloc.onLoginSuccess(any()),
+          ).thenReturn(null);
+        },
+        seed: () => const SigninState(
+          email: EmailFormzInput.pure('test@e.com'),
+          password: PasswordFormzInput.dirty('password123'),
+        ),
+        build: () => signinBloc,
+        act: (bloc) => bloc.loginWithEmail(),
+        expect: () => [
+          isA<SigninState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
+          isA<SigninState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.success),
+        ],
+        verify: (_) {
+          verify(() => mockAccountBloc.onLoginSuccess(any())).called(1);
+        },
+      );
+
+      blocTest<SigninBloc, SigninState>(
+        'emits failure with message on failed login',
+        setUp: () {
+          when(
+            () => mockSignRepository.loginWithEmail(
+              email: any(named: 'email'),
+              password: any(named: 'password'),
+            ),
+          ).thenAnswer(
+            (_) async => MResult.error('Invalid credentials'),
+          );
+        },
+        seed: () => const SigninState(
+          email: EmailFormzInput.pure('test@e.com'),
+          password: PasswordFormzInput.dirty('password123'),
+        ),
+        build: () => signinBloc,
+        act: (bloc) => bloc.loginWithEmail(),
+        expect: () => [
+          isA<SigninState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
+          isA<SigninState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.failure)
+              .having((s) => s.message, 'message', 'Invalid credentials'),
+        ],
+      );
     });
 
     group('loginWithGoogle', () {
@@ -134,18 +176,8 @@ void main() {
           return signinBloc;
         },
         act: (bloc) => bloc.loginWithGoogle(),
-        expect: () => [],
+        expect: () => <SigninState>[],
       );
-
-      // NOTE: Full Google login flow tests are skipped - see comment above.
-    });
-
-    group('loginWithApple', () {
-      // NOTE: Full Apple login flow tests are skipped - see comment above.
-    });
-
-    group('loginWithFacebook', () {
-      // NOTE: Full Facebook login flow tests are skipped - see comment above.
     });
   });
 }

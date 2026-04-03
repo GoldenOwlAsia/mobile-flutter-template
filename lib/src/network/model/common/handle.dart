@@ -1,43 +1,45 @@
 import 'dart:core';
 
-import 'result.dart';
+import 'package:myapp/src/network/model/common/result.dart';
+
 part 'status.dart';
 
 class MHandle<T> {
-  MHandle.result(MResult<T> result) {
-    message = result.error;
-    _data = result.data;
-    _status = result.isError ? MStatus.failure : MStatus.success;
-  }
+  final String? message;
+  final T? data;
+  final MStatus status;
 
-  MHandle.error(this.message) {
-    _data = null;
-    _status = MStatus.failure;
-  }
+  const MHandle._({
+    this.message,
+    this.data,
+    this.status = MStatus.initial,
+  });
 
-  MHandle.completed(T data) {
-    _data = data;
-    message = '';
-    _status = MStatus.success;
-  }
-  MHandle.loading({this.message}) {
-    _status = MStatus.loading;
-  }
+  const MHandle() : this._();
 
-  MHandle() {
-    _status = MStatus.initial;
-  }
-  String? message;
+  factory MHandle.result(MResult<T> result) => MHandle._(
+        message: result.error,
+        data: result.data,
+        status: result.isError ? MStatus.failure : MStatus.success,
+      );
 
-  T? _data;
+  factory MHandle.error(String? message) => MHandle._(
+        message: message,
+        status: MStatus.failure,
+      );
 
-  T? get data => _data;
+  factory MHandle.completed(T data) => MHandle._(
+        data: data,
+        message: '',
+        status: MStatus.success,
+      );
 
-  MStatus _status = MStatus.initial;
+  factory MHandle.loading({String? message}) => MHandle._(
+        message: message,
+        status: MStatus.loading,
+      );
 
-  bool get isLoading => _status == MStatus.loading;
-
-  bool get isCompleted => _status == MStatus.success;
-
-  bool get isError => _status == MStatus.failure;
+  bool get isLoading => status == MStatus.loading;
+  bool get isCompleted => status == MStatus.success;
+  bool get isError => status == MStatus.failure;
 }

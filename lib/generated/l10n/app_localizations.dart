@@ -376,6 +376,150 @@ abstract class AppLocalizations {
   /// **'yourself'**
   String get chat_replied_yourself;
 
+  /// No description provided for @sign_login_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get sign_login_title;
+
+  /// No description provided for @sign_login_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get sign_login_email;
+
+  /// No description provided for @sign_login_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get sign_login_password;
+
+  /// No description provided for @sign_login_forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get sign_login_forgotPassword;
+
+  /// No description provided for @sign_login_noAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get sign_login_noAccount;
+
+  /// No description provided for @sign_login_signupNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up now'**
+  String get sign_login_signupNow;
+
+  /// No description provided for @sign_login_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Login Error'**
+  String get sign_login_error;
+
+  /// No description provided for @sign_signup_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get sign_signup_title;
+
+  /// No description provided for @sign_signup_username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get sign_signup_username;
+
+  /// No description provided for @sign_signup_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get sign_signup_email;
+
+  /// No description provided for @sign_signup_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get sign_signup_password;
+
+  /// No description provided for @sign_signup_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Signup success'**
+  String get sign_signup_success;
+
+  /// No description provided for @sign_signup_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Signup fail'**
+  String get sign_signup_error;
+
+  /// No description provided for @sign_forgot_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get sign_forgot_title;
+
+  /// No description provided for @sign_forgot_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get sign_forgot_email;
+
+  /// No description provided for @sign_forgot_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request was successful! Please check your email to reset your password.'**
+  String get sign_forgot_success;
+
+  /// No description provided for @account_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get account_logout;
+
+  /// No description provided for @account_logout_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you would like to logout?'**
+  String get account_logout_confirm;
+
+  /// No description provided for @account_removeAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Account'**
+  String get account_removeAccount;
+
+  /// No description provided for @account_removeAccount_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you would like to remove account? Your profile will be cleared'**
+  String get account_removeAccount_confirm;
+
+  /// No description provided for @account_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'User Profile'**
+  String get account_profile;
+
+  /// No description provided for @account_changePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change password'**
+  String get account_changePassword;
+
+  /// No description provided for @account_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get account_address;
+
+  /// No description provided for @common_pageNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Page not found'**
+  String get common_pageNotFound;
+
   /// No description provided for @last_line.
   ///
   /// In en, this message translates to:

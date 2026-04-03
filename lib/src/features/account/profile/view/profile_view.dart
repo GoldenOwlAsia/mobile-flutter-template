@@ -10,11 +10,12 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black87,
+        foregroundColor: theme.colorScheme.onSurface,
       ),
       body: Container(
         padding: const EdgeInsets.all(8),
@@ -32,16 +33,16 @@ class ProfileView extends StatelessWidget {
             InkWell(
               onTap: () async {
                 final result = await context.read<AccountBloc>().onLogOut(
-                  context,
-                );
-                if (result == true) {
+                      context,
+                    );
+                if (result == true && context.mounted) {
                   AppCoordinator.pop();
                 }
               },
-              child: const XCard(
+              child: XCard(
                 child: Text(
                   'Logout',
-                  style: TextStyle(color: Color(0xFFC94A28)),
+                  style: TextStyle(color: theme.colorScheme.error),
                 ),
               ),
             ),
@@ -51,14 +52,14 @@ class ProfileView extends StatelessWidget {
                 final result = await context
                     .read<AccountBloc>()
                     .onRemoveAccount(context);
-                if (result == true) {
+                if (result == true && context.mounted) {
                   AppCoordinator.pop();
                 }
               },
-              child: const XCard(
+              child: XCard(
                 child: Text(
                   'Remove Account',
-                  style: TextStyle(color: Color(0xFFC94A28)),
+                  style: TextStyle(color: theme.colorScheme.error),
                 ),
               ),
             ),

@@ -18,7 +18,7 @@ abstract class StreamCubit<T, D> extends Cubit<T> {
         var data = transformData(incomingData);
         onStreamData(data);
       },
-      onError: (error) {
+      onError: (Object error) {
         onStreamError(error);
       },
     );

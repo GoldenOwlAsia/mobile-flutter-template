@@ -12,7 +12,7 @@ class XStatePaginationWidget extends StatefulWidget {
     super.key,
   });
   final MPagination page;
-  final Function() loadMore;
+  final void Function() loadMore;
   final bool autoLoad;
 
   @override
@@ -57,7 +57,7 @@ class XBoxLoadMore extends StatelessWidget {
     super.key,
   });
   final MPagination page;
-  final Function() loadMore;
+  final void Function() loadMore;
   final Widget? child;
 
   @override

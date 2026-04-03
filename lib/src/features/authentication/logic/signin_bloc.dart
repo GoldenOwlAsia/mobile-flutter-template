@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/features/authentication/model/email_fromz.dart';
 import 'package:myapp/src/features/authentication/model/model_input.dart';
@@ -12,37 +10,34 @@ import 'package:myapp/src/network/domain_manager.dart';
 import 'package:formz/formz.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
 import 'package:myapp/src/network/model/user/user.dart';
-import 'package:myapp/src/router/coordinator.dart';
 
 part 'signin_state.dart';
 
 @injectable
 class SigninBloc extends Cubit<SigninState> {
   final DomainManager domain;
+  final AccountBloc accountBloc;
 
-  SigninBloc(this.domain) : super(const SigninState());
+  SigninBloc(this.domain, this.accountBloc) : super(const SigninState());
 
-  Future loginWithEmail() async {
+  Future<void> loginWithEmail() async {
     if (state.status.isInProgress) return;
-    if (state.isValidated == false) {
-      return;
-    }
+    if (state.isValidated == false) return;
+
     emit(
       state.copyWith(
         status: FormzSubmissionStatus.inProgress,
         loginType: MSocialType.email,
       ),
     );
-    final email = state.email.value;
-    final password = state.password.value;
     final result = await domain.sign.loginWithEmail(
-      email: email,
-      password: password,
+      email: state.email.value,
+      password: state.password.value,
     );
-    return loginDecision(result);
+    _handleLoginResult(result);
   }
 
-  Future loginWithGoogle() async {
+  Future<void> loginWithGoogle() async {
     if (state.status.isInProgress) return;
     emit(
       state.copyWith(
@@ -51,10 +46,10 @@ class SigninBloc extends Cubit<SigninState> {
       ),
     );
     final result = await domain.sign.loginWithGoogle();
-    return loginSocialDecision(result, MSocialType.google);
+    await _handleSocialResult(result, MSocialType.google);
   }
 
-  Future loginWithApple() async {
+  Future<void> loginWithApple() async {
     if (state.status.isInProgress) return;
     emit(
       state.copyWith(
@@ -63,10 +58,10 @@ class SigninBloc extends Cubit<SigninState> {
       ),
     );
     final result = await domain.sign.loginWithApple();
-    return loginSocialDecision(result, MSocialType.apple);
+    await _handleSocialResult(result, MSocialType.apple);
   }
 
-  Future loginWithFacebook() async {
+  Future<void> loginWithFacebook() async {
     if (state.status.isInProgress) return;
     emit(
       state.copyWith(
@@ -75,60 +70,65 @@ class SigninBloc extends Cubit<SigninState> {
       ),
     );
     final result = await domain.sign.loginWithFacebook();
-    return loginSocialDecision(result, MSocialType.facebook);
+    await _handleSocialResult(result, MSocialType.facebook);
   }
 
-  Future loginSocialDecision(
+  Future<void> _handleSocialResult(
     MResult<MSocialUser> result,
     MSocialType socialType,
   ) async {
     if (result.isSuccess) {
       final data = result.data!;
-      if (socialType == MSocialType.google) {
-        connectBEWithGoogle(data);
-      } else if (socialType == MSocialType.facebook) {
-        connectBEWithFacebook(data);
-      } else if (socialType == MSocialType.apple) {
-        connectBEWithApple(data);
-      }
+      await _connectBEWithSocial(data, socialType);
     } else {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
-      XAlert.show(title: "Error", body: result.error);
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          message: result.error ?? '',
+        ),
+      );
     }
   }
 
-  Future connectBEWithGoogle(MSocialUser user) async {
-    final result = await domain.sign.connectBEWithGoogle(user);
+  Future<void> _connectBEWithSocial(
+    MSocialUser user,
+    MSocialType socialType,
+  ) async {
+    final MResult<MUser> result;
+    switch (socialType) {
+      case MSocialType.google:
+        result = await domain.sign.connectBEWithGoogle(user);
+      case MSocialType.facebook:
+        result = await domain.sign.connectBEWithFacebook(user);
+      case MSocialType.apple:
+        result = await domain.sign.connectBEWithApple(user);
+      case MSocialType.email:
+        return;
+    }
     if (result.isSuccess) {
       final userResult = await domain.user.getOrAddUser(result.data!);
-      return loginDecision(userResult, socialType: user.type);
+      _handleLoginResult(userResult);
+    } else {
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          message: result.error ?? '',
+        ),
+      );
     }
   }
 
-  Future connectBEWithFacebook(MSocialUser user) async {
-    final result = await domain.sign.connectBEWithFacebook(user);
+  void _handleLoginResult(MResult<MUser> result) {
     if (result.isSuccess) {
-      final userResult = await domain.user.getOrAddUser(result.data!);
-      return loginDecision(userResult, socialType: user.type);
-    }
-  }
-
-  Future connectBEWithApple(MSocialUser user) async {
-    final result = await domain.sign.connectBEWithApple(user);
-    if (result.isSuccess) {
-      final userResult = await domain.user.getOrAddUser(result.data!);
-      return loginDecision(userResult, socialType: user.type);
-    }
-  }
-
-  Future loginDecision(MResult<MUser> result, {MSocialType? socialType}) async {
-    if (result.isSuccess) {
+      accountBloc.onLoginSuccess(result.data!);
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-      GetIt.I<AccountBloc>().onLoginSuccess(result.data!);
-      AppCoordinator.pop(true);
     } else {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
-      XAlert.show(title: 'Login Error', body: result.error);
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          message: result.error ?? '',
+        ),
+      );
     }
   }
 

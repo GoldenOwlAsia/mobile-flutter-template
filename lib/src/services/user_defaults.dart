@@ -12,14 +12,9 @@ class _keys {
   static const String token = 'token';
 }
 
-class UserPrefs {
-  factory UserPrefs() => instance;
-  UserPrefs._internal();
-
-  static final UserPrefs instance = UserPrefs._internal();
-  static UserPrefs get I => instance;
+class UserDefaults {
   late SharedPreferences _prefs;
-  Future initialize() async {
+  Future<void> initialize() async {
     _prefs = await SharedPreferences.getInstance();
   }
 
@@ -70,7 +65,7 @@ class UserPrefs {
         if (map['id'] == null) {
           return null;
         } else {
-          return MUser.fromJson(map);
+          return MUser.fromJson(map as Map<String, Object?>);
         }
       }
     } catch (e) {

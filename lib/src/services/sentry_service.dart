@@ -9,26 +9,27 @@ class SentryService {
   static Future<void> setupSentry({required AppRunner appRunner}) async {
     await SentryFlutter.init(
       (options) {
-        options.dsn = ENV.I.sentryDNS;
-        options.tracesSampleRate = 1.0;
+        options.dsn = ENV.sentryDNS;
+        options.tracesSampleRate = ENV.flavor.isStaging ? 1.0 : 0.2;
         options.reportPackages = false;
-        options.addInAppInclude('sentry_flutter_example');
+        options.addInAppInclude('myapp');
         options.considerInAppFramesByDefault = false;
         options.attachThreads = true;
         options.enableWindowMetricBreadcrumbs = true;
         options.addIntegration(LoggingIntegration());
-        options.sendDefaultPii = true;
+        options.sendDefaultPii = false;
         options.reportSilentFlutterErrors = true;
-        options.attachScreenshot = true;
-        // We can enable Sentry debug logging during development. This is likely
-        // going to log too much for your app, but can be useful when figuring out
-        // configuration issues, e.g. finding out why your events are not uploaded.
-        options.diagnosticLevel = SentryLevel.debug;
+        options.attachScreenshot = ENV.flavor.isStaging;
+        options.diagnosticLevel =
+            ENV.flavor.isStaging ? SentryLevel.debug : SentryLevel.warning;
         options.debug = kDebugMode;
-        options.spotlight = Spotlight(enabled: true);
+        options.spotlight = Spotlight(enabled: kDebugMode);
         options.enableTimeToFullDisplayTracing = true;
 
-        options.maxRequestBodySize = MaxRequestBodySize.always;
+        options.maxRequestBodySize =
+            ENV.flavor.isStaging
+                ? MaxRequestBodySize.always
+                : MaxRequestBodySize.small;
         options.navigatorKey = AppCoordinator.navigatorKey;
 
         options.replay.sessionSampleRate = 0.0;
@@ -36,27 +37,24 @@ class SentryService {
 
         options.enableLogs = true;
 
-        options.dist = '1';
-        options.environment = ENV.isDev ? 'development' : 'production';
+        options.environment = ENV.flavor.name;
         options.beforeSend = beforeSend;
       },
-      // Init your App.
       appRunner: appRunner,
     );
   }
 
   static const ignoreErrors = [
-    'No host specified in URI', //! Failed to load network image
-    'OSStatus error -12939', //! unknown video error
+    'No host specified in URI',
+    'OSStatus error -12939',
     'VideoError',
     'Gyroscope sensor',
     'was used after being disposed',
-    //! Ignore issues on android come from just-audio - does not affect app function, cannot be fixed - wait for package upgrade
     'Could not connect to the server',
     'just_audio',
   ];
 
-  static SentryEvent? beforeSend(SentryEvent event, hint) {
+  static SentryEvent? beforeSend(SentryEvent event, Hint hint) {
     final exception = event.throwable;
     if (exception is Exception) {
       final exceptionString = exception.toString();
@@ -72,16 +70,14 @@ class SentryService {
       }
     }
 
-    // Log API error
     if (event.throwable is DioException) {
-      final exceptionValueParam = 'value';
-      final dioException = event.throwable as DioException;
+      final dioException = event.throwable! as DioException;
       final lastExceptions = event.exceptions?.lastOrNull;
       final lastExceptionsJson = lastExceptions?.toJson() ?? {};
+      const exceptionValueParam = 'value';
       lastExceptionsJson[exceptionValueParam] =
-          lastExceptionsJson[exceptionValueParam] +
-          '' +
-          'URL = ${dioException.requestOptions.path}';
+          '${lastExceptionsJson[exceptionValueParam]}'
+          ' URL = ${dioException.requestOptions.path}';
       event.exceptions?.removeLast();
       event.exceptions?.add(SentryException.fromJson(lastExceptionsJson));
       return event;
@@ -89,7 +85,7 @@ class SentryService {
     return event;
   }
 
-  static void captureException(dynamic exception, dynamic stackTrace) {
+  static void captureException(Object exception, StackTrace stackTrace) {
     Sentry.captureException(exception, stackTrace: stackTrace);
   }
 

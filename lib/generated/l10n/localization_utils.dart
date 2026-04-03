@@ -5,7 +5,7 @@ import 'package:myapp/src/router/coordinator.dart';
 class S {
   static LocalizationsDelegate<al.AppLocalizations> get delegate =>
       al.AppLocalizations.delegate;
-  static List<LocalizationsDelegate> get localizationsDelegates =>
+  static List<LocalizationsDelegate<dynamic>> get localizationsDelegates =>
       al.AppLocalizations.localizationsDelegates;
   static List<Locale> get supportedLocales =>
       al.AppLocalizations.supportedLocales;

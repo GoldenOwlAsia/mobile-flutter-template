@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     AppScreens.init(context);
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => SettingBloc()),
+        BlocProvider(create: (_) => GetIt.I<SettingBloc>()),
         BlocProvider(create: (_) => GetIt.I<AccountBloc>()),
       ],
       child: BlocBuilder<SettingBloc, SettingState>(

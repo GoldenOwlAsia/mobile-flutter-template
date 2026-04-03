@@ -41,7 +41,7 @@ class XAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final actionButtons = actions.isEmpty ? [XAlertButton.close()] : actions;
+    final actionButtons = actions.isEmpty ? [XAlertButton<void>.close()] : actions;
     if (kIsWeb || Platform.isAndroid) {
       return AlertDialog(
         title: titleWidget ?? (title == null ? null : Text(title!)),

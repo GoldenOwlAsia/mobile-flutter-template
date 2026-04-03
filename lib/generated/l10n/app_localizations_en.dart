@@ -164,5 +164,79 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chat_replied_yourself => 'yourself';
 
   @override
+  String get sign_login_title => 'Login';
+
+  @override
+  String get sign_login_email => 'Email';
+
+  @override
+  String get sign_login_password => 'Password';
+
+  @override
+  String get sign_login_forgotPassword => 'Forgot password?';
+
+  @override
+  String get sign_login_noAccount => 'Don\'t have an account?';
+
+  @override
+  String get sign_login_signupNow => 'Sign up now';
+
+  @override
+  String get sign_login_error => 'Login Error';
+
+  @override
+  String get sign_signup_title => 'Sign up';
+
+  @override
+  String get sign_signup_username => 'Username';
+
+  @override
+  String get sign_signup_email => 'Email';
+
+  @override
+  String get sign_signup_password => 'Password';
+
+  @override
+  String get sign_signup_success => 'Signup success';
+
+  @override
+  String get sign_signup_error => 'Signup fail';
+
+  @override
+  String get sign_forgot_title => 'Reset password';
+
+  @override
+  String get sign_forgot_email => 'Email';
+
+  @override
+  String get sign_forgot_success =>
+      'Your request was successful! Please check your email to reset your password.';
+
+  @override
+  String get account_logout => 'Logout';
+
+  @override
+  String get account_logout_confirm => 'Are you sure you would like to logout?';
+
+  @override
+  String get account_removeAccount => 'Remove Account';
+
+  @override
+  String get account_removeAccount_confirm =>
+      'Are you sure you would like to remove account? Your profile will be cleared';
+
+  @override
+  String get account_profile => 'User Profile';
+
+  @override
+  String get account_changePassword => 'Change password';
+
+  @override
+  String get account_address => 'Address';
+
+  @override
+  String get common_pageNotFound => 'Page not found';
+
+  @override
   String get last_line => '';
 }

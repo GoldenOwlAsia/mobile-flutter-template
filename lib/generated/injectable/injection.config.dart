@@ -18,6 +18,7 @@ import 'package:myapp/src/features/authentication/logic/signin_bloc.dart'
     as _i341;
 import 'package:myapp/src/features/authentication/logic/signup_bloc.dart'
     as _i1039;
+import 'package:myapp/src/features/settings/logic/setting_bloc.dart' as _i918;
 import 'package:myapp/src/network/blob/data/upload_repository.dart' as _i219;
 import 'package:myapp/src/network/blob/data/upload_repository_impl.dart'
     as _i294;
@@ -36,6 +37,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i204.UserReference>(() => _i204.UserReference());
+    gh.lazySingleton<_i918.SettingBloc>(() => _i918.SettingBloc());
     gh.factory<_i783.SignRepository>(() => _i896.SignRepositoryImpl());
     gh.factory<_i219.UploadRepository>(() => _i294.UploadRepositoryImpl());
     gh.factory<_i606.UserRepository>(
@@ -48,17 +50,19 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i783.SignRepository>(),
       ),
     );
-    gh.factory<_i646.AccountBloc>(
-      () => _i646.AccountBloc(gh<_i389.DomainManager>()),
-    );
     gh.factory<_i202.ForgotBloc>(
       () => _i202.ForgotBloc(gh<_i389.DomainManager>()),
     );
+    gh.lazySingleton<_i646.AccountBloc>(
+      () => _i646.AccountBloc(gh<_i389.DomainManager>()),
+    );
     gh.factory<_i341.SigninBloc>(
-      () => _i341.SigninBloc(gh<_i389.DomainManager>()),
+      () =>
+          _i341.SigninBloc(gh<_i389.DomainManager>(), gh<_i646.AccountBloc>()),
     );
     gh.factory<_i1039.SignupBloc>(
-      () => _i1039.SignupBloc(gh<_i389.DomainManager>()),
+      () =>
+          _i1039.SignupBloc(gh<_i389.DomainManager>(), gh<_i646.AccountBloc>()),
     );
     return this;
   }

@@ -28,7 +28,7 @@ enum XNavigationBarItems {
   final IconData? selectedIcon;
 
   static XNavigationBarItems fromLocation(String location) {
-    if (location == XNavigationBarItems.home.route.name) {
+    if (location == XNavigationBarItems.home.route.path) {
       return XNavigationBarItems.home;
     }
 

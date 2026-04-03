@@ -18,7 +18,7 @@ class MPagination<T> {
   final int countData;
   final int pageLimit;
   final int page;
-  List<T> data;
+  final List<T> data;
   final MStatus status;
   bool get hasMore =>
       (totalPage < 0 || page < totalPage) ||

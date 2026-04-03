@@ -1,7 +1,7 @@
 part of 'account_bloc.dart';
 
 class AccountState extends Equatable {
-  const AccountState({required this.user, this.locale = 'vi'});
+  const AccountState({required this.user, this.locale = 'en'});
 
   factory AccountState.ds() {
     return AccountState(user: MUser.empty());
@@ -36,7 +36,7 @@ class AccountState extends Equatable {
       user: json['user'] != null
           ? MUser.fromJson(json['user'] as Map<String, dynamic>)
           : MUser.empty(),
-      locale: json['locale'] as String? ?? 'vi',
+      locale: json['locale'] as String? ?? 'en',
     );
   }
 }

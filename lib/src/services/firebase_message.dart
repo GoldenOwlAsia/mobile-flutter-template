@@ -125,7 +125,7 @@ class XFirebaseMessage {
   }
 
   Future<void> unregisterTokenFCM() async {
-    await messaging.deleteToken().catchError((error) {
+    await messaging.deleteToken().catchError((Object error) {
       xLog.e(error);
     });
   }

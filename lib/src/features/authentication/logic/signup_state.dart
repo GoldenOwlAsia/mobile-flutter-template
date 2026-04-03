@@ -20,7 +20,7 @@ class SignupState extends Equatable {
   }
 
   @override
-  List<Object> get props => [email, password, status, name];
+  List<Object> get props => [email, password, status, name, message];
 
   SignupState copyWith({
     EmailFormzInput? email,

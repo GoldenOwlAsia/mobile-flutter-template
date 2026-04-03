@@ -23,7 +23,7 @@ class WebviewPage extends StatefulWidget {
 
   final String? title;
   final String url;
-  final Function(String)? onSubmitted;
+  final void Function(String)? onSubmitted;
   final bool disableRedirect;
 
   @override
@@ -33,7 +33,7 @@ class WebviewPage extends StatefulWidget {
     BuildContext context,
     String url, {
     String? title,
-    Function(String)? onSubmitted,
+    void Function(String)? onSubmitted,
     bool disableRedirect = false,
   }) async {
     return showBarModalBottomSheet<bool>(

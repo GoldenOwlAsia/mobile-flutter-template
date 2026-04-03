@@ -17,7 +17,7 @@ class XBlocObserver extends BlocObserver {
 
   @override
   void onChange(BlocBase bloc, Change change) {
-    log.f(
+    log.d(
       'onChange ${bloc.runtimeType}\n'
       'From: ${change.currentState}\n'
       'To: ${change.nextState}',

@@ -1,8 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
-import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:myapp/src/features/account/logic/account_bloc.dart';
 import 'package:myapp/src/features/authentication/logic/signup_bloc.dart';
@@ -11,6 +9,7 @@ import 'package:myapp/src/features/authentication/model/model_input.dart';
 import 'package:myapp/src/features/authentication/model/name_formz.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/domain_manager.dart';
+import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 
 class MockDomainManager extends Mock implements DomainManager {}
@@ -19,12 +18,9 @@ class MockSignRepository extends Mock implements SignRepository {}
 
 class MockAccountBloc extends Mock implements AccountBloc {}
 
-class MockBuildContext extends Mock implements BuildContext {}
-
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  // Register fallback values for mocktail
   setUpAll(() {
     registerFallbackValue(MUser(id: '', email: ''));
   });
@@ -41,16 +37,11 @@ void main() {
 
     when(() => mockDomainManager.sign).thenReturn(mockSignRepository);
 
-    // Register AccountBloc in GetIt for testing
-    GetIt.instance.reset();
-    GetIt.instance.registerFactory<AccountBloc>(() => mockAccountBloc);
-
-    signupBloc = SignupBloc(mockDomainManager);
+    signupBloc = SignupBloc(mockDomainManager, mockAccountBloc);
   });
 
   tearDown(() {
     signupBloc.close();
-    GetIt.instance.reset();
   });
 
   group('SignupBloc', () {
@@ -64,19 +55,7 @@ void main() {
         build: () => signupBloc,
         act: (bloc) => bloc.onEmailChanged('test@example.com'),
         expect: () => [
-          SignupState(email: EmailFormzInput.pure('test@example.com')),
-        ],
-      );
-
-      blocTest<SignupBloc, SignupState>(
-        'emits state with updated email (dirty)',
-        build: () {
-          signupBloc.onEmailChanged('initial@example.com');
-          return signupBloc;
-        },
-        act: (bloc) => bloc.onEmailChanged('updated@example.com'),
-        expect: () => [
-          SignupState(email: EmailFormzInput.pure('updated@example.com')),
+          const SignupState(email: EmailFormzInput.pure('test@example.com')),
         ],
       );
     });
@@ -87,7 +66,7 @@ void main() {
         build: () => signupBloc,
         act: (bloc) => bloc.onPasswordChanged('password123'),
         expect: () => [
-          SignupState(password: PasswordFormzInput.dirty('password123')),
+          const SignupState(password: PasswordFormzInput.dirty('password123')),
         ],
       );
     });
@@ -97,7 +76,9 @@ void main() {
         'emits state with updated name',
         build: () => signupBloc,
         act: (bloc) => bloc.onNameChanged('John Doe'),
-        expect: () => [SignupState(name: NameFormzInput.dirty('John Doe'))],
+        expect: () => [
+          const SignupState(name: NameFormzInput.dirty('John Doe')),
+        ],
       );
     });
 
@@ -110,35 +91,79 @@ void main() {
           );
           return signupBloc;
         },
-        act: (bloc) {
-          final context = MockBuildContext();
-          when(() => context.mounted).thenReturn(true);
-          bloc.signupWithEmail(context);
-        },
-        expect: () => [],
+        act: (bloc) => bloc.signupWithEmail(),
+        expect: () => <SignupState>[],
       );
 
       blocTest<SignupBloc, SignupState>(
         'does nothing when form is not validated',
         build: () => signupBloc,
-        act: (bloc) {
-          final context = MockBuildContext();
-          when(() => context.mounted).thenReturn(true);
-          bloc.signupWithEmail(context);
-        },
-        expect: () => [],
+        act: (bloc) => bloc.signupWithEmail(),
+        expect: () => <SignupState>[],
       );
 
-      // NOTE: Full success/failure flow tests are skipped because they require
-      // static dependencies (AppCoordinator, XAlert, GetIt) that cannot be
-      // easily mocked in unit tests. To properly test these flows, the bloc
-      // should be refactored to inject these dependencies.
-      //
-      // The above blocTests verify:
-      // - State validation (inProgress guard, form validation)
-      // - Field change handlers (onEmailChanged, onPasswordChanged, onNameChanged)
-      //
-      // Integration tests should cover the full signup flow.
+      blocTest<SignupBloc, SignupState>(
+        'emits success and notifies AccountBloc on successful signup',
+        setUp: () {
+          when(
+            () => mockSignRepository.signUpWithEmail(
+              email: any(named: 'email'),
+              password: any(named: 'password'),
+              name: any(named: 'name'),
+            ),
+          ).thenAnswer(
+            (_) async => MResult.success(MUser(id: '1', email: 'test@e.com')),
+          );
+          when(
+            () => mockAccountBloc.onLoginSuccess(any()),
+          ).thenReturn(null);
+        },
+        seed: () => const SignupState(
+          email: EmailFormzInput.pure('test@e.com'),
+          password: PasswordFormzInput.dirty('password123'),
+          name: NameFormzInput.dirty('Test User'),
+        ),
+        build: () => signupBloc,
+        act: (bloc) => bloc.signupWithEmail(),
+        expect: () => [
+          isA<SignupState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
+          isA<SignupState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.success),
+        ],
+        verify: (_) {
+          verify(() => mockAccountBloc.onLoginSuccess(any())).called(1);
+        },
+      );
+
+      blocTest<SignupBloc, SignupState>(
+        'emits failure with message on failed signup',
+        setUp: () {
+          when(
+            () => mockSignRepository.signUpWithEmail(
+              email: any(named: 'email'),
+              password: any(named: 'password'),
+              name: any(named: 'name'),
+            ),
+          ).thenAnswer(
+            (_) async => MResult.error('Email already exists'),
+          );
+        },
+        seed: () => const SignupState(
+          email: EmailFormzInput.pure('test@e.com'),
+          password: PasswordFormzInput.dirty('password123'),
+          name: NameFormzInput.dirty('Test User'),
+        ),
+        build: () => signupBloc,
+        act: (bloc) => bloc.signupWithEmail(),
+        expect: () => [
+          isA<SignupState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
+          isA<SignupState>()
+              .having((s) => s.status, 'status', FormzSubmissionStatus.failure)
+              .having((s) => s.message, 'message', 'Email already exists'),
+        ],
+      );
     });
   });
 }

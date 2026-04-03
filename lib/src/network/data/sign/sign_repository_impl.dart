@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:myapp/src/network/data/sign/sign_repository.dart';
 import 'package:myapp/src/network/model/common/result.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/network/model/social_user/social_user.dart';
+import 'package:myapp/src/utils/logger.dart';
 
 @Injectable(as: SignRepository)
 class SignRepositoryImpl extends SignRepository {
@@ -20,7 +20,7 @@ class SignRepositoryImpl extends SignRepository {
       await _googleSignIn.initialize();
       _isGoogleSignInInitialized = true;
     } catch (e) {
-      debugPrint('Failed to initialize Google Sign-In: $e');
+      xLog.e('Failed to initialize Google Sign-In', error: e);
     }
   }
 
@@ -41,7 +41,7 @@ class SignRepositoryImpl extends SignRepository {
       authorization ??= await authClient.authorizeScopes(scopes);
       return authorization.accessToken;
     } catch (error) {
-      debugPrint('Failed to get access token for scopes: $error');
+      xLog.e('Failed to get access token for scopes', error: error);
       return null;
     }
   }
@@ -141,12 +141,12 @@ class SignRepositoryImpl extends SignRepository {
   }
 
   @override
-  Future<MResult> removeAccount(MUser user) async {
+  Future<MResult<dynamic>> removeAccount(MUser user) async {
     try {
-      final user = FirebaseAuth.instance.currentUser;
-      user?.delete();
-      return MResult.success(user);
-    } catch (e) {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      await currentUser?.delete();
+      return MResult.success(currentUser);
+    } on FirebaseAuthException catch (e) {
       return MResult.exception(e);
     }
   }

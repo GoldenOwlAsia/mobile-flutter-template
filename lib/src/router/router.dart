@@ -1,7 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:myapp/src/_dev/dev_screen.dart';
 import 'package:myapp/src/features/common/view/not_found_view.dart';
 import 'package:myapp/src/features/dashboard/logic/navigation_bar_item.dart';
 import 'package:myapp/src/features/account/profile/view/profile_view.dart';
@@ -29,19 +28,19 @@ class AppRouter {
       GoRoute(
         parentNavigatorKey: AppCoordinator.navigatorKey,
         path: AppRouteNames.signIn.path,
-        name: AppRouteNames.signIn.name,
+        name: AppRouteNames.signIn.routeName,
         builder: (_, _) => const SigninView(),
         routes: <RouteBase>[
           GoRoute(
             parentNavigatorKey: AppCoordinator.navigatorKey,
             path: AppRouteNames.signUp.subPath,
-            name: AppRouteNames.signUp.name,
+            name: AppRouteNames.signUp.routeName,
             builder: (_, _) => const SignupView(),
           ),
           GoRoute(
             parentNavigatorKey: AppCoordinator.navigatorKey,
             path: AppRouteNames.forgotPassword.subPath,
-            name: AppRouteNames.forgotPassword.name,
+            name: AppRouteNames.forgotPassword.routeName,
             builder: (_, _) => const ForgotPasswordView(),
           ),
         ],
@@ -55,20 +54,20 @@ class AppRouter {
         routes: <RouteBase>[
           GoRoute(
             path: AppRouteNames.home.path,
-            name: AppRouteNames.home.name,
+            name: AppRouteNames.home.routeName,
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: HomeView()),
             routes: <RouteBase>[
               GoRoute(
                 parentNavigatorKey: AppCoordinator.navigatorKey,
                 path: AppRouteNames.sample.subPath,
-                name: AppRouteNames.sample.name,
+                name: AppRouteNames.sample.routeName,
                 builder: (_, _) => const SampleItemListView(),
                 routes: <RouteBase>[
                   GoRoute(
                     parentNavigatorKey: AppCoordinator.navigatorKey,
                     path: AppRouteNames.sampleDetails.buildSubPathParam,
-                    name: AppRouteNames.sampleDetails.name,
+                    name: AppRouteNames.sampleDetails.routeName,
                     builder: (_, state) {
                       final id =
                           state.pathParameters[AppRouteNames
@@ -83,30 +82,28 @@ class AppRouter {
           ),
           GoRoute(
             path: AppRouteNames.account.path,
-            name: AppRouteNames.account.name,
+            name: AppRouteNames.account.routeName,
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: AccountHomeView()),
             routes: <RouteBase>[
               GoRoute(
                 path: AppRouteNames.profile.subPath,
-                name: AppRouteNames.profile.name,
+                name: AppRouteNames.profile.routeName,
                 builder: (_, _) => const ProfileView(),
               ),
             ],
-          ),
-          GoRoute(
-            path: AppRouteNames.dev.path,
-            name: AppRouteNames.dev.name,
-            builder: (_, _) => const DevScreen(),
           ),
         ],
       ),
       GoRoute(
         parentNavigatorKey: AppCoordinator.navigatorKey,
         path: AppRouteNames.photoView.path,
-        name: AppRouteNames.photoView.name,
+        name: AppRouteNames.photoView.routeName,
         builder: (_, state) {
-          PhotoViewExtra extra = state.extra as PhotoViewExtra;
+          final extra = state.extra;
+          if (extra is! PhotoViewExtra) {
+            return const NotFoundView();
+          }
           return PhotoViewPage(
             galleryItems: extra.galleryItems,
             initialIndex: extra.initialIndex,
