@@ -20,7 +20,7 @@
 - **Android Studio** - [Latest version](https://developer.android.com/studio/install)
 - **macOS & Xcode** (required for iOS build & debug)
 - **Firebase Projects** (staging and production)
-- **CocoaPods** (for iOS dependencies)
+- **Swift Package Manager** (for iOS dependencies, integrated with Flutter)
 
 ---
 
@@ -201,10 +201,10 @@ flutter run --flavor production --target lib/main.dart
    - Open `ios/Runner.xcodeproj` in Xcode
    - Update version in project settings
 
-2. **Install CocoaPods dependencies:**
+2. **Resolve Swift Package Manager dependencies** (Flutter generates the plugin package automatically on first build):
 
    ```sh
-   cd ios && pod install && cd ..
+   flutter pub get
    ```
 
 3. **Build options:**

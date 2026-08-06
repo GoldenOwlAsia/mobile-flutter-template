@@ -1,0 +1,8 @@
+flutter_launcher_icons:
+  # dart pub run flutter_launcher_icons
+  android: "ic_launcher"
+  ios: "AppIcon"
+  # https://stackoverflow.com/a/76453473
+  remove_alpha_ios: true
+  image_path_android: "assets/launcher_icon/icon_android.png"
+  image_path_ios: "assets/launcher_icon/icon_ios.png"
