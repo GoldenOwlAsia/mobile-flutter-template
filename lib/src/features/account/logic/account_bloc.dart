@@ -6,7 +6,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
-import 'package:myapp/generated/l10n/localization_utils.dart';
+import 'package:myapp/src/config/localization/localization_utils.dart';
 import 'package:myapp/src/network/domain_manager.dart';
 import 'package:myapp/src/network/model/user/user.dart';
 import 'package:myapp/src/utils/logger.dart';

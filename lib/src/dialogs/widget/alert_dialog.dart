@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/generated/l10n/localization_utils.dart';
+import 'package:myapp/src/config/localization/localization_utils.dart';
 import 'package:myapp/src/theme/colors.dart';
 
 class XAlertButton<T> {
@@ -41,7 +41,9 @@ class XAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final actionButtons = actions.isEmpty ? [XAlertButton<void>.close()] : actions;
+    final actionButtons = actions.isEmpty
+        ? [XAlertButton<void>.close()]
+        : actions;
     if (kIsWeb || Platform.isAndroid) {
       return AlertDialog(
         title: titleWidget ?? (title == null ? null : Text(title!)),
