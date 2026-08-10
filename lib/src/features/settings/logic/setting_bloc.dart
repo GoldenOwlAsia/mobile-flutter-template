@@ -10,8 +10,8 @@ part 'setting_state.dart';
 @lazySingleton
 class SettingBloc extends Cubit<SettingState> {
   SettingBloc()
-      : _userDefaults = GetIt.I<UserDefaults>(),
-        super(SettingState(themeMode: GetIt.I<UserDefaults>().getTheme()));
+    : _userDefaults = GetIt.I<UserDefaults>(),
+      super(SettingState(themeMode: GetIt.I<UserDefaults>().getTheme()));
 
   final UserDefaults _userDefaults;
 

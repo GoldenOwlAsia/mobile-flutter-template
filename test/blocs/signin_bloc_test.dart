@@ -117,9 +117,7 @@ void main() {
           ).thenAnswer(
             (_) async => MResult.success(MUser(id: '1', email: 'test@e.com')),
           );
-          when(
-            () => mockAccountBloc.onLoginSuccess(any()),
-          ).thenReturn(null);
+          when(() => mockAccountBloc.onLoginSuccess(any())).thenReturn(null);
         },
         seed: () => const SigninState(
           email: EmailFormzInput.pure('test@e.com'),
@@ -128,10 +126,16 @@ void main() {
         build: () => signinBloc,
         act: (bloc) => bloc.loginWithEmail(),
         expect: () => [
-          isA<SigninState>()
-              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
-          isA<SigninState>()
-              .having((s) => s.status, 'status', FormzSubmissionStatus.success),
+          isA<SigninState>().having(
+            (s) => s.status,
+            'status',
+            FormzSubmissionStatus.inProgress,
+          ),
+          isA<SigninState>().having(
+            (s) => s.status,
+            'status',
+            FormzSubmissionStatus.success,
+          ),
         ],
         verify: (_) {
           verify(() => mockAccountBloc.onLoginSuccess(any())).called(1);
@@ -146,9 +150,7 @@ void main() {
               email: any(named: 'email'),
               password: any(named: 'password'),
             ),
-          ).thenAnswer(
-            (_) async => MResult.error('Invalid credentials'),
-          );
+          ).thenAnswer((_) async => MResult.error('Invalid credentials'));
         },
         seed: () => const SigninState(
           email: EmailFormzInput.pure('test@e.com'),
@@ -157,8 +159,11 @@ void main() {
         build: () => signinBloc,
         act: (bloc) => bloc.loginWithEmail(),
         expect: () => [
-          isA<SigninState>()
-              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
+          isA<SigninState>().having(
+            (s) => s.status,
+            'status',
+            FormzSubmissionStatus.inProgress,
+          ),
           isA<SigninState>()
               .having((s) => s.status, 'status', FormzSubmissionStatus.failure)
               .having((s) => s.message, 'message', 'Invalid credentials'),

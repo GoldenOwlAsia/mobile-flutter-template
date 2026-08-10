@@ -13,10 +13,7 @@ class NotFoundView extends StatelessWidget {
         foregroundColor: theme.colorScheme.onSurfaceVariant,
       ),
       body: Center(
-        child: Text(
-          'Page not found',
-          style: theme.textTheme.titleLarge,
-        ),
+        child: Text('Page not found', style: theme.textTheme.titleLarge),
       ),
     );
   }

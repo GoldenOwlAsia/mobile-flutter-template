@@ -33,8 +33,8 @@ class ProfileView extends StatelessWidget {
             InkWell(
               onTap: () async {
                 final result = await context.read<AccountBloc>().onLogOut(
-                      context,
-                    );
+                  context,
+                );
                 if (result == true && context.mounted) {
                   AppCoordinator.pop();
                 }

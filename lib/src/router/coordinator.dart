@@ -17,16 +17,14 @@ class AppCoordinator {
     Map<String, String> params = const <String, String>{},
     Map<String, dynamic> queryParams = const <String, dynamic>{},
     Object? extra,
-  }) =>
-      context.goNamed(
-        name,
-        pathParameters: params,
-        queryParameters: queryParams,
-        extra: extra,
-      );
+  }) => context.goNamed(
+    name,
+    pathParameters: params,
+    queryParameters: queryParams,
+    extra: extra,
+  );
 
-  static void showHomeScreen() =>
-      context.goNamed(AppRouteNames.home.routeName);
+  static void showHomeScreen() => context.goNamed(AppRouteNames.home.routeName);
 
   static void showAccountScreen() =>
       context.goNamed(AppRouteNames.account.routeName);
@@ -45,11 +43,10 @@ class AppCoordinator {
 
   static Future<T?> showSampleDetails<T extends Object?>({
     required String id,
-  }) =>
-      context.pushNamed<T>(
-        AppRouteNames.sampleDetails.routeName,
-        pathParameters: {AppRouteNames.sampleDetails.paramName!: id},
-      );
+  }) => context.pushNamed<T>(
+    AppRouteNames.sampleDetails.routeName,
+    pathParameters: {AppRouteNames.sampleDetails.paramName!: id},
+  );
 
   static Future<T?> showProfile<T extends Object?>() =>
       context.pushNamed<T>(AppRouteNames.profile.routeName);

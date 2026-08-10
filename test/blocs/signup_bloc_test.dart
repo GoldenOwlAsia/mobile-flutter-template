@@ -114,9 +114,7 @@ void main() {
           ).thenAnswer(
             (_) async => MResult.success(MUser(id: '1', email: 'test@e.com')),
           );
-          when(
-            () => mockAccountBloc.onLoginSuccess(any()),
-          ).thenReturn(null);
+          when(() => mockAccountBloc.onLoginSuccess(any())).thenReturn(null);
         },
         seed: () => const SignupState(
           email: EmailFormzInput.pure('test@e.com'),
@@ -126,10 +124,16 @@ void main() {
         build: () => signupBloc,
         act: (bloc) => bloc.signupWithEmail(),
         expect: () => [
-          isA<SignupState>()
-              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
-          isA<SignupState>()
-              .having((s) => s.status, 'status', FormzSubmissionStatus.success),
+          isA<SignupState>().having(
+            (s) => s.status,
+            'status',
+            FormzSubmissionStatus.inProgress,
+          ),
+          isA<SignupState>().having(
+            (s) => s.status,
+            'status',
+            FormzSubmissionStatus.success,
+          ),
         ],
         verify: (_) {
           verify(() => mockAccountBloc.onLoginSuccess(any())).called(1);
@@ -145,9 +149,7 @@ void main() {
               password: any(named: 'password'),
               name: any(named: 'name'),
             ),
-          ).thenAnswer(
-            (_) async => MResult.error('Email already exists'),
-          );
+          ).thenAnswer((_) async => MResult.error('Email already exists'));
         },
         seed: () => const SignupState(
           email: EmailFormzInput.pure('test@e.com'),
@@ -157,8 +159,11 @@ void main() {
         build: () => signupBloc,
         act: (bloc) => bloc.signupWithEmail(),
         expect: () => [
-          isA<SignupState>()
-              .having((s) => s.status, 'status', FormzSubmissionStatus.inProgress),
+          isA<SignupState>().having(
+            (s) => s.status,
+            'status',
+            FormzSubmissionStatus.inProgress,
+          ),
           isA<SignupState>()
               .having((s) => s.status, 'status', FormzSubmissionStatus.failure)
               .having((s) => s.message, 'message', 'Email already exists'),
