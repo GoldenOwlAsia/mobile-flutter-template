@@ -64,7 +64,7 @@ app.*.map.json
 
 .cursor/rules/snyk_rules.mdc
 
-lib/generated/i18n/
+/lib/generated/l10n/
 /coverage/
 sentry.properties
 
