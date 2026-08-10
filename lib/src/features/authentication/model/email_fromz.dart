@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
-import 'package:myapp/generated/l10n/localization_utils.dart';
+import 'package:myapp/src/config/localization/localization_utils.dart';
 import 'form_error.dart';
 
 class EmailFormzInput extends FormzInput<String, FormError> {

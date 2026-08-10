@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './app_localizations.dart' as al;
+import 'package:myapp/generated/l10n/app_localizations.dart' as al;
 import 'package:myapp/src/router/coordinator.dart';
 
 class S {

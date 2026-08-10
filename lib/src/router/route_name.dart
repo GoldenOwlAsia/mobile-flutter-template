@@ -10,11 +10,7 @@ enum AppRouteNames {
   settings(path: '/settings'),
   photoView(path: '/photoView');
 
-  const AppRouteNames({
-    required this.path,
-    String? routeName,
-    this.paramName,
-  }) : _routeName = routeName;
+  const AppRouteNames({required this.path, this._routeName, this.paramName});
 
   final String path;
   final String? _routeName;

@@ -19,12 +19,6 @@ lint:
 runner: 
 	dart run build_runner build -d
 
-pod:
-	pod install --project-directory=ios
-
-podRemove:
-	cd ios; rm -rf Podfile.lock; pod deintegrate; pod install; cd ..
-
 signingReport:
 	cd android && ./gradlew signingReport && cd ..
 
@@ -46,10 +40,10 @@ buildAndroidProd:
 	flutter build appbundle --flavor production --obfuscate --split-debug-info=$(DEBUG_INFO_PROD_DIR) --dart-define-from-file=.env.production
 
 buildIOSStag:
-	flutter build ios --flavor staging -t lib/main_staging.dart --dart-define-from-file=.env.staging
+	flutter build ipa --flavor staging -t lib/main_staging.dart --dart-define-from-file=.env.staging
 
 buildIOSProd:
-	flutter build ios --flavor production --dart-define-from-file=.env.production
+	flutter build ipa --flavor production --dart-define-from-file=.env.production
 
 testCoverage:
 	flutter test --coverage && lcov -r coverage/lcov.info "lib/generated/*" "lib/packages/*" "lib/src/_dev/*" "lib/src/core/app_bloc/*" "lib/src/core/config" "lib/src/core/router/*" "lib/src/core/resource/*" "lib/src/network/common/*" "lib/src/network/model/*" "lib/src/services/remote_config" "lib/src/core/theme" -o coverage/lcov.info --ignore-errors unused

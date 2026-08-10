@@ -1,0 +1,25 @@
+# flutter_native_splash.yaml
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/launcher_icon/splash_logo.png
+
+  color_dark: "#1F1F1F"
+  image_dark: assets/launcher_icon/splash_logo.png
+
+  android_12:
+    color: "#FFFFFF"
+    image: assets/launcher_icon/splash_logo.png
+
+    color_dark: "#1F1F1F"
+    image_dark: assets/launcher_icon/splash_logo.png
+
+  android: true
+  ios: true
+  web: false
+
+  android_gravity: center
+  ios_content_mode: center
+  web_image_mode: center
+
+  info_plist_files:
+    - ios/Runner/Info.plist

@@ -7,41 +7,38 @@ import 'package:sentry_logging/sentry_logging.dart';
 
 class SentryService {
   static Future<void> setupSentry({required AppRunner appRunner}) async {
-    await SentryFlutter.init(
-      (options) {
-        options.dsn = ENV.sentryDNS;
-        options.tracesSampleRate = ENV.flavor.isStaging ? 1.0 : 0.2;
-        options.reportPackages = false;
-        options.addInAppInclude('myapp');
-        options.considerInAppFramesByDefault = false;
-        options.attachThreads = true;
-        options.enableWindowMetricBreadcrumbs = true;
-        options.addIntegration(LoggingIntegration());
-        options.sendDefaultPii = false;
-        options.reportSilentFlutterErrors = true;
-        options.attachScreenshot = ENV.flavor.isStaging;
-        options.diagnosticLevel =
-            ENV.flavor.isStaging ? SentryLevel.debug : SentryLevel.warning;
-        options.debug = kDebugMode;
-        options.spotlight = Spotlight(enabled: kDebugMode);
-        options.enableTimeToFullDisplayTracing = true;
+    await SentryFlutter.init((options) {
+      options.dsn = ENV.sentryDNS;
+      options.tracesSampleRate = ENV.flavor.isStaging ? 1.0 : 0.2;
+      options.reportPackages = false;
+      options.addInAppInclude('myapp');
+      options.considerInAppFramesByDefault = false;
+      options.attachThreads = true;
+      options.enableWindowMetricBreadcrumbs = true;
+      options.addIntegration(LoggingIntegration());
+      options.sendDefaultPii = false;
+      options.reportSilentFlutterErrors = true;
+      options.attachScreenshot = ENV.flavor.isStaging;
+      options.diagnosticLevel = ENV.flavor.isStaging
+          ? SentryLevel.debug
+          : SentryLevel.warning;
+      options.debug = kDebugMode;
+      options.spotlight = Spotlight(enabled: kDebugMode);
+      options.enableTimeToFullDisplayTracing = true;
 
-        options.maxRequestBodySize =
-            ENV.flavor.isStaging
-                ? MaxRequestBodySize.always
-                : MaxRequestBodySize.small;
-        options.navigatorKey = AppCoordinator.navigatorKey;
+      options.maxRequestBodySize = ENV.flavor.isStaging
+          ? MaxRequestBodySize.always
+          : MaxRequestBodySize.small;
+      options.navigatorKey = AppCoordinator.navigatorKey;
 
-        options.replay.sessionSampleRate = 0.0;
-        options.replay.onErrorSampleRate = 1.0;
+      options.replay.sessionSampleRate = 0.0;
+      options.replay.onErrorSampleRate = 1.0;
 
-        options.enableLogs = true;
+      options.enableLogs = true;
 
-        options.environment = ENV.flavor.name;
-        options.beforeSend = beforeSend;
-      },
-      appRunner: appRunner,
-    );
+      options.environment = ENV.flavor.name;
+      options.beforeSend = beforeSend;
+    }, appRunner: appRunner);
   }
 
   static const ignoreErrors = [

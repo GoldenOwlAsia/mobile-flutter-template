@@ -5,7 +5,7 @@ import 'package:myapp/generated/injectable/injection.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
 import 'package:myapp/src/features/authentication/logic/forgot_bloc.dart';
 import 'package:myapp/src/features/authentication/widget/sign_title.dart';
-import 'package:myapp/generated/l10n/localization_utils.dart';
+import 'package:myapp/src/config/localization/localization_utils.dart';
 import 'package:myapp/src/router/coordinator.dart';
 import 'package:myapp/widgets/button/button.dart';
 import 'package:myapp/widgets/forms/input.dart';
@@ -42,13 +42,13 @@ class ForgotPasswordView extends StatelessWidget {
                       const SizedBox(height: 8.0),
                       XInput(
                         value: state.email.value,
-                        key: const Key(
-                          'forgot_passwordConfirmInput_textField',
-                        ),
+                        key: const Key('forgot_passwordConfirmInput_textField'),
                         onChanged: context.read<ForgotBloc>().onEmailChanged,
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          errorText: state.error.isNotEmpty ? state.error : null,
+                          errorText: state.error.isNotEmpty
+                              ? state.error
+                              : null,
                         ),
                         autofocus: true,
                       ),
@@ -57,9 +57,8 @@ class ForgotPasswordView extends StatelessWidget {
                         busy: state.status.isInProgress,
                         enabled: state.email.isValid,
                         title: S.of(context).common_next,
-                        onPressed: () => context
-                            .read<ForgotBloc>()
-                            .onSubmitForgotPassword(),
+                        onPressed: () =>
+                            context.read<ForgotBloc>().onSubmitForgotPassword(),
                       ),
                       const SizedBox(height: 16.0),
                     ],
