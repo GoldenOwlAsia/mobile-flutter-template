@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:myapp/generated/injectable/injection.dart';
@@ -22,8 +22,7 @@ class ForgotPasswordView extends StatelessWidget {
         listener: (context, state) async {
           if (state.status == FormzSubmissionStatus.success) {
             await XAlert.show(
-              body:
-                  'Your request was successful! Please check your email to reset your password.',
+              body: 'Your request was successful! Please check your email to reset your password.',
             );
             AppCoordinator.pop(true);
           }

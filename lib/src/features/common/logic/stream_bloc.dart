@@ -15,7 +15,7 @@ abstract class StreamCubit<T, D> extends Cubit<T> {
   void initialize() {
     _streamSubscription = getStream.listen(
       (incomingData) {
-        var data = transformData(incomingData);
+        final data = transformData(incomingData);
         onStreamData(data);
       },
       onError: (Object error) {

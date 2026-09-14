@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class SampleItemDetailsView extends StatelessWidget {
   const SampleItemDetailsView({required this.id, super.key});

@@ -51,9 +51,9 @@ extension StringExtensions on String {
   /// Capitalize first letter of each word
   String get capitalizeWords {
     if (isEmpty) return this;
-    return split(
-      ' ',
-    ).map((word) => word.isEmpty ? word : word.capitalize).join(' ');
+    return split(' ')
+        .map((word) => word.isEmpty ? word : word.capitalize)
+        .join(' ');
   }
 
   /// Get file extension from path or URL

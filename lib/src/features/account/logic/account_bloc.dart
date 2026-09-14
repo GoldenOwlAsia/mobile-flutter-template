@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:myapp/src/dialogs/alert_wrapper.dart';
@@ -65,8 +65,7 @@ class AccountBloc extends HydratedCubit<AccountState> {
   Future<dynamic> onRemoveAccount(BuildContext context) async {
     final key = await XAlert.show(
       title: 'Remove Account',
-      body:
-          'Are you sure you would like to remove account? Your profile will be cleared',
+      body: 'Are you sure you would like to remove account? Your profile will be cleared',
       actions: [
         XAlertButton(
           title: S.text.common_yes,

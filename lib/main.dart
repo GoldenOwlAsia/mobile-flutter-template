@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myapp/firebase_options/firebase_options_prod.dart';
 import 'package:myapp/src/app.dart';
 import 'package:myapp/src/config/env/env.dart';

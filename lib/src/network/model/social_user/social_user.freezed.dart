@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'social_user.dart';
@@ -9,6 +9,7 @@ part of 'social_user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -32,16 +33,21 @@ $MSocialUserCopyWith<MSocialUser> get copyWith => _$MSocialUserCopyWithImpl<MSoc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MSocialUser&&(identical(other.type, type) || other.type == type)&&(identical(other.userID, userID) || other.userID == userID)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.idToken, idToken) || other.idToken == idToken)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.phone, phone) || other.phone == phone));
+  final _this = this as MSocialUser;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MSocialUser&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.userID, _this.userID) || other.userID == _this.userID)&&(identical(other.accessToken, _this.accessToken) || other.accessToken == _this.accessToken)&&(identical(other.idToken, _this.idToken) || other.idToken == _this.idToken)&&(identical(other.fullName, _this.fullName) || other.fullName == _this.fullName)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.avatar, _this.avatar) || other.avatar == _this.avatar)&&(identical(other.birthDate, _this.birthDate) || other.birthDate == _this.birthDate)&&(identical(other.gender, _this.gender) || other.gender == _this.gender)&&(identical(other.phone, _this.phone) || other.phone == _this.phone));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,userID,accessToken,idToken,fullName,email,avatar,birthDate,gender,phone);
+int get hashCode {
+  final _this = this as MSocialUser;
+  return Object.hash(runtimeType,_this.type,_this.userID,_this.accessToken,_this.idToken,_this.fullName,_this.email,_this.avatar,_this.birthDate,_this.gender,_this.phone);
+}
 
 @override
 String toString() {
-  return 'MSocialUser(type: $type, userID: $userID, accessToken: $accessToken, idToken: $idToken, fullName: $fullName, email: $email, avatar: $avatar, birthDate: $birthDate, gender: $gender, phone: $phone)';
+  final _this = this as MSocialUser;
+  return 'MSocialUser(type: ${_this.type}, userID: ${_this.userID}, accessToken: ${_this.accessToken}, idToken: ${_this.idToken}, fullName: ${_this.fullName}, email: ${_this.email}, avatar: ${_this.avatar}, birthDate: ${_this.birthDate}, gender: ${_this.gender}, phone: ${_this.phone})';
 }
 
 
@@ -70,7 +76,7 @@ class _$MSocialUserCopyWithImpl<$Res>
 /// Create a copy of MSocialUser
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? userID = freezed,Object? accessToken = freezed,Object? idToken = freezed,Object? fullName = freezed,Object? email = freezed,Object? avatar = freezed,Object? birthDate = freezed,Object? gender = freezed,Object? phone = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(MSocialUser(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as MSocialType,userID: freezed == userID ? _self.userID : userID // ignore: cast_nullable_to_non_nullable
 as String?,accessToken: freezed == accessToken ? _self.accessToken : accessToken // ignore: cast_nullable_to_non_nullable
@@ -253,16 +259,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MSocialUser&&(identical(other.type, type) || other.type == type)&&(identical(other.userID, userID) || other.userID == userID)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.idToken, idToken) || other.idToken == idToken)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.phone, phone) || other.phone == phone));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MSocialUser&&(identical(other.type, type) || other.type == type)&&(identical(other.userID, userID) || other.userID == userID)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.idToken, idToken) || other.idToken == idToken)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.phone, phone) || other.phone == phone));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,userID,accessToken,idToken,fullName,email,avatar,birthDate,gender,phone);
+int get hashCode {
+    return Object.hash(runtimeType,type,userID,accessToken,idToken,fullName,email,avatar,birthDate,gender,phone);
+}
 
 @override
 String toString() {
-  return 'MSocialUser(type: $type, userID: $userID, accessToken: $accessToken, idToken: $idToken, fullName: $fullName, email: $email, avatar: $avatar, birthDate: $birthDate, gender: $gender, phone: $phone)';
+    return 'MSocialUser(type: $type, userID: $userID, accessToken: $accessToken, idToken: $idToken, fullName: $fullName, email: $email, avatar: $avatar, birthDate: $birthDate, gender: $gender, phone: $phone)';
 }
 
 

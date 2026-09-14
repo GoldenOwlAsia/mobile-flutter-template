@@ -62,7 +62,7 @@ class XFirebaseMessage {
 
   Future<void> requestPermission() async {
     try {
-      NotificationSettings settings = await messaging.requestPermission(
+      final NotificationSettings settings = await messaging.requestPermission(
         alert: true,
         announcement: false,
         badge: true,
@@ -106,8 +106,8 @@ class XFirebaseMessage {
   }
 
   Future<void> showLocalNotification(RemoteMessage message) async {
-    RemoteNotification? notification = message.notification;
-    AndroidNotification? android = message.notification?.android;
+    final RemoteNotification? notification = message.notification;
+    final AndroidNotification? android = message.notification?.android;
 
     if (notification != null && android != null) {
       //TODO: Implement show notification

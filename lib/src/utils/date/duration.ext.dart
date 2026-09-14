@@ -82,17 +82,15 @@ extension DurationExtensions on Duration {
       // Days
       final daysMatch = RegExp(r'(\d+)d').firstMatch(cleanString);
       if (daysMatch != null) {
-        totalMicroseconds += Duration(
-          days: int.parse(daysMatch.group(1)!),
-        ).inMicroseconds;
+        totalMicroseconds += Duration(days: int.parse(daysMatch.group(1)!))
+            .inMicroseconds;
       }
 
       // Hours
       final hoursMatch = RegExp(r'(\d+)h').firstMatch(cleanString);
       if (hoursMatch != null) {
-        totalMicroseconds += Duration(
-          hours: int.parse(hoursMatch.group(1)!),
-        ).inMicroseconds;
+        totalMicroseconds += Duration(hours: int.parse(hoursMatch.group(1)!))
+            .inMicroseconds;
       }
 
       // Minutes

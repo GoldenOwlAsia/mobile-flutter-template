@@ -6,7 +6,7 @@ class PermissionService {
   static Future<bool> requestMicrophonePermission({
     bool openSetting = true,
   }) async {
-    var status = await Permission.microphone.request();
+    final status = await Permission.microphone.request();
     if (status.isDenied || status.isPermanentlyDenied) {
       final show = await XAlert.showConfirmDialog(
         "Allow ${AppInfo.package.appName} to access this device's microphone",
