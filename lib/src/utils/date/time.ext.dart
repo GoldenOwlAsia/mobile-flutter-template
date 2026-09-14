@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// TimeOfDay extensions for common time operations
 /// Provides convenient methods for time formatting and manipulation

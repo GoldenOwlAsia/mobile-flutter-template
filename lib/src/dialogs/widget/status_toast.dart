@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class XStatusToast extends StatelessWidget {
   const XStatusToast(this.message, {this.icon, super.key});

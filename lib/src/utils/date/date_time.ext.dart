@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// DateTime extensions for common date operations
 /// Provides convenient methods for date manipulation and comparison

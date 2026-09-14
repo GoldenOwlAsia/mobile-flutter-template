@@ -1,5 +1,5 @@
 // Custom widget wrapper for common state previews
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myapp/src/config/localization/localization_utils.dart';
 
 Widget commonScaffoldWrapper(Widget child) {

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Application color constants following Material Design 3 principles
 /// Colors are organized by category and follow consistent naming conventions

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'upload_model.dart';
@@ -9,6 +9,7 @@ part of 'upload_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -27,23 +28,29 @@ $MUploadCopyWith<MUpload> get copyWith => _$MUploadCopyWithImpl<MUpload>(this as
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as MUpload;
   properties
     ..add(DiagnosticsProperty('type', 'MUpload'))
-    ..add(DiagnosticsProperty('url', url));
+    ..add(DiagnosticsProperty('url', _this.url));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MUpload&&(identical(other.url, url) || other.url == url));
+  final _this = this as MUpload;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MUpload&&(identical(other.url, _this.url) || other.url == _this.url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,url);
+int get hashCode {
+  final _this = this as MUpload;
+  return Object.hash(runtimeType,_this.url);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'MUpload(url: $url)';
+  final _this = this as MUpload;
+  return 'MUpload(url: ${_this.url})';
 }
 
 
@@ -72,7 +79,7 @@ class _$MUploadCopyWithImpl<$Res>
 /// Create a copy of MUpload
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? url = null,}) {
-  return _then(_self.copyWith(
+  return _then(MUpload(
 url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -232,23 +239,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'MUpload'))
     ..add(DiagnosticsProperty('url', url));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MUpload&&(identical(other.url, url) || other.url == url));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MUpload&&(identical(other.url, url) || other.url == url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,url);
+int get hashCode {
+    return Object.hash(runtimeType,url);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'MUpload(url: $url)';
+    return 'MUpload(url: $url)';
 }
 
 

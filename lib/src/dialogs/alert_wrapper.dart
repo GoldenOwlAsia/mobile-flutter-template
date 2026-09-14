@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myapp/src/dialogs/widget/alert_dialog.dart';
 import 'package:myapp/src/features/force_update/popup_force_update.dart';
 import 'package:myapp/src/config/localization/localization_utils.dart';
