@@ -71,9 +71,8 @@ void main() {
       blocTest<ForgotBloc, ForgotState>(
         'emits inProgress then success when request succeeds',
         setUp: () {
-          when(
-            () => mockSignRepository.forgotPassword('test@example.com'),
-          ).thenAnswer((_) async => MResult.success('Success'));
+          when(() => mockSignRepository.forgotPassword('test@example.com'))
+              .thenAnswer((_) async => MResult.success('Success'));
         },
         seed: () =>
             const ForgotState(email: EmailFormzInput.pure('test@example.com')),
@@ -90,18 +89,16 @@ void main() {
           ),
         ],
         verify: (_) {
-          verify(
-            () => mockSignRepository.forgotPassword('test@example.com'),
-          ).called(1);
+          verify(() => mockSignRepository.forgotPassword('test@example.com'))
+              .called(1);
         },
       );
 
       blocTest<ForgotBloc, ForgotState>(
         'emits inProgress then failure when request fails',
         setUp: () {
-          when(
-            () => mockSignRepository.forgotPassword('test@example.com'),
-          ).thenAnswer((_) async => MResult.error('Email not found'));
+          when(() => mockSignRepository.forgotPassword('test@example.com'))
+              .thenAnswer((_) async => MResult.error('Email not found'));
         },
         seed: () =>
             const ForgotState(email: EmailFormzInput.pure('test@example.com')),

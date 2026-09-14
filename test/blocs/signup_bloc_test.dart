@@ -22,7 +22,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() {
-    registerFallbackValue(MUser(id: '', email: ''));
+    registerFallbackValue(const MUser(id: '', email: ''));
   });
 
   late SignupBloc signupBloc;
@@ -112,7 +112,8 @@ void main() {
               name: any(named: 'name'),
             ),
           ).thenAnswer(
-            (_) async => MResult.success(MUser(id: '1', email: 'test@e.com')),
+            (_) async =>
+                MResult.success(const MUser(id: '1', email: 'test@e.com')),
           );
           when(() => mockAccountBloc.onLoginSuccess(any())).thenReturn(null);
         },

@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:formz/formz.dart';
 import 'package:myapp/src/config/localization/localization_utils.dart';
+
 import 'form_error.dart';
 
 class NameFormzInput extends FormzInput<String, FormError> {

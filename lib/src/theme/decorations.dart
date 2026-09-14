@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+
 import 'colors.dart';
 
 /// Application decoration constants for consistent UI styling
@@ -10,8 +11,8 @@ class AppDecorations {
   // MARK: - Shadow Styles
   /// Light shadow for subtle elevation
   static final List<BoxShadow> shadowLight = [
-    BoxShadow(
-      offset: const Offset(0, 1),
+    const BoxShadow(
+      offset: Offset(0, 1),
       blurRadius: 3,
       spreadRadius: 0,
       color: AppColors.shadowLight,
@@ -20,8 +21,8 @@ class AppDecorations {
 
   /// Medium shadow for standard elevation
   static final List<BoxShadow> shadowMedium = [
-    BoxShadow(
-      offset: const Offset(0, 2),
+    const BoxShadow(
+      offset: Offset(0, 2),
       blurRadius: 6,
       spreadRadius: 0,
       color: AppColors.shadowMedium,
@@ -30,8 +31,8 @@ class AppDecorations {
 
   /// Strong shadow for high elevation components
   static final List<BoxShadow> shadowStrong = [
-    BoxShadow(
-      offset: const Offset(0, 4),
+    const BoxShadow(
+      offset: Offset(0, 4),
       blurRadius: 12,
       spreadRadius: 0,
       color: AppColors.shadowDark,
@@ -40,14 +41,14 @@ class AppDecorations {
 
   /// Card shadow for elevated surfaces
   static final List<BoxShadow> shadowCard = [
-    BoxShadow(
-      offset: const Offset(0, 1),
+    const BoxShadow(
+      offset: Offset(0, 1),
       blurRadius: 3,
       spreadRadius: 0,
       color: AppColors.shadowLight,
     ),
-    BoxShadow(
-      offset: const Offset(0, 1),
+    const BoxShadow(
+      offset: Offset(0, 1),
       blurRadius: 2,
       spreadRadius: 0,
       color: AppColors.shadowLight,
@@ -56,8 +57,8 @@ class AppDecorations {
 
   /// Modal shadow for overlays and dialogs
   static final List<BoxShadow> shadowModal = [
-    BoxShadow(
-      offset: const Offset(0, 8),
+    const BoxShadow(
+      offset: Offset(0, 8),
       blurRadius: 24,
       spreadRadius: 0,
       color: AppColors.shadowMedium,
@@ -148,30 +149,30 @@ class AppDecorations {
 
   // MARK: - Input Decorations
   /// Standard input field decoration
-  static InputDecoration get inputDefault => InputDecoration(
+  static InputDecoration get inputDefault => const InputDecoration(
     filled: true,
     fillColor: AppColors.surface,
     border: OutlineInputBorder(
       borderRadius: radiusS,
-      borderSide: const BorderSide(color: AppColors.border),
+      borderSide: BorderSide(color: AppColors.border),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: radiusS,
-      borderSide: const BorderSide(color: AppColors.border),
+      borderSide: BorderSide(color: AppColors.border),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: radiusS,
-      borderSide: const BorderSide(color: AppColors.focus, width: 2),
+      borderSide: BorderSide(color: AppColors.focus, width: 2),
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: radiusS,
-      borderSide: const BorderSide(color: AppColors.error),
+      borderSide: BorderSide(color: AppColors.error),
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderRadius: radiusS,
-      borderSide: const BorderSide(color: AppColors.error, width: 2),
+      borderSide: BorderSide(color: AppColors.error, width: 2),
     ),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     hintStyle: TextStyle(color: AppColors.textSecondary),
   );
 
@@ -186,25 +187,25 @@ class AppDecorations {
   );
 
   /// Underline input decoration
-  static InputDecoration get inputUnderline => InputDecoration(
-    border: const UnderlineInputBorder(
+  static InputDecoration get inputUnderline => const InputDecoration(
+    border: UnderlineInputBorder(
       borderSide: BorderSide(color: AppColors.border),
     ),
-    enabledBorder: const UnderlineInputBorder(
+    enabledBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: AppColors.border),
     ),
-    focusedBorder: const UnderlineInputBorder(
+    focusedBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: AppColors.focus, width: 2),
     ),
-    errorBorder: const UnderlineInputBorder(
+    errorBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: AppColors.error),
     ),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 12),
+    contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 12),
     hintStyle: TextStyle(color: AppColors.textSecondary),
   );
 
   /// Search input decoration
-  static InputDecoration get inputSearch => InputDecoration(
+  static InputDecoration get inputSearch => const InputDecoration(
     filled: true,
     fillColor: AppColors.surfaceVariant,
     border: OutlineInputBorder(
@@ -217,9 +218,9 @@ class AppDecorations {
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: radiusCircular,
-      borderSide: const BorderSide(color: AppColors.focus, width: 2),
+      borderSide: BorderSide(color: AppColors.focus, width: 2),
     ),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     hintText: 'Search...',
     hintStyle: TextStyle(color: AppColors.textSecondary),
     prefixIcon: Icon(Icons.search, color: AppColors.textSecondary),

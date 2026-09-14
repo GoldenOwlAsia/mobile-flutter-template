@@ -101,10 +101,10 @@ class BaseCollectionReference<T> {
       return MResult.success([]);
     }
     try {
-      List<Query<T>> queries = [];
+      final List<Query<T>> queries = [];
       final roomChunks = Utils.chunk(rooms, 10);
       for (final chunk in roomChunks) {
-        Query<T> queryChat = ref.where("id", whereIn: chunk);
+        final Query<T> queryChat = ref.where("id", whereIn: chunk);
         queries.add(queryChat);
       }
       final List<QuerySnapshot<T>> results = await Future.wait([

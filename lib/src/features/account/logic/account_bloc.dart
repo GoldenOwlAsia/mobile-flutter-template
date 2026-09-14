@@ -65,8 +65,7 @@ class AccountBloc extends HydratedCubit<AccountState> {
   Future<dynamic> onRemoveAccount(BuildContext context) async {
     final key = await XAlert.show(
       title: 'Remove Account',
-      body:
-          'Are you sure you would like to remove account? Your profile will be cleared',
+      body: 'Are you sure you would like to remove account? Your profile will be cleared',
       actions: [
         XAlertButton(
           title: S.text.common_yes,

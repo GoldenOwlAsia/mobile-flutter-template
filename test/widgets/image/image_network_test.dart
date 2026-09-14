@@ -9,7 +9,7 @@ void main() {
       WidgetTester tester,
     ) async {
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: XImageNetwork(null))),
+        const MaterialApp(home: Scaffold(body: XImageNetwork(null))),
       );
 
       // Should not find CachedNetworkImage
@@ -30,7 +30,7 @@ void main() {
       const testUrl = 'https://example.com/image.jpg';
 
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: XImageNetwork(testUrl))),
+        const MaterialApp(home: Scaffold(body: XImageNetwork(testUrl))),
       );
 
       // Should find CachedNetworkImage
@@ -51,7 +51,7 @@ void main() {
       const testHeight = 200.0;
 
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: XImageNetwork(testUrl, width: testWidth, height: testHeight),
           ),
@@ -72,7 +72,7 @@ void main() {
       const testFit = BoxFit.cover;
 
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(body: XImageNetwork(testUrl, fit: testFit)),
         ),
       );
@@ -89,7 +89,7 @@ void main() {
       const testUrl = 'https://example.com/image.jpg';
 
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: XImageNetwork(testUrl))),
+        const MaterialApp(home: Scaffold(body: XImageNetwork(testUrl))),
       );
 
       final cachedImage = tester.widget<CachedNetworkImage>(
@@ -116,7 +116,7 @@ void main() {
       const testUrl = 'https://example.com/image.jpg';
 
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: XImageNetwork(testUrl))),
+        const MaterialApp(home: Scaffold(body: XImageNetwork(testUrl))),
       );
 
       final cachedImage = tester.widget<CachedNetworkImage>(
@@ -148,7 +148,7 @@ void main() {
       const testFit = BoxFit.contain;
 
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: XImageNetwork(
               testUrl,

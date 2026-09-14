@@ -97,7 +97,7 @@ void main() {
 
     group('Unimplemented methods', () {
       test('connectBEWithApple should throw UnimplementedError', () {
-        final user = MSocialUser(
+        final user = const MSocialUser(
           type: MSocialType.apple,
           email: 'test@example.com',
         );
@@ -108,7 +108,7 @@ void main() {
       });
 
       test('connectBEWithFacebook should throw UnimplementedError', () {
-        final user = MSocialUser(
+        final user = const MSocialUser(
           type: MSocialType.facebook,
           email: 'test@example.com',
         );

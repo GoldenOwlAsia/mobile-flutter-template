@@ -22,8 +22,7 @@ class ForgotPasswordView extends StatelessWidget {
         listener: (context, state) async {
           if (state.status == FormzSubmissionStatus.success) {
             await XAlert.show(
-              body:
-                  'Your request was successful! Please check your email to reset your password.',
+              body: 'Your request was successful! Please check your email to reset your password.',
             );
             AppCoordinator.pop(true);
           }

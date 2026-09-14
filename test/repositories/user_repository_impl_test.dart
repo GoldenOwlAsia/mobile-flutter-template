@@ -45,12 +45,15 @@ void main() {
 
     group('getOrAddUser', () {
       test('should delegate to usersRef.getOrAddUser', () async {
-        final user = MUser(id: '123', email: 'test@example.com', name: 'Test');
+        final user = const MUser(
+          id: '123',
+          email: 'test@example.com',
+          name: 'Test',
+        );
         final expectedResult = MResult.success(user);
 
-        when(
-          () => mockUserReference.getOrAddUser(user),
-        ).thenAnswer((_) async => expectedResult);
+        when(() => mockUserReference.getOrAddUser(user))
+            .thenAnswer((_) async => expectedResult);
 
         final result = await repository.getOrAddUser(user);
 
@@ -62,14 +65,13 @@ void main() {
     group('getUsers', () {
       test('should delegate to usersRef.getUsers', () async {
         final users = [
-          MUser(id: '1', email: 'user1@example.com'),
-          MUser(id: '2', email: 'user2@example.com'),
+          const MUser(id: '1', email: 'user1@example.com'),
+          const MUser(id: '2', email: 'user2@example.com'),
         ];
         final expectedResult = MResult.success(users);
 
-        when(
-          () => mockUserReference.getUsers(),
-        ).thenAnswer((_) async => expectedResult);
+        when(() => mockUserReference.getUsers())
+            .thenAnswer((_) async => expectedResult);
 
         final result = await repository.getUsers();
 

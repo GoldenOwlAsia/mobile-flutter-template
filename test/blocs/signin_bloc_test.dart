@@ -23,7 +23,7 @@ class MockAccountBloc extends Mock implements AccountBloc {}
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  registerFallbackValue(MUser(id: '', email: ''));
+  registerFallbackValue(const MUser(id: '', email: ''));
 
   late SigninBloc signinBloc;
   late MockDomainManager mockDomainManager;
@@ -115,7 +115,8 @@ void main() {
               password: any(named: 'password'),
             ),
           ).thenAnswer(
-            (_) async => MResult.success(MUser(id: '1', email: 'test@e.com')),
+            (_) async =>
+                MResult.success(const MUser(id: '1', email: 'test@e.com')),
           );
           when(() => mockAccountBloc.onLoginSuccess(any())).thenReturn(null);
         },
