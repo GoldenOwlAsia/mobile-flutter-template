@@ -206,3 +206,40 @@ You go to the production page of the app on the Google Play Console
 5. Check if build is stable.
 6. Update release notes and release to other testers.
 7. Announce new build with release notes in Slack channel and wait for tester verify..
+
+## Deploy for Web
+
+Flutter 3.50 compiles web to WebAssembly with a JavaScript fallback and can content-hash
+every compiled file so the bundle can be cached forever.
+
+1. Build (WebAssembly + JS fallback, hashed filenames):
+
+   ```sh
+   make buildWeb      # production (lib/main.dart)
+   make buildWebStag  # staging (lib/main_staging.dart)
+   ```
+
+   This runs `flutter build web --wasm --web-content-hash`, which embeds content hashes in
+   the compiled JS/Wasm and `build/web/assets/**` filenames, rewrites `flutter_bootstrap.js`,
+   and emits `build/web/precache_manifest.json` for custom service workers.
+
+2. Make sure the app (and its packages) no longer use the deprecated JS interop libraries
+   (`dart:html`, `dart:js`, `dart:js_util`, `package:js`) before shipping Wasm:
+
+   ```sh
+   make checkWebInterop
+   ```
+
+3. Configure the host's cache headers:
+
+   | Path                                                   | Cache-Control                                  |
+   | ------------------------------------------------------ | ---------------------------------------------- |
+   | `index.html`, `flutter_bootstrap.js`                   | `no-cache`                                     |
+   | hashed JS / Wasm / `assets/**` (from `build/web`)      | `public, max-age=31536000, immutable`           |
+
+   Never cache `index.html` or `flutter_bootstrap.js` immutably, otherwise returning users
+   stay pinned to an old deployment.
+
+4. `web/flutter_bootstrap.js` opts Safari (`webkit`) and Firefox (`gecko`) into Wasm, which
+   are 2x+ faster than JavaScript on widget-heavy benchmarks; unsupported browsers fall back
+   to JavaScript automatically.
