@@ -97,7 +97,6 @@ flutter_gen:
     lottie: true
 
 flutter:
-
   config:
     enable-swift-package-manager: true
 
