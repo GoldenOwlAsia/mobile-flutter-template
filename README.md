@@ -20,10 +20,29 @@ Kickstart your next Flutter project with this production-ready boilerplate — p
 
 ## Prerequisites
 
-- **Flutter:** `>=3.38.x`
+- **Flutter:** `>=3.50.x` (Dart `>=3.14`) — the version is pinned in [`.fvmrc`](.fvmrc); run `fvm install && fvm use` (or `fvm flutter ...`) to match it.
 - **Firebase Projects:**
   - [Firebase Staging](https://console.firebase.google.com/u/0/project/flutter-app-ec8dd/settings/iam)
   - [Firebase Production](https://console.firebase.google.com/u/0/project/template-app-prod-3a034/settings/iam)
+
+### Flutter 3.50 notes
+
+- Design libraries come from the standalone packages: import `package:material_ui/material_ui.dart` /
+  `package:cupertino_ui/cupertino_ui.dart` instead of the deprecated
+  `package:flutter/material.dart` / `package:flutter/cupertino.dart`.
+- iOS uses **Swift Package Manager** only (no Podfile / `pod install`).
+- Android builds with **AGP 9.3.1 / Gradle 9.5.0 / KGP 2.4.20**, Java 17, `compileSdk 37`
+  (required by `permission_handler_android`), `targetSdk 36` and `minSdk 26` (required by
+  `sentry_flutter` 10).
+- Built-in Kotlin / AGP 9's new DSL is **not** enabled yet (`android.builtInKotlin=false`,
+  `android.newDsl=false`): the Firebase plugins still apply the Kotlin Gradle Plugin. Drop
+  those flags once they migrate.
+
+- Web builds use WebAssembly with JS fallback and content-hashed assets:
+  `make buildWeb` (see [DEPLOY.md](DEPLOY.md#deploy-for-web)).
+- Optional: on Android 14+ / Vulkan devices, opt into Hybrid Composition++ for platform
+  views (`webview_flutter`, maps) with `flutter config --enable-hcpp` and watch `logcat` for
+  `Using HCPP platform view rendering strategy`.
 
 ---
 

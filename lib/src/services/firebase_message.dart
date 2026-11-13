@@ -20,13 +20,13 @@ class XFirebaseMessage {
 
   Future<void> initialize() async {
     messaging = FirebaseMessaging.instance;
-    _tokenStream = messaging.onTokenRefresh;
+    _tokenStream = messaging.onRegistered;
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
     await setupNotification();
 
-    registerTokenFCM();
+    await registerTokenFCM();
 
     // NOTE: Request Permission doesn't necessarily implemented here.
     // You should follow the workflow of your project
@@ -114,24 +114,27 @@ class XFirebaseMessage {
     }
   }
 
-  void registerTokenFCM() async {
-    // If you want to get a token from the web, you can find the documentation
-    // at https://firebase.flutter.dev/docs/messaging/usage/#web-tokens
-    messaging.getToken().then((setToken)).onError((error, stackTrace) {
-      xLog.e(error);
-    });
-
+  Future<void> registerTokenFCM() async {
     _tokenStream.listen(setToken);
+
+    try {
+      await messaging.register();
+    } catch (error) {
+      xLog.e(error);
+    }
   }
 
   Future<void> unregisterTokenFCM() async {
-    await messaging.deleteToken().catchError((Object error) {
+    try {
+      await messaging.unregister();
+      currentToken = null;
+    } catch (error) {
       xLog.e(error);
-    });
+    }
   }
 
   void setToken(String? token) {
-    xLog.i('FCM Token: $token');
+    xLog.i('FCM registration id: $token');
     if (token != null) {
       currentToken = token;
     }

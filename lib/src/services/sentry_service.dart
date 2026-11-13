@@ -34,8 +34,6 @@ class SentryService {
       options.replay.sessionSampleRate = 0.0;
       options.replay.onErrorSampleRate = 1.0;
 
-      options.enableLogs = true;
-
       options.environment = ENV.flavor.name;
       options.beforeSend = beforeSend;
     }, appRunner: appRunner);

@@ -45,6 +45,15 @@ buildIOSStag:
 buildIOSProd:
 	flutter build ipa --flavor production --dart-define-from-file=.env.production
 
+buildWeb:
+	flutter build web --wasm --web-content-hash -t lib/main.dart --dart-define-from-file=.env.production
+
+buildWebStag:
+	flutter build web --wasm --web-content-hash -t lib/main_staging.dart --dart-define-from-file=.env.staging
+
+checkWebInterop:
+	flutter build web --no-deprecated-js-interop
+
 testCoverage:
 	flutter test --coverage && lcov -r coverage/lcov.info "lib/generated/*" "lib/packages/*" "lib/src/_dev/*" "lib/src/core/app_bloc/*" "lib/src/core/config" "lib/src/core/router/*" "lib/src/core/resource/*" "lib/src/network/common/*" "lib/src/network/model/*" "lib/src/services/remote_config" "lib/src/core/theme" -o coverage/lcov.info --ignore-errors unused
 	
